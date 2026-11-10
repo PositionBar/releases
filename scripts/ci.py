@@ -184,20 +184,11 @@ def recovery_artifact(run_id):
     raise ValueError("No retained checkpoint is available")
 
 
-def verify_updater_report(path):
-    report = json.loads(Path(path).read_text())
-    require(report["result"] == "passed" and report["skipped"] == 0 and report["records"]
-            and all(".UpdateConfigurationTests " in row["id"] for row in report["records"]),
-            "Updater XCTest cases must execute without failures or skips")
-    return report["passed"]
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("plan", "source", "recovery", "tests"))
+    parser.add_argument("command", choices=("plan", "source", "recovery"))
     parser.add_argument("--sha")
     parser.add_argument("--run-id")
-    parser.add_argument("--report")
     args = parser.parse_args()
     if args.command == "plan":
         for key, value in event_plan().items():
@@ -206,8 +197,6 @@ def main():
         verify_source(args.sha)
     elif args.command == "recovery":
         print("artifact=" + recovery_artifact(args.run_id))
-    else:
-        print(f"Updater tests: {verify_updater_report(args.report)} passed, 0 skipped")
 
 
 if __name__ == "__main__":

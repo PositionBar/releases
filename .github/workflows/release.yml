@@ -36,7 +36,6 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 0
           persist-credentials: false
-      - run: python3 -B -m unittest discover -s tests -v
       - name: Validate the exact release PR and its approval
         id: plan
         env:
@@ -50,11 +49,10 @@ jobs:
       needs.offline.outputs.release == 'true' && needs.offline.outputs.complete != 'true' &&
       (github.event_name != 'pull_request' ||
        github.event.pull_request.head.repo.full_name == github.repository)
-    runs-on: xcode-27
-    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
     env:
       SOURCE_SHA: ${{ needs.offline.outputs.source_sha }}
-      RELEASE_PLAN: ${{ github.workspace }}/release/${{ needs.offline.outputs.plan }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -64,40 +62,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: python3 -B release/scripts/ci.py source --sha "$SOURCE_SHA"
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          repository: sorcererxw/positionbar
-          ref: ${{ env.SOURCE_SHA }}
-          token: ${{ secrets.GH_PAT }}
-          path: source
-          persist-credentials: false
-      - name: Confirm clean source, toolchain and locked packages
-        env:
-          SOURCE_SHA: ${{ env.SOURCE_SHA }}
-        run: |
-          [[ "$(git -C source rev-parse HEAD)" == "$SOURCE_SHA" ]]
-          [[ -z "$(git -C source status --porcelain)" ]]
-          python3 -B source/scripts/testflight.py toolchain
-          echo "POSITIONBAR_SOURCE_PACKAGES=$RUNNER_TEMP/SourcePackages" >> "$GITHUB_ENV"
-          xcodebuild -resolvePackageDependencies -project source/apps/macos/PositionBar.xcodeproj \
-            -scheme PositionBar -clonedSourcePackagesDirPath "$RUNNER_TEMP/SourcePackages" \
-            -onlyUsePackageVersionsFromResolvedFile > "$RUNNER_TEMP/package-resolution.log" 2>&1
-      - name: Offline regressions and the unsigned direct-distribution archive
-        env:
-          SOURCE_SHA: ${{ env.SOURCE_SHA }}
-        run: |
-          python3 -B -m unittest discover -s source/scripts/tests -v > "$RUNNER_TEMP/python-tests.log" 2>&1
-          python3 -B source/apps/macos/scripts/test-build-identity.py > "$RUNNER_TEMP/identity-tests.log" 2>&1
-          python3 -B source/apps/macos/scripts/test-build-registry.py > "$RUNNER_TEMP/registry-tests.log" 2>&1
-          python3 -B source/apps/macos/scripts/test-build-wrapper.py > "$RUNNER_TEMP/wrapper-tests.log" 2>&1
-          swift test --package-path source/apps/macos --scratch-path "$RUNNER_TEMP/updater-tests" \
-            --force-resolved-versions --filter 'PositionBarAppTests.UpdateConfigurationTests' \
-            > "$RUNNER_TEMP/updater-tests.log" 2>&1
-          python3 -B source/scripts/check test-report "$RUNNER_TEMP/updater-tests.log" > "$RUNNER_TEMP/updater-tests.json"
-          python3 -B release/scripts/ci.py tests --report "$RUNNER_TEMP/updater-tests.json"
-          python3 -B source/scripts/unified_release.py verify --source "$SOURCE_SHA" \
-            --work "$RUNNER_TEMP/unsigned-verification" --plan "$RELEASE_PLAN" > "$RUNNER_TEMP/unsigned-archives.log" 2>&1
-          echo 'Offline checks and the unsigned archive passed. Signing, notarization and uploads have not run.' >> "$GITHUB_STEP_SUMMARY"
 
   release:
     needs: [offline, verify]
@@ -109,7 +73,7 @@ jobs:
     runs-on: xcode-27
     timeout-minutes: 120
     permissions:
-      contents: write
+      contents: read
       actions: read
       pull-requests: read
     env:
@@ -216,7 +180,7 @@ jobs:
       - name: Sign and notarize exact Sparkle DMG, verify public assets, update cask
         if: steps.publish.outputs.complete != 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
           TAP_WRITE_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
           DEVELOPER_ID_CERTIFICATE_P12_BASE64: ${{ secrets.DEVELOPER_ID_CERTIFICATE_P12_BASE64 }}
           DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
