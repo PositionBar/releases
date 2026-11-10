@@ -29,6 +29,12 @@
         ],
         "ja": [
           "Replace with the approved changelog in this language."
+        ],
+        "de": [
+          "Durch die genehmigten Versionshinweise in dieser Sprache ersetzen."
+        ],
+        "fr": [
+          "Remplacer par les notes de version approuvées dans cette langue."
         ]
       }
     }
