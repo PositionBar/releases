@@ -1,0 +1,257 @@
+name: PositionBar release
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      release_pr:
+        description: Approved, merged release PR for a new attempt or recovery
+        required: true
+        type: string
+      resume_run_id:
+        description: Original checkpoint run; leave empty only for a fresh attempt before any publication
+        required: false
+        default: ''
+        type: string
+permissions:
+  contents: read
+  pull-requests: read
+defaults:
+  run:
+    shell: bash
+jobs:
+  offline:
+    name: Release plan
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.plan.outputs.release }}
+      complete: ${{ steps.plan.outputs.complete }}
+      plan: ${{ steps.plan.outputs.plan }}
+      source_sha: ${{ steps.plan.outputs.source_sha }}
+      target: ${{ steps.plan.outputs.target }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - run: python3 -B -m unittest discover -s tests -v
+      - name: Validate the exact release PR and its approval
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B scripts/ci.py plan >> "$GITHUB_OUTPUT"
+
+  verify:
+    name: Verify direct-distribution source without publication
+    needs: offline
+    if: >-
+      needs.offline.outputs.release == 'true' && needs.offline.outputs.complete != 'true' &&
+      (github.event_name != 'pull_request' ||
+       github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: xcode-27
+    timeout-minutes: 60
+    env:
+      SOURCE_SHA: ${{ needs.offline.outputs.source_sha }}
+      RELEASE_PLAN: ${{ github.workspace }}/release/${{ needs.offline.outputs.plan }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          path: release
+          persist-credentials: false
+      - name: Verify the approved private-main snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: python3 -B release/scripts/ci.py source --sha "$SOURCE_SHA"
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          repository: sorcererxw/positionbar
+          ref: ${{ env.SOURCE_SHA }}
+          token: ${{ secrets.GH_PAT }}
+          path: source
+          persist-credentials: false
+      - name: Confirm clean source, toolchain and locked packages
+        env:
+          SOURCE_SHA: ${{ env.SOURCE_SHA }}
+        run: |
+          [[ "$(git -C source rev-parse HEAD)" == "$SOURCE_SHA" ]]
+          [[ -z "$(git -C source status --porcelain)" ]]
+          python3 -B source/scripts/testflight.py toolchain
+          echo "POSITIONBAR_SOURCE_PACKAGES=$RUNNER_TEMP/SourcePackages" >> "$GITHUB_ENV"
+          xcodebuild -resolvePackageDependencies -project source/apps/macos/PositionBar.xcodeproj \
+            -scheme PositionBar -clonedSourcePackagesDirPath "$RUNNER_TEMP/SourcePackages" \
+            -onlyUsePackageVersionsFromResolvedFile > "$RUNNER_TEMP/package-resolution.log" 2>&1
+      - name: Offline regressions and the unsigned direct-distribution archive
+        env:
+          SOURCE_SHA: ${{ env.SOURCE_SHA }}
+        run: |
+          python3 -B -m unittest discover -s source/scripts/tests -v > "$RUNNER_TEMP/python-tests.log" 2>&1
+          python3 -B source/apps/macos/scripts/test-build-identity.py > "$RUNNER_TEMP/identity-tests.log" 2>&1
+          python3 -B source/apps/macos/scripts/test-build-registry.py > "$RUNNER_TEMP/registry-tests.log" 2>&1
+          python3 -B source/apps/macos/scripts/test-build-wrapper.py > "$RUNNER_TEMP/wrapper-tests.log" 2>&1
+          swift test --package-path source/apps/macos --scratch-path "$RUNNER_TEMP/updater-tests" \
+            --force-resolved-versions --filter 'PositionBarAppTests.UpdateConfigurationTests' \
+            > "$RUNNER_TEMP/updater-tests.log" 2>&1
+          python3 -B source/scripts/check test-report "$RUNNER_TEMP/updater-tests.log" > "$RUNNER_TEMP/updater-tests.json"
+          python3 -B release/scripts/ci.py tests --report "$RUNNER_TEMP/updater-tests.json"
+          python3 -B source/scripts/unified_release.py verify --source "$SOURCE_SHA" \
+            --work "$RUNNER_TEMP/unsigned-verification" --plan "$RELEASE_PLAN" > "$RUNNER_TEMP/unsigned-archives.log" 2>&1
+          echo 'Offline checks and the unsigned archive passed. Signing, notarization and uploads have not run.' >> "$GITHUB_STEP_SUMMARY"
+
+  release:
+    needs: [offline, verify]
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main' && needs.offline.outputs.release == 'true' && needs.offline.outputs.complete != 'true'
+    # All fresh and recovery publications share one writer, without blocking PR checks.
+    concurrency:
+      group: positionbar-direct-release
+      cancel-in-progress: false
+    runs-on: xcode-27
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+    env:
+      RELEASE_PLAN: ${{ github.workspace }}/release/${{ needs.offline.outputs.plan }}
+      RELEASE_TARGET: ${{ needs.offline.outputs.target }}
+      SOURCE_SHA: ${{ needs.offline.outputs.source_sha }}
+      APP_STORE_API_KEY_ID: ${{ vars.APP_STORE_API_KEY_ID }}
+      APP_STORE_API_ISSUER_ID: ${{ vars.APP_STORE_API_ISSUER_ID }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.sha }}
+          path: release
+          persist-credentials: false
+      - name: Recheck approval and version inside the single writer
+        id: publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B release/scripts/ci.py plan >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        if: steps.publish.outputs.complete != 'true'
+        with:
+          repository: sorcererxw/positionbar
+          ref: ${{ env.SOURCE_SHA }}
+          token: ${{ secrets.GH_PAT }}
+          path: source
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        if: steps.publish.outputs.complete != 'true'
+        with:
+          repository: PositionBar/homebrew-tap
+          ref: main
+          token: ${{ secrets.TAP_WRITE_TOKEN }}
+          path: tap
+          persist-credentials: false
+      - name: Check toolchain and current source before publishing
+        if: steps.publish.outputs.complete != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+        run: |
+          python3 -B release/scripts/ci.py source --sha "$SOURCE_SHA"
+          unset GH_TOKEN
+          [[ "$(git -C release rev-parse HEAD)" == "$GITHUB_SHA" ]]
+          echo "TAP_REVISION=$(git -C tap rev-parse HEAD)" >> "$GITHUB_ENV"
+          python3 -B source/scripts/testflight.py toolchain
+          echo "POSITIONBAR_SOURCE_PACKAGES=$RUNNER_TEMP/SourcePackages" >> "$GITHUB_ENV"
+          xcodebuild -resolvePackageDependencies -project source/apps/macos/PositionBar.xcodeproj \
+            -scheme PositionBar -clonedSourcePackagesDirPath "$RUNNER_TEMP/SourcePackages" \
+            -onlyUsePackageVersionsFromResolvedFile > "$RUNNER_TEMP/package-resolution.log" 2>&1
+          tool="$(find "$RUNNER_TEMP/SourcePackages/artifacts" -type f -name generate_appcast -print -quit)"
+          [[ -n "$tool" && -x "$tool" && -x "$(dirname "$tool")/sign_update" ]]
+          echo "SPARKLE_BIN=$(dirname "$tool")" >> "$GITHUB_ENV"
+          git -C tap config user.name github-actions[bot]
+          git -C tap config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Locate a trusted recovery checkpoint
+        id: recovery
+        if: steps.publish.outputs.complete != 'true' && (inputs.resume_run_id != '')
+        env:
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+          GH_TOKEN: ${{ github.token }}
+        run: python3 -B release/scripts/ci.py recovery --run-id "$RESUME_RUN_ID" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        if: steps.publish.outputs.complete != 'true' && (inputs.resume_run_id != '')
+        with:
+          name: ${{ steps.recovery.outputs.artifact }}
+          run-id: ${{ inputs.resume_run_id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/release-state
+      - name: Check migrated credentials before allocating a Build ID
+        if: steps.publish.outputs.complete != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
+          DEVELOPER_ID_CERTIFICATE_P12_BASE64: ${{ secrets.DEVELOPER_ID_CERTIFICATE_P12_BASE64 }}
+          DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
+          APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          python3 - <<'PYCODE'
+          import os
+          names = ('GH_TOKEN', 'DEVELOPER_ID_CERTIFICATE_P12_BASE64', 'DEVELOPER_ID_CERTIFICATE_PASSWORD',
+                   'APP_STORE_API_PRIVATE_KEY', 'SPARKLE_PRIVATE_KEY', 'APP_STORE_API_KEY_ID', 'APP_STORE_API_ISSUER_ID')
+          missing = [name for name in names if not os.environ.get(name)]
+          if missing: raise SystemExit('Missing release credentials: ' + ', '.join(missing))
+          PYCODE
+          [[ "$(gh api repos/PositionBar/homebrew-tap --jq .permissions.push)" == true ]]
+      - name: Reserve the direct-release identity or validate its recovery checkpoint
+        if: steps.publish.outputs.complete != 'true'
+        env:
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+        run: |
+          args=()
+          if [[ -n "$RESUME_RUN_ID" ]]; then args+=(--resume); fi
+          python3 -B source/scripts/unified_release.py prepare --source "$SOURCE_SHA" \
+            --state "$RUNNER_TEMP/release-state" --plan "$RELEASE_PLAN" "${args[@]}"
+      - name: Preserve identity before signing starts
+        if: steps.publish.outputs.complete != 'true' && (always())
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: release-state
+          path: ${{ runner.temp }}/release-state
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Sign and notarize exact Sparkle DMG, verify public assets, update cask
+        if: steps.publish.outputs.complete != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAP_WRITE_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
+          DEVELOPER_ID_CERTIFICATE_P12_BASE64: ${{ secrets.DEVELOPER_ID_CERTIFICATE_P12_BASE64 }}
+          DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
+          APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+          HOMEBREW_NO_ANALYTICS: '1'
+          HOMEBREW_NO_AUTO_UPDATE: '1'
+        run: |
+          if ! python3 -B source/scripts/unified_release.py homebrew --source "$SOURCE_SHA" \
+            --state "$RUNNER_TEMP/release-state" --plan "$RELEASE_PLAN" --tap "$GITHUB_WORKSPACE/tap" \
+            > "$RUNNER_TEMP/homebrew.log" 2>&1; then
+            grep '^Direct release failed:' "$RUNNER_TEMP/homebrew.log" | tail -1 || true
+            exit 1
+          fi
+      - name: Preserve exact Homebrew recovery bytes and non-secret receipts
+        if: steps.publish.outputs.complete != 'true' && (always())
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: homebrew-state
+          path: |
+            ${{ runner.temp }}/release-state/release
+            ${{ runner.temp }}/release-state/homebrew/*.json
+            ${{ runner.temp }}/release-state/homebrew/PositionBar-*.dmg
+            ${{ runner.temp }}/release-state/homebrew/PositionBar-*.txt
+            ${{ runner.temp }}/release-state/homebrew/appcast.xml
+          retention-days: 30
+          if-no-files-found: warn
+      - name: Report exact direct-distribution result
+        if: steps.publish.outputs.complete != 'true'
+        run: |
+          python3 - "$RUNNER_TEMP/release-state/homebrew/homebrew.json" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, sys
+          receipt = json.load(open(sys.argv[1]))
+          assert receipt['status'] == 'published'
+          print(f"Published source {receipt['source']}, version {receipt['version']}, Build ID {receipt['build']}.")
+          print(receipt['artifact']['url'])
+          print(receipt['githubRelease']['appcast'])
+          PY
