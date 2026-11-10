@@ -21,7 +21,10 @@ class ReleasePlanTests(unittest.TestCase):
     def test_plan_rejects_missing_locale_duplicate_category_and_unapproved_metadata(self):
         ci.validate_plan(plan(), "release-plans/0.1.0.json")
         values = []
-        value = plan(); del value["changes"][0]["items"]["ja"]; values.append(value)
+        for locale in ("ja", "de", "fr"):
+            value = plan()
+            del value["changes"][0]["items"][locale]
+            values.append(value)
         value = plan(); value["changes"] *= 2; values.append(value)
         value = plan(); value["build"] = 1015; values.append(value)
         value = plan(); value["source_sha"] = "main"; values.append(value)

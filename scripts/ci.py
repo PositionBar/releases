@@ -13,7 +13,7 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "PositionBar/releases"
 SOURCE = "sorcererxw/positionbar"
-LOCALES = ("en", "zh-Hans", "zh-Hant", "ko", "ru", "pt-BR", "tr", "ja")
+LOCALES = ("en", "zh-Hans", "zh-Hant", "ko", "ru", "pt-BR", "tr", "ja", "de", "fr")
 VERSION = r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)"
 
 
@@ -50,7 +50,7 @@ def validate_plan(plan, filename):
         require(isinstance(kind, str) and kind in ("new", "improved", "fixed") and kind not in seen,
                 "Change categories must be new, improved or fixed, without duplicates")
         seen.add(kind)
-        require(isinstance(items, dict) and set(items) == set(LOCALES), "Provide all eight changelog locales")
+        require(isinstance(items, dict) and set(items) == set(LOCALES), "Provide all ten changelog locales")
         for lines in items.values():
             require(isinstance(lines, list) and lines and all(isinstance(line, str) and line.strip()
                     and "\n" not in line and "\r" not in line for line in lines),
