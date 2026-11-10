@@ -28,14 +28,14 @@ Sparkle / 官网从同一份清单生成八语内容，GitHub Release 使用其�
 
 | Secret | 用途 |
 | --- | --- |
-| `GH_PAT` | 仅读私有 `sorcererxw/positionbar` 源码 |
+| `GH_PAT` | 读取私有 `sorcererxw/positionbar` 源码并发布本仓库资产 |
 | `TAP_WRITE_TOKEN` | 写 `PositionBar/homebrew-tap` 的 cask 与校验记录 |
 | `DEVELOPER_ID_CERTIFICATE_P12_BASE64` | 已有 Developer ID Application 身份 |
 | `DEVELOPER_ID_CERTIFICATE_PASSWORD` | 既有 P12 密码 |
 | `APP_STORE_API_PRIVATE_KEY` | 既有 Apple API P8，仅作公证 |
 | `SPARKLE_PRIVATE_KEY` | 与 App 已有公钥配对的更新签名密钥 |
 
-Variables：`APP_STORE_API_KEY_ID`、`APP_STORE_API_ISSUER_ID`。Release 资产使用本仓库短期 `GITHUB_TOKEN`，不复用 tap 写入 token。签名前检查凭据是否缺失，避免无谓消耗 Build ID。App Store 分发证书和 provisioning profile 不参与。
+Variables：`APP_STORE_API_KEY_ID`、`APP_STORE_API_ISSUER_ID`。Release 资产使用现有发布账号的 `GH_PAT` 授权，tap 使用独立的 `TAP_WRITE_TOKEN`；workflow 的短期 `GITHUB_TOKEN` 仅查询审批、版本和恢复 artifacts。签名前检查凭据是否缺失，避免无谓消耗 Build ID。App Store 分发证书和 provisioning profile 不参与。
 
 Team `TX6HZR5RB7`、Bundle ID `com.positionbar.app`、Keychain service、已批准 entitlement 和 Sparkle 公钥保持不变。最低运行 macOS 26，安装包必须实际包含 arm64 与 x86_64；构建使用 GitHub-hosted `xcode-27`。Developer ID 证书可供用户查看，证书持有人姓名不会因自分发隐藏。
 

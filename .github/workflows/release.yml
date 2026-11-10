@@ -109,7 +109,7 @@ jobs:
     runs-on: xcode-27
     timeout-minutes: 120
     permissions:
-      contents: write
+      contents: read
       actions: read
       pull-requests: read
     env:
@@ -216,7 +216,7 @@ jobs:
       - name: Sign and notarize exact Sparkle DMG, verify public assets, update cask
         if: steps.publish.outputs.complete != 'true'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
           TAP_WRITE_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
           DEVELOPER_ID_CERTIFICATE_P12_BASE64: ${{ secrets.DEVELOPER_ID_CERTIFICATE_P12_BASE64 }}
           DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
