@@ -1,0 +1,13 @@
+PositionBar 0.2.1
+
+Yeni
+- Günlük kâr/zarar artık hesap başlıklarında, genel bakışta, menü çubuğunda ve özel şablonlarda başlangıç varlığına göre yüzde olarak gösteriliyor: günlük kâr/zarar ÷ (güncel varlık − günlük kâr/zarar).
+
+İyileştirildi
+- Menü çubuğu değerleri ve özel şablonlar artık seçilen pozisyon veya günlük kâr/zarar modunu izliyor.
+- Hesap satırları ve web sitesi güncel platform logolarını kullanıyor; Dock simgesi sistemin açık veya koyu görünümünü izliyor.
+- Platform kimlik bilgisi alanları, elle giriş ve yapıştırma için tutarlı standart metin alanlarına dönüştürüldü.
+- Schwab desteği, kişisel bir OAuth uygulaması gerektirdiği için kaldırıldı.
+
+Düzeltildi
+- Hesap başlıkları, genel bakış, menü çubuğu ve şablonlardaki günlük kâr/zarar yüzdelerindeki tutarsızlık giderildi.

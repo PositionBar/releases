@@ -1,0 +1,13 @@
+PositionBar 0.2.1
+
+Novo
+- O lucro ou prejuízo diário agora mostra uma porcentagem do patrimônio inicial, calculada como lucro ou prejuízo diário ÷ (patrimônio atual − lucro ou prejuízo diário), nos cabeçalhos das contas, visão geral, barra de menus e modelos personalizados.
+
+Melhorado
+- Os valores da barra de menus e os modelos personalizados agora seguem o modo selecionado de lucro ou prejuízo de posição ou diário.
+- As linhas de conta e o site agora usam os logotipos atuais das plataformas, e o ícone do Dock acompanha a aparência clara ou escura do sistema.
+- Os campos de credenciais das plataformas agora usam campos de texto padrão consistentes para entrada manual e colagem.
+- O suporte à Schwab foi removido porque exigia um app OAuth pessoal.
+
+Corrigido
+- Corrigida a inconsistência das porcentagens de lucro ou prejuízo diário nos cabeçalhos das contas, visão geral, barra de menus e modelos.

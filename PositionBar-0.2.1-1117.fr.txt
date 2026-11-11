@@ -1,0 +1,13 @@
+PositionBar 0.2.1
+
+Nouveautés
+- Les gains/pertes du jour affichent désormais un pourcentage du capital initial, calculé comme gains/pertes du jour ÷ (capital actuel − gains/pertes du jour), dans les en-têtes de comptes, la vue d’ensemble, la barre des menus et les modèles personnalisés.
+
+Améliorations
+- Les valeurs de la barre des menus et les modèles personnalisés suivent désormais le mode sélectionné : gains/pertes des positions ou du jour.
+- Les lignes de compte et le site utilisent désormais les logos actuels des plateformes, et l’icône du Dock suit l’apparence claire ou sombre du système.
+- Les champs d’identifiants des plateformes utilisent désormais des champs de texte standard cohérents pour la saisie manuelle et le collage.
+- La prise en charge de Schwab a été supprimée, car elle nécessitait une app OAuth personnelle.
+
+Corrections
+- Correction de l’incohérence des pourcentages de gains/pertes du jour dans les en-têtes de comptes, la vue d’ensemble, la barre des menus et les modèles.

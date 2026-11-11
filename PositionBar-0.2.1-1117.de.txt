@@ -1,0 +1,13 @@
+PositionBar 0.2.1
+
+Neu
+- Der Tagesgewinn/-verlust zeigt nun in Kontoköpfen, Übersicht, Menüleiste und benutzerdefinierten Vorlagen einen Prozentsatz des Anfangskapitals: Tagesgewinn/-verlust ÷ (aktuelles Kapital − Tagesgewinn/-verlust).
+
+Verbessert
+- Werte in der Menüleiste und benutzerdefinierte Vorlagen folgen jetzt dem gewählten Modus für Positions- oder Tagesgewinn/-verlust.
+- Kontenzeilen und Website verwenden jetzt die aktuellen Plattformlogos; das Dock-Symbol folgt der hellen oder dunklen Darstellung des Systems.
+- Die Felder für Plattform-Anmeldedaten verwenden jetzt einheitliche Standard-Textfelder für manuelle Eingabe und Einfügen.
+- Die Unterstützung für Schwab wurde entfernt, da dafür eine eigene OAuth-App erforderlich war.
+
+Behoben
+- Uneinheitliche Prozentsätze für Tagesgewinn/-verlust in Kontoköpfen, Übersicht, Menüleiste und Vorlagen wurden behoben.

@@ -1,0 +1,13 @@
+PositionBar 0.2.1
+
+New
+- Daily P&L now shows a percentage of opening equity, calculated as daily P&L ÷ (current equity − daily P&L), in account headers, the overview, menu bar, and custom templates.
+
+Improved
+- Menu bar values and custom templates now follow the selected holdings or daily P&L mode.
+- Account rows and the website now use the current platform logos, and the Dock icon follows the system’s light and dark appearance.
+- Provider credential fields now use consistent standard text fields for manual entry and paste.
+- Schwab support has been removed because it required a personal OAuth app.
+
+Fixed
+- Fixed inconsistent daily P&L percentages across account headers, the overview, menu bar, and templates.
