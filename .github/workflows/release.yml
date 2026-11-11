@@ -30,10 +30,11 @@ jobs:
     runs-on: xcode-27
     timeout-minutes: 120
     env:
-      RELEASE_STATE: ${{ runner.temp }}/release-state
       APP_STORE_API_KEY_ID: ${{ vars.APP_STORE_API_KEY_ID }}
       APP_STORE_API_ISSUER_ID: ${{ vars.APP_STORE_API_ISSUER_ID }}
     steps:
+      - name: Configure the temporary release state
+        run: echo "RELEASE_STATE=$RUNNER_TEMP/release-state" >> "$GITHUB_ENV"
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: ${{ github.sha }}
