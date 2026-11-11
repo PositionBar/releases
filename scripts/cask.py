@@ -15,7 +15,7 @@ def render_cask(receipt):
             "Expected macOS 26 Universal DMG")
     return '\n'.join([
         'cask "positionbar" do',
-        f'  version "{receipt["version"]},{receipt["build"]}"',
+        f'  version "{receipt["version"]}"',
         f'  sha256 "{artifact["sha256"]}"', '',
         f'  url "{artifact["url"]}"',
         '  name "PositionBar"',
@@ -27,11 +27,11 @@ def render_cask(receipt):
 
 
 def cask_identity(contents):
-    version = re.search(r'^  version "([0-9]+\.[0-9]+\.[0-9]+),([1-9][0-9]*)"$', contents, re.MULTILINE)
+    version = re.search(r'^  version "([0-9]+\.[0-9]+\.[0-9]+)(?:,[1-9][0-9]*)?"$', contents, re.MULTILINE)
     sha = re.search(r'^  sha256 "([a-f0-9]{64})"$', contents, re.MULTILINE)
     url = re.search(r'^  url "([^"]+)"$', contents, re.MULTILINE)
     require(version and sha and url, "Existing cask identity is invalid")
-    return tuple(map(int, version[1].split('.'))) + (int(version[2]),), url[1], sha[1]
+    return tuple(map(int, version[1].split('.'))), url[1], sha[1]
 
 
 def publish(root, receipt, environment):
