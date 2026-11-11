@@ -1,0 +1,11 @@
+PositionBar 0.1.2
+
+Neu
+- Portfolio-Widgets für macOS 27 mit lokalen Portfolio-Momentaufnahmen hinzugefügt.
+
+Verbessert
+- Anlagetypen, lokalisierte Beschriftungen und Positionsdetails für unterstützte Konten vereinheitlicht.
+- Lade-, Leer- und Fehlerzustände des Portfolios werden klarer dargestellt.
+
+Behoben
+- Die Menüleisten-Taste öffnet und schließt das Portfolio-Fenster nun auch bei wiederholten Klicks zuverlässig.

@@ -1,0 +1,11 @@
+PositionBar 0.1.2
+
+New
+- Added portfolio widgets for macOS 27, using local portfolio snapshots.
+
+Improved
+- Unified asset types, localized labels and position detail fields across supported accounts.
+- Clearer portfolio loading, empty and error states.
+
+Fixed
+- Fixed the menu bar button so repeated clicks consistently open and close the portfolio panel.

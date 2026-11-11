@@ -1,0 +1,165 @@
+{
+  "status": "published",
+  "version": "0.1.2",
+  "build": 1085,
+  "source_sha": "2024d37cecd000534c34163678977014f57c85d5",
+  "metadataSHA256": "6f7409f6721aad419afa12e76214c871dc4d847dcd983950d3f74b4dacfd3aa8",
+  "publishedOn": "2026-11-11",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added portfolio widgets for macOS 27, using local portfolio snapshots."
+        ],
+        "zh-Hans": [
+          "新增 macOS 27 投资组合小组件，展示本地投资组合快照。"
+        ],
+        "zh-Hant": [
+          "新增 macOS 27 投資組合小工具，顯示本機投資組合快照。"
+        ],
+        "ko": [
+          "로컬 포트폴리오 스냅샷을 표시하는 macOS 27용 포트폴리오 위젯을 추가했습니다."
+        ],
+        "ru": [
+          "Добавлены виджеты портфеля для macOS 27 с локальными снимками данных."
+        ],
+        "pt-BR": [
+          "Adicionados widgets de portfólio para o macOS 27, com snapshots locais do portfólio."
+        ],
+        "tr": [
+          "Yerel portföy anlık görüntülerini kullanan macOS 27 portföy araç takımları eklendi."
+        ],
+        "ja": [
+          "ローカルのポートフォリオスナップショットを表示するmacOS 27用ウィジェットを追加しました。"
+        ],
+        "de": [
+          "Portfolio-Widgets für macOS 27 mit lokalen Portfolio-Momentaufnahmen hinzugefügt."
+        ],
+        "fr": [
+          "Ajout de widgets de portefeuille pour macOS 27, utilisant des instantanés locaux."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Unified asset types, localized labels and position detail fields across supported accounts.",
+          "Clearer portfolio loading, empty and error states."
+        ],
+        "zh-Hans": [
+          "统一受支持账户的资产类型、本地化标签和持仓详情字段。",
+          "优化投资组合的加载、空数据和错误状态展示。"
+        ],
+        "zh-Hant": [
+          "統一支援帳戶的資產類型、本地化標籤與持倉詳細欄位。",
+          "改善投資組合的載入、空資料與錯誤狀態顯示。"
+        ],
+        "ko": [
+          "지원 계정 전반의 자산 유형, 현지화된 레이블 및 포지션 상세 필드를 통일했습니다.",
+          "포트폴리오의 로딩, 빈 데이터 및 오류 상태를 더 명확하게 표시합니다."
+        ],
+        "ru": [
+          "Унифицированы типы активов, локализованные подписи и поля сведений о позициях для поддерживаемых счетов.",
+          "Улучшено отображение загрузки, отсутствия данных и ошибок портфеля."
+        ],
+        "pt-BR": [
+          "Unificados os tipos de ativos, rótulos localizados e campos de detalhes das posições nas contas compatíveis.",
+          "Estados de carregamento, ausência de dados e erro do portfólio mais claros."
+        ],
+        "tr": [
+          "Desteklenen hesaplarda varlık türleri, yerelleştirilmiş etiketler ve pozisyon ayrıntı alanları birleştirildi.",
+          "Portföy yükleme, boş veri ve hata durumları daha açık gösteriliyor."
+        ],
+        "ja": [
+          "対応口座の資産タイプ、ローカライズされたラベル、ポジション詳細の項目を統一しました。",
+          "ポートフォリオの読み込み中、データなし、エラーの表示を改善しました。"
+        ],
+        "de": [
+          "Anlagetypen, lokalisierte Beschriftungen und Positionsdetails für unterstützte Konten vereinheitlicht.",
+          "Lade-, Leer- und Fehlerzustände des Portfolios werden klarer dargestellt."
+        ],
+        "fr": [
+          "Harmonisation des types d’actifs, des libellés traduits et des détails des positions pour les comptes pris en charge.",
+          "Affichage plus clair du chargement, de l’absence de données et des erreurs du portefeuille."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed the menu bar button so repeated clicks consistently open and close the portfolio panel."
+        ],
+        "zh-Hans": [
+          "修复菜单栏按钮的重复点击行为，使投资组合面板可靠地展开和收起。"
+        ],
+        "zh-Hant": [
+          "修正選單列按鈕的重複點按行為，讓投資組合面板穩定地展開與收合。"
+        ],
+        "ko": [
+          "메뉴 막대 버튼을 반복해서 클릭할 때 포트폴리오 패널이 안정적으로 열리고 닫히도록 수정했습니다."
+        ],
+        "ru": [
+          "Исправлена кнопка строки меню: повторные нажатия последовательно открывают и закрывают панель портфеля."
+        ],
+        "pt-BR": [
+          "Corrigido o botão da barra de menus para abrir e fechar o painel do portfólio de forma consistente ao clicar repetidamente."
+        ],
+        "tr": [
+          "Menü çubuğu düğmesinin tekrarlanan tıklamalarda portföy panelini tutarlı biçimde açıp kapatması düzeltildi."
+        ],
+        "ja": [
+          "メニューバーのボタンを繰り返しクリックした際、ポートフォリオパネルが安定して開閉するよう修正しました。"
+        ],
+        "de": [
+          "Die Menüleisten-Taste öffnet und schließt das Portfolio-Fenster nun auch bei wiederholten Klicks zuverlässig."
+        ],
+        "fr": [
+          "Correction du bouton de la barre des menus pour ouvrir et fermer le panneau du portefeuille de façon fiable lors de clics répétés."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.1.2",
+    "build": "1085",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://github.com/PositionBar/releases/releases/latest/download/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.1.2-1085.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.1.2-1085/PositionBar-0.1.2-1085.dmg",
+    "sha256": "026043ae4558eaf735bbc06af649f3ba635d35be3186c57fced6154a57155a2e",
+    "length": 15844623
+  },
+  "appcast": "https://github.com/PositionBar/releases/releases/download/positionbar-0.1.2-1085/appcast.xml",
+  "appcastSHA256": "aa23c4c99980d986dd50fa900a407a4eaaa14099c5c5014d665992deb445b7b3",
+  "appcastLength": 4229,
+  "tapCommit": "83ab692e68cc41c39ec564dc16a50cdf6dddb6df",
+  "releaseTarget": "a7e053971ccff22279847b47103d3232df3d18c3"
+}

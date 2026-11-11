@@ -1,0 +1,11 @@
+PositionBar 0.1.2
+
+Nouveautés
+- Ajout de widgets de portefeuille pour macOS 27, utilisant des instantanés locaux.
+
+Améliorations
+- Harmonisation des types d’actifs, des libellés traduits et des détails des positions pour les comptes pris en charge.
+- Affichage plus clair du chargement, de l’absence de données et des erreurs du portefeuille.
+
+Corrections
+- Correction du bouton de la barre des menus pour ouvrir et fermer le panneau du portefeuille de façon fiable lors de clics répétés.

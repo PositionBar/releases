@@ -1,0 +1,11 @@
+PositionBar 0.1.2
+
+Yeni
+- Yerel portföy anlık görüntülerini kullanan macOS 27 portföy araç takımları eklendi.
+
+İyileştirildi
+- Desteklenen hesaplarda varlık türleri, yerelleştirilmiş etiketler ve pozisyon ayrıntı alanları birleştirildi.
+- Portföy yükleme, boş veri ve hata durumları daha açık gösteriliyor.
+
+Düzeltildi
+- Menü çubuğu düğmesinin tekrarlanan tıklamalarda portföy panelini tutarlı biçimde açıp kapatması düzeltildi.

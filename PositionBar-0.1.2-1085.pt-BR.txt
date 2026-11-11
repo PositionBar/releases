@@ -1,0 +1,11 @@
+PositionBar 0.1.2
+
+Novo
+- Adicionados widgets de portfólio para o macOS 27, com snapshots locais do portfólio.
+
+Melhorado
+- Unificados os tipos de ativos, rótulos localizados e campos de detalhes das posições nas contas compatíveis.
+- Estados de carregamento, ausência de dados e erro do portfólio mais claros.
+
+Corrigido
+- Corrigido o botão da barra de menus para abrir e fechar o painel do portfólio de forma consistente ao clicar repetidamente.
