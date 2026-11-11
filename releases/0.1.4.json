@@ -1,0 +1,130 @@
+{
+  "status": "published",
+  "version": "0.1.4",
+  "build": 1097,
+  "source_sha": "de90b6e77d018653d225855e646913a0d9f9f7b5",
+  "metadataSHA256": "0d5179e56ca4a654554c9c58c1cece4d1e5b4c10816d622489272aef20777e43",
+  "publishedOn": "2026-11-11",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Updated app and website brand icons for different display sizes.",
+          "Improved Chinese, Japanese, and Korean typography and expanded provider setup guides on the website."
+        ],
+        "zh-Hans": [
+          "更新应用与官网的多尺寸品牌图标。",
+          "优化官网中日韩字体显示，并补充平台接入指南。"
+        ],
+        "zh-Hant": [
+          "更新應用程式與官網的多尺寸品牌圖示。",
+          "改善官網中日韓字體顯示，並補充平台連線指南。"
+        ],
+        "ko": [
+          "다양한 표시 크기에 맞게 앱과 웹사이트의 브랜드 아이콘을 업데이트했습니다.",
+          "웹사이트의 중국어, 일본어, 한국어 글꼴 표시를 개선하고 플랫폼 연결 가이드를 보강했습니다."
+        ],
+        "ru": [
+          "Обновлены фирменные значки приложения и сайта для разных размеров отображения.",
+          "Улучшено отображение китайского, японского и корейского текста на сайте и дополнены руководства по подключению платформ."
+        ],
+        "pt-BR": [
+          "Atualizados os ícones do app e do site para diferentes tamanhos de exibição.",
+          "Melhorada a tipografia em chinês, japonês e coreano e ampliados os guias de conexão de plataformas no site."
+        ],
+        "tr": [
+          "Uygulama ve web sitesi marka simgeleri farklı görüntüleme boyutları için güncellendi.",
+          "Web sitesindeki Çince, Japonca ve Korece yazı gösterimi iyileştirildi ve platform bağlantı kılavuzları genişletildi."
+        ],
+        "ja": [
+          "さまざまな表示サイズに対応するアプリと公式サイトのブランドアイコンを更新しました。",
+          "公式サイトの中国語・日本語・韓国語のフォント表示を改善し、プラットフォーム接続ガイドを拡充しました。"
+        ],
+        "de": [
+          "Die Markensymbole der App und Website wurden für verschiedene Anzeigegrößen aktualisiert.",
+          "Die Darstellung chinesischer, japanischer und koreanischer Schrift auf der Website wurde verbessert und die Anleitungen zur Plattformanbindung wurden erweitert."
+        ],
+        "fr": [
+          "Mise à jour des icônes de l’app et du site pour différentes tailles d’affichage.",
+          "Amélioration de la typographie chinoise, japonaise et coréenne et enrichissement des guides de connexion aux plateformes sur le site."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Homebrew package versions now display only the app version, without the internal build number."
+        ],
+        "zh-Hans": [
+          "Homebrew 软件包版本仅显示应用版本号，不再附加内部构建号。"
+        ],
+        "zh-Hant": [
+          "Homebrew 套件版本僅顯示應用程式版本號，不再附加內部建置編號。"
+        ],
+        "ko": [
+          "Homebrew 패키지 버전에 내부 빌드 번호를 덧붙이지 않고 앱 버전만 표시합니다."
+        ],
+        "ru": [
+          "В версии пакета Homebrew теперь отображается только версия приложения без внутреннего номера сборки."
+        ],
+        "pt-BR": [
+          "A versão do pacote Homebrew agora mostra apenas a versão do app, sem o número interno da compilação."
+        ],
+        "tr": [
+          "Homebrew paket sürümlerinde artık dahili derleme numarası olmadan yalnızca uygulama sürümü gösterilir."
+        ],
+        "ja": [
+          "Homebrew のパッケージバージョンに内部ビルド番号を付けず、アプリのバージョンのみを表示するようにしました。"
+        ],
+        "de": [
+          "Die Homebrew-Paketversion zeigt jetzt nur die App-Version ohne interne Build-Nummer an."
+        ],
+        "fr": [
+          "La version du paquet Homebrew affiche désormais uniquement la version de l’app, sans numéro de build interne."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.1.4",
+    "build": "1097",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.1.4-1097.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.1.4-1097/PositionBar-0.1.4-1097.dmg",
+    "sha256": "3914693dc0fdfb0baa419f20d362dd8a08b6a0ed120d31cc5695642efc76a80e",
+    "length": 16806159
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "fd2fa0eede540223f80862a357b45995d25ca79d29a4a0a5a5709a05efdcc6d7",
+  "appcastLength": 3799,
+  "tapCommit": "db687554d1adcca502aac5bc4f3101f1af990ab2",
+  "releaseTarget": "ff4383b61d433b7ec74d9ef9c2a3143e4ae62626"
+}
