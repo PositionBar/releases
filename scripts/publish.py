@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Publish exact signed bytes, then cask, canonical feed and the final release.json."""
+"""Publish the verified DMG, cask and signed update data outside Release assets."""
 import argparse
+import base64
 from contextlib import nullcontext
 import datetime as dt
 import hashlib
@@ -13,6 +14,7 @@ import sys
 import tempfile
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 
 import cask
 
@@ -38,7 +40,7 @@ def command(args, *, environment):
 def github_environment(token):
     require(token, "Missing GitHub publication credential")
     environment = {key: value for key, value in os.environ.items()
-                   if key not in ("GH_TOKEN", "GITHUB_TOKEN", "GH_PAT", "TAP_WRITE_TOKEN", "WEBSITE_DEPLOY_HOOK")
+                   if key not in ("GH_TOKEN", "GITHUB_TOKEN", "GH_PAT", "TAP_WRITE_TOKEN")
                    and not key.startswith("ACTIONS_")}
     environment.update(GH_TOKEN=token, GH_PROMPT_DISABLED="1", GIT_TERMINAL_PROMPT="0",
                        GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="credential.helper",
@@ -46,9 +48,13 @@ def github_environment(token):
     return environment
 
 
-def github_json(environment, endpoint):
+def github_json(environment, endpoint, *, method="GET", body=None):
+    args = ["gh", "api", "--method", method, endpoint]
+    if body is not None:
+        args += ["--input", "-"]
     result = subprocess.run(
-        ["gh", "api", endpoint],
+        args,
+        input=json.dumps(body) if body is not None else None,
         env=environment,
         text=True,
         stdout=subprocess.PIPE,
@@ -56,7 +62,7 @@ def github_json(environment, endpoint):
     )
     if result.returncode == 0:
         return json.loads(result.stdout)
-    if "HTTP 404" in result.stderr:
+    if method == "GET" and "HTTP 404" in result.stderr:
         return None
     raise ValueError("GitHub release state could not be verified")
 
@@ -75,7 +81,9 @@ def release_state(config, environment, tag):
 
 def public_digest(url, expected_length=None, expected_sha256=None, destination=None):
     parsed = urllib.parse.urlparse(url)
-    require(parsed.scheme == "https" and parsed.hostname == "github.com", "Unexpected public asset URL")
+    require(parsed.scheme == "https" and parsed.hostname in ("github.com", "positionbar.com"), "Unexpected public asset URL")
+    hosts = ("github.com", "objects.githubusercontent.com", "release-assets.githubusercontent.com") \
+        if parsed.hostname == "github.com" else ("positionbar.com",)
     request = urllib.request.Request(url, headers={"User-Agent": "PositionBar-cask-release"})
     temporary = Path(str(destination) + ".download") if destination else None
     try:
@@ -83,12 +91,8 @@ def public_digest(url, expected_length=None, expected_sha256=None, destination=N
             final = urllib.parse.urlparse(response.geturl())
             require(
                 final.scheme == "https"
-                and (
-                    final.hostname == "github.com"
-                    or final.hostname == "objects.githubusercontent.com"
-                    or final.hostname == "release-assets.githubusercontent.com"
-                ),
-                "Public asset redirected outside GitHub",
+                and final.hostname in hosts,
+                "Public asset redirected outside its trusted host",
             )
             require(response.status == 200, "Public cask artifact is unavailable")
             value = hashlib.sha256()
@@ -108,20 +112,6 @@ def public_digest(url, expected_length=None, expected_sha256=None, destination=N
     finally:
         if temporary:
             temporary.unlink(missing_ok=True)
-
-def public_bytes(url):
-    parsed = urllib.parse.urlparse(url)
-    require(parsed.scheme == "https" and parsed.hostname == "github.com", "Unexpected public release URL")
-    request = urllib.request.Request(url, headers={"User-Agent": "PositionBar-release-read-back"})
-    with urllib.request.urlopen(request, timeout=90) as response:
-        final = urllib.parse.urlparse(response.geturl())
-        require(
-            final.scheme == "https"
-            and final.hostname in ("github.com", "objects.githubusercontent.com", "release-assets.githubusercontent.com"),
-            "Public release redirects outside GitHub",
-        )
-        require(response.status == 200, "Public release object is unavailable")
-        return response.read()
 
 def verify_release_asset(config, environment, tag, name, sha256, length):
     state = release_state(config, environment, tag)
@@ -196,7 +186,7 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
         urls[path.name] = url
     return urls
 
-def ensure_latest_release(config, environment, tag, build, appcast, updates):
+def ensure_latest_release(config, environment, tag, build):
     endpoint = f"repos/{config['github_repository']}/releases/latest"
     latest = github_json(environment, endpoint)
     if latest is not None:
@@ -213,7 +203,59 @@ def ensure_latest_release(config, environment, tag, build, appcast, updates):
                 raise ValueError("Latest release update outcome is uncertain; check the public Release") from error
         latest = github_json(environment, endpoint)
         require(latest is not None and latest.get("tag_name") == tag, "Latest release did not select this build")
-    public_digest(updates["feedURL"], Path(appcast).stat().st_size, digest(appcast))
+
+
+def update_entries(files, existing):
+    entries = []
+    for name, raw in files.items():
+        sha = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+        require(name == "appcast.xml" or name not in existing or existing[name] == sha,
+                "Published notes or completion receipt differ; recover the original checkpoint")
+        if existing.get(name) != sha:
+            entries.append({"path": name, "mode": "100644", "type": "blob", "content": raw.decode("utf-8")})
+    return entries
+
+
+def publish_updates(environment, files, build):
+    endpoint = "repos/PositionBar/releases"
+    ref = github_json(environment, endpoint + "/git/ref/heads/updates")
+    parent = ref["object"]["sha"] if ref else None
+    tree, existing = None, {}
+    if parent:
+        tree = github_json(environment, endpoint + f"/git/commits/{parent}")["tree"]["sha"]
+        listing = github_json(environment, endpoint + f"/git/trees/{tree}?recursive=1")
+        require(not listing.get("truncated"), "Update data tree is incomplete")
+        existing = {item["path"]: item["sha"] for item in listing["tree"]}
+        if "appcast.xml" in existing:
+            blob = github_json(environment, endpoint + f"/git/blobs/{existing['appcast.xml']}")
+            feed = ET.fromstring(base64.b64decode(blob["content"]))
+            previous = feed.findall("./channel/item/{http://www.andymatuschak.org/xml-namespaces/sparkle}version")
+            require(len(previous) == 1 and int(previous[0].text) <= build, "Do not roll back a newer update feed")
+            if int(previous[0].text) == build and "appcast.xml" in files:
+                raw = files["appcast.xml"]
+                require(existing["appcast.xml"] == hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest(),
+                        "A published build must retain its exact signed feed")
+    entries = update_entries(files, existing)
+    if entries:
+        body = {"tree": entries}
+        if tree:
+            body["base_tree"] = tree
+        new_tree = github_json(environment, endpoint + "/git/trees", method="POST", body=body)["sha"]
+        commit = github_json(environment, endpoint + "/git/commits", method="POST", body={
+            "message": f"Publish signed macOS update {build}", "tree": new_tree,
+            "parents": [parent] if parent else [],
+        })["sha"]
+        # Ref updates are atomic and never force over concurrent publications.
+        if parent:
+            github_json(environment, endpoint + "/git/refs/heads/updates", method="PATCH", body={"sha": commit, "force": False})
+        else:
+            github_json(environment, endpoint + "/git/refs", method="POST", body={"ref": "refs/heads/updates", "sha": commit})
+    current = github_json(environment, endpoint + "/git/ref/heads/updates")["object"]["sha"]
+    current_tree = github_json(environment, endpoint + f"/git/commits/{current}")["tree"]["sha"]
+    actual = github_json(environment, endpoint + f"/git/trees/{current_tree}?recursive=1")
+    require(not actual.get("truncated"), "Published update tree is incomplete")
+    require(not update_entries(files, {item["path"]: item["sha"] for item in actual["tree"]}),
+            "Published update bytes differ")
 
 
 def native_tools(source):
@@ -251,11 +293,13 @@ def publish(state, source, tap):
     require(receipt["artifact"].get("url") == expected_url and digest(artifact) == receipt["artifact"]["sha256"]
             and artifact.stat().st_size == receipt["artifact"]["length"], "Checkpoint DMG bytes differ")
     feed, notes = output / "appcast.xml", output / f"PositionBar-{version}-{build}.txt"
-    paths = [artifact, notes, *(notes.with_suffix(f".{locale}.txt") for locale in native.versions.LOCALES[1:]), feed]
+    paths = [notes, *(notes.with_suffix(f".{locale}.txt") for locale in native.versions.LOCALES[1:]), feed]
     native.verify_appcast_file(feed, notes, artifact, version, build, native.MINIMUM, native.UPDATES,
                               expected_url.rsplit('/', 1)[0] + '/', plan)
     title, body = f"PositionBar {version} ({build})", native.versions.notes(plan)
-    ensure_release_assets(config, environment, tag, paths, title, body)
+    ensure_release_assets(config, environment, tag, [artifact], title, body)
+    require({asset.get("name") for asset in release_state(config, environment, tag)["assets"]} == {artifact.name},
+            "New GitHub Releases must contain only the DMG")
     target = github_json(environment, f"repos/PositionBar/releases/git/ref/tags/{tag}")
     require(target and target.get("object", {}).get("type") == "commit"
             and target["object"].get("sha") == context["releaseTarget"], "Release tag target differs from the original executor")
@@ -267,13 +311,13 @@ def publish(state, source, tap):
         require(all(receipt["artifact"].get(key) == value for key, value in facts.items()), "Public DMG facts differ")
     tap_environment = github_environment(os.environ.get("TAP_WRITE_TOKEN"))
     tap_commit = cask.publish(tap, receipt, tap_environment)
-    ensure_latest_release(config, environment, tag, build, feed, native.UPDATES)
+    ensure_latest_release(config, environment, tag, build)
     release = release_state(config, environment, tag)
     published_on = dt.datetime.fromisoformat(release["published_at"].replace('Z', '+00:00')).date().isoformat()
     record = {"status": "published", "version": version, "build": build,
               "source_sha": context["source_sha"], "metadataSHA256": context["metadataSHA256"],
               "publishedOn": published_on, "changes": plan["changes"], "artifact": receipt["artifact"],
-              "appcast": release_asset_url(config["github_repository"], tag, "appcast.xml"),
+              "appcast": native.UPDATES["feedURL"],
               "appcastSHA256": digest(feed), "appcastLength": feed.stat().st_size,
               "tapCommit": tap_commit, "releaseTarget": context["releaseTarget"]}
     marker = output / "release.json"
@@ -281,53 +325,28 @@ def publish(state, source, tap):
         require(json.loads(marker.read_bytes()) == record, "Completion checkpoint differs")
     else:
         native.write_json(marker, record)
-    ensure_release_assets(config, environment, tag, [marker], title, body)
-    require(json.loads(public_bytes(release_asset_url(config["github_repository"], tag, "release.json"))) == record,
-            "Public completion receipt differs")
-    native.write_json(state / "published.json", record)
+    files = {path.name: path.read_bytes() for path in paths}
+    publish_updates(environment, files, build)
+    public_digest(native.UPDATES["feedURL"], feed.stat().st_size, digest(feed))
+    for path in paths[:-1]:
+        public_digest(native.UPDATES["feedURL"].rsplit('/', 1)[0] + '/' + path.name, path.stat().st_size, digest(path))
+    publish_updates(environment, {f"releases/{version}.json": marker.read_bytes()}, build)
     print(f"Published {version} ({build}) from {context['source_sha']}")
-
-
-def notify_website(state):
-    record = json.loads((state / "published.json").read_bytes())
-    require(record.get("status") == "published", "Notify only after completed App publication")
-    hook = os.environ.get("WEBSITE_DEPLOY_HOOK", "")
-    parsed = urllib.parse.urlparse(hook)
-    require(parsed.scheme == "https" and parsed.hostname == "api.cloudflare.com" and not parsed.username
-            and not parsed.fragment and not parsed.query and parsed.path.startswith('/client/v4/'),
-            "Configure the existing website's main-branch WEBSITE_DEPLOY_HOOK secret")
-    try:
-        request = urllib.request.Request(hook, data=b'', method='POST')
-        with urllib.request.urlopen(request, timeout=45) as response:
-            result = json.load(response)
-        build_uuid = result.get("result", {}).get("build_uuid")
-        require(result.get("success") is True and isinstance(build_uuid, str) and build_uuid, "Website rebuild was not accepted")
-    except Exception:
-        raise ValueError("App published; website rebuild request failed. Retry this completed version without rebuilding the App") from None
-    print(f"Website build queued: {build_uuid}. Deployment success requires Cloudflare confirmation.")
-    summary = os.environ.get("GITHUB_STEP_SUMMARY")
-    if summary:
-        with Path(summary).open('a') as target:
-            target.write(f"App {record['version']} ({record['build']}) published. Website build queued: `{build_uuid}`; verify Cloudflare deployment.\n")
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("publish", "notify"))
     parser.add_argument("--state", type=Path, required=True)
     parser.add_argument("--source", type=Path)
     parser.add_argument("--tap", type=Path)
     args = parser.parse_args()
-    if args.command == "publish":
-        require(args.source and args.tap, "Provide source and tap checkouts")
-        publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
-    else:
-        notify_website(args.state)
+    require(args.source and args.tap, "Provide source and tap checkouts")
+    publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
 
 
 if __name__ == "__main__":
     try:
         main()
-    except (ValueError, KeyError, TypeError, OSError, subprocess.SubprocessError) as error:
+    except (ValueError, KeyError, TypeError, OSError, ET.ParseError, subprocess.SubprocessError) as error:
         print(str(error) if isinstance(error, ValueError) else type(error).__name__, file=sys.stderr)
         sys.exit(1)

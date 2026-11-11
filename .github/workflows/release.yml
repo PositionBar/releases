@@ -87,19 +87,18 @@ jobs:
           DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
           APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
-          WEBSITE_DEPLOY_HOOK: ${{ secrets.WEBSITE_DEPLOY_HOOK }}
         run: |
           python3 - <<'PY'
           import os
           names = ('GH_TOKEN', 'DEVELOPER_ID_CERTIFICATE_P12_BASE64', 'DEVELOPER_ID_CERTIFICATE_PASSWORD',
                    'APP_STORE_API_PRIVATE_KEY', 'SPARKLE_PRIVATE_KEY', 'APP_STORE_API_KEY_ID',
-                   'APP_STORE_API_ISSUER_ID', 'WEBSITE_DEPLOY_HOOK')
+                   'APP_STORE_API_ISSUER_ID')
           missing = [name for name in names if not os.environ.get(name)]
           if missing: raise SystemExit('Missing release credentials: ' + ', '.join(missing))
           PY
           [[ "$(gh api repos/PositionBar/homebrew-tap --jq .permissions.push)" == true ]]
           unset GH_TOKEN DEVELOPER_ID_CERTIFICATE_P12_BASE64 DEVELOPER_ID_CERTIFICATE_PASSWORD
-          unset APP_STORE_API_PRIVATE_KEY SPARKLE_PRIVATE_KEY WEBSITE_DEPLOY_HOOK
+          unset APP_STORE_API_PRIVATE_KEY SPARKLE_PRIVATE_KEY
           python3 -B source/scripts/macos_release.py toolchain
           echo "POSITIONBAR_SOURCE_PACKAGES=$RUNNER_TEMP/SourcePackages" >> "$GITHUB_ENV"
           xcodebuild -resolvePackageDependencies -project source/apps/macos/PositionBar.xcodeproj \
@@ -136,12 +135,12 @@ jobs:
             echo 'Packaging failed; preserve the checkpoint and use a new Build ID if no verified DMG exists.'
             exit 1
           fi
-      - name: Publish exact assets, verified Homebrew cask, latest feed and final receipt
+      - name: Publish the DMG, verified Homebrew cask and standalone signed updates
         if: steps.request.outputs.complete == 'false'
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           TAP_WRITE_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
-        run: python3 -B release/scripts/publish.py publish --state "$RELEASE_STATE" --source "$GITHUB_WORKSPACE/source" --tap "$GITHUB_WORKSPACE/tap"
+        run: python3 -B release/scripts/publish.py --state "$RELEASE_STATE" --source "$GITHUB_WORKSPACE/source" --tap "$GITHUB_WORKSPACE/tap"
       - name: Preserve exact bytes and non-secret recovery identity
         if: always() && steps.request.outputs.complete == 'false'
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
@@ -158,7 +157,3 @@ jobs:
             ${{ env.RELEASE_STATE }}/package/appcast.xml
           retention-days: 30
           if-no-files-found: warn
-      - name: Queue the existing website main build after App publication
-        env:
-          WEBSITE_DEPLOY_HOOK: ${{ secrets.WEBSITE_DEPLOY_HOOK }}
-        run: python3 -B release/scripts/publish.py notify --state "$RELEASE_STATE"

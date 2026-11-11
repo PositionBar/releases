@@ -10,7 +10,6 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-import urllib.request
 
 REPOSITORY = "PositionBar/releases"
 SOURCE = "sorcererxw/positionbar"
@@ -30,12 +29,10 @@ def validate(value, filename):
             and re.fullmatch(VERSION, value["version"]), "Invalid three-component version")
     version = value["version"]
     require(filename == f"{version}.json", "Version filename differs")
-    fields = {"version", "changes", "publishedOn"} if historical(version) else {"version", "changes"}
-    require(set(value) == fields, "Unexpected or missing version metadata fields")
-    if historical(version):
-        date = value["publishedOn"]
-        require(isinstance(date, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date)
-                and dt.date.fromisoformat(date).isoformat() == date, "Invalid historical date")
+    require(set(value) == {"version", "changes", "publishedOn"}, "Unexpected or missing version metadata fields")
+    date = value["publishedOn"]
+    require(isinstance(date, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date)
+            and dt.date.fromisoformat(date).isoformat() == date, "Invalid version date")
     changes = value["changes"]
     require(isinstance(changes, list) and 0 < len(changes) <= 3, "Provide one to three change categories")
     seen = set()
@@ -52,11 +49,13 @@ def validate(value, filename):
                     "Each locale needs nonempty single-line changelog items")
     return value
 
-def github(endpoint, *, pages=False):
+def github(endpoint, *, pages=False, missing=False):
     args = ["gh", "api", endpoint]
     if pages:
         args += ["--paginate", "--slurp"]
     result = subprocess.run(args, capture_output=True, text=True)
+    if missing and result.returncode != 0 and "HTTP 404" in result.stderr:
+        return None
     require(result.returncode == 0, "GitHub release inputs could not be verified")
     value = json.loads(result.stdout)
     return [item for page in value for item in page] if pages else value
@@ -107,7 +106,6 @@ def request():
     require(content.get("type") == "file" and content.get("encoding") == "base64", "Metadata must be a regular file")
     raw = base64.b64decode(content["content"], validate=False)
     require(hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest() == file["sha"], "Reviewed metadata differs")
-    validate(json.loads(raw), f"{version}.json")
     value = {"version": version, "source_sha": sha, "metadataSHA256": hashlib.sha256(raw).hexdigest(),
              "sourcePR": pr["number"], "releaseTarget": os.environ["GITHUB_SHA"]}
     require(re.fullmatch(r"[a-f0-9]{40}", value["releaseTarget"]), "Invalid workflow revision")
@@ -121,10 +119,10 @@ def request():
             others.append(tuple(map(int, match[1].split("."))))
             continue
         require(not complete and not partial, "More than one public build exists for this version")
-        if any(asset["name"] == "release.json" for asset in release["assets"]):
-            url = f"https://github.com/{REPOSITORY}/releases/download/{release['tag_name']}/release.json"
-            with urllib.request.urlopen(url, timeout=45) as response:
-                complete = json.load(response)
+        marker = github(f"repos/{REPOSITORY}/contents/releases/{version}.json?ref=updates", missing=True)
+        if marker:
+            require(marker.get("type") == "file" and marker.get("encoding") == "base64", "Invalid completion receipt")
+            complete = json.loads(base64.b64decode(marker["content"]))
             require(complete.get("status") == "published" and complete.get("version") == version
                     and complete.get("build") == int(match[2])
                     and all(complete.get(key) == value[key] for key in ("source_sha", "metadataSHA256")),
@@ -132,6 +130,7 @@ def request():
         else:
             partial = True
     if not complete:
+        validate(json.loads(raw), f"{version}.json")
         require(not others or tuple(map(int, version.split("."))) > max(others), "Version must exceed all public versions")
         require(not partial or inputs.get("resume_run_id"), "Partial publication requires its exact checkpoint")
     return value, complete
@@ -142,8 +141,8 @@ def prepare_request(state, resume):
     state.mkdir(parents=True, exist_ok=True)
     path = state / "request.json"
     if complete:
-        (state / "published.json").write_text(json.dumps(complete, ensure_ascii=False, indent=2) + "\n")
-    elif resume:
+        return complete
+    if resume:
         require(path.is_file(), "Missing recovery request")
         retained = json.loads(path.read_bytes())
         require(all(retained.get(key) == value[key] for key in ("version", "source_sha", "metadataSHA256", "sourcePR")),

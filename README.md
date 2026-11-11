@@ -1,25 +1,25 @@
 # PositionBar releases
 
-Official [Universal DMGs](https://github.com/PositionBar/releases/releases), signed Sparkle appcasts and changelogs. PositionBar requires macOS 26 or later and uses Developer ID signing and Apple notarization.
+Official notarized [Universal DMGs](https://github.com/PositionBar/releases/releases) for macOS 26+. New GitHub Releases contain only `PositionBar-V-B.dmg`. Sparkle in-app updates remain signed with the existing Ed25519 key.
 
-This repository only executes releases. Version metadata lives in the private application repository at `versions/<version>.json`. A bot-authored version-only PR must receive owner approval for its exact head and merge into private main. The source relay dispatches this repository's main `release.yml` with its version and exact merge SHA; the executor independently verifies both before allocating a Build ID.
+Version metadata lives in private `sorcererxw/positionbar/versions/<version>.json`: version, `publishedOn` date and ten-language changes. A bot-authored version-only PR needs owner approval for its exact head and must merge into private main. The relay dispatches this main `release.yml` with version and exact merge SHA; the executor independently verifies approval, source and reviewed bytes before allocating a Build ID.
 
 ```text
 .github/workflows/release.yml
-scripts/ci.py       # exact approval, source, metadata and recovery
-scripts/publish.py  # immutable public bytes, completion receipt, website Hook
-scripts/cask.py     # write the verified DMG's Homebrew cask
-tests/            # basic pure function tests only
+scripts/ci.py       # approval, source, dated metadata and recovery
+scripts/publish.py  # immutable DMG, cask and standalone signed update data
+scripts/cask.py     # verified DMG's Homebrew cask
+tests/              # basic pure function tests
 ```
 
-The approved source contains the native build/sign/notarize implementation. One workflow builds the arm64/x86_64 DMG, signs all ten notes and the feed, verifies public bytes and the notarized download, updates [the tap](https://github.com/PositionBar/homebrew-tap), selects latest, verifies the canonical feed, and uploads `release.json` last. The tag `positionbar-<version>-<build>` points to the original public executor commit. There is no release-plan directory, aggregate index or tap ledger.
+The approved source builds/signs/notarizes the arm64/x86_64 DMG, signs ten notes and appcast, verifies public DMG bytes and Gatekeeper facts, updates [the tap](https://github.com/PositionBar/homebrew-tap), and selects latest. The tag `positionbar-V-B` points to the original executor commit. Signed feed/notes are committed atomically to this repository's **updates data branch**; notes and receipts are immutable, the feed cannot roll back, and branch updates never force. After public website readback verifies feed and notes bytes, `releases/V.json` is written to that branch as the final completion marker. These files are not Release attachments.
 
-Assets: `PositionBar-V-B.dmg`, English `PositionBar-V-B.txt`, nine `PositionBar-V-B.<locale>.txt`, signed `appcast.xml`, and final `release.json` containing version/build/source, metadata SHA, date/changes, artifact facts, feed SHA and tap commit. Website builds statically project only matching completed versions; imported 0.0.x history is never packaged.
+Canonical feed: `https://positionbar.com/updates/macos/appcast.xml`. The website backend proxies only the feed and supported notes filenames from the public updates branch. No website build or additional Cloudflare credential is needed on App publication. The website changelog reads only private-main version files and may appear before the DMG. `/download` resolves the latest stable DMG at request time.
 
-Secrets: `GH_PAT`, `TAP_WRITE_TOKEN`, `DEVELOPER_ID_CERTIFICATE_P12_BASE64`, `DEVELOPER_ID_CERTIFICATE_PASSWORD`, `APP_STORE_API_PRIVATE_KEY`, `SPARKLE_PRIVATE_KEY`, `WEBSITE_DEPLOY_HOOK`. Variables: `APP_STORE_API_KEY_ID`, `APP_STORE_API_ISSUER_ID`. The API key is used for notarization, not TestFlight. The website Hook must target the existing Cloudflare main production trigger. Its build_uuid is queue acceptance, not proof of deployment.
+Secrets: `GH_PAT`, `TAP_WRITE_TOKEN`, `DEVELOPER_ID_CERTIFICATE_P12_BASE64`, `DEVELOPER_ID_CERTIFICATE_PASSWORD`, `APP_STORE_API_PRIVATE_KEY`, `SPARKLE_PRIVATE_KEY`. Variables: `APP_STORE_API_KEY_ID`, `APP_STORE_API_ISSUER_ID`. The Apple API key is for notarization. There is no `WEBSITE_DEPLOY_HOOK` or TestFlight upload.
 
-Manual dispatch uses the same version/source validation. `resume_run_id` must identify a completed run with a new-format `release-checkpoint`; it preserves original identity, DMG and signed bytes. No verified DMG means a fresh attempt and a new Build ID. Do not rerun an allocation or clobber existing assets. A completed matching release skips packaging and only re-notifies the website. Old-format checkpoints are not supported.
+Manual dispatch has the same validation. `resume_run_id` identifies a completed run's `release-checkpoint` and retains original identity, DMG and signed bytes. Without a verified DMG use a fresh attempt and Build ID. Never rerun an allocation or clobber public files. A matching completion receipt skips packaging/publication. A partial release needs its exact checkpoint.
 
-Current public 0.1.1 (1073) remains available until the new baseline, tap, feed and website take over. Remove old plan-only required check contexts when activating this manual-only workflow; retain owner review and no-force-push protections. Maintenance PRs do not run App publication.
+Activate the website endpoints first, initialize updates with the exact published 0.1.2 feed/notes/receipt, then enable DMG-only publication and remove the old Deploy Hook/secret. Existing 0.1.2 embeds the GitHub feed URL: users accept one manual installation of the migration release, then continue in-app updates through the new feed. Keep old 0.1.2 attachments during migration; do not repackage that release. Main code retains owner review and no-force-push protection; updates is public release data, not executable CI code.
 
-Only basic metadata/approval and cask rendering functions have local tests. When changing them, run `PYTHONPATH=tests python3 -B -m unittest test_ci test_cask -q` once within the shared 60-second local budget. No default regression, unsigned prebuild or UI harness. Formal signing, notarization and publication integrity checks remain mandatory.
+When the affected functions change, run `PYTHONPATH=tests python3 -B -m unittest test_ci test_cask -q` once within the shared 60-second local budget. No default builds, integration or UI harness. Formal signing, notarization and publication integrity checks remain mandatory.
