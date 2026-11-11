@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-"""Validate release PRs, main-source snapshots and retained release checkpoints."""
+"""Accept one approved version file from an exact private-main PR merge."""
 import argparse
+import base64
+import datetime as dt
 import hashlib
 import json
 import os
@@ -10,7 +12,6 @@ import subprocess
 import sys
 import urllib.request
 
-ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "PositionBar/releases"
 SOURCE = "sorcererxw/positionbar"
 LOCALES = ("en", "zh-Hans", "zh-Hant", "ko", "ru", "pt-BR", "tr", "ja", "de", "fr")
@@ -21,6 +22,35 @@ def require(condition, message):
     if not condition:
         raise ValueError(message)
 
+def historical(version):
+    return version.startswith("0.0.")
+
+def validate(value, filename):
+    require(isinstance(value, dict) and isinstance(value.get("version"), str)
+            and re.fullmatch(VERSION, value["version"]), "Invalid three-component version")
+    version = value["version"]
+    require(filename == f"{version}.json", "Version filename differs")
+    fields = {"version", "changes", "publishedOn"} if historical(version) else {"version", "changes"}
+    require(set(value) == fields, "Unexpected or missing version metadata fields")
+    if historical(version):
+        date = value["publishedOn"]
+        require(isinstance(date, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date)
+                and dt.date.fromisoformat(date).isoformat() == date, "Invalid historical date")
+    changes = value["changes"]
+    require(isinstance(changes, list) and 0 < len(changes) <= 3, "Provide one to three change categories")
+    seen = set()
+    for group in changes:
+        require(isinstance(group, dict) and set(group) == {"type", "items"}, "Invalid change category")
+        kind, items = group["type"], group["items"]
+        require(isinstance(kind, str) and kind in ("new", "improved", "fixed") and kind not in seen,
+                "Change categories must be unique new, improved or fixed")
+        seen.add(kind)
+        require(isinstance(items, dict) and set(items) == set(LOCALES), "Provide all ten changelog locales")
+        for lines in items.values():
+            require(isinstance(lines, list) and lines and all(isinstance(line, str) and line.strip()
+                    and "\n" not in line and "\r" not in line for line in lines),
+                    "Each locale needs nonempty single-line changelog items")
+    return value
 
 def github(endpoint, *, pages=False):
     args = ["gh", "api", endpoint]
@@ -30,43 +60,6 @@ def github(endpoint, *, pages=False):
     require(result.returncode == 0, "GitHub release inputs could not be verified")
     value = json.loads(result.stdout)
     return [item for page in value for item in page] if pages else value
-
-
-def validate_plan(plan, filename):
-    require(isinstance(plan, dict) and set(plan) == {"schemaVersion", "version", "source_sha", "changes"}
-            and type(plan["schemaVersion"]) is int and plan["schemaVersion"] == 1,
-            "Use only schemaVersion, version, source_sha and changes")
-    require(isinstance(plan["version"], str) and re.fullmatch(VERSION, plan["version"]),
-            "Version must be three numbers without leading zeroes")
-    require(filename == f"release-plans/{plan['version']}.json", "Plan filename must match its version")
-    require(isinstance(plan["source_sha"], str) and re.fullmatch(r"[a-f0-9]{40}", plan["source_sha"]),
-            "source_sha must be a full private main commit")
-    changes = plan["changes"]
-    require(isinstance(changes, list) and 0 < len(changes) <= 3, "Provide one to three change categories")
-    seen = set()
-    for group in changes:
-        require(isinstance(group, dict) and set(group) == {"type", "items"}, "Invalid change category")
-        kind, items = group["type"], group["items"]
-        require(isinstance(kind, str) and kind in ("new", "improved", "fixed") and kind not in seen,
-                "Change categories must be new, improved or fixed, without duplicates")
-        seen.add(kind)
-        require(isinstance(items, dict) and set(items) == set(LOCALES), "Provide all ten changelog locales")
-        for lines in items.values():
-            require(isinstance(lines, list) and lines and all(isinstance(line, str) and line.strip()
-                    and "\n" not in line and "\r" not in line for line in lines),
-                    "Each locale needs nonempty, single-line changelog items")
-    return plan
-
-
-def changed_plan(files):
-    plans = [item for item in files if item["filename"].startswith("release-plans/")]
-    if not plans:
-        return None
-    require(len(files) == len(plans) == 1 and plans[0]["status"] == "added"
-            and re.fullmatch(r"release-plans/" + VERSION + r"\.json", plans[0]["filename"]),
-            "A release PR must only add one versioned plan; approved plans cannot be edited or deleted")
-    return plans[0]
-
 
 def approved(pr, reviews):
     latest = {}
@@ -78,90 +71,6 @@ def approved(pr, reviews):
             and review.get("commit_id") == pr["head"]["sha"],
             "The owner must approve this exact PR head; use a bot-authored release PR")
 
-
-def pr_plan(number, *, merged=False):
-    require(str(number).isdigit() and int(number) > 0, "Invalid release PR number")
-    endpoint = f"repos/{REPOSITORY}/pulls/{number}"
-    pr = github(endpoint)
-    file = changed_plan(github(endpoint + "/files?per_page=100", pages=True))
-    if file is None:
-        return None
-    require(pr["base"]["ref"] == "main" and pr["head"]["repo"]["full_name"] == REPOSITORY,
-            "Release plans must be same-repository PRs targeting main")
-    if merged:
-        require(pr.get("merged") is True, "Publication requires a merged release PR")
-        approved(pr, github(endpoint + "/reviews?per_page=100", pages=True))
-    path = ROOT / file["filename"]
-    require(path.is_file() and not path.is_symlink(), "Release plan must be a regular JSON file")
-    raw = path.read_bytes()
-    blob = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
-    require(blob == file["sha"], "Checked-out plan differs from the reviewed PR file")
-    plan = validate_plan(json.loads(raw), file["filename"])
-    return dict(plan=plan, path=file["filename"], sha256=hashlib.sha256(raw).hexdigest(),
-                target=pr["merge_commit_sha"] if merged else pr["head"]["sha"])
-
-
-def publication_state(value, *, merged, resume):
-    version = value["plan"]["version"]
-    versions = []
-    partial = False
-    for release in github(f"repos/{REPOSITORY}/releases?per_page=100", pages=True):
-        if release.get("draft") or release.get("prerelease"):
-            continue
-        match = re.fullmatch(r"positionbar-(" + VERSION + r")-([1-9][0-9]*)", release["tag_name"])
-        require(match, "An existing release has an unknown identity")
-        current = match[1]
-        if current == version:
-            require(merged, "This version has already been published")
-            record = next((a for a in release["assets"] if a["name"] == "release.json"), None)
-            if record:
-                url = f"https://github.com/{REPOSITORY}/releases/download/{release['tag_name']}/release.json"
-                with urllib.request.urlopen(url, timeout=30) as response:
-                    published = json.load(response)
-                require(published["releasePlanSHA256"] == value["sha256"], "Published plan differs")
-                return "complete"
-            partial = True
-        else:
-            versions.append(tuple(map(int, current.split("."))))
-    require(not versions or tuple(map(int, version.split("."))) > max(versions),
-            "Version must be newer than every published release")
-    if partial:
-        require(resume, "Partial publication exists; restore its original run instead of rebuilding")
-        return "resume"
-    return "ready"
-
-
-def event_plan():
-    require(os.environ.get("GITHUB_REPOSITORY") == REPOSITORY, "Unexpected release repository")
-    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_text())
-    name = os.environ["GITHUB_EVENT_NAME"]
-    merged = name != "pull_request"
-    if name == "pull_request":
-        value = pr_plan(event["number"])
-    elif name == "workflow_dispatch":
-        require(os.environ.get("GITHUB_REF") == "refs/heads/main", "Recovery must run on main")
-        value = pr_plan(event["inputs"]["release_pr"], merged=True)
-        require(value, "Recovery PR contains no release plan")
-    else:
-        require(name == "push" and os.environ.get("GITHUB_REF") == "refs/heads/main", "Unexpected release event")
-        sha = os.environ["GITHUB_SHA"]
-        prs = github(f"repos/{REPOSITORY}/commits/{sha}/pulls?per_page=100", pages=True)
-        merged_prs = [pr for pr in prs if pr.get("merged_at") and pr.get("merge_commit_sha") == sha
-                      and pr["base"]["ref"] == "main"]
-        require(len(merged_prs) <= 1, "Ambiguous merged release PR")
-        value = pr_plan(merged_prs[0]["number"], merged=True) if merged_prs else None
-        if value is None:
-            diff = subprocess.run(["git", "diff", "--name-only", event["before"], sha, "--", "release-plans"],
-                                  cwd=ROOT, capture_output=True, text=True, check=True)
-            require(not diff.stdout.strip(), "Release plans require an approved, squashed PR")
-    if value is None:
-        return {"release": "false"}
-    state = publication_state(value, merged=merged, resume=bool(event.get("inputs", {}).get("resume_run_id")))
-    return {"release": "true", "complete": str(state == "complete").lower(), "plan": value["path"],
-            "source_sha": value["plan"]["source_sha"], "version": value["plan"]["version"],
-            "target": value["target"]}
-
-
 def verify_source(sha):
     require(re.fullmatch(r"[a-f0-9]{40}", sha), "Invalid source SHA")
     comparison = github(f"repos/{SOURCE}/compare/{sha}...main")
@@ -170,33 +79,112 @@ def verify_source(sha):
             "The approved source must be a commit on private main")
 
 
+def changed_version(files, version):
+    require(len(files) == 1 and files[0].get("status") == "added"
+            and files[0].get("filename") == f"versions/{version}.json",
+            "A release PR must only add its version JSON")
+    return files[0]
+
+
+def request():
+    require(os.environ.get("GITHUB_REPOSITORY") == REPOSITORY
+            and os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
+            and os.environ.get("GITHUB_REF") == "refs/heads/main", "Dispatch the release workflow on main")
+    event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes())
+    inputs = event["inputs"]
+    version, sha = inputs["version"], inputs["source_sha"]
+    require(re.fullmatch(VERSION, version) and not historical(version), "0.0.x is history, not an App release")
+    verify_source(sha)
+    prs = github(f"repos/{SOURCE}/commits/{sha}/pulls?per_page=100", pages=True)
+    matches = [pr for pr in prs if pr.get("merged_at") and pr.get("merge_commit_sha") == sha
+               and pr["base"]["ref"] == "main" and pr["head"]["repo"]["full_name"] == SOURCE]
+    require(len(matches) == 1, "Source must be the exact merge of one same-repository version PR")
+    endpoint = f"repos/{SOURCE}/pulls/{matches[0]['number']}"
+    pr = github(endpoint)
+    approved(pr, github(endpoint + "/reviews?per_page=100", pages=True))
+    file = changed_version(github(endpoint + "/files?per_page=100", pages=True), version)
+    content = github(f"repos/{SOURCE}/contents/versions/{version}.json?ref={sha}")
+    require(content.get("type") == "file" and content.get("encoding") == "base64", "Metadata must be a regular file")
+    raw = base64.b64decode(content["content"], validate=False)
+    require(hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest() == file["sha"], "Reviewed metadata differs")
+    validate(json.loads(raw), f"{version}.json")
+    value = {"version": version, "source_sha": sha, "metadataSHA256": hashlib.sha256(raw).hexdigest(),
+             "sourcePR": pr["number"], "releaseTarget": os.environ["GITHUB_SHA"]}
+    require(re.fullmatch(r"[a-f0-9]{40}", value["releaseTarget"]), "Invalid workflow revision")
+    complete, partial, others = None, False, []
+    for release in github(f"repos/{REPOSITORY}/releases?per_page=100", pages=True):
+        if release.get("draft") or release.get("prerelease"):
+            continue
+        match = re.fullmatch(r"positionbar-(" + VERSION + r")-([1-9][0-9]*)", release["tag_name"])
+        require(match, "Unknown public release identity")
+        if match[1] != version:
+            others.append(tuple(map(int, match[1].split("."))))
+            continue
+        require(not complete and not partial, "More than one public build exists for this version")
+        if any(asset["name"] == "release.json" for asset in release["assets"]):
+            url = f"https://github.com/{REPOSITORY}/releases/download/{release['tag_name']}/release.json"
+            with urllib.request.urlopen(url, timeout=45) as response:
+                complete = json.load(response)
+            require(complete.get("status") == "published" and complete.get("version") == version
+                    and complete.get("build") == int(match[2])
+                    and all(complete.get(key) == value[key] for key in ("source_sha", "metadataSHA256")),
+                    "Existing completion receipt differs")
+        else:
+            partial = True
+    if not complete:
+        require(not others or tuple(map(int, version.split("."))) > max(others), "Version must exceed all public versions")
+        require(not partial or inputs.get("resume_run_id"), "Partial publication requires its exact checkpoint")
+    return value, complete
+
+
+def prepare_request(state, resume):
+    value, complete = request()
+    state.mkdir(parents=True, exist_ok=True)
+    path = state / "request.json"
+    if complete:
+        (state / "published.json").write_text(json.dumps(complete, ensure_ascii=False, indent=2) + "\n")
+    elif resume:
+        require(path.is_file(), "Missing recovery request")
+        retained = json.loads(path.read_bytes())
+        require(all(retained.get(key) == value[key] for key in ("version", "source_sha", "metadataSHA256", "sourcePR")),
+                "Recovery version, source or approved metadata differs")
+        require(re.fullmatch(r"[a-f0-9]{40}", retained.get("releaseTarget", "")), "Missing original tag target")
+        original = github(f"repos/{REPOSITORY}/compare/{retained['releaseTarget']}...main")
+        require(original.get("merge_base_commit", {}).get("sha") == retained["releaseTarget"], "Original executor is not on main")
+    else:
+        require(not path.exists() and os.environ.get("GITHUB_RUN_ATTEMPT") == "1",
+                "Recover the checkpoint instead of rerunning a new allocation")
+        path.write_text(json.dumps(value, indent=2) + "\n")
+    return complete
+
+
 def recovery_artifact(run_id):
     require(re.fullmatch(r"[1-9][0-9]{0,19}", run_id), "Invalid recovery run ID")
     run = github(f"repos/{REPOSITORY}/actions/runs/{run_id}")
     require(run.get("repository", {}).get("full_name") == REPOSITORY and run.get("head_branch") == "main"
-            and run.get("event") in ("push", "workflow_dispatch")
-            and run.get("path") == ".github/workflows/release.yml", "Recovery must use this main release workflow")
+            and run.get("event") == "workflow_dispatch" and run.get("path") == ".github/workflows/release.yml"
+            and run.get("status") == "completed", "Recover only a completed run of this main workflow")
     artifacts = github(f"repos/{REPOSITORY}/actions/runs/{run_id}/artifacts?per_page=100")
-    live = {item["name"] for item in artifacts["artifacts"] if not item["expired"]}
-    for name in ("homebrew-state", "release-state"):
-        if name in live:
-            return name
-    raise ValueError("No retained checkpoint is available")
+    require(any(item["name"] == "release-checkpoint" and not item["expired"] for item in artifacts["artifacts"]),
+            "No checkpoint from the new release architecture; start a fresh attempt")
+    return "release-checkpoint"
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("plan", "source", "recovery"))
-    parser.add_argument("--sha")
+    parser.add_argument("command", choices=("request", "prepare", "recovery"))
+    parser.add_argument("--state", type=Path)
+    parser.add_argument("--resume", action="store_true")
     parser.add_argument("--run-id")
     args = parser.parse_args()
-    if args.command == "plan":
-        for key, value in event_plan().items():
-            print(f"{key}={value}")
-    elif args.command == "source":
-        verify_source(args.sha)
-    elif args.command == "recovery":
+    if args.command == "recovery":
         print("artifact=" + recovery_artifact(args.run_id))
+    else:
+        if args.command == "prepare":
+            complete = prepare_request(args.state, args.resume)
+        else:
+            _, complete = request()
+        print("complete=" + str(complete is not None).lower())
 
 
 if __name__ == "__main__":

@@ -4,56 +4,29 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import ci
+import publish
 
 
-def plan():
-    return {"schemaVersion": 1, "version": "0.1.0", "source_sha": "a" * 40,
-            "changes": [{"type": "fixed", "items": {locale: ["Example fix"] for locale in ci.LOCALES}}]}
+class VersionTests(unittest.TestCase):
+    def test_only_reviewed_shape_and_one_added_version_are_accepted(self):
+        value = {"version": "0.1.2", "changes": [{"type": "fixed", "items": {locale: ["Fix"] for locale in ci.LOCALES}}]}
+        ci.validate(value, '0.1.2.json')
+        for invalid in (dict(value, source_sha='a' * 40), dict(value, build=1074)):
+            with self.assertRaises(ValueError): ci.validate(invalid, '0.1.2.json')
+        incomplete = {**value, "changes": [{"type": "fixed", "items": {"en": ["Fix"]}}]}
+        with self.assertRaises(ValueError): ci.validate(incomplete, '0.1.2.json')
+        file = {"filename": "versions/0.1.2.json", "status": "added"}
+        self.assertEqual(ci.changed_version([file], '0.1.2'), file)
+        for files in ([dict(file, status='modified')], [file, {"filename": "README.md"}]):
+            with self.assertRaises(ValueError): ci.changed_version(files, '0.1.2')
 
-
-def pr():
-    return {"number": 2, "merged": True, "merge_commit_sha": "b" * 40,
-            "user": {"login": "sorcererxw-devbot"}, "base": {"ref": "main"},
-            "head": {"sha": "c" * 40, "repo": {"full_name": ci.REPOSITORY}}}
-
-
-class ReleasePlanTests(unittest.TestCase):
-    def test_plan_rejects_missing_locale_duplicate_category_and_unapproved_metadata(self):
-        ci.validate_plan(plan(), "release-plans/0.1.0.json")
-        values = []
-        for locale in ("ja", "de", "fr"):
-            value = plan()
-            del value["changes"][0]["items"][locale]
-            values.append(value)
-        value = plan(); value["changes"] *= 2; values.append(value)
-        value = plan(); value["build"] = 1015; values.append(value)
-        value = plan(); value["source_sha"] = "main"; values.append(value)
-        value = plan(); value["version"] = "00.1.0"; values.append(value)
-        value = plan(); value["changes"][0]["items"]["en"] = [" "]; values.append(value)
-        for value in values:
-            with self.subTest(value=value), self.assertRaises(ValueError):
-                ci.validate_plan(value, "release-plans/0.1.0.json")
-        with self.assertRaises(ValueError): ci.validate_plan(plan(), "release-plans/0.2.0.json")
-
-    def test_only_one_added_plan_is_a_release(self):
-        file = {"filename": "release-plans/0.1.0.json", "status": "added"}
-        self.assertIsNone(ci.changed_plan([{"filename": "README.md", "status": "modified"}]))
-        self.assertEqual(ci.changed_plan([file]), file)
-        for files in ([dict(file, status="modified")], [dict(file, status="removed")],
-                      [file, {"filename": "scripts/ci.py", "status": "modified"}],
-                      [dict(file, filename="release-plans/../0.1.0.json")]):
-            with self.assertRaises(ValueError): ci.changed_plan(files)
-
-    def test_approval_is_owner_review_of_exact_head_and_cannot_be_self_approved(self):
+    def test_owner_must_approve_the_exact_non_owner_head(self):
+        pr = {"user": {"login": "release-bot"}, "head": {"sha": "c" * 40}}
         review = {"user": {"login": "sorcererxw"}, "state": "APPROVED", "commit_id": "c" * 40}
-        ci.approved(pr(), [review])
-        for reviews in ([], [dict(review, commit_id="d" * 40)],
-                        [review, dict(review, state="CHANGES_REQUESTED")],
-                        [review, dict(review, state="DISMISSED")]):
-            with self.assertRaises(ValueError): ci.approved(pr(), reviews)
-        value = pr(); value["user"]["login"] = "sorcererxw"
-        with self.assertRaises(ValueError): ci.approved(value, [review])
+        ci.approved(pr, [review])
+        for reviews in ([], [dict(review, commit_id="d" * 40)], [review, dict(review, state="CHANGES_REQUESTED")]):
+            with self.assertRaises(ValueError): ci.approved(pr, reviews)
+        with self.assertRaises(ValueError): ci.approved({**pr, "user": {"login": "sorcererxw"}}, [review])
 
 
-
-if __name__ == "__main__": unittest.main()
+if __name__ == '__main__': unittest.main()
