@@ -1,0 +1,5 @@
+PositionBar 0.2.0
+
+İyileştirildi
+- Hakkında artık ayrı bir pencerede açılıyor ve güncelleme ayarları Genel bölümüne taşındı.
+- Portföy panelinin dişli menüsüne Hakkında ve Güncellemeleri Denetle seçenekleri eklendi.

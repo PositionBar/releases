@@ -1,0 +1,5 @@
+PositionBar 0.2.0
+
+Améliorations
+- « À propos » s’ouvre désormais dans sa propre fenêtre, et les réglages de mise à jour se trouvent dans « Général ».
+- Ajout de « À propos » et « Rechercher des mises à jour » au menu d’engrenage du panneau du portefeuille.

@@ -1,0 +1,5 @@
+PositionBar 0.2.0
+
+Verbessert
+- „Über PositionBar“ öffnet sich jetzt in einem eigenen Fenster; die Update-Einstellungen befinden sich unter „Allgemein“.
+- Dem Zahnradmenü des Portfoliofensters wurden „Über PositionBar“ und „Nach Updates suchen“ hinzugefügt.

@@ -1,0 +1,5 @@
+PositionBar 0.2.0
+
+Melhorado
+- Sobre agora abre em uma janela própria, e as configurações de atualização estão em Geral.
+- Adicionados Sobre e Buscar Atualizações ao menu de engrenagem do painel do portfólio.

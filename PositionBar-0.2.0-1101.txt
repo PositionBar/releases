@@ -1,0 +1,5 @@
+PositionBar 0.2.0
+
+Improved
+- About now opens in its own window, and update settings are available in General.
+- Added About and Check for Updates to the portfolio panel’s gear menu.
