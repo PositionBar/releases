@@ -236,6 +236,7 @@ def publish_updates(environment, files, build):
                 require(existing["appcast.xml"] == hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest(),
                         "A published build must retain its exact signed feed")
     entries = update_entries(files, existing)
+    current = parent
     if entries:
         body = {"tree": entries}
         if tree:
@@ -250,7 +251,8 @@ def publish_updates(environment, files, build):
             github_json(environment, endpoint + "/git/refs/heads/updates", method="PATCH", body={"sha": commit, "force": False})
         else:
             github_json(environment, endpoint + "/git/refs", method="POST", body={"ref": "refs/heads/updates", "sha": commit})
-    current = github_json(environment, endpoint + "/git/ref/heads/updates")["object"]["sha"]
+        current = commit
+    # Verify the immutable commit; branch reads can lag a successful ref update.
     current_tree = github_json(environment, endpoint + f"/git/commits/{current}")["tree"]["sha"]
     actual = github_json(environment, endpoint + f"/git/trees/{current_tree}?recursive=1")
     require(not actual.get("truncated"), "Published update tree is incomplete")
