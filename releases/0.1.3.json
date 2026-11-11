@@ -1,0 +1,140 @@
+{
+  "status": "published",
+  "version": "0.1.3",
+  "build": 1095,
+  "source_sha": "1220f5b7ec40e966b31a105b4ad4d3dc267bbf4d",
+  "metadataSHA256": "f14f38f357df7ae1fd189e0d2bbf4f4ac73a1acc622083b6ce88d15853c69482",
+  "publishedOn": "2026-11-11",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Improved portfolio scrolling while preserving the existing account card layout.",
+          "Updated in-app update delivery. Install this version manually once; future updates remain available in the app."
+        ],
+        "zh-Hans": [
+          "优化投资组合滚动体验，保留现有账户卡片布局。",
+          "更新应用内更新的分发方式。请手动安装此版本一次，后续仍可在应用内更新。"
+        ],
+        "zh-Hant": [
+          "改善投資組合捲動體驗，保留現有帳戶卡片配置。",
+          "調整應用程式內更新的分發方式。請手動安裝此版本一次，之後仍可在應用程式內更新。"
+        ],
+        "ko": [
+          "기존 계정 카드 레이아웃을 유지하면서 포트폴리오 스크롤을 개선했습니다.",
+          "앱 내 업데이트 제공 방식을 변경했습니다. 이 버전은 한 번 수동으로 설치해야 하며, 이후에는 앱에서 계속 업데이트할 수 있습니다."
+        ],
+        "ru": [
+          "Улучшена прокрутка портфеля с сохранением существующего расположения карточек счетов.",
+          "Обновлён механизм доставки обновлений в приложении. Установите эту версию вручную один раз; дальнейшие обновления будут доступны в приложении."
+        ],
+        "pt-BR": [
+          "Melhorada a rolagem do portfólio, mantendo o layout atual dos cartões de conta.",
+          "Atualizada a distribuição de atualizações no app. Instale esta versão manualmente uma vez; as próximas atualizações continuarão disponíveis no app."
+        ],
+        "tr": [
+          "Mevcut hesap kartı düzeni korunarak portföy kaydırması iyileştirildi.",
+          "Uygulama içi güncellemelerin dağıtımı yenilendi. Bu sürümü bir kez elle yükleyin; sonraki güncellemeler uygulama içinden yapılmaya devam edecek."
+        ],
+        "ja": [
+          "既存の口座カードのレイアウトを維持しながら、ポートフォリオのスクロールを改善しました。",
+          "アプリ内アップデートの配信方法を変更しました。このバージョンは一度だけ手動でインストールしてください。以降は引き続きアプリ内でアップデートできます。"
+        ],
+        "de": [
+          "Das Scrollen im Portfolio wurde verbessert, während das bestehende Layout der Kontokarten erhalten bleibt.",
+          "Die Bereitstellung von App-Updates wurde umgestellt. Installieren Sie diese Version einmal manuell; weitere Updates bleiben in der App verfügbar."
+        ],
+        "fr": [
+          "Amélioration du défilement du portefeuille en conservant la disposition actuelle des cartes de compte.",
+          "Mise à jour du mode de distribution des mises à jour. Installez cette version manuellement une seule fois ; les mises à jour suivantes resteront disponibles dans l’app."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed USDT conversion and aggregation issues that could omit daily profit and loss from account and portfolio totals.",
+          "Fixed account headers overlapping asset rows during fast scrolling."
+        ],
+        "zh-Hans": [
+          "修复 USDT 换算与汇总问题，避免账户和投资组合总计遗漏当日盈亏。",
+          "修复快速滚动时账户标题与资产行重叠的问题。"
+        ],
+        "zh-Hant": [
+          "修正 USDT 換算與彙總問題，避免帳戶和投資組合總計遺漏當日損益。",
+          "修正快速捲動時帳戶標題與資產列重疊的問題。"
+        ],
+        "ko": [
+          "USDT 환산 및 합산 문제로 계정과 포트폴리오 합계에서 당일 손익이 누락될 수 있던 문제를 수정했습니다.",
+          "빠르게 스크롤할 때 계정 헤더와 자산 행이 겹치는 문제를 수정했습니다."
+        ],
+        "ru": [
+          "Исправлены ошибки пересчёта в USDT и суммирования, из-за которых дневная прибыль и убыток могли не попадать в итоги счетов и портфеля.",
+          "Исправлено наложение заголовков счетов на строки активов при быстрой прокрутке."
+        ],
+        "pt-BR": [
+          "Corrigidos problemas de conversão em USDT e de soma que podiam omitir o resultado diário dos totais das contas e do portfólio.",
+          "Corrigida a sobreposição dos cabeçalhos de conta às linhas de ativos durante a rolagem rápida."
+        ],
+        "tr": [
+          "Günlük kâr ve zararın hesap ve portföy toplamlarına dahil edilmemesine yol açabilen USDT dönüşümü ve toplama sorunları düzeltildi.",
+          "Hızlı kaydırma sırasında hesap başlıklarının varlık satırlarıyla üst üste gelmesi düzeltildi."
+        ],
+        "ja": [
+          "USDT 換算と集計の問題により、口座とポートフォリオの合計から当日損益が欠落する場合がある問題を修正しました。",
+          "高速スクロール時に口座ヘッダーと資産行が重なる問題を修正しました。"
+        ],
+        "de": [
+          "Fehler bei der USDT-Umrechnung und Summierung wurden behoben, durch die der Tagesgewinn oder -verlust in Konto- und Portfoliosummen fehlen konnte.",
+          "Die Überlagerung von Kontoüberschriften und Vermögenszeilen beim schnellen Scrollen wurde behoben."
+        ],
+        "fr": [
+          "Correction de problèmes de conversion en USDT et de calcul des totaux pouvant exclure le résultat journalier des comptes et du portefeuille.",
+          "Correction du chevauchement des en-têtes de compte et des lignes d’actifs lors d’un défilement rapide."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.1.3",
+    "build": "1095",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.1.3-1095.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.1.3-1095/PositionBar-0.1.3-1095.dmg",
+    "sha256": "c8300cf55e2404902997cd43439a84d81d0cfec95746833738232cc256219da4",
+    "length": 15814414
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "07ff560a5fcd1d240af637635bf4f02775e2dcdf5ae146d5758c11fed18ac713",
+  "appcastLength": 3799,
+  "tapCommit": "9295a9f72eab15f958a115240308d2f5d29e46f5",
+  "releaseTarget": "1d19dd80bc22ce0f8e772408ef48b209456cca3e"
+}
