@@ -1,0 +1,95 @@
+{
+  "status": "published",
+  "version": "0.2.0",
+  "build": 1101,
+  "source_sha": "a560464ce467a52a861ec18ee956d9c8615267a7",
+  "metadataSHA256": "4b8da3b8950f30ae185072fe00fe5e172ffd40949a533e67a24b77a78110549b",
+  "publishedOn": "2026-11-11",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "About now opens in its own window, and update settings are available in General.",
+          "Added About and Check for Updates to the portfolio panel’s gear menu."
+        ],
+        "zh-Hans": [
+          "“关于”现在以独立窗口打开，更新设置移至“通用”。",
+          "在仓位面板的齿轮菜单中加入“关于”和“检查更新”入口。"
+        ],
+        "zh-Hant": [
+          "「關於」現在以獨立視窗開啟，更新設定移至「一般」。",
+          "在持倉面板的齒輪選單中加入「關於」和「檢查更新」入口。"
+        ],
+        "ko": [
+          "앱 정보가 독립 창에서 열리며, 업데이트 설정은 일반으로 이동했습니다.",
+          "포트폴리오 패널의 톱니바퀴 메뉴에 앱 정보와 업데이트 확인 항목을 추가했습니다."
+        ],
+        "ru": [
+          "Раздел «О программе» теперь открывается в отдельном окне, а настройки обновлений перенесены в раздел «Основные».",
+          "В меню с шестерёнкой на панели портфеля добавлены пункты «О программе» и «Проверить обновления»."
+        ],
+        "pt-BR": [
+          "Sobre agora abre em uma janela própria, e as configurações de atualização estão em Geral.",
+          "Adicionados Sobre e Buscar Atualizações ao menu de engrenagem do painel do portfólio."
+        ],
+        "tr": [
+          "Hakkında artık ayrı bir pencerede açılıyor ve güncelleme ayarları Genel bölümüne taşındı.",
+          "Portföy panelinin dişli menüsüne Hakkında ve Güncellemeleri Denetle seçenekleri eklendi."
+        ],
+        "ja": [
+          "「PositionBar について」を独立したウインドウで開くようにし、アップデート設定を「一般」に移動しました。",
+          "ポートフォリオパネルの歯車メニューに「PositionBar について」と「アップデートを確認」を追加しました。"
+        ],
+        "de": [
+          "„Über PositionBar“ öffnet sich jetzt in einem eigenen Fenster; die Update-Einstellungen befinden sich unter „Allgemein“.",
+          "Dem Zahnradmenü des Portfoliofensters wurden „Über PositionBar“ und „Nach Updates suchen“ hinzugefügt."
+        ],
+        "fr": [
+          "« À propos » s’ouvre désormais dans sa propre fenêtre, et les réglages de mise à jour se trouvent dans « Général ».",
+          "Ajout de « À propos » et « Rechercher des mises à jour » au menu d’engrenage du panneau du portefeuille."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.2.0",
+    "build": "1101",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.2.0-1101.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.2.0-1101/PositionBar-0.2.0-1101.dmg",
+    "sha256": "1accee66fef0b6cf22ae15093bc38c38ad3afc419eee4c9b0657493f6fcee552",
+    "length": 16946447
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "74d3a3ba58cd9b83d4f16cf3ab1aeaffcaaa511ca5f505aaadeb33a2211a9e1d",
+  "appcastLength": 3799,
+  "tapCommit": "a73806d1a7132cec5f5b697c27ab82445540a1b4",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
