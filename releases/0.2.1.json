@@ -1,0 +1,185 @@
+{
+  "status": "published",
+  "version": "0.2.1",
+  "build": 1117,
+  "source_sha": "d04db893ed34d71c13d08dca4a8bb7df4d1ef75b",
+  "metadataSHA256": "04d1343eb2acb3fccdaf1f46f350cc7cbafaec45856edf13c73386a298875452",
+  "publishedOn": "2026-11-11",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Daily P&L now shows a percentage of opening equity, calculated as daily P&L ÷ (current equity − daily P&L), in account headers, the overview, menu bar, and custom templates."
+        ],
+        "zh-Hans": [
+          "当日盈亏现在显示占日初权益的比例，按“当日盈亏 ÷（当前权益 − 当日盈亏）”计算，并用于账户标题、总览、菜单栏和自定义模板。"
+        ],
+        "zh-Hant": [
+          "當日損益現在顯示占日初權益的比例，按「當日損益 ÷（目前權益 − 當日損益）」計算，並用於帳戶標題、總覽、選單列和自訂範本。"
+        ],
+        "ko": [
+          "일일 손익 비율이 계정 헤더, 개요, 메뉴 막대 및 사용자화 템플릿에 표시됩니다. 비율은 일일 손익 ÷ (현재 자산 − 일일 손익)으로 계산합니다."
+        ],
+        "ru": [
+          "В заголовках счетов, обзоре, строке меню и пользовательских шаблонах теперь отображается процент дневной прибыли или убытка к начальному капиталу: дневная прибыль или убыток ÷ (текущий капитал − дневная прибыль или убыток)."
+        ],
+        "pt-BR": [
+          "O lucro ou prejuízo diário agora mostra uma porcentagem do patrimônio inicial, calculada como lucro ou prejuízo diário ÷ (patrimônio atual − lucro ou prejuízo diário), nos cabeçalhos das contas, visão geral, barra de menus e modelos personalizados."
+        ],
+        "tr": [
+          "Günlük kâr/zarar artık hesap başlıklarında, genel bakışta, menü çubuğunda ve özel şablonlarda başlangıç varlığına göre yüzde olarak gösteriliyor: günlük kâr/zarar ÷ (güncel varlık − günlük kâr/zarar)."
+        ],
+        "ja": [
+          "当日損益に、当日損益 ÷（現在の資産 − 当日損益）で算出する開始時資産比の割合を追加し、口座見出し、概要、メニューバー、カスタムテンプレートに表示します。"
+        ],
+        "de": [
+          "Der Tagesgewinn/-verlust zeigt nun in Kontoköpfen, Übersicht, Menüleiste und benutzerdefinierten Vorlagen einen Prozentsatz des Anfangskapitals: Tagesgewinn/-verlust ÷ (aktuelles Kapital − Tagesgewinn/-verlust)."
+        ],
+        "fr": [
+          "Les gains/pertes du jour affichent désormais un pourcentage du capital initial, calculé comme gains/pertes du jour ÷ (capital actuel − gains/pertes du jour), dans les en-têtes de comptes, la vue d’ensemble, la barre des menus et les modèles personnalisés."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Menu bar values and custom templates now follow the selected holdings or daily P&L mode.",
+          "Account rows and the website now use the current platform logos, and the Dock icon follows the system’s light and dark appearance.",
+          "Provider credential fields now use consistent standard text fields for manual entry and paste.",
+          "Schwab support has been removed because it required a personal OAuth app."
+        ],
+        "zh-Hans": [
+          "菜单栏数值和自定义模板现在跟随所选的持仓盈亏或当日盈亏模式。",
+          "账户列表和官网改用当前平台的图标，Dock 图标随系统浅色或深色外观切换。",
+          "各平台凭据统一使用标准文本输入框，便于手动输入和粘贴。",
+          "移除 Schwab 支持，因为它需要用户自行申请 OAuth 应用。"
+        ],
+        "zh-Hant": [
+          "選單列數值和自訂範本現在跟隨所選的持倉損益或當日損益模式。",
+          "帳戶列表和官網改用目前平台的圖示，Dock 圖示會跟隨系統淺色或深色外觀切換。",
+          "各平台憑證統一使用標準文字輸入框，方便手動輸入和貼上。",
+          "移除 Schwab 支援，因為它需要使用者自行申請 OAuth 應用程式。"
+        ],
+        "ko": [
+          "메뉴 막대 값과 사용자화 템플릿이 선택한 보유 자산 또는 일일 손익 모드를 따릅니다.",
+          "계정 목록과 웹사이트에 현재 플랫폼 로고가 적용되며, Dock 아이콘이 시스템의 밝은/어두운 모양을 따릅니다.",
+          "각 플랫폼 자격 증명 입력란을 표준 텍스트 필드로 통일해 직접 입력과 붙여넣기를 지원합니다.",
+          "Schwab 지원은 개인 OAuth 앱이 필요해 제거되었습니다."
+        ],
+        "ru": [
+          "Значения в строке меню и пользовательские шаблоны теперь следуют выбранному режиму: прибыль или убыток по позициям либо за день.",
+          "В списке счетов и на сайте используются актуальные логотипы платформ, а значок в Dock следует светлому или тёмному оформлению системы.",
+          "Поля учётных данных платформ унифицированы как стандартные текстовые поля для ручного ввода и вставки.",
+          "Поддержка Schwab удалена, поскольку для неё требовалось собственное OAuth-приложение."
+        ],
+        "pt-BR": [
+          "Os valores da barra de menus e os modelos personalizados agora seguem o modo selecionado de lucro ou prejuízo de posição ou diário.",
+          "As linhas de conta e o site agora usam os logotipos atuais das plataformas, e o ícone do Dock acompanha a aparência clara ou escura do sistema.",
+          "Os campos de credenciais das plataformas agora usam campos de texto padrão consistentes para entrada manual e colagem.",
+          "O suporte à Schwab foi removido porque exigia um app OAuth pessoal."
+        ],
+        "tr": [
+          "Menü çubuğu değerleri ve özel şablonlar artık seçilen pozisyon veya günlük kâr/zarar modunu izliyor.",
+          "Hesap satırları ve web sitesi güncel platform logolarını kullanıyor; Dock simgesi sistemin açık veya koyu görünümünü izliyor.",
+          "Platform kimlik bilgisi alanları, elle giriş ve yapıştırma için tutarlı standart metin alanlarına dönüştürüldü.",
+          "Schwab desteği, kişisel bir OAuth uygulaması gerektirdiği için kaldırıldı."
+        ],
+        "ja": [
+          "メニューバーの値とカスタムテンプレートが、選択した保有ポジションまたは当日損益のモードに従うようになりました。",
+          "口座一覧とウェブサイトで現在のプラットフォームロゴを使用し、Dock アイコンがシステムのライト／ダーク表示に従います。",
+          "各プラットフォームの認証情報入力欄を標準テキストフィールドに統一し、手入力と貼り付けを安定させました。",
+          "Schwab は個人用 OAuth アプリが必要なため、サポートを終了しました。"
+        ],
+        "de": [
+          "Werte in der Menüleiste und benutzerdefinierte Vorlagen folgen jetzt dem gewählten Modus für Positions- oder Tagesgewinn/-verlust.",
+          "Kontenzeilen und Website verwenden jetzt die aktuellen Plattformlogos; das Dock-Symbol folgt der hellen oder dunklen Darstellung des Systems.",
+          "Die Felder für Plattform-Anmeldedaten verwenden jetzt einheitliche Standard-Textfelder für manuelle Eingabe und Einfügen.",
+          "Die Unterstützung für Schwab wurde entfernt, da dafür eine eigene OAuth-App erforderlich war."
+        ],
+        "fr": [
+          "Les valeurs de la barre des menus et les modèles personnalisés suivent désormais le mode sélectionné : gains/pertes des positions ou du jour.",
+          "Les lignes de compte et le site utilisent désormais les logos actuels des plateformes, et l’icône du Dock suit l’apparence claire ou sombre du système.",
+          "Les champs d’identifiants des plateformes utilisent désormais des champs de texte standard cohérents pour la saisie manuelle et le collage.",
+          "La prise en charge de Schwab a été supprimée, car elle nécessitait une app OAuth personnelle."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed inconsistent daily P&L percentages across account headers, the overview, menu bar, and templates."
+        ],
+        "zh-Hans": [
+          "修复账户标题、总览、菜单栏和模板中当日盈亏比例不一致的问题。"
+        ],
+        "zh-Hant": [
+          "修正帳戶標題、總覽、選單列和範本中當日損益比例不一致的問題。"
+        ],
+        "ko": [
+          "계정 헤더, 개요, 메뉴 막대 및 템플릿에서 일일 손익 비율이 서로 다르게 표시되던 문제를 수정했습니다."
+        ],
+        "ru": [
+          "Исправлена несогласованность процентов дневной прибыли или убытка в заголовках счетов, обзоре, строке меню и шаблонах."
+        ],
+        "pt-BR": [
+          "Corrigida a inconsistência das porcentagens de lucro ou prejuízo diário nos cabeçalhos das contas, visão geral, barra de menus e modelos."
+        ],
+        "tr": [
+          "Hesap başlıkları, genel bakış, menü çubuğu ve şablonlardaki günlük kâr/zarar yüzdelerindeki tutarsızlık giderildi."
+        ],
+        "ja": [
+          "口座見出し、概要、メニューバー、テンプレートで当日損益の割合が一致しない問題を修正しました。"
+        ],
+        "de": [
+          "Uneinheitliche Prozentsätze für Tagesgewinn/-verlust in Kontoköpfen, Übersicht, Menüleiste und Vorlagen wurden behoben."
+        ],
+        "fr": [
+          "Correction de l’incohérence des pourcentages de gains/pertes du jour dans les en-têtes de comptes, la vue d’ensemble, la barre des menus et les modèles."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.2.1",
+    "build": "1117",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.2.1-1117.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.2.1-1117/PositionBar-0.2.1-1117.dmg",
+    "sha256": "939bf9ce8dc158a5cbd1e748c4ebd0b58af41e4f75de6f5e557dbd62240300ed",
+    "length": 16278799
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "c68e12bba7d346f41f682b23fdf484d8f83f3096d1114ef6d2c1be3eda3b0637",
+  "appcastLength": 3802,
+  "tapCommit": "3effe73264cc1f199c48f55910cc7691df7520c9",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
