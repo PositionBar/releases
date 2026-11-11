@@ -130,10 +130,8 @@ jobs:
           APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
-          if ! python3 -B -c 'import sys; sys.path.insert(0, "source/scripts"); import macos_release; macos_release.main()' package --state "$RELEASE_STATE" \
+          if ! python3 -B source/scripts/macos_release.py package --state "$RELEASE_STATE" \
             --source "$SOURCE_SHA" --version "$VERSION" > "$RUNNER_TEMP/package.log" 2>&1; then
-            openssl cms -encrypt -binary -aes256 -in "$RUNNER_TEMP/package.log" \
-              -out "$RELEASE_STATE/package-diagnostics.cms" -outform DER release/diagnostics-public.pem
             echo 'Packaging failed; preserve the checkpoint and use a new Build ID if no verified DMG exists.'
             exit 1
           fi
@@ -157,6 +155,5 @@ jobs:
             ${{ env.RELEASE_STATE }}/package/PositionBar-*.dmg
             ${{ env.RELEASE_STATE }}/package/PositionBar-*.txt
             ${{ env.RELEASE_STATE }}/package/appcast.xml
-            ${{ env.RELEASE_STATE }}/package-diagnostics.cms
           retention-days: 30
           if-no-files-found: warn
