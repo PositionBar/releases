@@ -1,0 +1,8 @@
+PositionBar 0.1.4
+
+Improved
+- Updated app and website brand icons for different display sizes.
+- Improved Chinese, Japanese, and Korean typography and expanded provider setup guides on the website.
+
+Fixed
+- Homebrew package versions now display only the app version, without the internal build number.

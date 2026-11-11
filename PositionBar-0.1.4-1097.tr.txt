@@ -1,0 +1,8 @@
+PositionBar 0.1.4
+
+İyileştirildi
+- Uygulama ve web sitesi marka simgeleri farklı görüntüleme boyutları için güncellendi.
+- Web sitesindeki Çince, Japonca ve Korece yazı gösterimi iyileştirildi ve platform bağlantı kılavuzları genişletildi.
+
+Düzeltildi
+- Homebrew paket sürümlerinde artık dahili derleme numarası olmadan yalnızca uygulama sürümü gösterilir.

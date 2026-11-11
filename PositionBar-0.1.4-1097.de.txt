@@ -1,0 +1,8 @@
+PositionBar 0.1.4
+
+Verbessert
+- Die Markensymbole der App und Website wurden für verschiedene Anzeigegrößen aktualisiert.
+- Die Darstellung chinesischer, japanischer und koreanischer Schrift auf der Website wurde verbessert und die Anleitungen zur Plattformanbindung wurden erweitert.
+
+Behoben
+- Die Homebrew-Paketversion zeigt jetzt nur die App-Version ohne interne Build-Nummer an.
