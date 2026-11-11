@@ -1,0 +1,9 @@
+PositionBar 0.1.3
+
+Améliorations
+- Amélioration du défilement du portefeuille en conservant la disposition actuelle des cartes de compte.
+- Mise à jour du mode de distribution des mises à jour. Installez cette version manuellement une seule fois ; les mises à jour suivantes resteront disponibles dans l’app.
+
+Corrections
+- Correction de problèmes de conversion en USDT et de calcul des totaux pouvant exclure le résultat journalier des comptes et du portefeuille.
+- Correction du chevauchement des en-têtes de compte et des lignes d’actifs lors d’un défilement rapide.

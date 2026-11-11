@@ -1,0 +1,9 @@
+PositionBar 0.1.3
+
+Melhorado
+- Melhorada a rolagem do portfólio, mantendo o layout atual dos cartões de conta.
+- Atualizada a distribuição de atualizações no app. Instale esta versão manualmente uma vez; as próximas atualizações continuarão disponíveis no app.
+
+Corrigido
+- Corrigidos problemas de conversão em USDT e de soma que podiam omitir o resultado diário dos totais das contas e do portfólio.
+- Corrigida a sobreposição dos cabeçalhos de conta às linhas de ativos durante a rolagem rápida.

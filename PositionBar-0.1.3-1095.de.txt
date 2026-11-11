@@ -1,0 +1,9 @@
+PositionBar 0.1.3
+
+Verbessert
+- Das Scrollen im Portfolio wurde verbessert, während das bestehende Layout der Kontokarten erhalten bleibt.
+- Die Bereitstellung von App-Updates wurde umgestellt. Installieren Sie diese Version einmal manuell; weitere Updates bleiben in der App verfügbar.
+
+Behoben
+- Fehler bei der USDT-Umrechnung und Summierung wurden behoben, durch die der Tagesgewinn oder -verlust in Konto- und Portfoliosummen fehlen konnte.
+- Die Überlagerung von Kontoüberschriften und Vermögenszeilen beim schnellen Scrollen wurde behoben.

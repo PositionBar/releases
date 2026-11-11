@@ -1,0 +1,9 @@
+PositionBar 0.1.3
+
+İyileştirildi
+- Mevcut hesap kartı düzeni korunarak portföy kaydırması iyileştirildi.
+- Uygulama içi güncellemelerin dağıtımı yenilendi. Bu sürümü bir kez elle yükleyin; sonraki güncellemeler uygulama içinden yapılmaya devam edecek.
+
+Düzeltildi
+- Günlük kâr ve zararın hesap ve portföy toplamlarına dahil edilmemesine yol açabilen USDT dönüşümü ve toplama sorunları düzeltildi.
+- Hızlı kaydırma sırasında hesap başlıklarının varlık satırlarıyla üst üste gelmesi düzeltildi.

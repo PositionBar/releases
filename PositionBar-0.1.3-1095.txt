@@ -1,0 +1,9 @@
+PositionBar 0.1.3
+
+Improved
+- Improved portfolio scrolling while preserving the existing account card layout.
+- Updated in-app update delivery. Install this version manually once; future updates remain available in the app.
+
+Fixed
+- Fixed USDT conversion and aggregation issues that could omit daily profit and loss from account and portfolio totals.
+- Fixed account headers overlapping asset rows during fast scrolling.
