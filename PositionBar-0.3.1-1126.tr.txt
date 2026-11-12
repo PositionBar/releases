@@ -1,0 +1,7 @@
+PositionBar 0.3.1
+
+Yeni
+- Dişli menüsünden doğrudan sorun bildirebilirsiniz. PositionBar, uygulama ve macOS sürümleri önceden doldurulmuş bir e-posta taslağı açar; hiçbir şey otomatik gönderilmez.
+
+Düzeltildi
+- OAuth yetkilendirmesi, kopyalanan bağlantı yönergeleri ve güncelleme durumu artık sistem dili yerine uygulamada seçilen dili izler.

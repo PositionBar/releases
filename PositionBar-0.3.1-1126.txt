@@ -1,0 +1,7 @@
+PositionBar 0.3.1
+
+New
+- Report an issue directly from the gear menu. PositionBar opens a pre-filled email draft with the app and macOS versions; nothing is sent automatically.
+
+Fixed
+- OAuth authorization, copied connection instructions, and update status now follow the selected app language instead of the system language.

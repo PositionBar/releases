@@ -1,0 +1,7 @@
+PositionBar 0.3.1
+
+Nouveautés
+- Signalez un problème directement depuis le menu d’engrenage. PositionBar ouvre un brouillon d’e-mail prérempli avec les versions de l’app et de macOS ; rien n’est envoyé automatiquement.
+
+Corrections
+- L’autorisation OAuth, les instructions de connexion copiées et l’état des mises à jour suivent désormais la langue choisie dans l’app, et non celle du système.

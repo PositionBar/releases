@@ -1,0 +1,7 @@
+PositionBar 0.3.1
+
+Neu
+- Probleme lassen sich jetzt direkt über das Zahnradmenü melden. PositionBar öffnet einen vorausgefüllten E-Mail-Entwurf mit App- und macOS-Version; automatisch wird nichts gesendet.
+
+Behoben
+- OAuth-Autorisierung, kopierte Verbindungsanweisungen und der Update-Status folgen jetzt der in der App gewählten Sprache statt der Systemsprache.

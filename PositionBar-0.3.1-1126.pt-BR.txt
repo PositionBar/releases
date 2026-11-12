@@ -1,0 +1,7 @@
+PositionBar 0.3.1
+
+Novo
+- Relate um problema diretamente no menu de engrenagem. O PositionBar abre um rascunho de e-mail com as versões do app e do macOS; nada é enviado automaticamente.
+
+Corrigido
+- A autorização OAuth, as instruções de conexão copiadas e o status de atualização agora seguem o idioma selecionado no app, não o idioma do sistema.
