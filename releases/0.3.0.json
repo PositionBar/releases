@@ -1,0 +1,140 @@
+{
+  "status": "published",
+  "version": "0.3.0",
+  "build": 1122,
+  "source_sha": "74fa28a9f95fe3784a2cf2048525a472e9617f21",
+  "metadataSHA256": "cac3d9bf1a242af6d95a4f4f65b28eeb1394eb6f2889056f661471ade2b82578",
+  "publishedOn": "2026-11-12",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Local MCP now uses OAuth with a native confirmation in PositionBar. Access is granted per client and can be revoked in Settings → Integrations; tokens remain valid across app restarts until revoked.",
+          "Added MCP tools for published asset snapshots, existing account names and enabled state, and app preferences, alongside the menu bar template tools."
+        ],
+        "zh-Hans": [
+          "本机 MCP 现在使用 OAuth，并在 PositionBar 中显示原生授权确认。授权按客户端分别授予，可在“设置 → 集成”中撤销；令牌在 App 重启后仍然有效，直到撤销。",
+          "新增用于已发布资产快照、现有账户名称与启用状态、App 偏好的 MCP 工具，并保留菜单栏模板工具。"
+        ],
+        "zh-Hant": [
+          "本機 MCP 現在使用 OAuth，並在 PositionBar 中顯示原生授權確認。授權依用戶端分別授予，可在「設定 → 整合」中撤銷；權杖在 App 重新啟動後仍有效，直到撤銷。",
+          "新增用於已發布資產快照、現有帳戶名稱與啟用狀態、App 偏好的 MCP 工具，並保留選單列範本工具。"
+        ],
+        "ko": [
+          "로컬 MCP가 이제 OAuth를 사용하며 PositionBar에서 네이티브 승인 확인을 표시합니다. 액세스는 클라이언트별로 부여되고 설정 → 통합에서 취소할 수 있으며, 토큰은 취소할 때까지 앱을 다시 시작해도 유효합니다.",
+          "게시된 자산 스냅샷, 기존 계정 이름 및 활성 상태, 앱 환경설정을 위한 MCP 도구를 추가했으며 메뉴 막대 템플릿 도구도 유지됩니다."
+        ],
+        "ru": [
+          "Локальный MCP теперь использует OAuth с нативным запросом подтверждения в PositionBar. Доступ предоставляется отдельно для каждого клиента и отзывается в разделе «Настройки → Интеграции»; токены действуют после перезапуска приложения до момента отзыва.",
+          "Добавлены инструменты MCP для опубликованных снимков активов, названий и состояния существующих счетов, а также настроек приложения; инструменты шаблона строки меню сохранены."
+        ],
+        "pt-BR": [
+          "O MCP local agora usa OAuth com uma confirmação nativa no PositionBar. O acesso é concedido por cliente e pode ser revogado em Ajustes → Integrações; os tokens continuam válidos após reiniciar o app até serem revogados.",
+          "Adicionadas ferramentas MCP para snapshots de ativos publicados, nomes e estado de ativação de contas existentes e preferências do app, além das ferramentas de modelo da barra de menus."
+        ],
+        "tr": [
+          "Yerel MCP artık PositionBar’da yerel onay istemiyle OAuth kullanıyor. Erişim istemci başına verilir ve Ayarlar → Entegrasyonlar’dan iptal edilebilir; belirteçler iptal edilene kadar uygulama yeniden başlatıldığında da geçerlidir.",
+          "Yayımlanmış varlık anlık görüntüleri, mevcut hesap adları ve etkin durumu ile uygulama tercihleri için MCP araçları eklendi; menü çubuğu şablon araçları korundu."
+        ],
+        "ja": [
+          "ローカル MCP が OAuth を使用し、PositionBar でネイティブの承認確認を表示するようになりました。アクセスはクライアントごとに付与され、「設定 → 統合」から取り消せます。トークンは取り消すまでアプリを再起動しても有効です。",
+          "公開済みの資産スナップショット、既存アカウントの名前と有効状態、アプリの環境設定のための MCP ツールを追加し、メニューバーテンプレートのツールも維持しました。"
+        ],
+        "de": [
+          "Lokales MCP verwendet jetzt OAuth mit einer nativen Bestätigungsabfrage in PositionBar. Der Zugriff wird pro Client erteilt und kann unter Einstellungen → Integrationen widerrufen werden; Tokens bleiben nach einem Neustart der App bis zum Widerruf gültig.",
+          "Neue MCP-Werkzeuge für veröffentlichte Asset-Snapshots, Namen und Aktivierungsstatus vorhandener Konten sowie App-Einstellungen; die Werkzeuge für Menüleistenvorlagen bleiben erhalten."
+        ],
+        "fr": [
+          "Le MCP local utilise désormais OAuth avec une confirmation native dans PositionBar. L’accès est accordé par client et peut être révoqué dans Réglages → Intégrations ; les jetons restent valides après un redémarrage de l’app jusqu’à leur révocation.",
+          "Ajout d’outils MCP pour les instantanés d’actifs publiés, les noms et l’état d’activation des comptes existants, ainsi que les préférences de l’app, en plus des outils de modèle de barre des menus."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Local MCP business access is now served only through `/mcp`; the legacy `/v1/*` REST endpoints have been removed. Clients that used REST must switch to MCP.",
+          "Integrations now provides copyable connection instructions and a per-client authorization list with retryable revocation."
+        ],
+        "zh-Hans": [
+          "本机 MCP 业务访问现在只通过 `/mcp` 提供；旧的 `/v1/*` REST 端点已移除。使用 REST 的客户端需要改用 MCP。",
+          "“集成”现在提供可复制的连接指令，以及可按客户端撤销并支持失败重试的授权列表。"
+        ],
+        "zh-Hant": [
+          "本機 MCP 業務存取現在只透過 `/mcp` 提供；舊的 `/v1/*` REST 端點已移除。使用 REST 的用戶端需要改用 MCP。",
+          "「整合」現在提供可複製的連線指令，以及可依用戶端撤銷並支援失敗重試的授權列表。"
+        ],
+        "ko": [
+          "로컬 MCP 비즈니스 액세스는 이제 `/mcp`로만 제공되며 기존 `/v1/*` REST 엔드포인트는 제거되었습니다. REST를 사용하던 클라이언트는 MCP로 전환해야 합니다.",
+          "통합 화면에서 복사 가능한 연결 지침과 클라이언트별 취소 및 실패 시 재시도를 지원하는 권한 목록을 제공합니다."
+        ],
+        "ru": [
+          "Бизнес-доступ локального MCP теперь предоставляется только через `/mcp`; устаревшие REST-маршруты `/v1/*` удалены. Клиентам, использовавшим REST, нужно перейти на MCP.",
+          "В разделе «Интеграции» теперь доступны инструкции по подключению для копирования и список авторизаций с отзывом для каждого клиента и повтором при ошибке."
+        ],
+        "pt-BR": [
+          "O acesso de negócios do MCP local agora é servido apenas por `/mcp`; os endpoints REST legados `/v1/*` foram removidos. Clientes que usavam REST precisam migrar para MCP.",
+          "Integrações agora oferece instruções de conexão copiáveis e uma lista de autorizações por cliente, com revogação e nova tentativa em caso de falha."
+        ],
+        "tr": [
+          "Yerel MCP iş erişimi artık yalnızca `/mcp` üzerinden sunuluyor; eski `/v1/*` REST uç noktaları kaldırıldı. REST kullanan istemcilerin MCP’ye geçmesi gerekir.",
+          "Entegrasyonlar artık kopyalanabilir bağlantı yönergeleri ve istemci başına iptal ile hata durumunda yeniden deneme sunan bir yetkilendirme listesi sağlıyor."
+        ],
+        "ja": [
+          "ローカル MCP の業務アクセスは `/mcp` のみで提供されるようになり、旧 `/v1/*` REST エンドポイントは削除されました。REST を利用していたクライアントは MCP に切り替える必要があります。",
+          "「統合」でコピー可能な接続手順と、クライアントごとの取り消しおよび失敗時の再試行に対応した承認一覧を提供します。"
+        ],
+        "de": [
+          "Der Geschäftszugriff des lokalen MCP erfolgt jetzt ausschließlich über `/mcp`; die alten REST-Endpunkte `/v1/*` wurden entfernt. Clients, die REST verwendet haben, müssen auf MCP umsteigen.",
+          "Unter Integrationen gibt es jetzt kopierbare Verbindungsanweisungen und eine Autorisierungsliste pro Client mit Widerruf und erneutem Versuch bei Fehlern."
+        ],
+        "fr": [
+          "L’accès métier du MCP local est désormais servi uniquement via `/mcp` ; les anciens points de terminaison REST `/v1/*` ont été supprimés. Les clients qui utilisaient REST doivent passer à MCP.",
+          "Intégrations propose maintenant des instructions de connexion copiables et une liste d’autorisations par client, avec révocation et nouvelle tentative en cas d’échec."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.3.0",
+    "build": "1122",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.3.0-1122.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.3.0-1122/PositionBar-0.3.0-1122.dmg",
+    "sha256": "a159d3d730ac67901d41b3a7507b21c5858424924be7dd109aa052a011e1c6d0",
+    "length": 16507150
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "506fa679be95f75773ed4a63a4f00e3dc663050320cb5aa73efb414ffd05ff2e",
+  "appcastLength": 3801,
+  "tapCommit": "7027e048a6ae9fcf8caf0b1f42e1635bc78f4262",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
