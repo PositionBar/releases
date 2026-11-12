@@ -1,0 +1,9 @@
+PositionBar 0.3.0
+
+Nouveautés
+- Le MCP local utilise désormais OAuth avec une confirmation native dans PositionBar. L’accès est accordé par client et peut être révoqué dans Réglages → Intégrations ; les jetons restent valides après un redémarrage de l’app jusqu’à leur révocation.
+- Ajout d’outils MCP pour les instantanés d’actifs publiés, les noms et l’état d’activation des comptes existants, ainsi que les préférences de l’app, en plus des outils de modèle de barre des menus.
+
+Améliorations
+- L’accès métier du MCP local est désormais servi uniquement via `/mcp` ; les anciens points de terminaison REST `/v1/*` ont été supprimés. Les clients qui utilisaient REST doivent passer à MCP.
+- Intégrations propose maintenant des instructions de connexion copiables et une liste d’autorisations par client, avec révocation et nouvelle tentative en cas d’échec.

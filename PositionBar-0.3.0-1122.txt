@@ -1,0 +1,9 @@
+PositionBar 0.3.0
+
+New
+- Local MCP now uses OAuth with a native confirmation in PositionBar. Access is granted per client and can be revoked in Settings → Integrations; tokens remain valid across app restarts until revoked.
+- Added MCP tools for published asset snapshots, existing account names and enabled state, and app preferences, alongside the menu bar template tools.
+
+Improved
+- Local MCP business access is now served only through `/mcp`; the legacy `/v1/*` REST endpoints have been removed. Clients that used REST must switch to MCP.
+- Integrations now provides copyable connection instructions and a per-client authorization list with retryable revocation.

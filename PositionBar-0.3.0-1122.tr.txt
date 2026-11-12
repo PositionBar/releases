@@ -1,0 +1,9 @@
+PositionBar 0.3.0
+
+Yeni
+- Yerel MCP artık PositionBar’da yerel onay istemiyle OAuth kullanıyor. Erişim istemci başına verilir ve Ayarlar → Entegrasyonlar’dan iptal edilebilir; belirteçler iptal edilene kadar uygulama yeniden başlatıldığında da geçerlidir.
+- Yayımlanmış varlık anlık görüntüleri, mevcut hesap adları ve etkin durumu ile uygulama tercihleri için MCP araçları eklendi; menü çubuğu şablon araçları korundu.
+
+İyileştirildi
+- Yerel MCP iş erişimi artık yalnızca `/mcp` üzerinden sunuluyor; eski `/v1/*` REST uç noktaları kaldırıldı. REST kullanan istemcilerin MCP’ye geçmesi gerekir.
+- Entegrasyonlar artık kopyalanabilir bağlantı yönergeleri ve istemci başına iptal ile hata durumunda yeniden deneme sunan bir yetkilendirme listesi sağlıyor.
