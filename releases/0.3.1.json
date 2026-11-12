@@ -1,0 +1,120 @@
+{
+  "status": "published",
+  "version": "0.3.1",
+  "build": 1126,
+  "source_sha": "63e701088a673eed991a3d20385fc6b4a865206d",
+  "metadataSHA256": "56f815f67531d3ea6b8cb55734f86359c4613dfe9622678b85a51d17a6d1e25b",
+  "publishedOn": "2026-11-12",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Report an issue directly from the gear menu. PositionBar opens a pre-filled email draft with the app and macOS versions; nothing is sent automatically."
+        ],
+        "zh-Hans": [
+          "可从齿轮菜单直接反馈问题。PositionBar 会打开预填应用版本与 macOS 版本的邮件草稿，不会自动发送。"
+        ],
+        "zh-Hant": [
+          "可從齒輪選單直接回報問題。PositionBar 會開啟預填應用程式版本與 macOS 版本的郵件草稿，不會自動傳送。"
+        ],
+        "ko": [
+          "톱니바퀴 메뉴에서 바로 문제를 신고할 수 있습니다. PositionBar가 앱 및 macOS 버전이 미리 입력된 이메일 초안을 열며, 자동으로 전송하지 않습니다."
+        ],
+        "ru": [
+          "Сообщить о проблеме теперь можно из меню с шестерёнкой. PositionBar откроет черновик письма с версиями приложения и macOS; отправка не выполняется автоматически."
+        ],
+        "pt-BR": [
+          "Relate um problema diretamente no menu de engrenagem. O PositionBar abre um rascunho de e-mail com as versões do app e do macOS; nada é enviado automaticamente."
+        ],
+        "tr": [
+          "Dişli menüsünden doğrudan sorun bildirebilirsiniz. PositionBar, uygulama ve macOS sürümleri önceden doldurulmuş bir e-posta taslağı açar; hiçbir şey otomatik gönderilmez."
+        ],
+        "ja": [
+          "歯車メニューから直接問題を報告できます。PositionBar はアプリと macOS のバージョンを入力済みのメール下書きを開き、自動では送信しません。"
+        ],
+        "de": [
+          "Probleme lassen sich jetzt direkt über das Zahnradmenü melden. PositionBar öffnet einen vorausgefüllten E-Mail-Entwurf mit App- und macOS-Version; automatisch wird nichts gesendet."
+        ],
+        "fr": [
+          "Signalez un problème directement depuis le menu d’engrenage. PositionBar ouvre un brouillon d’e-mail prérempli avec les versions de l’app et de macOS ; rien n’est envoyé automatiquement."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "OAuth authorization, copied connection instructions, and update status now follow the selected app language instead of the system language."
+        ],
+        "zh-Hans": [
+          "OAuth 授权、复制的连接说明与更新状态现在跟随应用内选择的语言，而不是系统语言。"
+        ],
+        "zh-Hant": [
+          "OAuth 授權、複製的連線說明與更新狀態現在跟隨應用程式內選擇的語言，而非系統語言。"
+        ],
+        "ko": [
+          "OAuth 승인, 복사한 연결 안내 및 업데이트 상태가 이제 시스템 언어 대신 앱에서 선택한 언어를 따릅니다."
+        ],
+        "ru": [
+          "Авторизация OAuth, скопированные инструкции по подключению и состояние обновления теперь используют выбранный в приложении язык, а не системный."
+        ],
+        "pt-BR": [
+          "A autorização OAuth, as instruções de conexão copiadas e o status de atualização agora seguem o idioma selecionado no app, não o idioma do sistema."
+        ],
+        "tr": [
+          "OAuth yetkilendirmesi, kopyalanan bağlantı yönergeleri ve güncelleme durumu artık sistem dili yerine uygulamada seçilen dili izler."
+        ],
+        "ja": [
+          "OAuth の承認、コピーした接続手順、アップデートの状態が、システム言語ではなくアプリで選択した言語に従うようになりました。"
+        ],
+        "de": [
+          "OAuth-Autorisierung, kopierte Verbindungsanweisungen und der Update-Status folgen jetzt der in der App gewählten Sprache statt der Systemsprache."
+        ],
+        "fr": [
+          "L’autorisation OAuth, les instructions de connexion copiées et l’état des mises à jour suivent désormais la langue choisie dans l’app, et non celle du système."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.3.1",
+    "build": "1126",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.3.1-1126.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.3.1-1126/PositionBar-0.3.1-1126.dmg",
+    "sha256": "f4ea628107eabd4d5274c8a7bde412f04e2f89a809c65ac00bc36d60e70e8f1c",
+    "length": 16526607
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "a27f39b3354cdaef5dc49159f5f38b97253cfa6323b32ff3c9cafae2939a0cd0",
+  "appcastLength": 3799,
+  "tapCommit": "25f319dd2816a51946834b5ac471804b8892f369",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
