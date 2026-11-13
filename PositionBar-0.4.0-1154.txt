@@ -1,0 +1,7 @@
+PositionBar 0.4.0
+
+Improved
+- Updated the native portfolio panel and unified asset presentation, including USDT display currency.
+- Improved asset history charts, loading and caching, and remembered chart periods.
+- Added authorized account setup through local agents and clearer platform connection guides.
+- Removed Futu/OpenD support.

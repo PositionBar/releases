@@ -1,0 +1,7 @@
+PositionBar 0.4.0
+
+Melhorado
+- Painel nativo de carteira e apresentação unificada de ativos atualizados, com USDT como moeda de exibição.
+- Gráficos históricos, carregamento e cache aprimorados, com memória do período selecionado.
+- Agentes locais autorizados podem configurar contas, com guias de conexão aprimorados.
+- Suporte a Futu / OpenD removido.

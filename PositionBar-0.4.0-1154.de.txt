@@ -1,0 +1,7 @@
+PositionBar 0.4.0
+
+Verbessert
+- Das native Portfolio-Panel und die einheitliche Vermögensanzeige wurden überarbeitet; USDT ist als Anzeigewährung verfügbar.
+- Historische Charts, Laden und Cache wurden verbessert; der gewählte Zeitraum wird gespeichert.
+- Autorisierte lokale Agenten können Konten einrichten; die Verbindungsanleitungen wurden verbessert.
+- Die Unterstützung für Futu / OpenD wurde entfernt.

@@ -1,0 +1,7 @@
+PositionBar 0.4.0
+
+Améliorations
+- Le panneau natif du portefeuille et la présentation des actifs ont été revus, avec USDT comme devise d’affichage.
+- Les graphiques historiques, le chargement et le cache ont été améliorés ; la période choisie est mémorisée.
+- Les agents locaux autorisés peuvent configurer les comptes ; les guides de connexion ont été améliorés.
+- La prise en charge de Futu / OpenD a été supprimée.

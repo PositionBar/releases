@@ -1,0 +1,7 @@
+PositionBar 0.4.0
+
+İyileştirildi
+- Yerel portföy paneli ve birleşik varlık görünümü yenilendi; USDT görüntüleme para birimi eklendi.
+- Geçmiş grafikler, yükleme ve önbellek iyileştirildi; seçilen grafik dönemi hatırlanır.
+- Yetkilendirilmiş yerel ajanlarla hesap kurulumu ve geliştirilmiş bağlantı kılavuzları eklendi.
+- Futu / OpenD desteği kaldırıldı.
