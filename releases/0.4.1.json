@@ -1,0 +1,85 @@
+{
+  "status": "published",
+  "version": "0.4.1",
+  "build": 1155,
+  "source_sha": "0282bc9841ffb93a4f6ba1daf1c74a119ddb78ba",
+  "metadataSHA256": "419d08d5c3c94de97b6566f415dcdde5ef2b1957bc9450fc2334085afda2ccac",
+  "publishedOn": "2026-11-13",
+  "changes": [
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed the missing installation background and drag-to-Applications layout in the DMG installer."
+        ],
+        "zh-Hans": [
+          "修复 DMG 安装窗口未显示引导背景和拖入“应用程序”布局的问题。"
+        ],
+        "zh-Hant": [
+          "修正 DMG 安裝視窗未顯示引導背景及拖入「應用程式」佈局的問題。"
+        ],
+        "ko": [
+          "DMG 설치 창에 안내 배경과 응용 프로그램 폴더로 드래그하는 설치 레이아웃이 표시되지 않던 문제를 수정했습니다."
+        ],
+        "ru": [
+          "Исправлено отсутствие фона и расположения значков для перетаскивания в папку «Программы» в окне установщика DMG."
+        ],
+        "pt-BR": [
+          "Corrigida a ausência do fundo e da disposição dos ícones para arrastar o app até a pasta Aplicativos na janela do instalador DMG."
+        ],
+        "tr": [
+          "DMG yükleyici penceresinde kurulum arka planının ve Uygulamalar klasörüne sürükleme düzeninin görünmemesi düzeltildi."
+        ],
+        "ja": [
+          "DMG のインストール画面に案内用の背景と「アプリケーション」へのドラッグ配置が表示されない問題を修正しました。"
+        ],
+        "de": [
+          "Fehlender Hintergrund und fehlende Anordnung zum Ziehen in den Programme-Ordner im DMG-Installationsfenster wurden behoben."
+        ],
+        "fr": [
+          "Correction de l’absence du fond et de la disposition des icônes permettant de glisser l’app vers Applications dans la fenêtre d’installation DMG."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.4.1",
+    "build": "1155",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.4.1-1155.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.4.1-1155/PositionBar-0.4.1-1155.dmg",
+    "sha256": "c6126a499902918293d3fe76a26d729332722c000c983bd6a4ffd726f3d27abc",
+    "length": 18958094
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "3b627017332ff18031710f171b44174d4a3211bddafa62ac4d7ad0a28078391b",
+  "appcastLength": 3799,
+  "tapCommit": "f184f7d78892a39bb7a7a758cb1efa1f2d9eac89",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
