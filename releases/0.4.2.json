@@ -1,0 +1,85 @@
+{
+  "status": "published",
+  "version": "0.4.2",
+  "build": 1156,
+  "source_sha": "8cb27d131e2c2b4eefe3d4c1751edf4b2371547c",
+  "metadataSHA256": "5551db24736b9c9d003883ed885ab6e92222a151dfaff0c282b7d6b9a4095659",
+  "publishedOn": "2026-11-13",
+  "changes": [
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed the DMG installation guide display, with clearer filenames and improved compatibility with Finder tabs."
+        ],
+        "zh-Hans": [
+          "修复 DMG 安装引导显示，改善文件名可读性及 Finder 标签页兼容性。"
+        ],
+        "zh-Hant": [
+          "修正 DMG 安裝引導顯示，改善檔案名稱可讀性及 Finder 分頁相容性。"
+        ],
+        "ko": [
+          "DMG 설치 안내 표시 문제를 수정하고 파일 이름의 가독성과 Finder 탭 호환성을 개선했습니다."
+        ],
+        "ru": [
+          "Исправлено отображение инструкций по установке в DMG, улучшены читаемость имён файлов и совместимость с вкладками Finder."
+        ],
+        "pt-BR": [
+          "Corrigida a exibição das instruções de instalação no DMG, com nomes de arquivos mais legíveis e melhor compatibilidade com as abas do Finder."
+        ],
+        "tr": [
+          "DMG kurulum yönergelerinin görünümü düzeltildi, dosya adlarının okunabilirliği ve Finder sekmeleriyle uyumluluk iyileştirildi."
+        ],
+        "ja": [
+          "DMG のインストール案内の表示を修正し、ファイル名の読みやすさと Finder のタブとの互換性を改善しました。"
+        ],
+        "de": [
+          "Die Anzeige der DMG-Installationsanleitung wurde korrigiert. Dateinamen sind besser lesbar, und die Kompatibilität mit Finder-Tabs wurde verbessert."
+        ],
+        "fr": [
+          "Correction de l’affichage du guide d’installation DMG, avec des noms de fichiers plus lisibles et une meilleure compatibilité avec les onglets du Finder."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.4.2",
+    "build": "1156",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.4.2-1156.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.4.2-1156/PositionBar-0.4.2-1156.dmg",
+    "sha256": "8b6eef8ea5bdbe441729b0a489eeda0f499e883f53def90739869ad487c809ef",
+    "length": 18944782
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "b77f893da55f142fef92bb0aed0dd50bca22332c460f5137fae95caf6892d3a4",
+  "appcastLength": 3799,
+  "tapCommit": "29b6dd5affb29704db60b5a4f6f4a37fda35b7f4",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
