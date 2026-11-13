@@ -1,0 +1,4 @@
+PositionBar 0.4.2
+
+Corrections
+- Correction de l’affichage du guide d’installation DMG, avec des noms de fichiers plus lisibles et une meilleure compatibilité avec les onglets du Finder.

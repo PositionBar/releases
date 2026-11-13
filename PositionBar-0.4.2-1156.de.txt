@@ -1,0 +1,4 @@
+PositionBar 0.4.2
+
+Behoben
+- Die Anzeige der DMG-Installationsanleitung wurde korrigiert. Dateinamen sind besser lesbar, und die Kompatibilität mit Finder-Tabs wurde verbessert.

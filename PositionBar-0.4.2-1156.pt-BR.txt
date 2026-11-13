@@ -1,0 +1,4 @@
+PositionBar 0.4.2
+
+Corrigido
+- Corrigida a exibição das instruções de instalação no DMG, com nomes de arquivos mais legíveis e melhor compatibilidade com as abas do Finder.

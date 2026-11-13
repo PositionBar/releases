@@ -1,0 +1,4 @@
+PositionBar 0.4.2
+
+Fixed
+- Fixed the DMG installation guide display, with clearer filenames and improved compatibility with Finder tabs.

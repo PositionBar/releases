@@ -1,0 +1,4 @@
+PositionBar 0.4.2
+
+Düzeltildi
+- DMG kurulum yönergelerinin görünümü düzeltildi, dosya adlarının okunabilirliği ve Finder sekmeleriyle uyumluluk iyileştirildi.
