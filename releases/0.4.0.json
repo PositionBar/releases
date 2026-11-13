@@ -1,0 +1,115 @@
+{
+  "status": "published",
+  "version": "0.4.0",
+  "build": 1154,
+  "source_sha": "358d5a619ecb96fb759629432e79b3871c7d23fe",
+  "metadataSHA256": "213cf778b75003bdbe7817582c263c8e0f22e1608747bc159e6b733e67c00497",
+  "publishedOn": "2026-11-13",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Updated the native portfolio panel and unified asset presentation, including USDT display currency.",
+          "Improved asset history charts, loading and caching, and remembered chart periods.",
+          "Added authorized account setup through local agents and clearer platform connection guides.",
+          "Removed Futu/OpenD support."
+        ],
+        "zh-Hans": [
+          "更新原生仓位面板与统一资产展示，支持 USDT 显示货币。",
+          "优化资产历史图表、加载与缓存，并记住所选图表周期。",
+          "支持本地 Agent 经授权接入账户，完善平台连接指引。",
+          "移除富途 / OpenD 支持。"
+        ],
+        "zh-Hant": [
+          "更新原生倉位面板與統一資產顯示，支援 USDT 顯示貨幣。",
+          "改善資產歷史圖表、載入與快取，並記住所選圖表週期。",
+          "支援本機 Agent 經授權連接帳戶，完善平台連接指引。",
+          "移除富途 / OpenD 支援。"
+        ],
+        "ja": [
+          "ネイティブのポートフォリオパネルと資産表示を刷新し、USDT 表示通貨に対応しました。",
+          "資産履歴チャート、読み込み、キャッシュを改善し、選択した期間を記憶します。",
+          "承認されたローカルエージェントによる口座接続に対応し、接続ガイドを改善しました。",
+          "Futu / OpenD のサポートを終了しました。"
+        ],
+        "ko": [
+          "네이티브 포트폴리오 패널과 자산 표시를 개선하고 USDT 표시 통화를 지원합니다.",
+          "자산 내역 차트, 로딩 및 캐시를 개선하고 선택한 차트 기간을 기억합니다.",
+          "승인된 로컬 에이전트의 계정 연결을 지원하고 플랫폼 연결 안내를 개선했습니다.",
+          "Futu / OpenD 지원을 제거했습니다."
+        ],
+        "de": [
+          "Das native Portfolio-Panel und die einheitliche Vermögensanzeige wurden überarbeitet; USDT ist als Anzeigewährung verfügbar.",
+          "Historische Charts, Laden und Cache wurden verbessert; der gewählte Zeitraum wird gespeichert.",
+          "Autorisierte lokale Agenten können Konten einrichten; die Verbindungsanleitungen wurden verbessert.",
+          "Die Unterstützung für Futu / OpenD wurde entfernt."
+        ],
+        "fr": [
+          "Le panneau natif du portefeuille et la présentation des actifs ont été revus, avec USDT comme devise d’affichage.",
+          "Les graphiques historiques, le chargement et le cache ont été améliorés ; la période choisie est mémorisée.",
+          "Les agents locaux autorisés peuvent configurer les comptes ; les guides de connexion ont été améliorés.",
+          "La prise en charge de Futu / OpenD a été supprimée."
+        ],
+        "pt-BR": [
+          "Painel nativo de carteira e apresentação unificada de ativos atualizados, com USDT como moeda de exibição.",
+          "Gráficos históricos, carregamento e cache aprimorados, com memória do período selecionado.",
+          "Agentes locais autorizados podem configurar contas, com guias de conexão aprimorados.",
+          "Suporte a Futu / OpenD removido."
+        ],
+        "tr": [
+          "Yerel portföy paneli ve birleşik varlık görünümü yenilendi; USDT görüntüleme para birimi eklendi.",
+          "Geçmiş grafikler, yükleme ve önbellek iyileştirildi; seçilen grafik dönemi hatırlanır.",
+          "Yetkilendirilmiş yerel ajanlarla hesap kurulumu ve geliştirilmiş bağlantı kılavuzları eklendi.",
+          "Futu / OpenD desteği kaldırıldı."
+        ],
+        "ru": [
+          "Обновлены нативная панель портфеля и единое представление активов; добавлена валюта отображения USDT.",
+          "Улучшены графики истории, загрузка и кэширование; выбранный период графика сохраняется.",
+          "Добавлена настройка счетов через авторизованных локальных агентов и улучшены инструкции подключения.",
+          "Удалена поддержка Futu / OpenD."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.4.0",
+    "build": "1154",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.4.0-1154.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.4.0-1154/PositionBar-0.4.0-1154.dmg",
+    "sha256": "5473e7e423578310e4b96daf020e9044cccc6bb44a9563cc7433d41ae85f32fe",
+    "length": 18977550
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "6f587d08321e38ce5545affa4faa3103e1da498cdf9341431cf48650929d223f",
+  "appcastLength": 3799,
+  "tapCommit": "cb90d5b8405bcb77806800a726e214dcae1bb501",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
