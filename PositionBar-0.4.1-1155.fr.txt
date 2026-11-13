@@ -1,0 +1,4 @@
+PositionBar 0.4.1
+
+Corrections
+- Correction de l’absence du fond et de la disposition des icônes permettant de glisser l’app vers Applications dans la fenêtre d’installation DMG.

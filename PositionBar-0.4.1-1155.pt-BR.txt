@@ -1,0 +1,4 @@
+PositionBar 0.4.1
+
+Corrigido
+- Corrigida a ausência do fundo e da disposição dos ícones para arrastar o app até a pasta Aplicativos na janela do instalador DMG.

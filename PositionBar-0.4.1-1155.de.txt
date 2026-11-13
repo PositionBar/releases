@@ -1,0 +1,4 @@
+PositionBar 0.4.1
+
+Behoben
+- Fehlender Hintergrund und fehlende Anordnung zum Ziehen in den Programme-Ordner im DMG-Installationsfenster wurden behoben.

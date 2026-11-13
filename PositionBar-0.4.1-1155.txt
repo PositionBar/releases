@@ -1,0 +1,4 @@
+PositionBar 0.4.1
+
+Fixed
+- Fixed the missing installation background and drag-to-Applications layout in the DMG installer.

@@ -1,0 +1,4 @@
+PositionBar 0.4.1
+
+Düzeltildi
+- DMG yükleyici penceresinde kurulum arka planının ve Uygulamalar klasörüne sürükleme düzeninin görünmemesi düzeltildi.
