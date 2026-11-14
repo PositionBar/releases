@@ -1,0 +1,13 @@
+PositionBar 0.5.0
+
+Novo
+- Adicionada a aba Estatísticas com o histórico do patrimônio da carteira nos períodos 1D, 1W, 1M, 3M e 1Y.
+- O lucro ou prejuízo diário agora usa o histórico local da carteira: valor atual menos o valor à meia-noite no horário local do dispositivo, incluindo depósitos, retiradas e taxas. Após a atualização, os valores da meia-noite ficam indisponíveis até que haja histórico novo suficiente.
+
+Melhorado
+- Unificados os controles de período, os estados de carregamento e os detalhes ao passar o cursor nos gráficos; melhoradas a troca de abas e a reutilização do histórico em cache.
+
+Corrigido
+- Corrigidas as cotações e os gráficos de USDC na Hyperliquid, os gráficos de preços de saldos da OKX, a avaliação de ativos spot da Gate e a exibição da variação de criptoativos no período na moeda de cotação.
+- Linhas de status de conexão e carregamento não aparecem mais em contas que já têm ativos; unificada a exibição de contas vazias.
+- Corrigida a compatibilidade dos widgets com o macOS 26.

@@ -1,0 +1,13 @@
+PositionBar 0.5.0
+
+Nouveautés
+- Ajout d’un onglet Statistiques avec l’historique de la valeur du portefeuille sur 1D, 1W, 1M, 3M et 1Y.
+- Le gain ou la perte du jour utilise désormais l’historique local du portefeuille : valeur actuelle moins la valeur à minuit selon l’heure locale de l’appareil, y compris les dépôts, retraits et frais. Après la mise à jour, les valeurs de minuit restent indisponibles jusqu’à l’enregistrement d’un historique suffisant.
+
+Améliorations
+- Harmonisation des sélecteurs de période, des états de chargement et des détails au survol des graphiques ; amélioration du changement d’onglet et de la réutilisation de l’historique en cache.
+
+Corrections
+- Correction des cours et graphiques USDC de Hyperliquid, des graphiques de prix des soldes OKX, de la valorisation spot de Gate et de l’affichage des variations des cryptoactifs sur la période dans la devise de cotation.
+- Les lignes d’état de connexion et de chargement n’apparaissent plus dans les comptes contenant déjà des actifs ; harmonisation de l’affichage des comptes vides.
+- Correction de la compatibilité des widgets avec macOS 26.

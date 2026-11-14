@@ -1,0 +1,13 @@
+PositionBar 0.5.0
+
+Yeni
+- 1D, 1W, 1M, 3M ve 1Y dönemleri için portföy değer geçmişini gösteren İstatistikler sekmesi eklendi.
+- Günlük kâr/zarar artık yerel portföy geçmişiyle hesaplanıyor: para yatırma, çekme ve ücret değişimleri dahil, mevcut değerden cihazın yerel saatine göre gece yarısındaki değer çıkarılıyor. Güncellemeden sonra yeterli yeni geçmiş birikene kadar gece yarısı değerleri kullanılamaz.
+
+İyileştirildi
+- Grafik dönem kontrolleri, yükleme durumları ve üzerine gelme ayrıntıları birleştirildi; sekme geçişleri ve önbellekteki geçmişin yeniden kullanımı iyileştirildi.
+
+Düzeltildi
+- Hyperliquid USDC fiyatları ve grafikleri, OKX bakiye fiyat grafikleri, Gate spot değerlemesi ve kripto dönem değişimlerinin karşıt para biriminde gösterimi düzeltildi.
+- Varlık içeren hesaplarda bağlantı ve yükleme durum satırları artık görünmüyor; boş hesap durumları birleştirildi.
+- Araç takımlarının macOS 26 uyumluluğu düzeltildi.

@@ -1,0 +1,13 @@
+PositionBar 0.5.0
+
+New
+- Added a Statistics tab with portfolio equity history for 1D, 1W, 1M, 3M and 1Y.
+- Daily P&L now uses local portfolio history: current value minus the value at device-local midnight, including deposits, withdrawals and fees. Midnight values remain unavailable until sufficient new history is recorded after upgrading.
+
+Improved
+- Unified chart range controls, loading states and hover details; improved tab switching and reuse of cached history.
+
+Fixed
+- Fixed Hyperliquid USDC quotes and charts, OKX balance price charts, Gate spot valuation and crypto range changes shown in the quote currency.
+- Connection and loading status rows no longer appear in accounts that already contain assets; unified empty account states.
+- Fixed widget compatibility with macOS 26.

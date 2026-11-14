@@ -1,0 +1,13 @@
+PositionBar 0.5.0
+
+Neu
+- Ein Statistik-Tab mit dem Verlauf des Portfoliowerts für 1D, 1W, 1M, 3M und 1Y wurde hinzugefügt.
+- Der Tagesgewinn oder -verlust nutzt jetzt den lokalen Portfolioverlauf: aktueller Wert minus Wert um Mitternacht in der Ortszeit des Geräts, einschließlich Einzahlungen, Auszahlungen und Gebühren. Nach dem Update bleiben Mitternachtswerte nicht verfügbar, bis genügend neue Verlaufsdaten vorliegen.
+
+Verbessert
+- Zeitraumauswahl, Ladezustände und Details beim Bewegen des Zeigers über Charts wurden vereinheitlicht. Tabwechsel und die Wiederverwendung zwischengespeicherter Verlaufsdaten wurden verbessert.
+
+Behoben
+- Hyperliquid-USDC-Kurse und -Charts, Preischarts für OKX-Guthaben, die Bewertung von Gate-Spotbeständen und die Anzeige von Krypto-Zeitraumänderungen in der Kurswährung wurden korrigiert.
+- Verbindungs- und Ladezeilen erscheinen nicht mehr in Konten, die bereits Vermögenswerte enthalten. Die Anzeige leerer Konten wurde vereinheitlicht.
+- Die Widget-Kompatibilität mit macOS 26 wurde korrigiert.
