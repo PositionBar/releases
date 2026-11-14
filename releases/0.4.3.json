@@ -1,0 +1,160 @@
+{
+  "status": "published",
+  "version": "0.4.3",
+  "build": 1200,
+  "source_sha": "45c4c00370e07ae4f4adeab962f6310d71ba04ac",
+  "metadataSHA256": "7346ddb612dbad9f1bfc9efef01671fb0862fa86cdc8d12f19ebe72aee4d40fe",
+  "publishedOn": "2026-11-14",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Price charts now use a rolling 24-hour 1D view, with improved market-session gaps and cached history.",
+          "Improved asset valuations and detail fields across supported accounts, including Hyperliquid spot cost and holding P&L.",
+          "Simplified native account menus, connection guidance and widget status display."
+        ],
+        "zh-Hans": [
+          "价格图表的 1D 视图改为滚动 24 小时，改善交易时段间隔和历史缓存。",
+          "完善已支持账户的资产估值和详情字段，包括 Hyperliquid 现货成本与持仓盈亏。",
+          "精简原生账户菜单、连接指引和小组件状态显示。"
+        ],
+        "zh-Hant": [
+          "價格圖表的 1D 檢視改為滾動 24 小時，改善交易時段間隔與歷史快取。",
+          "完善已支援帳戶的資產估值與詳細欄位，包括 Hyperliquid 現貨成本與持倉損益。",
+          "精簡原生帳戶選單、連線指引與小工具狀態顯示。"
+        ],
+        "ko": [
+          "가격 차트의 1D 보기를 최근 24시간 기준으로 변경하고 거래 세션 사이의 공백과 과거 데이터 캐시를 개선했습니다.",
+          "Hyperliquid 현물 원가와 보유 손익을 포함해 지원 계정의 자산 평가 및 상세 항목을 개선했습니다.",
+          "기본 계정 메뉴, 연결 안내 및 위젯 상태 표시를 간소화했습니다."
+        ],
+        "ru": [
+          "Режим 1D на графиках цен теперь охватывает последние 24 часа; улучшены разрывы между торговыми сессиями и кэширование истории.",
+          "Улучшены оценка активов и поля подробностей для поддерживаемых счетов, включая себестоимость и прибыль или убыток спотовых позиций Hyperliquid.",
+          "Упрощены системные меню счетов, инструкции по подключению и отображение состояния в виджете."
+        ],
+        "pt-BR": [
+          "A visualização 1D dos gráficos de preços agora abrange as últimas 24 horas, com melhorias nos intervalos entre sessões e no cache do histórico.",
+          "Melhoradas as avaliações de ativos e os campos de detalhes das contas compatíveis, incluindo custo e lucro ou prejuízo das posições spot da Hyperliquid.",
+          "Simplificados os menus nativos de contas, as instruções de conexão e a exibição de status do widget."
+        ],
+        "tr": [
+          "Fiyat grafiklerinin 1D görünümü artık son 24 saati kapsıyor; işlem seansları arasındaki boşluklar ve geçmiş veri önbelleği iyileştirildi.",
+          "Hyperliquid spot maliyeti ve pozisyon kâr/zararı dahil, desteklenen hesapların varlık değerlemeleri ve ayrıntı alanları iyileştirildi.",
+          "Yerel hesap menüleri, bağlantı yönergeleri ve araç takımı durum gösterimi sadeleştirildi."
+        ],
+        "ja": [
+          "価格チャートの 1D 表示を直近 24 時間に変更し、取引時間帯の空白と履歴キャッシュを改善しました。",
+          "Hyperliquid 現物の取得原価と保有損益を含め、対応口座の資産評価と詳細項目を改善しました。",
+          "ネイティブの口座メニュー、接続ガイド、ウィジェットの状態表示を簡素化しました。"
+        ],
+        "de": [
+          "Die 1D-Ansicht der Kurscharts zeigt jetzt die letzten 24 Stunden. Lücken zwischen Handelssitzungen und der Verlaufscache wurden verbessert.",
+          "Vermögensbewertungen und Detailfelder unterstützter Konten wurden verbessert, einschließlich Einstandskosten und Positionsgewinn oder -verlust für Hyperliquid-Spotbestände.",
+          "Native Kontomenüs, Verbindungsanleitungen und die Statusanzeige im Widget wurden vereinfacht."
+        ],
+        "fr": [
+          "La vue 1D des graphiques de prix couvre désormais les dernières 24 heures, avec une meilleure gestion des interruptions entre séances et du cache historique.",
+          "Amélioration de la valorisation des actifs et des champs détaillés des comptes pris en charge, notamment le coût et le gain ou la perte des positions spot Hyperliquid.",
+          "Simplification des menus natifs des comptes, des guides de connexion et de l’affichage de l’état du widget."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Polymarket account wallets are now validated before saving; repeated connections to the same wallet remain independent.",
+          "Fixed unexpected portfolio panel dismissal when using Settings across multiple displays.",
+          "Corrected zero-profit and return display, and removed duplicate OKX strategy and copy-trading summary rows."
+        ],
+        "zh-Hans": [
+          "Polymarket 账户钱包现会在保存前核验，同一钱包的多次连接保持独立。",
+          "修复多显示器下使用设置时仓位面板意外关闭的问题。",
+          "修正零收益及收益率显示，移除重复的 OKX 策略与跟单汇总行。"
+        ],
+        "zh-Hant": [
+          "Polymarket 帳戶錢包現會在儲存前核驗，同一錢包的多次連線保持獨立。",
+          "修正多顯示器下使用設定時持倉面板意外關閉的問題。",
+          "修正零損益與報酬率顯示，移除重複的 OKX 策略與跟單彙總列。"
+        ],
+        "ko": [
+          "이제 Polymarket 계정 지갑을 저장 전에 확인하며, 같은 지갑에 대한 여러 연결은 독립적으로 유지됩니다.",
+          "여러 디스플레이에서 설정을 사용할 때 포트폴리오 패널이 예기치 않게 닫히던 문제를 수정했습니다.",
+          "손익이 0일 때의 손익 및 수익률 표시를 수정하고 중복된 OKX 전략 및 카피 트레이딩 요약 행을 제거했습니다."
+        ],
+        "ru": [
+          "Кошельки счетов Polymarket теперь проверяются перед сохранением; повторные подключения одного кошелька остаются независимыми.",
+          "Исправлено неожиданное закрытие панели портфеля при использовании настроек на нескольких дисплеях.",
+          "Исправлено отображение нулевой прибыли и доходности, удалены дублирующие сводные строки стратегий и копитрейдинга OKX."
+        ],
+        "pt-BR": [
+          "As carteiras de contas Polymarket agora são verificadas antes de salvar; conexões repetidas à mesma carteira permanecem independentes.",
+          "Corrigido o fechamento inesperado do painel da carteira ao usar os Ajustes em vários monitores.",
+          "Corrigida a exibição de lucro e retorno iguais a zero e removidas linhas de resumo duplicadas de estratégias e copy trading da OKX."
+        ],
+        "tr": [
+          "Polymarket hesap cüzdanları artık kaydedilmeden önce doğrulanıyor; aynı cüzdana yapılan tekrarlı bağlantılar bağımsız kalıyor.",
+          "Birden fazla ekranda Ayarlar kullanılırken portföy panelinin beklenmedik şekilde kapanması düzeltildi.",
+          "Sıfır kâr ve getiri gösterimi düzeltildi, yinelenen OKX strateji ve kopya işlem özet satırları kaldırıldı."
+        ],
+        "ja": [
+          "Polymarket の口座ウォレットを保存前に検証するようにし、同じウォレットへの複数の接続を独立して保持します。",
+          "複数のディスプレイで設定を使用すると、ポートフォリオパネルが予期せず閉じる問題を修正しました。",
+          "損益ゼロ時の損益と収益率の表示を修正し、重複する OKX の戦略とコピートレードの集計行を削除しました。"
+        ],
+        "de": [
+          "Polymarket-Kontowallets werden jetzt vor dem Speichern geprüft. Mehrere Verbindungen mit derselben Wallet bleiben unabhängig.",
+          "Das unerwartete Schließen des Portfolio-Panels bei Verwendung der Einstellungen auf mehreren Bildschirmen wurde behoben.",
+          "Die Anzeige von Nullgewinn und Rendite wurde korrigiert. Doppelte Übersichtszeilen für OKX-Strategien und Copy-Trading wurden entfernt."
+        ],
+        "fr": [
+          "Les portefeuilles des comptes Polymarket sont désormais vérifiés avant l’enregistrement ; les connexions répétées au même portefeuille restent indépendantes.",
+          "Correction de la fermeture inattendue du panneau du portefeuille lors de l’utilisation des réglages sur plusieurs écrans.",
+          "Correction de l’affichage des gains et rendements nuls et suppression des lignes récapitulatives en double des stratégies et du copy trading OKX."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.4.3",
+    "build": "1200",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.4.3-1200.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.4.3-1200/PositionBar-0.4.3-1200.dmg",
+    "sha256": "b3c3c4f61ece2352843bf152ea0023ca7b3a0bf814a4ac8395d6d362d785051d",
+    "length": 18960655
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "d19788e7544cd1749b70e854d1a2fc936735e1a675d4ac7f0acb973d99e9244b",
+  "appcastLength": 3800,
+  "tapCommit": "4d38502b6611a5dbbf4b7fcc867bcb0407329743",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
