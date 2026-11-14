@@ -1,0 +1,11 @@
+PositionBar 0.4.3
+
+İyileştirildi
+- Fiyat grafiklerinin 1D görünümü artık son 24 saati kapsıyor; işlem seansları arasındaki boşluklar ve geçmiş veri önbelleği iyileştirildi.
+- Hyperliquid spot maliyeti ve pozisyon kâr/zararı dahil, desteklenen hesapların varlık değerlemeleri ve ayrıntı alanları iyileştirildi.
+- Yerel hesap menüleri, bağlantı yönergeleri ve araç takımı durum gösterimi sadeleştirildi.
+
+Düzeltildi
+- Polymarket hesap cüzdanları artık kaydedilmeden önce doğrulanıyor; aynı cüzdana yapılan tekrarlı bağlantılar bağımsız kalıyor.
+- Birden fazla ekranda Ayarlar kullanılırken portföy panelinin beklenmedik şekilde kapanması düzeltildi.
+- Sıfır kâr ve getiri gösterimi düzeltildi, yinelenen OKX strateji ve kopya işlem özet satırları kaldırıldı.

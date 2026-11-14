@@ -1,0 +1,11 @@
+PositionBar 0.4.3
+
+Améliorations
+- La vue 1D des graphiques de prix couvre désormais les dernières 24 heures, avec une meilleure gestion des interruptions entre séances et du cache historique.
+- Amélioration de la valorisation des actifs et des champs détaillés des comptes pris en charge, notamment le coût et le gain ou la perte des positions spot Hyperliquid.
+- Simplification des menus natifs des comptes, des guides de connexion et de l’affichage de l’état du widget.
+
+Corrections
+- Les portefeuilles des comptes Polymarket sont désormais vérifiés avant l’enregistrement ; les connexions répétées au même portefeuille restent indépendantes.
+- Correction de la fermeture inattendue du panneau du portefeuille lors de l’utilisation des réglages sur plusieurs écrans.
+- Correction de l’affichage des gains et rendements nuls et suppression des lignes récapitulatives en double des stratégies et du copy trading OKX.

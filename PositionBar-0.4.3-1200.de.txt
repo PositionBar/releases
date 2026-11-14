@@ -1,0 +1,11 @@
+PositionBar 0.4.3
+
+Verbessert
+- Die 1D-Ansicht der Kurscharts zeigt jetzt die letzten 24 Stunden. Lücken zwischen Handelssitzungen und der Verlaufscache wurden verbessert.
+- Vermögensbewertungen und Detailfelder unterstützter Konten wurden verbessert, einschließlich Einstandskosten und Positionsgewinn oder -verlust für Hyperliquid-Spotbestände.
+- Native Kontomenüs, Verbindungsanleitungen und die Statusanzeige im Widget wurden vereinfacht.
+
+Behoben
+- Polymarket-Kontowallets werden jetzt vor dem Speichern geprüft. Mehrere Verbindungen mit derselben Wallet bleiben unabhängig.
+- Das unerwartete Schließen des Portfolio-Panels bei Verwendung der Einstellungen auf mehreren Bildschirmen wurde behoben.
+- Die Anzeige von Nullgewinn und Rendite wurde korrigiert. Doppelte Übersichtszeilen für OKX-Strategien und Copy-Trading wurden entfernt.

@@ -1,0 +1,11 @@
+PositionBar 0.4.3
+
+Improved
+- Price charts now use a rolling 24-hour 1D view, with improved market-session gaps and cached history.
+- Improved asset valuations and detail fields across supported accounts, including Hyperliquid spot cost and holding P&L.
+- Simplified native account menus, connection guidance and widget status display.
+
+Fixed
+- Polymarket account wallets are now validated before saving; repeated connections to the same wallet remain independent.
+- Fixed unexpected portfolio panel dismissal when using Settings across multiple displays.
+- Corrected zero-profit and return display, and removed duplicate OKX strategy and copy-trading summary rows.
