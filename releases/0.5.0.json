@@ -1,0 +1,185 @@
+{
+  "status": "published",
+  "version": "0.5.0",
+  "build": 1235,
+  "source_sha": "80037b295c15f43247a047d3b1ca22ca090584a0",
+  "metadataSHA256": "dedb77317e7af116ab880735244730a1338b0dc171253893f62c15c6b4df1453",
+  "publishedOn": "2026-11-14",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added a Statistics tab with portfolio equity history for 1D, 1W, 1M, 3M and 1Y.",
+          "Daily P&L now uses local portfolio history: current value minus the value at device-local midnight, including deposits, withdrawals and fees. Midnight values remain unavailable until sufficient new history is recorded after upgrading."
+        ],
+        "zh-Hans": [
+          "新增统计页，可查看 1D、1W、1M、3M 和 1Y 的整体权益历史。",
+          "当日盈亏改为基于本机组合历史计算：当前组合价值减去设备当地零点组合价值，包含出入金及费用变化。升级后需积累新历史，零点数据不足时保持不可用。"
+        ],
+        "zh-Hant": [
+          "新增統計頁，可查看 1D、1W、1M、3M 和 1Y 的整體權益歷史。",
+          "當日損益改為依本機投資組合歷史計算：目前組合價值減去裝置當地午夜的組合價值，包含出入金及費用變化。升級後需累積新歷史，午夜資料不足時維持無法計算。"
+        ],
+        "ko": [
+          "1D, 1W, 1M, 3M, 1Y 기간의 포트폴리오 자산 가치 내역을 볼 수 있는 통계 탭을 추가했습니다.",
+          "일일 손익은 이제 기기에 저장된 포트폴리오 내역을 기반으로 현재 가치에서 기기 현지 시각 자정의 가치를 빼서 계산하며, 입출금과 수수료 변화를 포함합니다. 업그레이드 후 새 내역이 충분히 쌓이기 전까지 자정 가치는 제공되지 않습니다."
+        ],
+        "ru": [
+          "Добавлена вкладка статистики с историей стоимости портфеля за 1D, 1W, 1M, 3M и 1Y.",
+          "Дневная прибыль или убыток теперь рассчитывается по локальной истории портфеля: текущая стоимость минус стоимость на полночь по местному времени устройства, включая пополнения, выводы и комиссии. После обновления стоимость на полночь недоступна, пока не накопится достаточно новой истории."
+        ],
+        "pt-BR": [
+          "Adicionada a aba Estatísticas com o histórico do patrimônio da carteira nos períodos 1D, 1W, 1M, 3M e 1Y.",
+          "O lucro ou prejuízo diário agora usa o histórico local da carteira: valor atual menos o valor à meia-noite no horário local do dispositivo, incluindo depósitos, retiradas e taxas. Após a atualização, os valores da meia-noite ficam indisponíveis até que haja histórico novo suficiente."
+        ],
+        "tr": [
+          "1D, 1W, 1M, 3M ve 1Y dönemleri için portföy değer geçmişini gösteren İstatistikler sekmesi eklendi.",
+          "Günlük kâr/zarar artık yerel portföy geçmişiyle hesaplanıyor: para yatırma, çekme ve ücret değişimleri dahil, mevcut değerden cihazın yerel saatine göre gece yarısındaki değer çıkarılıyor. Güncellemeden sonra yeterli yeni geçmiş birikene kadar gece yarısı değerleri kullanılamaz."
+        ],
+        "ja": [
+          "1D、1W、1M、3M、1Y のポートフォリオ評価額の履歴を確認できる統計タブを追加しました。",
+          "当日損益は端末内のポートフォリオ履歴を使い、現在の評価額から端末の現地時刻の午前 0 時の評価額を差し引いて計算するようになりました。入出金や手数料の変動も含まれます。アップグレード後に新しい履歴が十分に蓄積されるまでは、午前 0 時の評価額を利用できません。"
+        ],
+        "de": [
+          "Ein Statistik-Tab mit dem Verlauf des Portfoliowerts für 1D, 1W, 1M, 3M und 1Y wurde hinzugefügt.",
+          "Der Tagesgewinn oder -verlust nutzt jetzt den lokalen Portfolioverlauf: aktueller Wert minus Wert um Mitternacht in der Ortszeit des Geräts, einschließlich Einzahlungen, Auszahlungen und Gebühren. Nach dem Update bleiben Mitternachtswerte nicht verfügbar, bis genügend neue Verlaufsdaten vorliegen."
+        ],
+        "fr": [
+          "Ajout d’un onglet Statistiques avec l’historique de la valeur du portefeuille sur 1D, 1W, 1M, 3M et 1Y.",
+          "Le gain ou la perte du jour utilise désormais l’historique local du portefeuille : valeur actuelle moins la valeur à minuit selon l’heure locale de l’appareil, y compris les dépôts, retraits et frais. Après la mise à jour, les valeurs de minuit restent indisponibles jusqu’à l’enregistrement d’un historique suffisant."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Unified chart range controls, loading states and hover details; improved tab switching and reuse of cached history."
+        ],
+        "zh-Hans": [
+          "统一图表周期控件、加载状态和悬停详情，改善页签切换响应及历史缓存复用。"
+        ],
+        "zh-Hant": [
+          "統一圖表週期控制項、載入狀態與游標停留詳情，改善頁籤切換回應與歷史快取重用。"
+        ],
+        "ko": [
+          "차트 기간 선택, 로딩 상태 및 마우스 오버 상세 표시를 통일하고 탭 전환 응답성과 과거 데이터 캐시 재사용을 개선했습니다."
+        ],
+        "ru": [
+          "Унифицированы выбор периода, состояния загрузки и сведения при наведении на графики; улучшены переключение вкладок и повторное использование кэша истории."
+        ],
+        "pt-BR": [
+          "Unificados os controles de período, os estados de carregamento e os detalhes ao passar o cursor nos gráficos; melhoradas a troca de abas e a reutilização do histórico em cache."
+        ],
+        "tr": [
+          "Grafik dönem kontrolleri, yükleme durumları ve üzerine gelme ayrıntıları birleştirildi; sekme geçişleri ve önbellekteki geçmişin yeniden kullanımı iyileştirildi."
+        ],
+        "ja": [
+          "チャートの期間選択、読み込み状態、ホバー時の詳細表示を統一し、タブ切り替えの応答性と履歴キャッシュの再利用を改善しました。"
+        ],
+        "de": [
+          "Zeitraumauswahl, Ladezustände und Details beim Bewegen des Zeigers über Charts wurden vereinheitlicht. Tabwechsel und die Wiederverwendung zwischengespeicherter Verlaufsdaten wurden verbessert."
+        ],
+        "fr": [
+          "Harmonisation des sélecteurs de période, des états de chargement et des détails au survol des graphiques ; amélioration du changement d’onglet et de la réutilisation de l’historique en cache."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed Hyperliquid USDC quotes and charts, OKX balance price charts, Gate spot valuation and crypto range changes shown in the quote currency.",
+          "Connection and loading status rows no longer appear in accounts that already contain assets; unified empty account states.",
+          "Fixed widget compatibility with macOS 26."
+        ],
+        "zh-Hans": [
+          "修复 Hyperliquid USDC 报价与图表、OKX 余额价格图表、Gate 现货估值，以及加密资产区间变化的报价币种显示。",
+          "有资产的账户不再混入连接或加载状态行，统一空账户的空态显示。",
+          "修复小组件在 macOS 26 上的兼容性。"
+        ],
+        "zh-Hant": [
+          "修正 Hyperliquid USDC 報價與圖表、OKX 餘額價格圖表、Gate 現貨估值，以及加密資產區間變化的報價幣別顯示。",
+          "已有資產的帳戶不再混入連線或載入狀態列，統一空帳戶的空白狀態顯示。",
+          "修正小工具在 macOS 26 上的相容性。"
+        ],
+        "ko": [
+          "Hyperliquid USDC 시세와 차트, OKX 잔액 가격 차트, Gate 현물 평가 및 암호화폐 구간 변동의 호가 통화 표시를 수정했습니다.",
+          "자산이 있는 계정에 연결 또는 로딩 상태 행이 표시되지 않도록 수정하고 빈 계정의 표시를 통일했습니다.",
+          "macOS 26에서 위젯 호환성을 수정했습니다."
+        ],
+        "ru": [
+          "Исправлены котировки и графики USDC в Hyperliquid, графики цен остатков OKX, оценка спотовых активов Gate и отображение изменения криптоактивов за период в валюте котировки.",
+          "Строки состояния подключения и загрузки больше не появляются в счетах с активами; унифицировано отображение пустых счетов.",
+          "Исправлена совместимость виджетов с macOS 26."
+        ],
+        "pt-BR": [
+          "Corrigidas as cotações e os gráficos de USDC na Hyperliquid, os gráficos de preços de saldos da OKX, a avaliação de ativos spot da Gate e a exibição da variação de criptoativos no período na moeda de cotação.",
+          "Linhas de status de conexão e carregamento não aparecem mais em contas que já têm ativos; unificada a exibição de contas vazias.",
+          "Corrigida a compatibilidade dos widgets com o macOS 26."
+        ],
+        "tr": [
+          "Hyperliquid USDC fiyatları ve grafikleri, OKX bakiye fiyat grafikleri, Gate spot değerlemesi ve kripto dönem değişimlerinin karşıt para biriminde gösterimi düzeltildi.",
+          "Varlık içeren hesaplarda bağlantı ve yükleme durum satırları artık görünmüyor; boş hesap durumları birleştirildi.",
+          "Araç takımlarının macOS 26 uyumluluğu düzeltildi."
+        ],
+        "ja": [
+          "Hyperliquid USDC の価格とチャート、OKX 残高の価格チャート、Gate 現物の評価額、暗号資産の期間変動を決済通貨で表示する処理を修正しました。",
+          "資産がある口座に接続や読み込みの状態行が表示されないようにし、空の口座の表示を統一しました。",
+          "macOS 26 でのウィジェットの互換性を修正しました。"
+        ],
+        "de": [
+          "Hyperliquid-USDC-Kurse und -Charts, Preischarts für OKX-Guthaben, die Bewertung von Gate-Spotbeständen und die Anzeige von Krypto-Zeitraumänderungen in der Kurswährung wurden korrigiert.",
+          "Verbindungs- und Ladezeilen erscheinen nicht mehr in Konten, die bereits Vermögenswerte enthalten. Die Anzeige leerer Konten wurde vereinheitlicht.",
+          "Die Widget-Kompatibilität mit macOS 26 wurde korrigiert."
+        ],
+        "fr": [
+          "Correction des cours et graphiques USDC de Hyperliquid, des graphiques de prix des soldes OKX, de la valorisation spot de Gate et de l’affichage des variations des cryptoactifs sur la période dans la devise de cotation.",
+          "Les lignes d’état de connexion et de chargement n’apparaissent plus dans les comptes contenant déjà des actifs ; harmonisation de l’affichage des comptes vides.",
+          "Correction de la compatibilité des widgets avec macOS 26."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.5.0",
+    "build": "1235",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.5.0-1235.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.5.0-1235/PositionBar-0.5.0-1235.dmg",
+    "sha256": "96844d188dba6ea01f997e9fee7ae5e14790cf1dcd485e612db40eb511139a32",
+    "length": 17500431
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "b7464947e09b76e3e279306719fc691f6e10115df21b5f5e2e6296c8ebaa449e",
+  "appcastLength": 3806,
+  "tapCommit": "291217fa56ea2df24e290a7d3bb70b048bd7629e",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
