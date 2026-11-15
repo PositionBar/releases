@@ -1,0 +1,170 @@
+{
+  "status": "published",
+  "version": "0.5.1",
+  "build": 1252,
+  "source_sha": "dffeb14ac958bb630dac0964d300f4a48e7da197",
+  "metadataSHA256": "3de7c34ba61f375ab0dba1bfd8a8f84038270c3ca1944cf51fe96be7a1c1c9e6",
+  "publishedOn": "2026-11-15",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Added an optional small-asset filter based on absolute value in the display currency, without changing portfolio totals.",
+          "Expanded asset synchronization, including OKX DCA, Longbridge funds and strategies, Gate stocks, Kraken margin positions, Coinbase subaccounts and Polymarket Combo.",
+          "Unified asset details and improved historical valuation for holdings with reliable source quantities and values. Local history is upgraded; earlier versions cannot read the upgraded history.",
+          "Valid MCP tokens now cover all current and future tools without additional per-tool authorization."
+        ],
+        "zh-Hans": [
+          "支持按展示货币下的绝对价值过滤小额资产，默认关闭，不影响组合合计。",
+          "补齐资产同步范围，包括 OKX 定投策略、长桥基金与策略、Gate 股票、Kraken 保证金仓位、Coinbase 子账户和 Polymarket Combo。",
+          "统一资产详情，改善具备可靠来源数量与价值的资产历史估值。本机历史数据会升级，旧版本无法读取升级后的历史。",
+          "有效 MCP token 统一覆盖当前及未来全部工具，无需按工具追加授权。"
+        ],
+        "zh-Hant": [
+          "支援依顯示幣別下的絕對價值篩選小額資產，預設關閉，不影響投資組合合計。",
+          "補齊資產同步範圍，包括 OKX 定投策略、長橋基金與策略、Gate 股票、Kraken 保證金部位、Coinbase 子帳戶和 Polymarket Combo。",
+          "統一資產詳情，改善具備可靠來源數量與價值的資產歷史估值。本機歷史資料會升級，舊版本無法讀取升級後的歷史。",
+          "有效 MCP token 統一涵蓋目前及未來所有工具，無須依工具追加授權。"
+        ],
+        "ko": [
+          "표시 통화 기준 절대 가치로 소액 자산을 숨기는 선택적 필터를 추가했습니다. 기본적으로 꺼져 있으며 포트폴리오 합계에는 영향을 주지 않습니다.",
+          "OKX DCA, Longbridge 펀드와 전략, Gate 주식, Kraken 마진 포지션, Coinbase 하위 계정 및 Polymarket Combo를 포함해 자산 동기화 범위를 확대했습니다.",
+          "자산 상세 표시를 통일하고 신뢰할 수 있는 원본 수량과 가치가 있는 자산의 과거 평가를 개선했습니다. 로컬 내역이 업그레이드되며 이전 버전에서는 업그레이드된 내역을 읽을 수 없습니다.",
+          "유효한 MCP 토큰은 이제 도구별 추가 승인 없이 현재 및 향후 모든 도구에 적용됩니다."
+        ],
+        "ru": [
+          "Добавлен необязательный фильтр мелких активов по абсолютной стоимости в валюте отображения. По умолчанию он выключен и не влияет на итоги портфеля.",
+          "Расширена синхронизация активов, включая OKX DCA, фонды и стратегии Longbridge, акции Gate, маржинальные позиции Kraken, субсчета Coinbase и Polymarket Combo.",
+          "Унифицированы сведения об активах и улучшена историческая оценка позиций с достоверными исходными количеством и стоимостью. Локальная история обновляется; прежние версии не смогут прочитать обновлённую историю.",
+          "Действительные токены MCP теперь охватывают все текущие и будущие инструменты без дополнительных разрешений для каждого инструмента."
+        ],
+        "pt-BR": [
+          "Adicionado um filtro opcional para pequenos ativos com base no valor absoluto na moeda de exibição. Ele vem desativado e não altera os totais da carteira.",
+          "Ampliada a sincronização de ativos, incluindo DCA da OKX, fundos e estratégias da Longbridge, ações da Gate, posições de margem da Kraken, subcontas da Coinbase e Polymarket Combo.",
+          "Unificados os detalhes dos ativos e melhorada a avaliação histórica de posições com quantidades e valores confiáveis da fonte. O histórico local é atualizado; versões anteriores não podem ler o histórico atualizado.",
+          "Tokens MCP válidos agora abrangem todas as ferramentas atuais e futuras, sem autorização adicional por ferramenta."
+        ],
+        "tr": [
+          "Görüntüleme para birimindeki mutlak değere göre küçük varlıkları filtreleme seçeneği eklendi. Varsayılan olarak kapalıdır ve portföy toplamlarını değiştirmez.",
+          "OKX DCA, Longbridge fonları ve stratejileri, Gate hisseleri, Kraken marjin pozisyonları, Coinbase alt hesapları ve Polymarket Combo dahil varlık eşitleme kapsamı genişletildi.",
+          "Varlık ayrıntıları birleştirildi ve kaynaktan güvenilir miktar ve değer alınabilen pozisyonların geçmiş değerlemesi iyileştirildi. Yerel geçmiş yükseltilir; önceki sürümler yükseltilen geçmişi okuyamaz.",
+          "Geçerli MCP token’ları artık araç başına ek yetkilendirme olmadan mevcut ve gelecekteki tüm araçları kapsıyor."
+        ],
+        "ja": [
+          "表示通貨での絶対評価額に基づいて少額資産を非表示にする任意のフィルターを追加しました。初期状態ではオフで、ポートフォリオの合計には影響しません。",
+          "OKX DCA、Longbridge のファンドと戦略、Gate 株式、Kraken の証拠金ポジション、Coinbase サブアカウント、Polymarket Combo など、資産の同期範囲を拡充しました。",
+          "資産の詳細表示を統一し、信頼できる数量と評価額を取得できる資産の過去の評価を改善しました。端末内の履歴は更新され、以前のバージョンでは更新後の履歴を読み取れません。",
+          "有効な MCP トークンが、ツールごとの追加承認なしで現在および今後のすべてのツールを利用できるようになりました。"
+        ],
+        "de": [
+          "Ein optionaler Filter für kleine Vermögenswerte anhand ihres absoluten Werts in der Anzeigewährung wurde hinzugefügt. Er ist standardmäßig deaktiviert und ändert keine Portfoliosummen.",
+          "Die Synchronisierung wurde erweitert, unter anderem für OKX DCA, Longbridge-Fonds und -Strategien, Gate-Aktien, Kraken-Marginpositionen, Coinbase-Unterkonten und Polymarket Combo.",
+          "Vermögenswertdetails wurden vereinheitlicht und historische Bewertungen für Positionen mit verlässlichen Quellmengen und -werten verbessert. Der lokale Verlauf wird aktualisiert; ältere Versionen können den aktualisierten Verlauf nicht lesen.",
+          "Gültige MCP-Tokens umfassen jetzt alle aktuellen und zukünftigen Werkzeuge ohne zusätzliche Freigabe je Werkzeug."
+        ],
+        "fr": [
+          "Ajout d’un filtre facultatif des petits actifs selon leur valeur absolue dans la devise d’affichage. Désactivé par défaut, il ne modifie pas les totaux du portefeuille.",
+          "Extension de la synchronisation des actifs, notamment OKX DCA, fonds et stratégies Longbridge, actions Gate, positions sur marge Kraken, sous-comptes Coinbase et Polymarket Combo.",
+          "Harmonisation des détails des actifs et amélioration de la valorisation historique des positions disposant de quantités et de valeurs sources fiables. L’historique local est mis à niveau ; les versions antérieures ne peuvent pas lire cet historique mis à niveau.",
+          "Les jetons MCP valides couvrent désormais tous les outils actuels et futurs, sans autorisation supplémentaire par outil."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed charts, currency labels and cached history when switching display currencies; aligned supported display currencies and price formatting.",
+          "Corrected Longbridge cash balances and daily P&L fallback to the earliest usable intraday baseline when midnight history is unavailable. Daily P&L continues to include balance and capital flows.",
+          "Clarified Hyperliquid setup guidance and errors when no mainnet trading account is found."
+        ],
+        "zh-Hans": [
+          "修复切换展示货币后的图表、币种标签和历史缓存，统一支持的展示币种及价格格式。",
+          "修正长桥现金余额；缺少零点历史时，日盈亏使用当天最早适用基准及其实际时间，仍包含余额及本金流变化。",
+          "明确 Hyperliquid 接入指引及未找到主网交易账户时的错误提示。"
+        ],
+        "zh-Hant": [
+          "修正切換顯示幣別後的圖表、幣別標籤和歷史快取，統一支援的顯示幣別及價格格式。",
+          "修正長橋現金餘額；缺少午夜歷史時，當日損益使用當天最早適用基準及其實際時間，仍包含餘額及本金流變化。",
+          "明確說明 Hyperliquid 接入指引及找不到主網交易帳戶時的錯誤提示。"
+        ],
+        "ko": [
+          "표시 통화 전환 시 차트, 통화 표시 및 캐시된 내역을 수정하고 지원 표시 통화와 가격 형식을 통일했습니다.",
+          "Longbridge 현금 잔액을 수정했습니다. 자정 내역이 없으면 일일 손익은 당일 사용 가능한 가장 이른 기준과 실제 시각을 사용하며, 잔액과 원금 흐름 변동을 계속 포함합니다.",
+          "Hyperliquid 연결 안내와 메인넷 거래 계정을 찾을 수 없을 때의 오류 메시지를 명확히 했습니다."
+        ],
+        "ru": [
+          "Исправлены графики, обозначения валют и кэш истории при смене валюты отображения; согласованы поддерживаемые валюты отображения и формат цен.",
+          "Исправлены денежные остатки Longbridge. При отсутствии истории на полночь дневная прибыль или убыток использует самую раннюю подходящую базу текущего дня и её фактическое время, по-прежнему включая изменения остатков и движение капитала.",
+          "Уточнены инструкции подключения Hyperliquid и ошибки при отсутствии торгового счёта в основной сети."
+        ],
+        "pt-BR": [
+          "Corrigidos gráficos, rótulos de moeda e histórico em cache ao trocar a moeda de exibição; alinhadas as moedas de exibição compatíveis e a formatação de preços.",
+          "Corrigidos os saldos em dinheiro da Longbridge. Sem histórico da meia-noite, o lucro ou prejuízo diário usa a primeira base válida do dia e seu horário real, continuando a incluir variações de saldo e fluxos de capital.",
+          "Esclarecidas as instruções de conexão da Hyperliquid e os erros quando nenhuma conta de negociação é encontrada na rede principal."
+        ],
+        "tr": [
+          "Görüntüleme para birimi değiştirildiğinde grafikler, para birimi etiketleri ve önbellekteki geçmiş düzeltildi; desteklenen görüntüleme para birimleri ve fiyat biçimi tutarlı hale getirildi.",
+          "Longbridge nakit bakiyeleri düzeltildi. Gece yarısı geçmişi yoksa günlük kâr/zarar, gün içindeki en erken uygun başlangıcı ve gerçek zamanını kullanır; bakiye değişimlerini ve sermaye akışlarını içermeye devam eder.",
+          "Hyperliquid bağlantı yönergeleri ve ana ağda işlem hesabı bulunamadığında gösterilen hatalar netleştirildi."
+        ],
+        "ja": [
+          "表示通貨の切り替え時にチャート、通貨ラベル、履歴キャッシュが正しく表示されない問題を修正し、対応する表示通貨と価格形式を統一しました。",
+          "Longbridge の現金残高を修正しました。午前 0 時の履歴がない場合、当日損益は当日の最も早い適用可能な基準と実際の時刻を使用し、引き続き残高や資金移動の変化を含みます。",
+          "Hyperliquid の接続手順と、メインネットの取引アカウントが見つからない場合のエラーを明確にしました。"
+        ],
+        "de": [
+          "Charts, Währungsbeschriftungen und zwischengespeicherte Verläufe beim Wechsel der Anzeigewährung wurden korrigiert. Unterstützte Anzeigewährungen und Preisformatierung wurden vereinheitlicht.",
+          "Longbridge-Barbestände wurden korrigiert. Fehlt der Mitternachtsverlauf, verwendet der Tagesgewinn oder -verlust die früheste geeignete Tagesbasis samt tatsächlichem Zeitpunkt und berücksichtigt weiterhin Bestandsänderungen und Kapitalflüsse.",
+          "Die Hyperliquid-Einrichtungshinweise und Fehlermeldungen bei fehlendem Mainnet-Handelskonto wurden präzisiert."
+        ],
+        "fr": [
+          "Correction des graphiques, des libellés de devise et de l’historique en cache lors d’un changement de devise d’affichage ; harmonisation des devises prises en charge et du format des prix.",
+          "Correction des soldes en espèces Longbridge. Sans historique à minuit, le gain ou la perte du jour utilise la première référence valable du jour et son heure réelle, en incluant toujours les variations de solde et les flux de capital.",
+          "Clarification des instructions de connexion Hyperliquid et des erreurs lorsqu’aucun compte de trading n’est trouvé sur le réseau principal."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.5.1",
+    "build": "1252",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.5.1-1252.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.5.1-1252/PositionBar-0.5.1-1252.dmg",
+    "sha256": "3daa93b59ad05ded21dbc5a4bc46d90a678480f4263729f94d2c8fabe922ed33",
+    "length": 17964303
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "e56764911c61f87bd1a306d32180a27734f5d27a5ff9f15730b3ef7332cad13a",
+  "appcastLength": 3807,
+  "tapCommit": "dbaa1b3bd05839a03e0fbf9a552b2a0c3a6c0cbb",
+  "releaseTarget": "4c303d8540be844afe11df3e6a4e109652ea438f"
+}
