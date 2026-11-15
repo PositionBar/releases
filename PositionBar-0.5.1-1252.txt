@@ -1,0 +1,12 @@
+PositionBar 0.5.1
+
+Improved
+- Added an optional small-asset filter based on absolute value in the display currency, without changing portfolio totals.
+- Expanded asset synchronization, including OKX DCA, Longbridge funds and strategies, Gate stocks, Kraken margin positions, Coinbase subaccounts and Polymarket Combo.
+- Unified asset details and improved historical valuation for holdings with reliable source quantities and values. Local history is upgraded; earlier versions cannot read the upgraded history.
+- Valid MCP tokens now cover all current and future tools without additional per-tool authorization.
+
+Fixed
+- Fixed charts, currency labels and cached history when switching display currencies; aligned supported display currencies and price formatting.
+- Corrected Longbridge cash balances and daily P&L fallback to the earliest usable intraday baseline when midnight history is unavailable. Daily P&L continues to include balance and capital flows.
+- Clarified Hyperliquid setup guidance and errors when no mainnet trading account is found.

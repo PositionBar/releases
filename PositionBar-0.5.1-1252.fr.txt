@@ -1,0 +1,12 @@
+PositionBar 0.5.1
+
+Améliorations
+- Ajout d’un filtre facultatif des petits actifs selon leur valeur absolue dans la devise d’affichage. Désactivé par défaut, il ne modifie pas les totaux du portefeuille.
+- Extension de la synchronisation des actifs, notamment OKX DCA, fonds et stratégies Longbridge, actions Gate, positions sur marge Kraken, sous-comptes Coinbase et Polymarket Combo.
+- Harmonisation des détails des actifs et amélioration de la valorisation historique des positions disposant de quantités et de valeurs sources fiables. L’historique local est mis à niveau ; les versions antérieures ne peuvent pas lire cet historique mis à niveau.
+- Les jetons MCP valides couvrent désormais tous les outils actuels et futurs, sans autorisation supplémentaire par outil.
+
+Corrections
+- Correction des graphiques, des libellés de devise et de l’historique en cache lors d’un changement de devise d’affichage ; harmonisation des devises prises en charge et du format des prix.
+- Correction des soldes en espèces Longbridge. Sans historique à minuit, le gain ou la perte du jour utilise la première référence valable du jour et son heure réelle, en incluant toujours les variations de solde et les flux de capital.
+- Clarification des instructions de connexion Hyperliquid et des erreurs lorsqu’aucun compte de trading n’est trouvé sur le réseau principal.

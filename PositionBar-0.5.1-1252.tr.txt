@@ -1,0 +1,12 @@
+PositionBar 0.5.1
+
+İyileştirildi
+- Görüntüleme para birimindeki mutlak değere göre küçük varlıkları filtreleme seçeneği eklendi. Varsayılan olarak kapalıdır ve portföy toplamlarını değiştirmez.
+- OKX DCA, Longbridge fonları ve stratejileri, Gate hisseleri, Kraken marjin pozisyonları, Coinbase alt hesapları ve Polymarket Combo dahil varlık eşitleme kapsamı genişletildi.
+- Varlık ayrıntıları birleştirildi ve kaynaktan güvenilir miktar ve değer alınabilen pozisyonların geçmiş değerlemesi iyileştirildi. Yerel geçmiş yükseltilir; önceki sürümler yükseltilen geçmişi okuyamaz.
+- Geçerli MCP token’ları artık araç başına ek yetkilendirme olmadan mevcut ve gelecekteki tüm araçları kapsıyor.
+
+Düzeltildi
+- Görüntüleme para birimi değiştirildiğinde grafikler, para birimi etiketleri ve önbellekteki geçmiş düzeltildi; desteklenen görüntüleme para birimleri ve fiyat biçimi tutarlı hale getirildi.
+- Longbridge nakit bakiyeleri düzeltildi. Gece yarısı geçmişi yoksa günlük kâr/zarar, gün içindeki en erken uygun başlangıcı ve gerçek zamanını kullanır; bakiye değişimlerini ve sermaye akışlarını içermeye devam eder.
+- Hyperliquid bağlantı yönergeleri ve ana ağda işlem hesabı bulunamadığında gösterilen hatalar netleştirildi.

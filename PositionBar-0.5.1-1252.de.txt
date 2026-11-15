@@ -1,0 +1,12 @@
+PositionBar 0.5.1
+
+Verbessert
+- Ein optionaler Filter für kleine Vermögenswerte anhand ihres absoluten Werts in der Anzeigewährung wurde hinzugefügt. Er ist standardmäßig deaktiviert und ändert keine Portfoliosummen.
+- Die Synchronisierung wurde erweitert, unter anderem für OKX DCA, Longbridge-Fonds und -Strategien, Gate-Aktien, Kraken-Marginpositionen, Coinbase-Unterkonten und Polymarket Combo.
+- Vermögenswertdetails wurden vereinheitlicht und historische Bewertungen für Positionen mit verlässlichen Quellmengen und -werten verbessert. Der lokale Verlauf wird aktualisiert; ältere Versionen können den aktualisierten Verlauf nicht lesen.
+- Gültige MCP-Tokens umfassen jetzt alle aktuellen und zukünftigen Werkzeuge ohne zusätzliche Freigabe je Werkzeug.
+
+Behoben
+- Charts, Währungsbeschriftungen und zwischengespeicherte Verläufe beim Wechsel der Anzeigewährung wurden korrigiert. Unterstützte Anzeigewährungen und Preisformatierung wurden vereinheitlicht.
+- Longbridge-Barbestände wurden korrigiert. Fehlt der Mitternachtsverlauf, verwendet der Tagesgewinn oder -verlust die früheste geeignete Tagesbasis samt tatsächlichem Zeitpunkt und berücksichtigt weiterhin Bestandsänderungen und Kapitalflüsse.
+- Die Hyperliquid-Einrichtungshinweise und Fehlermeldungen bei fehlendem Mainnet-Handelskonto wurden präzisiert.
