@@ -130,11 +130,30 @@ jobs:
           APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
         run: |
-          if ! python3 -B source/scripts/macos_release.py package --state "$RELEASE_STATE" \
-            --source "$SOURCE_SHA" --version "$VERSION" > "$RUNNER_TEMP/package.log" 2>&1; then
-            echo 'Packaging failed; preserve the checkpoint and use a new Build ID if no verified DMG exists.'
-            exit 1
-          fi
+          python3 -B - "$RELEASE_STATE" "$SOURCE_SHA" "$VERSION" 3>&1 > "$RUNNER_TEMP/package.log" 2>&1 <<'PY'
+          import os
+          from pathlib import Path
+          import runpy
+          import sys
+          from traceback import walk_tb
+
+          script = Path("source/scripts/macos_release.py").resolve()
+          sys.path.insert(0, str(script.parent))
+          try:
+              package = runpy.run_path(str(script))["package"]
+              package(Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3])
+          except Exception as error:
+              stages = {"package", "ci_signing", "build_artifact", "verify_app", "notarize",
+                        "create_dmg", "verify_notarized_dmg", "prepare_appcast", "verify_appcast_file"}
+              location = " -> ".join(
+                  f"{frame.f_code.co_name}:{line}" for frame, line in walk_tb(error.__traceback__)
+                  if frame.f_code.co_filename == str(script) and frame.f_code.co_name in stages
+              )
+              # Only known stage names and line numbers reach the public Actions log.
+              with os.fdopen(3, "w") as diagnostic:
+                  print(f"Packaging failed at {location or 'startup'}", file=diagnostic)
+              raise
+          PY
       - name: Publish the DMG, verified Homebrew cask and standalone signed updates
         if: steps.request.outputs.complete == 'false'
         env:
