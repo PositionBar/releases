@@ -1,0 +1,17 @@
+PositionBar 0.6.0
+
+İyileştirildi
+- Sürüm yükseltildiğinde önceki yerel portföy geçmişi silinir. Desteklenen hesaplar kayıtlı ayarlarla ve kimlik bilgileriyle yeniden eşitlenir, yeni geçmiş bu eşitlemeyle birikmeye başlar.
+- Kraken hesapları için destek sona erdi ve mevcut Kraken hesapları portföyden çıkarıldı. Herkese açık USDT/USD ve USDC/USD fiyatları artık Bitstamp’tan alınıyor.
+- Grafikler yenilenirken görünür kalır. Bir hesap genişletildiğinde liste, varlıkları gösterecek şekilde otomatik olarak kaydırılır.
+- Varlık ayrıntıları yenilenirken son geçerli değerler görünür kalır. Altı çizili varlık adını seçerek herkese açık piyasa sayfasını açabilirsiniz.
+- ABD hisseleri, Longbridge ve Tiger’ın seans öncesi, seans sonrası ve gece seansları dahil en güncel doğrulanmış fiyatlarıyla değerlenir.
+
+Yeni
+- İstatistik grafiği artık hesapların geçmiş özkaynak değerlerini üst üste gösteriyor. Belirli bir andaki hesap dökümünü görmek için imleci grafiğin üzerine getirin.
+- Binance Global artık Portfolio Margin, Portfolio Margin Pro ve SPAN’ı destekliyor. Eşitleme, kullanılabildiğinde Funding, marjin, Simple Earn, staking ve Crypto Loan varlıklarını da kapsıyor.
+- Yerel MCP hizmeti entegrasyon ayarlarından açılıp kapatılabiliyor.
+
+Düzeltildi
+- Bir hesabın yerel gece yarısı verisi yoksa günlük kâr ve zarar için o hesabın gün içindeki ilk eksiksiz anlık görüntüsü temel alınır.
+- Sabitlenen panelin ekranlar arasında sıçramasına yol açan sorun giderildi. Hesap kurulumu ve sağlayıcı hatalarındaki eksik çeviriler tamamlandı.

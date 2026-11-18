@@ -1,0 +1,17 @@
+PositionBar 0.6.0
+
+Verbessert
+- Beim Upgrade wird der bisherige lokale Portfolioverlauf gelöscht. Unterstützte Konten werden mit den gespeicherten Einstellungen und Zugangsdaten erneut synchronisiert. Ab dieser Synchronisierung wird ein neuer Verlauf aufgebaut.
+- Die Unterstützung für Kraken-Konten wurde eingestellt. Diese Konten werden im Portfolio nicht mehr berücksichtigt. Öffentliche Kurse für USDT/USD und USDC/USD kommen jetzt von Bitstamp.
+- Diagramme bleiben beim Aktualisieren sichtbar. Beim Aufklappen eines Kontos scrollt die Liste automatisch zu seinen Positionen.
+- Vermögenswertdetails zeigen während der Aktualisierung weiterhin die letzten gültigen Werte. Ein unterstrichener Name öffnet die öffentliche Kursseite des Vermögenswerts.
+- US-Aktien werden anhand des jeweils jüngsten verfügbaren verifizierten Kurses von Longbridge und Tiger bewertet, einschließlich vorbörslichem, nachbörslichem und nächtlichem Handel.
+
+Neu
+- Die Statistik zeigt den Eigenkapitalverlauf als gestapeltes Diagramm nach Konto. Wenn Sie den Zeiger über das Diagramm bewegen, sehen Sie die Aufschlüsselung für den jeweiligen Zeitpunkt.
+- Binance Global unterstützt jetzt Portfolio Margin, Portfolio Margin Pro und SPAN. Die Synchronisierung erfasst nach Verfügbarkeit auch Funding, Margin, Simple Earn, Staking und Crypto Loan.
+- Der lokale MCP-Dienst lässt sich in den Integrationseinstellungen ein- und ausschalten.
+
+Behoben
+- Fehlt für ein Konto ein Vergleichswert zur lokalen Mitternacht, verwendet der Tagesgewinn oder -verlust den ersten vollständigen Stand dieses Kontos am jeweiligen Tag als Basis.
+- Ein Fehler wurde behoben, durch den angeheftete Fenster zwischen Bildschirmen sprangen. Fehlende Übersetzungen für die Kontoeinrichtung und Anbieterfehler wurden ergänzt.

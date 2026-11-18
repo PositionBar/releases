@@ -1,0 +1,17 @@
+PositionBar 0.6.0
+
+Améliorations
+- La mise à niveau efface l’ancien historique local du portefeuille. Les comptes pris en charge se resynchronisent avec les réglages et les identifiants enregistrés, et le nouvel historique commence à cette synchronisation.
+- La prise en charge des comptes Kraken a pris fin. Ces comptes sont exclus du portefeuille, et les cours publics USDT/USD et USDC/USD proviennent désormais de Bitstamp.
+- Les graphiques restent visibles pendant l’actualisation. Quand vous développez un compte, la liste défile automatiquement pour afficher ses positions.
+- Les détails de l’actif conservent les dernières valeurs valides pendant l’actualisation. Sélectionnez un nom d’actif souligné pour ouvrir sa page publique de cotation.
+- La valorisation des actions américaines utilise la dernière cotation vérifiée disponible chez Longbridge et Tiger, y compris en préouverture, après la clôture et pendant la séance de nuit.
+
+Nouveautés
+- Les statistiques affichent désormais l’historique des capitaux propres dans un graphique empilé par compte. Survolez le graphique pour voir le détail des comptes à l’instant choisi.
+- Binance Global prend désormais en charge Portfolio Margin, Portfolio Margin Pro et SPAN. La synchronisation couvre aussi, selon leur disponibilité, Funding, la marge, Simple Earn, le staking et Crypto Loan.
+- Le service MCP local peut être activé ou désactivé dans les réglages d’intégration.
+
+Corrections
+- En l’absence de données à minuit, heure locale, la première capture complète de la journée sert de référence au calcul du résultat quotidien du compte.
+- Correction du déplacement du panneau épinglé entre les écrans et ajout des traductions manquantes pour la configuration des comptes et les erreurs des fournisseurs.

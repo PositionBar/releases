@@ -1,0 +1,17 @@
+PositionBar 0.6.0
+
+Improved
+- Upgrading clears previous local portfolio history. Supported accounts sync again using their saved settings and credentials, and history starts accumulating from that sync.
+- Kraken account support has ended. Kraken accounts are excluded from the portfolio, and public USDT/USD and USDC/USD quotes now come from Bitstamp.
+- Charts stay visible during refresh, and expanding an account scrolls its holdings into view.
+- Asset details keep the last valid values during refresh. Select an underlined asset name to open its public market page when available.
+- U.S. stock valuations use the latest verified quote available from Longbridge and Tiger, including pre-market, after-hours and overnight sessions.
+
+New
+- Statistics now stacks equity history by account. Hover over the chart to see the account breakdown at that time.
+- Binance Global now supports Portfolio Margin, Portfolio Margin Pro and SPAN. Sync also covers Funding, margin, Simple Earn, staking and Crypto Loan where available.
+- Turn the local MCP service on or off in Integrations settings.
+
+Fixed
+- Daily P&L uses each account’s first complete snapshot of the day when it has no midnight baseline.
+- Fixed pinned panels jumping between displays and filled gaps in translations for account setup and provider errors.

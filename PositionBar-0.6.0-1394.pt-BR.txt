@@ -1,0 +1,17 @@
+PositionBar 0.6.0
+
+Melhorado
+- A atualização apaga o histórico local anterior da carteira. As contas compatíveis são sincronizadas novamente com as configurações e credenciais salvas, e um novo histórico começa a ser acumulado a partir dessa sincronização.
+- O suporte a contas da Kraken foi encerrado. Essas contas deixam de integrar a carteira, e as cotações públicas de USDT/USD e USDC/USD agora vêm da Bitstamp.
+- Os gráficos continuam visíveis durante a atualização. Ao expandir uma conta, a lista rola automaticamente para mostrar suas posições.
+- Os detalhes dos ativos mantêm os últimos valores válidos durante a atualização. Se houver uma página pública de cotações, selecione o nome sublinhado do ativo para abri-la.
+- A avaliação de ações dos EUA usa a cotação verificada mais recente disponível na Longbridge e na Tiger, incluindo pré-mercado, pós-mercado e sessão noturna.
+
+Novo
+- O gráfico de estatísticas agora empilha o histórico do patrimônio por conta. Passe o cursor sobre o gráfico para ver os valores de cada conta naquele momento.
+- A Binance Global agora é compatível com Portfolio Margin, Portfolio Margin Pro e SPAN. A sincronização também abrange Funding, margem, Simple Earn, staking e Crypto Loan, quando disponíveis.
+- O serviço MCP local pode ser ativado ou desativado nas configurações de integrações.
+
+Corrigido
+- Quando uma conta não tem dados da meia-noite local, o cálculo de lucros e perdas do dia usa o primeiro registro completo daquela conta no dia como referência.
+- Corrigido o salto do painel fixado entre monitores e completadas as traduções para a configuração de contas e os erros de provedores.
