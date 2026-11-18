@@ -19,7 +19,7 @@ def render_cask(receipt):
         f'  sha256 "{artifact["sha256"]}"', '',
         f'  url "{artifact["url"]}"',
         '  name "PositionBar"',
-        '  desc "Read-only multi-account position monitor"',
+        '  desc "Portfolio tracker for the macOS menu bar"',
         '  homepage "https://positionbar.com/"', '',
         '  auto_updates true',
         '  depends_on macos: :tahoe', '',
