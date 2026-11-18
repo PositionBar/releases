@@ -1,0 +1,225 @@
+{
+  "status": "published",
+  "version": "0.6.0",
+  "build": 1394,
+  "source_sha": "d978d135ef2949326d2f1c69eeeecae00e723f85",
+  "metadataSHA256": "bb3ed5a113bc099a2124c6c2f275f6ba7143b5d5df66b5123df1465f6ed0e6ba",
+  "publishedOn": "2026-11-18",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Upgrading clears previous local portfolio history. Supported accounts sync again using their saved settings and credentials, and history starts accumulating from that sync.",
+          "Kraken account support has ended. Kraken accounts are excluded from the portfolio, and public USDT/USD and USDC/USD quotes now come from Bitstamp.",
+          "Charts stay visible during refresh, and expanding an account scrolls its holdings into view.",
+          "Asset details keep the last valid values during refresh. Select an underlined asset name to open its public market page when available.",
+          "U.S. stock valuations use the latest verified quote available from Longbridge and Tiger, including pre-market, after-hours and overnight sessions."
+        ],
+        "zh-Hans": [
+          "升级会清除旧的本机组合历史。受支持的账户沿用已保存的配置和凭据重新同步，组合历史从此次同步开始重新积累。",
+          "停止支持 Kraken 账户，原有 Kraken 账户不再计入组合。USDT/USD 和 USDC/USD 公开行情改用 Bitstamp。",
+          "图表刷新时保留已有内容，展开账户时自动滚动以显示持仓。",
+          "资产详情刷新时保留最近一次有效数值。有公开行情页的资产可点击带下划线的名称打开。",
+          "长桥和老虎的美股估值采用可用的最新已核验报价，涵盖盘前、盘后和夜盘。"
+        ],
+        "zh-Hant": [
+          "升級會清除舊的本機投資組合歷史。受支援的帳戶沿用已儲存的設定和憑證重新同步，歷史從這次同步開始重新累積。",
+          "停止支援 Kraken 帳戶，原有 Kraken 帳戶不再計入投資組合。USDT/USD 和 USDC/USD 公開行情改由 Bitstamp 提供。",
+          "圖表重新整理時保留現有內容，展開帳戶時自動捲動以顯示持倉。",
+          "資產詳情重新整理時保留最近一次有效數值。若有公開行情頁，可點按帶底線的資產名稱開啟。",
+          "長橋和老虎的美股估值採用可用的最新已核實報價，涵蓋盤前、盤後和夜盤。"
+        ],
+        "ko": [
+          "업그레이드하면 기기에 저장된 기존 포트폴리오 내역이 지워집니다. 지원되는 계정은 저장된 설정과 인증 정보로 다시 동기화되며, 이때부터 새 내역이 쌓입니다.",
+          "Kraken 계정 지원이 종료되어 기존 Kraken 계정은 포트폴리오에서 제외됩니다. USDT/USD 및 USDC/USD 공개 시세는 이제 Bitstamp에서 가져옵니다.",
+          "새로 고치는 중에도 기존 차트가 유지되며, 계정을 펼치면 보유 자산이 보이도록 자동으로 스크롤됩니다.",
+          "자산 상세 화면을 새로 고치는 동안 마지막 유효 값이 유지됩니다. 밑줄이 있는 자산 이름을 선택하면 공개 시세 페이지가 열립니다.",
+          "미국 주식 평가에는 Longbridge와 Tiger에서 확인된 최신 시세를 사용합니다. 장전, 장후 및 야간 거래 시세도 포함됩니다."
+        ],
+        "ru": [
+          "При обновлении прежняя локальная история портфеля удаляется. Поддерживаемые счета синхронизируются заново с сохранёнными настройками и учётными данными, и с этой синхронизации начинается новая история.",
+          "Поддержка счетов Kraken прекращена. Они исключены из портфеля, а публичные котировки USDT/USD и USDC/USD теперь поступают с Bitstamp.",
+          "Графики остаются видимыми при обновлении, а при раскрытии счёта список автоматически прокручивается к его позициям.",
+          "При обновлении сведений об активе сохраняются последние действительные значения. Подчёркнутое название актива открывает страницу его публичных котировок.",
+          "Для оценки американских акций используются последние доступные проверенные котировки Longbridge и Tiger, в том числе до открытия рынка, после закрытия и в ночную сессию."
+        ],
+        "pt-BR": [
+          "A atualização apaga o histórico local anterior da carteira. As contas compatíveis são sincronizadas novamente com as configurações e credenciais salvas, e um novo histórico começa a ser acumulado a partir dessa sincronização.",
+          "O suporte a contas da Kraken foi encerrado. Essas contas deixam de integrar a carteira, e as cotações públicas de USDT/USD e USDC/USD agora vêm da Bitstamp.",
+          "Os gráficos continuam visíveis durante a atualização. Ao expandir uma conta, a lista rola automaticamente para mostrar suas posições.",
+          "Os detalhes dos ativos mantêm os últimos valores válidos durante a atualização. Se houver uma página pública de cotações, selecione o nome sublinhado do ativo para abri-la.",
+          "A avaliação de ações dos EUA usa a cotação verificada mais recente disponível na Longbridge e na Tiger, incluindo pré-mercado, pós-mercado e sessão noturna."
+        ],
+        "tr": [
+          "Sürüm yükseltildiğinde önceki yerel portföy geçmişi silinir. Desteklenen hesaplar kayıtlı ayarlarla ve kimlik bilgileriyle yeniden eşitlenir, yeni geçmiş bu eşitlemeyle birikmeye başlar.",
+          "Kraken hesapları için destek sona erdi ve mevcut Kraken hesapları portföyden çıkarıldı. Herkese açık USDT/USD ve USDC/USD fiyatları artık Bitstamp’tan alınıyor.",
+          "Grafikler yenilenirken görünür kalır. Bir hesap genişletildiğinde liste, varlıkları gösterecek şekilde otomatik olarak kaydırılır.",
+          "Varlık ayrıntıları yenilenirken son geçerli değerler görünür kalır. Altı çizili varlık adını seçerek herkese açık piyasa sayfasını açabilirsiniz.",
+          "ABD hisseleri, Longbridge ve Tiger’ın seans öncesi, seans sonrası ve gece seansları dahil en güncel doğrulanmış fiyatlarıyla değerlenir."
+        ],
+        "ja": [
+          "アップグレードすると、端末内の従来のポートフォリオ履歴が消去されます。対応アカウントは保存済みの設定と認証情報で再同期され、その時点から新しい履歴が蓄積されます。",
+          "Kraken アカウントのサポートを終了しました。既存の Kraken アカウントはポートフォリオの集計対象外となり、USDT/USD と USDC/USD の公開価格は Bitstamp から取得するようになりました。",
+          "更新中も既存のチャートを表示し、アカウントを展開すると保有資産が見える位置まで自動的にスクロールします。",
+          "資産の詳細は更新中も直近の有効な値を表示します。公開相場ページがある場合は、下線付きの資産名を選ぶと開けます。",
+          "米国株の評価には、Longbridge と Tiger で取得できる検証済みの最新価格を使用します。プレマーケット、アフターマーケット、夜間取引の価格にも対応します。"
+        ],
+        "de": [
+          "Beim Upgrade wird der bisherige lokale Portfolioverlauf gelöscht. Unterstützte Konten werden mit den gespeicherten Einstellungen und Zugangsdaten erneut synchronisiert. Ab dieser Synchronisierung wird ein neuer Verlauf aufgebaut.",
+          "Die Unterstützung für Kraken-Konten wurde eingestellt. Diese Konten werden im Portfolio nicht mehr berücksichtigt. Öffentliche Kurse für USDT/USD und USDC/USD kommen jetzt von Bitstamp.",
+          "Diagramme bleiben beim Aktualisieren sichtbar. Beim Aufklappen eines Kontos scrollt die Liste automatisch zu seinen Positionen.",
+          "Vermögenswertdetails zeigen während der Aktualisierung weiterhin die letzten gültigen Werte. Ein unterstrichener Name öffnet die öffentliche Kursseite des Vermögenswerts.",
+          "US-Aktien werden anhand des jeweils jüngsten verfügbaren verifizierten Kurses von Longbridge und Tiger bewertet, einschließlich vorbörslichem, nachbörslichem und nächtlichem Handel."
+        ],
+        "fr": [
+          "La mise à niveau efface l’ancien historique local du portefeuille. Les comptes pris en charge se resynchronisent avec les réglages et les identifiants enregistrés, et le nouvel historique commence à cette synchronisation.",
+          "La prise en charge des comptes Kraken a pris fin. Ces comptes sont exclus du portefeuille, et les cours publics USDT/USD et USDC/USD proviennent désormais de Bitstamp.",
+          "Les graphiques restent visibles pendant l’actualisation. Quand vous développez un compte, la liste défile automatiquement pour afficher ses positions.",
+          "Les détails de l’actif conservent les dernières valeurs valides pendant l’actualisation. Sélectionnez un nom d’actif souligné pour ouvrir sa page publique de cotation.",
+          "La valorisation des actions américaines utilise la dernière cotation vérifiée disponible chez Longbridge et Tiger, y compris en préouverture, après la clôture et pendant la séance de nuit."
+        ]
+      }
+    },
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Statistics now stacks equity history by account. Hover over the chart to see the account breakdown at that time.",
+          "Binance Global now supports Portfolio Margin, Portfolio Margin Pro and SPAN. Sync also covers Funding, margin, Simple Earn, staking and Crypto Loan where available.",
+          "Turn the local MCP service on or off in Integrations settings."
+        ],
+        "zh-Hans": [
+          "统计图按账户堆叠历史权益，悬停可查看对应时点的账户明细。",
+          "币安全球站支持 Portfolio Margin、Portfolio Margin Pro 和 SPAN，并扩大同步范围，覆盖可用的资金、杠杆、Simple Earn、质押和加密货币借贷资产。",
+          "可在集成设置中开启或关闭本机 MCP 服务。"
+        ],
+        "zh-Hant": [
+          "統計圖按帳戶堆疊歷史權益，將指標移到圖表上即可查看該時點的帳戶明細。",
+          "幣安全球站支援 Portfolio Margin、Portfolio Margin Pro 和 SPAN，並擴大同步範圍，涵蓋可用的資金、槓桿、Simple Earn、質押和加密貨幣借貸資產。",
+          "可在整合設定中開啟或關閉本機 MCP 服務。"
+        ],
+        "ko": [
+          "통계 차트에 계정별 순자산 내역을 누적으로 표시합니다. 차트에 포인터를 올리면 해당 시점의 계정별 내역을 볼 수 있습니다.",
+          "Binance Global에서 Portfolio Margin, Portfolio Margin Pro 및 SPAN을 지원합니다. 사용 가능한 펀딩 지갑, 마진, Simple Earn, 스테이킹, Crypto Loan 자산도 동기화됩니다.",
+          "통합 설정에서 로컬 MCP 서비스를 켜거나 끌 수 있습니다."
+        ],
+        "ru": [
+          "В статистике появился накопительный график истории капитала по счетам. Наведите указатель на график, чтобы увидеть разбивку по счетам на выбранный момент.",
+          "Binance Global теперь поддерживает Portfolio Margin, Portfolio Margin Pro и SPAN. Синхронизация также охватывает доступные средства в Funding, маржинальные активы, Simple Earn, стейкинг и Crypto Loan.",
+          "Локальный сервис MCP можно включать и выключать в настройках интеграций."
+        ],
+        "pt-BR": [
+          "O gráfico de estatísticas agora empilha o histórico do patrimônio por conta. Passe o cursor sobre o gráfico para ver os valores de cada conta naquele momento.",
+          "A Binance Global agora é compatível com Portfolio Margin, Portfolio Margin Pro e SPAN. A sincronização também abrange Funding, margem, Simple Earn, staking e Crypto Loan, quando disponíveis.",
+          "O serviço MCP local pode ser ativado ou desativado nas configurações de integrações."
+        ],
+        "tr": [
+          "İstatistik grafiği artık hesapların geçmiş özkaynak değerlerini üst üste gösteriyor. Belirli bir andaki hesap dökümünü görmek için imleci grafiğin üzerine getirin.",
+          "Binance Global artık Portfolio Margin, Portfolio Margin Pro ve SPAN’ı destekliyor. Eşitleme, kullanılabildiğinde Funding, marjin, Simple Earn, staking ve Crypto Loan varlıklarını da kapsıyor.",
+          "Yerel MCP hizmeti entegrasyon ayarlarından açılıp kapatılabiliyor."
+        ],
+        "ja": [
+          "統計グラフでアカウントごとの純資産の推移を積み上げ表示します。グラフにポインタを重ねると、その時点のアカウント別の内訳を確認できます。",
+          "Binance Global の Portfolio Margin、Portfolio Margin Pro、SPAN に対応しました。利用可能な場合は資金ウォレット、証拠金取引、Simple Earn、ステーキング、Crypto Loan の資産も同期します。",
+          "連携設定からローカル MCP サービスのオンとオフを切り替えられます。"
+        ],
+        "de": [
+          "Die Statistik zeigt den Eigenkapitalverlauf als gestapeltes Diagramm nach Konto. Wenn Sie den Zeiger über das Diagramm bewegen, sehen Sie die Aufschlüsselung für den jeweiligen Zeitpunkt.",
+          "Binance Global unterstützt jetzt Portfolio Margin, Portfolio Margin Pro und SPAN. Die Synchronisierung erfasst nach Verfügbarkeit auch Funding, Margin, Simple Earn, Staking und Crypto Loan.",
+          "Der lokale MCP-Dienst lässt sich in den Integrationseinstellungen ein- und ausschalten."
+        ],
+        "fr": [
+          "Les statistiques affichent désormais l’historique des capitaux propres dans un graphique empilé par compte. Survolez le graphique pour voir le détail des comptes à l’instant choisi.",
+          "Binance Global prend désormais en charge Portfolio Margin, Portfolio Margin Pro et SPAN. La synchronisation couvre aussi, selon leur disponibilité, Funding, la marge, Simple Earn, le staking et Crypto Loan.",
+          "Le service MCP local peut être activé ou désactivé dans les réglages d’intégration."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Daily P&L uses each account’s first complete snapshot of the day when it has no midnight baseline.",
+          "Fixed pinned panels jumping between displays and filled gaps in translations for account setup and provider errors."
+        ],
+        "zh-Hans": [
+          "修复当日盈亏基准。账户没有本地零点数据时，使用该账户当天首条完整快照作为基准。",
+          "修复固定面板在多屏间跳动的问题，补齐账户接入及平台错误的缺失翻译。"
+        ],
+        "zh-Hant": [
+          "修正當日損益基準。帳戶沒有本機午夜資料時，以該帳戶當天第一筆完整快照為基準。",
+          "修正釘選面板在多個顯示器間跳動的問題，補齊帳戶設定及平台錯誤的缺漏翻譯。"
+        ],
+        "ko": [
+          "계정에 현지 자정 기준값이 없으면 해당 계정의 당일 첫 번째 완전한 스냅샷을 일일 손익 기준으로 사용합니다.",
+          "고정한 패널이 디스플레이 사이에서 이동하는 문제를 수정하고 계정 설정 및 서비스 제공자 오류의 누락된 번역을 채웠습니다."
+        ],
+        "ru": [
+          "Если у счёта нет данных на местную полночь, дневная прибыль или убыток рассчитывается от первого полного снимка этого счёта за день.",
+          "Исправлены скачки закреплённой панели между экранами и добавлены недостающие переводы для настройки счетов и ошибок платформ."
+        ],
+        "pt-BR": [
+          "Quando uma conta não tem dados da meia-noite local, o cálculo de lucros e perdas do dia usa o primeiro registro completo daquela conta no dia como referência.",
+          "Corrigido o salto do painel fixado entre monitores e completadas as traduções para a configuração de contas e os erros de provedores."
+        ],
+        "tr": [
+          "Bir hesabın yerel gece yarısı verisi yoksa günlük kâr ve zarar için o hesabın gün içindeki ilk eksiksiz anlık görüntüsü temel alınır.",
+          "Sabitlenen panelin ekranlar arasında sıçramasına yol açan sorun giderildi. Hesap kurulumu ve sağlayıcı hatalarındaki eksik çeviriler tamamlandı."
+        ],
+        "ja": [
+          "アカウントに端末の現地時刻で午前 0 時の基準データがない場合、そのアカウントの当日最初の完全なスナップショットを当日損益の基準にします。",
+          "固定したパネルが別のディスプレイへ移動する問題を修正し、アカウント設定とサービスのエラーメッセージで不足していた翻訳を追加しました。"
+        ],
+        "de": [
+          "Fehlt für ein Konto ein Vergleichswert zur lokalen Mitternacht, verwendet der Tagesgewinn oder -verlust den ersten vollständigen Stand dieses Kontos am jeweiligen Tag als Basis.",
+          "Ein Fehler wurde behoben, durch den angeheftete Fenster zwischen Bildschirmen sprangen. Fehlende Übersetzungen für die Kontoeinrichtung und Anbieterfehler wurden ergänzt."
+        ],
+        "fr": [
+          "En l’absence de données à minuit, heure locale, la première capture complète de la journée sert de référence au calcul du résultat quotidien du compte.",
+          "Correction du déplacement du panneau épinglé entre les écrans et ajout des traductions manquantes pour la configuration des comptes et les erreurs des fournisseurs."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.6.0",
+    "build": "1394",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.6.0-1394.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.6.0-1394/PositionBar-0.6.0-1394.dmg",
+    "sha256": "b7614c9afbb05d40d3d072e5f92f6d3042d360ee33dcc5c62a2b383c4b430d23",
+    "length": 18295076
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "ce05d06a1b45722e638a68382d247861849cae7be9a5fff18bce1fa452b3947f",
+  "appcastLength": 3809,
+  "tapCommit": "2de09a108caf949e4cba9beb0f8cc50f630140e7",
+  "releaseTarget": "521396109c0e8e4e0b105f5b7943c6f1bf873555"
+}
