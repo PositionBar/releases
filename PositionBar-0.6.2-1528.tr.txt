@@ -1,0 +1,9 @@
+PositionBar 0.6.2
+
+İyileştirildi
+- İşlem işaretinin üzerine geldiğinizde alış ve satışlar için gerçekleşen miktarı ve miktara göre ağırlıklı ortalama işlem fiyatını ayrı ayrı görebilirsiniz.
+- Fiyat grafikleri son kotasyonu yakın geçmişteki fiyatlara bağlar. Yenileme sırasında mevcut grafik görünür kalır.
+- Portföy, hesaplar ve pozisyonlar için günlük getiri oranı aynı formülle hesaplanır: günlük kâr veya zarar ÷ (güncel özkaynak − günlük kâr veya zarar).
+
+Düzeltildi
+- Gate bakiye grafikleri spot işlem fiyatlarını kullanır. HyperCore spot pozisyonlarının günlük kâr veya zararı hesaplanırken varlıklar token indeksine göre eşleştirilir.

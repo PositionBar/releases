@@ -1,0 +1,9 @@
+PositionBar 0.6.2
+
+Improved
+- Hover over a trade marker to see the quantity and volume-weighted average execution price for buys and sells separately.
+- Price charts now connect the latest quote to recent price history and keep the previous chart visible during refresh.
+- The portfolio, accounts and positions now use the same daily return formula: daily P&L ÷ (current equity − daily P&L).
+
+Fixed
+- Gate balance charts now use traded spot prices. HyperCore spot holdings are matched by token index when calculating daily profit or loss.

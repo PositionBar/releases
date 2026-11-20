@@ -1,0 +1,9 @@
+PositionBar 0.6.2
+
+Verbessert
+- Bewege den Zeiger über eine Handelsmarkierung, um Menge und volumengewichteten Ausführungspreis für Käufe und Verkäufe getrennt zu sehen.
+- Kursdiagramme verbinden den neuesten Kurs mit dem jüngsten Kursverlauf. Beim Aktualisieren bleibt die bisherige Kurve sichtbar.
+- Die Tagesrendite von Portfolio, Konten und Positionen folgt derselben Formel: Tagesergebnis ÷ (aktuelles Eigenkapital − Tagesergebnis).
+
+Behoben
+- Diagramme für Gate-Guthaben verwenden die Preise ausgeführter Spotgeschäfte. Für das Tagesergebnis werden HyperCore-Spotbestände anhand ihres Token-Index zugeordnet.

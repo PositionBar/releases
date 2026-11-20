@@ -1,0 +1,9 @@
+PositionBar 0.6.2
+
+Améliorations
+- Survolez un repère de transaction pour voir la quantité et le prix moyen d’exécution pondéré par les quantités, séparément pour les achats et les ventes.
+- Les graphiques relient la dernière cotation aux cours récents. La courbe reste visible pendant l’actualisation.
+- Le rendement quotidien du portefeuille, des comptes et des positions suit la même formule : résultat du jour ÷ (capitaux propres actuels − résultat du jour).
+
+Corrections
+- Les graphiques de solde Gate utilisent les prix des transactions au comptant. Le calcul du résultat quotidien des positions au comptant HyperCore utilise l’indice du jeton pour les identifier.

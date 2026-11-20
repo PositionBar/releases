@@ -1,0 +1,9 @@
+PositionBar 0.6.2
+
+Melhorado
+- Passe o cursor sobre um marcador de negociações para ver a quantidade e o preço médio ponderado por quantidade, separados por compra e venda.
+- Os gráficos ligam a cotação mais recente ao histórico de preços e mantêm a curva visível durante a atualização.
+- A carteira, as contas e as posições usam a mesma fórmula de rentabilidade diária: resultado do dia ÷ (patrimônio atual − resultado do dia).
+
+Corrigido
+- Os gráficos de saldo da Gate usam preços de negociações à vista. O cálculo do resultado diário das posições à vista da HyperCore identifica cada token pelo índice.
