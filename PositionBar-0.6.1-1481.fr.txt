@@ -1,0 +1,19 @@
+PositionBar 0.6.1
+
+Nouveautés
+- Les graphiques de cours des actifs pris en charge peuvent afficher les achats et ventes exécutés.
+- La synchronisation iCloud est activée par défaut. Les comptes, les identifiants et les préférences d’affichage partagées se synchronisent entre appareils Apple via le trousseau iCloud chiffré de bout en bout. Vous pouvez la désactiver dans les réglages généraux.
+- Utilisez Synchroniser maintenant dans le menu d’un compte pour l’actualiser seul. Vous pouvez ajouter plusieurs connexions à un même compte de plateforme et les gérer séparément.
+
+Améliorations
+- Le défilement et le passage entre Positions et Statistiques sont plus fluides. L’historique des capitaux propres reste visible pendant l’actualisation.
+- Les zéros initiaux des très petits nombres sont abrégés en indice. Les quantités de la liste du portefeuille s’affichent avec jusqu’à quatre chiffres significatifs.
+- La devise d’affichage est désormais limitée aux devises fiduciaires prises en charge. Si USDT était sélectionné, USD le remplace.
+- Les mises à jour sont recherchées automatiquement chaque jour par défaut. Les préférences enregistrées sont respectées.
+- Les warrants et CBBC de Hong Kong chez Longbridge sont valorisés avec leurs propres cours en HKD. Les détails des options Tiger et la valorisation des contrats à terme américains Coinbase pris en charge ont été améliorés.
+
+Corrections
+- Correction des références du P&L du jour des positions individuelles, du P&L des contrats OKX détenus et de la valorisation et du rendement des options Binance.
+- Les soldes des portefeuilles USDT d’un même compte Binance sont regroupés sur une ligne.
+- Correction d’un problème qui pouvait empêcher l’ouverture des détails d’un actif au clic sur une position sous macOS.
+- Correction d’un problème qui empêchait de quitter PositionBar lorsque la déclaration de confidentialité était ouverte.

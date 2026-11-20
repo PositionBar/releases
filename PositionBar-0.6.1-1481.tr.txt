@@ -1,0 +1,19 @@
+PositionBar 0.6.1
+
+Yeni
+- Desteklenen varlıkların fiyat grafiklerinde gerçekleşen alış ve satış işlemleri gösterilebilir.
+- iCloud Eşzamanlama saptanmış olarak açıktır. Hesaplar, kimlik bilgileri ve ortak görüntüleme tercihleri, uçtan uca şifreli iCloud Anahtar Zinciri ile Apple aygıtları arasında eşzamanlanır. Genel ayarlardan kapatabilirsiniz.
+- Bir hesabın menüsünden Şimdi eşzamanla seçeneğiyle yalnızca o hesabı yenileyebilirsiniz. Aynı platform hesabını ayrı ayrı yönetilen bağlantılar olarak ekleyebilirsiniz.
+
+İyileştirildi
+- Kaydırma ve Pozisyonlar ile İstatistikler arasında geçiş daha akıcı. Veriler yenilenirken özkaynak geçmişi görünür kalır.
+- Çok küçük sayılarda baştaki sıfırlar alt simgeyle kısaltılır. Portföy listesindeki miktarlar en fazla dört anlamlı basamakla gösterilir.
+- Görüntüleme para birimi artık desteklenen itibari para birimleriyle sınırlıdır. Önceden USDT seçilmişse USD’ye geçilir.
+- Güncellemeler varsayılan olarak her gün otomatik denetlenir ve kayıtlı güncelleme tercihleri uygulanır.
+- Longbridge Hong Kong varantları ve CBBC’ler kendi HKD fiyatlarıyla değerlenir. Tiger opsiyon ayrıntıları ve desteklenen Coinbase ABD vadeli işlemlerinin değerlemesi iyileştirildi.
+
+Düzeltildi
+- Tekil pozisyonların günlük kâr ve zarar bazları, OKX sözleşmelerinin pozisyon kârı ve zararı, Binance opsiyonlarının değerlemesi ve getirisi düzeltildi.
+- Aynı Binance hesabındaki USDT cüzdan bakiyeleri tek satırda birleştirildi.
+- macOS’te bir pozisyona tıklandığında varlık ayrıntılarının bazen açılmamasına neden olan sorun düzeltildi.
+- Gizlilik bildirimi açıkken PositionBar’dan çıkılamamasına neden olan sorun düzeltildi.

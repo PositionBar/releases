@@ -1,0 +1,19 @@
+PositionBar 0.6.1
+
+New
+- Price charts for supported assets can now mark buy and sell executions.
+- iCloud Sync is on by default. It uses end-to-end encrypted iCloud Keychain to sync accounts, credentials, and shared display preferences across your Apple devices. You can turn it off in General settings.
+- Refresh an individual account with Sync Now in its menu. You can add the same platform account as separate, independently managed connections.
+
+Improved
+- Scrolling and switching between Positions and Statistics are smoother. Equity history stays visible while data refreshes.
+- Very small numbers use subscript zeros. Quantities in the portfolio list use up to four significant digits.
+- The display currency is now limited to supported fiat currencies. An existing USDT display preference switches to USD.
+- Automatic update checks run daily by default and respect your saved update preferences.
+- Longbridge Hong Kong warrants and CBBCs use their own HKD prices. Improved Tiger option details and valuation of supported Coinbase US futures.
+
+Fixed
+- Fixed daily P&L baselines for individual holdings, holding P&L for OKX contracts, and valuation and returns for Binance options.
+- Combined USDT wallet balances into one row per Binance account.
+- Fixed an issue that could prevent asset details from opening when clicking a holding on macOS.
+- Fixed quitting PositionBar while the privacy statement is open.
