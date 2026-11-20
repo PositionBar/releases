@@ -1,0 +1,145 @@
+{
+  "status": "published",
+  "version": "0.6.2",
+  "build": 1528,
+  "source_sha": "d9974f2ee3ff91b86de3b2af3e21d68ae54698dc",
+  "metadataSHA256": "988538a1d37ac71ebc4e10b2fcab3dd3e1fb12c2d07f5a3d4919bb69d9a23c1e",
+  "publishedOn": "2026-11-20",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Hover over a trade marker to see the quantity and volume-weighted average execution price for buys and sells separately.",
+          "Price charts now connect the latest quote to recent price history and keep the previous chart visible during refresh.",
+          "The portfolio, accounts and positions now use the same daily return formula: daily P&L ÷ (current equity − daily P&L)."
+        ],
+        "zh-Hans": [
+          "将指针移到成交标记上，可分别查看买入和卖出的成交数量及加权平均成交价。",
+          "价格图会将最新报价与近期走势连起来，刷新时保留已有曲线。",
+          "总览、账户和持仓统一按「当日盈亏额 ÷（当前权益 − 当日盈亏额）」计算日收益率。"
+        ],
+        "zh-Hant": [
+          "將指標移到成交標記上，可分別查看買入和賣出的成交數量及加權平均成交價。",
+          "價格圖會將最新報價與近期走勢連起來，重新整理時保留既有曲線。",
+          "總覽、帳戶和持倉統一按「當日損益額 ÷（目前權益 − 當日損益額）」計算日報酬率。"
+        ],
+        "ko": [
+          "체결 표시 위에 포인터를 올리면 매수와 매도 각각의 체결 수량과 수량 가중 평균 체결가를 확인할 수 있습니다.",
+          "가격 차트가 최근 가격 흐름과 최신 시세를 연결하며, 새로 고치는 동안에도 기존 차트가 표시됩니다.",
+          "포트폴리오, 계좌, 포지션의 일간 수익률을 모두 당일 손익 ÷ (현재 자산가치 − 당일 손익)으로 계산합니다."
+        ],
+        "ru": [
+          "Наведите указатель на отметку сделок, чтобы увидеть объём и средневзвешенную цену исполнения отдельно для покупок и продаж.",
+          "График соединяет последнюю котировку с недавней историей цен. При обновлении прежний график остаётся видимым.",
+          "Дневная доходность портфеля, счетов и позиций рассчитывается по единой формуле: результат за день ÷ (текущий капитал − результат за день)."
+        ],
+        "pt-BR": [
+          "Passe o cursor sobre um marcador de negociações para ver a quantidade e o preço médio ponderado por quantidade, separados por compra e venda.",
+          "Os gráficos ligam a cotação mais recente ao histórico de preços e mantêm a curva visível durante a atualização.",
+          "A carteira, as contas e as posições usam a mesma fórmula de rentabilidade diária: resultado do dia ÷ (patrimônio atual − resultado do dia)."
+        ],
+        "tr": [
+          "İşlem işaretinin üzerine geldiğinizde alış ve satışlar için gerçekleşen miktarı ve miktara göre ağırlıklı ortalama işlem fiyatını ayrı ayrı görebilirsiniz.",
+          "Fiyat grafikleri son kotasyonu yakın geçmişteki fiyatlara bağlar. Yenileme sırasında mevcut grafik görünür kalır.",
+          "Portföy, hesaplar ve pozisyonlar için günlük getiri oranı aynı formülle hesaplanır: günlük kâr veya zarar ÷ (güncel özkaynak − günlük kâr veya zarar)."
+        ],
+        "ja": [
+          "約定マーカーにポインタを合わせると、買いと売りそれぞれの約定数量と数量加重平均約定価格を確認できます。",
+          "価格チャートでは直近の値動きと最新の気配値が線でつながり、更新中もそれまでのチャートが表示されます。",
+          "ポートフォリオ、口座、ポジションの日次収益率を「当日損益 ÷（現在の純資産 − 当日損益）」で統一しました。"
+        ],
+        "de": [
+          "Bewege den Zeiger über eine Handelsmarkierung, um Menge und volumengewichteten Ausführungspreis für Käufe und Verkäufe getrennt zu sehen.",
+          "Kursdiagramme verbinden den neuesten Kurs mit dem jüngsten Kursverlauf. Beim Aktualisieren bleibt die bisherige Kurve sichtbar.",
+          "Die Tagesrendite von Portfolio, Konten und Positionen folgt derselben Formel: Tagesergebnis ÷ (aktuelles Eigenkapital − Tagesergebnis)."
+        ],
+        "fr": [
+          "Survolez un repère de transaction pour voir la quantité et le prix moyen d’exécution pondéré par les quantités, séparément pour les achats et les ventes.",
+          "Les graphiques relient la dernière cotation aux cours récents. La courbe reste visible pendant l’actualisation.",
+          "Le rendement quotidien du portefeuille, des comptes et des positions suit la même formule : résultat du jour ÷ (capitaux propres actuels − résultat du jour)."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Gate balance charts now use traded spot prices. HyperCore spot holdings are matched by token index when calculating daily profit or loss."
+        ],
+        "zh-Hans": [
+          "Gate 余额走势图改用现货成交价。HyperCore 现货持仓按代币索引匹配，修正了当日盈亏的计算。"
+        ],
+        "zh-Hant": [
+          "Gate 餘額走勢圖改用現貨成交價。HyperCore 現貨持倉依代幣索引配對，修正了當日損益的計算。"
+        ],
+        "ko": [
+          "Gate 잔고 차트에 현물 체결가를 사용합니다. HyperCore 현물 보유분의 당일 손익을 계산할 때 토큰 인덱스로 종목을 식별합니다."
+        ],
+        "ru": [
+          "Графики остатков Gate используют цены спотовых сделок. При расчёте дневного результата спотовые позиции HyperCore сопоставляются по индексу токена."
+        ],
+        "pt-BR": [
+          "Os gráficos de saldo da Gate usam preços de negociações à vista. O cálculo do resultado diário das posições à vista da HyperCore identifica cada token pelo índice."
+        ],
+        "tr": [
+          "Gate bakiye grafikleri spot işlem fiyatlarını kullanır. HyperCore spot pozisyonlarının günlük kâr veya zararı hesaplanırken varlıklar token indeksine göre eşleştirilir."
+        ],
+        "ja": [
+          "Gateの残高チャートに現物の約定価格を使用するようになりました。HyperCoreの現物保有分はトークンのインデックスで照合して当日損益を計算します。"
+        ],
+        "de": [
+          "Diagramme für Gate-Guthaben verwenden die Preise ausgeführter Spotgeschäfte. Für das Tagesergebnis werden HyperCore-Spotbestände anhand ihres Token-Index zugeordnet."
+        ],
+        "fr": [
+          "Les graphiques de solde Gate utilisent les prix des transactions au comptant. Le calcul du résultat quotidien des positions au comptant HyperCore utilise l’indice du jeton pour les identifier."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.6.2",
+    "build": "1528",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.6.2-1528.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.6.2-1528/PositionBar-0.6.2-1528.dmg",
+    "sha256": "4a2c330046c6943c41fc4d87ca527907516658cc758750e17465bcbd3a255f7d",
+    "length": 20054861
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "6e1fc9a363a2c0ade18e1bedbdc96fd4c37dc11d9d6d803bf81ab0648a5ddf1a",
+  "appcastLength": 3800,
+  "tapCommit": "7726ff2877cd5e50ff777a06c1aa06812b9f7b7d",
+  "releaseTarget": "5456d24ee5fc8dc95b20168f7e644d671656e9cb"
+}
