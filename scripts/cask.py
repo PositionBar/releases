@@ -1,12 +1,8 @@
 """Write one cask after the release publisher verifies the public DMG and signed feed."""
-from pathlib import Path
+import base64
 import re
-import subprocess
 
-
-def require(condition, message):
-    if not condition:
-        raise ValueError(message)
+from ci import file_contents, git_blob_sha, require
 
 
 def render_cask(receipt):
@@ -26,58 +22,57 @@ def render_cask(receipt):
         '  app "PositionBar.app"', 'end', ''])
 
 
-def cask_identity(contents):
-    version = re.search(r'^  version "([0-9]+\.[0-9]+\.[0-9]+)(?:,[1-9][0-9]*)?"$', contents, re.MULTILINE)
+def cask_identity(contents, version_pattern):
+    version = re.search(r'^  version "([^",\r\n]+)(?:,[1-9][0-9]*)?"$', contents, re.MULTILINE)
     sha = re.search(r'^  sha256 "([a-f0-9]{64})"$', contents, re.MULTILINE)
     url = re.search(r'^  url "([^"]+)"$', contents, re.MULTILINE)
-    require(version and sha and url, "Existing cask identity is invalid")
+    require(version and re.fullmatch(version_pattern, version[1]) and sha and url, "Existing cask identity is invalid")
     return tuple(map(int, version[1].split('.'))), url[1], sha[1]
 
 
-def publish(root, receipt, environment):
-    def git(root, *args):
-        result = subprocess.run(["git", "-C", str(root), *map(str, args)], capture_output=True, text=True, env=environment)
-        require(result.returncode == 0, "Tap Git operation failed; verify origin/main before retrying")
-        return result.stdout.strip()
+def publish(receipt, version_pattern, api):
+    endpoint = "repos/PositionBar/homebrew-tap"
+    path = "Casks/positionbar.rb"
+    contents_url = f"{endpoint}/contents/{path}"
 
-    root = Path(root).resolve()
-    require(git(root, "remote", "get-url", "origin") in (
-        "https://github.com/PositionBar/homebrew-tap", "https://github.com/PositionBar/homebrew-tap.git"),
-        "Unexpected tap remote")
-    require(git(root, "branch", "--show-current") == "main", "Publish cask only on tap main")
-    status = git(root, "status", "--porcelain=v1", "--untracked-files=all")
-    require(not status, "Tap checkout must be clean; recover from the package checkpoint")
-    git(root, "fetch", "origin", "main")
-    head, remote = git(root, "rev-parse", "HEAD"), git(root, "rev-parse", "origin/main")
+    def last_change():
+        commits = api(f"{endpoint}/commits?sha=main&path={path}&per_page=1")
+        require(isinstance(commits, list), "Tap commit history could not be verified")
+        if not commits:
+            return None
+        sha = commits[0].get("sha") if isinstance(commits[0], dict) else None
+        require(isinstance(sha, str) and re.fullmatch(r"[a-f0-9]{40}", sha), "Invalid tap commit")
+        return sha
+
+    def contents_at(commit):
+        result = api(f"{contents_url}?ref={commit}") if commit else None
+        return file_contents(result) if result is not None else None
+
+    previous_commit = last_change()
+    previous = contents_at(previous_commit)
     contents = render_cask(receipt)
-    if head != remote:
-        behind = subprocess.run(["git", "-C", str(root), "merge-base", "--is-ancestor", head, remote],
-                                capture_output=True, env=environment).returncode == 0
-        if behind:
-            git(root, "merge", "--ff-only", "origin/main")
-        else:
-            require(git(root, "rev-list", "--count", f"{remote}..{head}") == "1"
-                    and git(root, "rev-parse", "HEAD^") == remote
-                    and git(root, "diff", "--name-only", f"{remote}..{head}") == "Casks/positionbar.rb"
-                    and git(root, "show", "HEAD:Casks/positionbar.rb") == contents.strip(),
-                    "Tap main diverged; do not overwrite another publication")
-    path = root / "Casks/positionbar.rb"
-    if path.exists():
-        current = cask_identity(path.read_text())
-        candidate = cask_identity(contents)
+    raw = contents.encode("utf-8")
+    candidate = cask_identity(contents, version_pattern)
+    if previous == raw:
+        require(last_change() == previous_commit, "Tap cask changed during verification")
+        return previous_commit
+
+    committer = {"name": "github-actions[bot]", "email": "41898282+github-actions[bot]@users.noreply.github.com"}
+    body = {
+        "branch": "main", "message": f"Publish PositionBar {receipt['version']} ({receipt['build']})",
+        "content": base64.b64encode(raw).decode("ascii"), "committer": committer,
+    }
+    if previous is not None:
+        current = cask_identity(previous.decode("utf-8"), version_pattern)
         require(candidate[0] >= current[0], "Refusing to downgrade the cask")
         require(candidate[0] != current[0] or candidate == current, "An existing version's URL and SHA are immutable")
-    if not path.exists() or path.read_text() != contents:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        temporary = path.with_suffix('.rb.tmp')
-        temporary.write_text(contents)
-        temporary.replace(path)
-        git(root, "add", "Casks/positionbar.rb")
-        git(root, "commit", "-m", f"Publish PositionBar {receipt['version']} ({receipt['build']})")
-    commit = git(root, "rev-parse", "HEAD")
-    if commit != git(root, "rev-parse", "origin/main"):
-        git(root, "push", "origin", "HEAD:main")
-    require(git(root, "ls-remote", "origin", "refs/heads/main").split()[0] == commit,
-            "Tap push outcome is uncertain; read origin/main before retrying")
-    require(git(root, "show", "HEAD:Casks/positionbar.rb") == contents.strip(), "Published cask differs")
-    return git(root, "log", "-1", "--format=%H", "--", "Casks/positionbar.rb")
+        body["sha"] = git_blob_sha(previous)
+
+    result = api(contents_url, method="PUT", body=body)
+    outcome = result if isinstance(result, dict) else {}
+    commit = (outcome.get("commit") or {}).get("sha")
+    require(isinstance(commit, str) and re.fullmatch(r"[a-f0-9]{40}", commit)
+            and (outcome.get("content") or {}).get("sha") == git_blob_sha(raw),
+            "Tap write outcome is uncertain; inspect the cask before retrying")
+    require(last_change() == commit and contents_at(commit) == raw, "Published tap cask differs")
+    return commit

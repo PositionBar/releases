@@ -4,11 +4,11 @@ import argparse
 import base64
 from contextlib import nullcontext
 import datetime as dt
+from functools import partial
 import hashlib
 import json
 import os
 from pathlib import Path
-import re
 import subprocess
 import sys
 import tempfile
@@ -17,11 +17,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 import cask
-
-
-def require(condition, message):
-    if not condition:
-        raise ValueError(message)
+from ci import git_blob_sha, release_tag, require
 
 
 def digest(path):
@@ -42,9 +38,7 @@ def github_environment(token):
     environment = {key: value for key, value in os.environ.items()
                    if key not in ("GH_TOKEN", "GITHUB_TOKEN", "GH_PAT", "TAP_WRITE_TOKEN")
                    and not key.startswith("ACTIONS_")}
-    environment.update(GH_TOKEN=token, GH_PROMPT_DISABLED="1", GIT_TERMINAL_PROMPT="0",
-                       GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="credential.helper",
-                       GIT_CONFIG_VALUE_0="!gh auth git-credential")
+    environment.update(GH_TOKEN=token, GH_PROMPT_DISABLED="1", GIT_TERMINAL_PROMPT="0")
     return environment
 
 
@@ -113,26 +107,18 @@ def public_digest(url, expected_length=None, expected_sha256=None, destination=N
         if temporary:
             temporary.unlink(missing_ok=True)
 
-def verify_release_asset(config, environment, tag, name, sha256, length):
-    state = release_state(config, environment, tag)
+def verify_release_asset(state, name, url, length):
     require(state is not None, "GitHub release was not created")
     require(not state["draft"] and not state["prerelease"], "Cask release must be public stable release")
-    matches = [asset for asset in state["assets"] if asset.get("name") == name]
-    require(len(matches) <= 1, "Cask release contains duplicate assets")
-    if not matches:
-        return None
-    asset = matches[0]
-    url = asset.get("browser_download_url")
-    require(url == release_asset_url(config["github_repository"], tag, name),
-            "GitHub release asset URL differs")
-    require(int(asset.get("size", 0)) == length, "GitHub release asset length differs")
-    public_digest(url, length, sha256)
-    return url
+    assets = state["assets"]
+    require(len(assets) == 1 and assets[0].get("name") == name, "New GitHub Releases must contain only the DMG")
+    require(assets[0].get("browser_download_url") == url, "GitHub release asset URL differs")
+    require(int(assets[0].get("size", 0)) == length, "GitHub release asset length differs")
 
 def release_asset_url(repository, tag, name):
     return f"https://github.com/{repository}/releases/download/{tag}/{name}"
 
-def ensure_release_assets(config, environment, tag, assets, title, body):
+def upload_release_asset(config, environment, tag, artifact, title, body):
     repository = config["github_repository"]
     state = release_state(config, environment, tag)
     if state is None:
@@ -143,7 +129,7 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
                     "release",
                     "create",
                     tag,
-                    *assets,
+                    artifact,
                     "--repo",
                     repository,
                     "--target",
@@ -164,35 +150,23 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
         state = release_state(config, environment, tag)
         require(state is not None, "GitHub release was not created")
         require(not state["draft"] and not state["prerelease"], "Homebrew release must be public and stable")
-        existing = {asset.get("name") for asset in state["assets"]}
-        missing = [path for path in assets if Path(path).name not in existing]
-        if not missing:
+        if any(asset.get("name") == artifact.name for asset in state["assets"]):
             break
+        require(not state["assets"], "New GitHub Releases must contain only the DMG")
         try:
-            command(
-                ["gh", "release", "upload", tag, *missing, "--repo", repository],
-                environment=environment,
-            )
+            command(["gh", "release", "upload", tag, artifact, "--repo", repository], environment=environment)
         except ValueError as error:
             state = release_state(config, environment, tag)
-            names = {asset.get("name") for asset in state["assets"]} if state else set()
-            if any(Path(path).name not in names for path in missing):
+            if state is None or not any(asset.get("name") == artifact.name for asset in state["assets"]):
                 raise ValueError("GitHub release asset upload outcome is uncertain; check the public Release") from error
-    urls = {}
-    for path in assets:
-        path = Path(path)
-        url = verify_release_asset(config, environment, tag, path.name, digest(path), path.stat().st_size)
-        require(url, f"GitHub release asset is missing: {path.name}")
-        urls[path.name] = url
-    return urls
 
-def ensure_latest_release(config, environment, tag, build):
+
+def ensure_latest_release(config, environment, tag, build, version_pattern):
     endpoint = f"repos/{config['github_repository']}/releases/latest"
     latest = github_json(environment, endpoint)
     if latest is not None:
-        match = re.fullmatch(r"positionbar-[0-9]+\.[0-9]+\.[0-9]+-([0-9]+)", latest.get("tag_name", ""))
-        require(match is not None, "Latest tap release has an unknown identity")
-        require(int(match[1]) <= int(build), "A newer Homebrew release is already latest; do not roll it back")
+        _, latest_build = release_tag(latest.get("tag_name", ""), version_pattern)
+        require(latest_build <= build, "A newer Homebrew release is already latest; do not roll it back")
     if latest is None or latest.get("tag_name") != tag:
         try:
             command(["gh", "release", "edit", tag, "--repo", config["github_repository"], "--latest"],
@@ -208,7 +182,7 @@ def ensure_latest_release(config, environment, tag, build):
 def update_entries(files, existing):
     entries = []
     for name, raw in files.items():
-        sha = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+        sha = git_blob_sha(raw)
         require(name == "appcast.xml" or name not in existing or existing[name] == sha,
                 "Published notes or completion receipt differ; recover the original checkpoint")
         if existing.get(name) != sha:
@@ -233,7 +207,7 @@ def publish_updates(environment, files, build):
             require(len(previous) == 1 and int(previous[0].text) <= build, "Do not roll back a newer update feed")
             if int(previous[0].text) == build and "appcast.xml" in files:
                 raw = files["appcast.xml"]
-                require(existing["appcast.xml"] == hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest(),
+                require(existing["appcast.xml"] == git_blob_sha(raw),
                         "A published build must retain its exact signed feed")
     entries = update_entries(files, existing)
     current = parent
@@ -260,22 +234,36 @@ def publish_updates(environment, files, build):
             "Published update bytes differ")
 
 
-def native_tools(source):
+def native_tools(source, expected_sha):
+    git = ["git", "-C", str(source)]
+    environment = {"PATH": os.environ["PATH"]}
+    head = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True, env=environment).strip()
+    require(head == expected_sha, "Checkout SHA mismatch")
+    require(not subprocess.check_output([*git, "status", "--porcelain", "--untracked-files=normal"], env=environment),
+            "Approved source checkout must be clean")
     sys.path.insert(0, str(Path(source).resolve() / "scripts"))
     import macos_release
     return macos_release
 
 
-def publish(state, source, tap):
-    native = native_tools(source)
-    native.require_ci()
+def approved_plan(state, source):
     context = json.loads((state / "request.json").read_bytes())
-    native.checkout_revision(context["source_sha"])
     version = context["version"]
-    metadata_path = Path(source) / "versions" / f"{version}.json"
-    plan = native.versions.load(metadata_path)
-    require(not native.versions.historical(version) and digest(metadata_path) == context["metadataSHA256"]
-            and metadata_path.read_bytes() == (state / "version.json").read_bytes(), "Frozen version metadata differs")
+    metadata = source / "versions" / f"{version}.json"
+    require(metadata.is_file() and not metadata.is_symlink(), "Approved metadata must be a regular file")
+    raw = metadata.read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == context["metadataSHA256"], "Reviewed metadata hash differs")
+    native = native_tools(source, context["source_sha"])
+    native.require_ci()
+    require(not native.versions.historical(version), "Historical notes cannot be published")
+    plan = native.versions.validate(json.loads(raw), metadata.name)
+    return native, context, plan
+
+
+def publish(state, source):
+    native, context, plan = approved_plan(state, source)
+    version = context["version"]
+    require(digest(state / "version.json") == context["metadataSHA256"], "Frozen version metadata differs")
     output = state / "package"
     receipt = json.loads((output / "package.json").read_bytes())
     require(receipt.get("status") == "packaged" and receipt.get("registryStatus") == "succeeded"
@@ -292,29 +280,31 @@ def publish(state, source, tap):
             "Registered identity differs")
     artifact = output / f"PositionBar-{version}-{build}.dmg"
     expected_url = release_asset_url(config["github_repository"], tag, artifact.name)
-    require(receipt["artifact"].get("url") == expected_url and digest(artifact) == receipt["artifact"]["sha256"]
-            and artifact.stat().st_size == receipt["artifact"]["length"], "Checkpoint DMG bytes differ")
-    feed, notes = output / "appcast.xml", output / f"PositionBar-{version}-{build}.txt"
+    sha256 = receipt["artifact"]["sha256"]
+    length = receipt["artifact"]["length"]
+    require(receipt["artifact"].get("url") == expected_url and artifact.stat().st_size == length
+            and digest(artifact) == sha256, "Checkpoint DMG bytes differ")
+    feed, notes = output / "appcast.xml", artifact.with_suffix(".txt")
     paths = [notes, *(notes.with_suffix(f".{locale}.txt") for locale in native.versions.LOCALES[1:]), feed]
     native.verify_appcast_file(feed, notes, artifact, version, build, native.MINIMUM, native.UPDATES,
                               expected_url.rsplit('/', 1)[0] + '/', plan)
     title, body = f"PositionBar {version} ({build})", native.versions.notes(plan)
-    ensure_release_assets(config, environment, tag, [artifact], title, body)
-    require({asset.get("name") for asset in release_state(config, environment, tag)["assets"]} == {artifact.name},
-            "New GitHub Releases must contain only the DMG")
+    upload_release_asset(config, environment, tag, artifact, title, body)
     target = github_json(environment, f"repos/PositionBar/releases/git/ref/tags/{tag}")
     require(target and target.get("object", {}).get("type") == "commit"
             and target["object"].get("sha") == context["releaseTarget"], "Release tag target differs from the original executor")
-    # Reverify the public bytes before either distribution entry point changes.
+    verify_release_asset(release_state(config, environment, tag), artifact.name, expected_url, length)
+    # Verify the signed app from the same public bytes checked against the checkpoint.
     with tempfile.TemporaryDirectory(prefix="positionbar-public-") as temporary:
         downloaded = Path(temporary) / artifact.name
-        public_digest(expected_url, artifact.stat().st_size, digest(artifact), downloaded)
+        public_digest(expected_url, length, sha256, downloaded)
         facts = native.verify_notarized_dmg(downloaded, version, identity, native.UPDATES)
         require(all(receipt["artifact"].get(key) == value for key, value in facts.items()), "Public DMG facts differ")
     tap_environment = github_environment(os.environ.get("TAP_WRITE_TOKEN"))
-    tap_commit = cask.publish(tap, receipt, tap_environment)
-    ensure_latest_release(config, environment, tag, build)
+    tap_commit = cask.publish(receipt, native.versions.VERSION, partial(github_json, tap_environment))
+    ensure_latest_release(config, environment, tag, build, native.versions.VERSION)
     release = release_state(config, environment, tag)
+    verify_release_asset(release, artifact.name, expected_url, length)
     published_on = dt.datetime.fromisoformat(release["published_at"].replace('Z', '+00:00')).date().isoformat()
     record = {"status": "published", "version": version, "build": build,
               "source_sha": context["source_sha"], "metadataSHA256": context["metadataSHA256"],
@@ -339,11 +329,15 @@ def publish(state, source, tap):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, required=True)
-    parser.add_argument("--source", type=Path)
-    parser.add_argument("--tap", type=Path)
+    parser.add_argument("--source", type=Path, required=True)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--check-plan", action="store_true")
+    mode.add_argument("--publish", action="store_true")
     args = parser.parse_args()
-    require(args.source and args.tap, "Provide source and tap checkouts")
-    publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
+    if args.check_plan:
+        approved_plan(args.state.resolve(), args.source.resolve())
+    else:
+        publish(args.state.resolve(), args.source.resolve())
 
 
 if __name__ == "__main__":

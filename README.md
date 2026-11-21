@@ -6,15 +6,17 @@ Version metadata lives in private `sorcererxw/positionbar/versions/<version>.jso
 
 ```text
 .github/workflows/release.yml
-scripts/ci.py       # approval, source, dated metadata and recovery
-scripts/publish.py  # immutable DMG, cask and standalone signed update data
+scripts/ci.py       # approval, reviewed file identity, public versions and recovery
+scripts/publish.py  # approved plan validation and publication of signed artifacts
 scripts/cask.py     # verified DMG's Homebrew cask
 tests/              # basic pure function tests
 ```
 
+After approval, the executor reads the version pattern from `schemas/version.schema.json` at the exact source SHA. A matching completion receipt ends the run before source checkout. For a new or resumed release, a step without release credentials checks the reviewed SHA-256 and calls that checkout's changelog validator before dependency resolution or Build ID allocation.
+
 The approved source builds/signs/notarizes the arm64/x86_64 DMG, signs ten notes and appcast, verifies public DMG bytes and Gatekeeper facts, updates [the tap](https://github.com/PositionBar/homebrew-tap), and selects latest. The tag `positionbar-V-B` points to the original executor commit. Signed feed/notes are committed atomically to this repository's **updates data branch**; notes and receipts are immutable, the feed cannot roll back, and branch updates never force. After public website readback verifies feed and notes bytes, `releases/V.json` is written to that branch as the final completion marker. These files are not Release attachments.
 
-The Homebrew cask `version` contains only the App version (`V`). The DMG URL retains its Build ID (`B`); a version's URL and SHA-256 remain immutable.
+The Homebrew cask `version` contains only the App version (`V`). Its DMG URL includes the Build ID (`B`). Each version's URL and SHA-256 are immutable. The publisher updates the cask through GitHub's Contents API using its current blob SHA, so unrelated tap edits can proceed. The receipt records the last commit that changed `Casks/positionbar.rb`. A retry after a lost response verifies the cask at that commit before reusing it.
 
 Canonical feed: `https://positionbar.com/updates/macos/appcast.xml`. The website backend proxies only the feed and supported notes filenames from the public updates branch. No website build or additional Cloudflare credential is needed on App publication. The website changelog reads only private-main version files and may appear before the DMG. `/download` resolves the latest stable DMG at request time.
 
@@ -31,4 +33,4 @@ Use the exact version PR merge SHA rather than a later private main HEAD. `resum
 
 Activate the website endpoints first, initialize updates with the exact published 0.1.2 feed/notes/receipt, then enable DMG-only publication and remove the old Deploy Hook/secret. Existing 0.1.2 embeds the GitHub feed URL: users accept one manual installation of the migration release, then continue in-app updates through the new feed. Keep old 0.1.2 attachments during migration; do not repackage that release. Main code retains owner review and no-force-push protection; updates is public release data, not executable CI code.
 
-When the affected functions change, run `PYTHONPATH=tests python3 -B -m unittest test_ci test_cask -q` once within the shared 60-second local budget. No default builds, integration or UI harness. Formal signing, notarization and publication integrity checks remain mandatory.
+For changes to approval, public asset verification or cask handling, run the affected module (`test_ci`, `test_release_asset` or `test_cask`) with `PYTHONPATH=tests python3 -B -m unittest <module> -q` within the shared 60-second budget. Formal signing, notarization and publication integrity checks remain mandatory.
