@@ -3,10 +3,7 @@ from pathlib import Path
 import re
 import subprocess
 
-
-def require(condition, message):
-    if not condition:
-        raise ValueError(message)
+from ci import require
 
 
 def render_cask(receipt):
@@ -26,15 +23,15 @@ def render_cask(receipt):
         '  app "PositionBar.app"', 'end', ''])
 
 
-def cask_identity(contents):
-    version = re.search(r'^  version "([0-9]+\.[0-9]+\.[0-9]+)(?:,[1-9][0-9]*)?"$', contents, re.MULTILINE)
+def cask_identity(contents, version_pattern):
+    version = re.search(r'^  version "([^",\r\n]+)(?:,[1-9][0-9]*)?"$', contents, re.MULTILINE)
     sha = re.search(r'^  sha256 "([a-f0-9]{64})"$', contents, re.MULTILINE)
     url = re.search(r'^  url "([^"]+)"$', contents, re.MULTILINE)
-    require(version and sha and url, "Existing cask identity is invalid")
+    require(version and re.fullmatch(version_pattern, version[1]) and sha and url, "Existing cask identity is invalid")
     return tuple(map(int, version[1].split('.'))), url[1], sha[1]
 
 
-def publish(root, receipt, environment):
+def publish(root, receipt, environment, version_pattern):
     def git(root, *args):
         result = subprocess.run(["git", "-C", str(root), *map(str, args)], capture_output=True, text=True, env=environment)
         require(result.returncode == 0, "Tap Git operation failed; verify origin/main before retrying")
@@ -63,8 +60,8 @@ def publish(root, receipt, environment):
                     "Tap main diverged; do not overwrite another publication")
     path = root / "Casks/positionbar.rb"
     if path.exists():
-        current = cask_identity(path.read_text())
-        candidate = cask_identity(contents)
+        current = cask_identity(path.read_text(), version_pattern)
+        candidate = cask_identity(contents, version_pattern)
         require(candidate[0] >= current[0], "Refusing to downgrade the cask")
         require(candidate[0] != current[0] or candidate == current, "An existing version's URL and SHA are immutable")
     if not path.exists() or path.read_text() != contents:

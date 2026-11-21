@@ -8,7 +8,6 @@ import hashlib
 import json
 import os
 from pathlib import Path
-import re
 import subprocess
 import sys
 import tempfile
@@ -17,11 +16,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 import cask
-
-
-def require(condition, message):
-    if not condition:
-        raise ValueError(message)
+from ci import git_blob_sha, release_tag, require
 
 
 def digest(path):
@@ -186,13 +181,12 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
         urls[path.name] = url
     return urls
 
-def ensure_latest_release(config, environment, tag, build):
+def ensure_latest_release(config, environment, tag, build, version_pattern):
     endpoint = f"repos/{config['github_repository']}/releases/latest"
     latest = github_json(environment, endpoint)
     if latest is not None:
-        match = re.fullmatch(r"positionbar-[0-9]+\.[0-9]+\.[0-9]+-([0-9]+)", latest.get("tag_name", ""))
-        require(match is not None, "Latest tap release has an unknown identity")
-        require(int(match[1]) <= int(build), "A newer Homebrew release is already latest; do not roll it back")
+        _, latest_build = release_tag(latest.get("tag_name", ""), version_pattern)
+        require(latest_build <= build, "A newer Homebrew release is already latest; do not roll it back")
     if latest is None or latest.get("tag_name") != tag:
         try:
             command(["gh", "release", "edit", tag, "--repo", config["github_repository"], "--latest"],
@@ -208,7 +202,7 @@ def ensure_latest_release(config, environment, tag, build):
 def update_entries(files, existing):
     entries = []
     for name, raw in files.items():
-        sha = hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+        sha = git_blob_sha(raw)
         require(name == "appcast.xml" or name not in existing or existing[name] == sha,
                 "Published notes or completion receipt differ; recover the original checkpoint")
         if existing.get(name) != sha:
@@ -233,7 +227,7 @@ def publish_updates(environment, files, build):
             require(len(previous) == 1 and int(previous[0].text) <= build, "Do not roll back a newer update feed")
             if int(previous[0].text) == build and "appcast.xml" in files:
                 raw = files["appcast.xml"]
-                require(existing["appcast.xml"] == hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest(),
+                require(existing["appcast.xml"] == git_blob_sha(raw),
                         "A published build must retain its exact signed feed")
     entries = update_entries(files, existing)
     current = parent
@@ -260,22 +254,36 @@ def publish_updates(environment, files, build):
             "Published update bytes differ")
 
 
-def native_tools(source):
+def native_tools(source, expected_sha):
+    git = ["git", "-C", str(source)]
+    environment = {"PATH": os.environ["PATH"]}
+    head = subprocess.check_output([*git, "rev-parse", "HEAD"], text=True, env=environment).strip()
+    require(head == expected_sha, "Checkout SHA mismatch")
+    require(not subprocess.check_output([*git, "status", "--porcelain", "--untracked-files=normal"], env=environment),
+            "Approved source checkout must be clean")
     sys.path.insert(0, str(Path(source).resolve() / "scripts"))
     import macos_release
     return macos_release
 
 
-def publish(state, source, tap):
-    native = native_tools(source)
-    native.require_ci()
+def approved_plan(state, source):
     context = json.loads((state / "request.json").read_bytes())
-    native.checkout_revision(context["source_sha"])
     version = context["version"]
-    metadata_path = Path(source) / "versions" / f"{version}.json"
-    plan = native.versions.load(metadata_path)
-    require(not native.versions.historical(version) and digest(metadata_path) == context["metadataSHA256"]
-            and metadata_path.read_bytes() == (state / "version.json").read_bytes(), "Frozen version metadata differs")
+    metadata = source / "versions" / f"{version}.json"
+    require(metadata.is_file() and not metadata.is_symlink(), "Approved metadata must be a regular file")
+    raw = metadata.read_bytes()
+    require(hashlib.sha256(raw).hexdigest() == context["metadataSHA256"], "Reviewed metadata hash differs")
+    native = native_tools(source, context["source_sha"])
+    native.require_ci()
+    require(not native.versions.historical(version), "Historical notes cannot be published")
+    plan = native.versions.validate(json.loads(raw), metadata.name)
+    return native, context, plan
+
+
+def publish(state, source, tap):
+    native, context, plan = approved_plan(state, source)
+    version = context["version"]
+    require(digest(state / "version.json") == context["metadataSHA256"], "Frozen version metadata differs")
     output = state / "package"
     receipt = json.loads((output / "package.json").read_bytes())
     require(receipt.get("status") == "packaged" and receipt.get("registryStatus") == "succeeded"
@@ -312,8 +320,8 @@ def publish(state, source, tap):
         facts = native.verify_notarized_dmg(downloaded, version, identity, native.UPDATES)
         require(all(receipt["artifact"].get(key) == value for key, value in facts.items()), "Public DMG facts differ")
     tap_environment = github_environment(os.environ.get("TAP_WRITE_TOKEN"))
-    tap_commit = cask.publish(tap, receipt, tap_environment)
-    ensure_latest_release(config, environment, tag, build)
+    tap_commit = cask.publish(tap, receipt, tap_environment, native.versions.VERSION)
+    ensure_latest_release(config, environment, tag, build, native.versions.VERSION)
     release = release_state(config, environment, tag)
     published_on = dt.datetime.fromisoformat(release["published_at"].replace('Z', '+00:00')).date().isoformat()
     record = {"status": "published", "version": version, "build": build,
@@ -339,11 +347,15 @@ def publish(state, source, tap):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state", type=Path, required=True)
-    parser.add_argument("--source", type=Path)
-    parser.add_argument("--tap", type=Path)
+    parser.add_argument("--source", type=Path, required=True)
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--check-plan", action="store_true")
+    mode.add_argument("--tap", type=Path)
     args = parser.parse_args()
-    require(args.source and args.tap, "Provide source and tap checkouts")
-    publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
+    if args.check_plan:
+        approved_plan(args.state.resolve(), args.source.resolve())
+    else:
+        publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
 
 
 if __name__ == "__main__":

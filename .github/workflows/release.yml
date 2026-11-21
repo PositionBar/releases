@@ -71,6 +71,9 @@ jobs:
           token: ${{ secrets.GH_PAT }}
           path: source
           persist-credentials: false
+      - name: Validate reviewed metadata with the approved source rules
+        if: steps.request.outputs.complete == 'false'
+        run: python3 -B release/scripts/publish.py --check-plan --state "$RELEASE_STATE" --source source
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         if: steps.request.outputs.complete == 'false'
         with:

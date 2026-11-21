@@ -6,11 +6,13 @@ Version metadata lives in private `sorcererxw/positionbar/versions/<version>.jso
 
 ```text
 .github/workflows/release.yml
-scripts/ci.py       # approval, source, dated metadata and recovery
-scripts/publish.py  # immutable DMG, cask and standalone signed update data
+scripts/ci.py       # approval, reviewed file identity, public versions and recovery
+scripts/publish.py  # approved plan validation and publication of signed artifacts
 scripts/cask.py     # verified DMG's Homebrew cask
 tests/              # basic pure function tests
 ```
+
+After approval, the executor reads the version pattern from `schemas/version.schema.json` at the exact source SHA. A matching completion receipt ends the run before source checkout. For a new or resumed release, a step without release credentials checks the reviewed SHA-256 and calls that checkout's changelog validator before dependency resolution or Build ID allocation.
 
 The approved source builds/signs/notarizes the arm64/x86_64 DMG, signs ten notes and appcast, verifies public DMG bytes and Gatekeeper facts, updates [the tap](https://github.com/PositionBar/homebrew-tap), and selects latest. The tag `positionbar-V-B` points to the original executor commit. Signed feed/notes are committed atomically to this repository's **updates data branch**; notes and receipts are immutable, the feed cannot roll back, and branch updates never force. After public website readback verifies feed and notes bytes, `releases/V.json` is written to that branch as the final completion marker. These files are not Release attachments.
 

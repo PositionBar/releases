@@ -2,7 +2,6 @@
 """Accept one approved version file from an exact private-main PR merge."""
 import argparse
 import base64
-import datetime as dt
 import hashlib
 import json
 import os
@@ -13,41 +12,17 @@ import sys
 
 REPOSITORY = "PositionBar/releases"
 SOURCE = "sorcererxw/positionbar"
-LOCALES = ("en", "zh-Hans", "zh-Hant", "ko", "ru", "pt-BR", "tr", "ja", "de", "fr")
-VERSION = r"(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)"
 
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
 
-def historical(version):
-    return version.startswith("0.0.")
+def release_tag(tag, version_pattern):
+    match = re.fullmatch(r"positionbar-(.+)-([1-9][0-9]*)", tag)
+    require(match and re.fullmatch(version_pattern, match[1]), "Unknown public release identity")
+    return match[1], int(match[2])
 
-def validate(value, filename):
-    require(isinstance(value, dict) and isinstance(value.get("version"), str)
-            and re.fullmatch(VERSION, value["version"]), "Invalid three-component version")
-    version = value["version"]
-    require(filename == f"{version}.json", "Version filename differs")
-    require(set(value) == {"version", "changes", "publishedOn"}, "Unexpected or missing version metadata fields")
-    date = value["publishedOn"]
-    require(isinstance(date, str) and re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}", date)
-            and dt.date.fromisoformat(date).isoformat() == date, "Invalid version date")
-    changes = value["changes"]
-    require(isinstance(changes, list) and 0 < len(changes) <= 3, "Provide one to three change categories")
-    seen = set()
-    for group in changes:
-        require(isinstance(group, dict) and set(group) == {"type", "items"}, "Invalid change category")
-        kind, items = group["type"], group["items"]
-        require(isinstance(kind, str) and kind in ("new", "improved", "fixed") and kind not in seen,
-                "Change categories must be unique new, improved or fixed")
-        seen.add(kind)
-        require(isinstance(items, dict) and set(items) == set(LOCALES), "Provide all ten changelog locales")
-        for lines in items.values():
-            require(isinstance(lines, list) and lines and all(isinstance(line, str) and line.strip()
-                    and "\n" not in line and "\r" not in line for line in lines),
-                    "Each locale needs nonempty single-line changelog items")
-    return value
 
 def github(endpoint, *, pages=False, missing=False):
     args = ["gh", "api", endpoint]
@@ -59,6 +34,24 @@ def github(endpoint, *, pages=False, missing=False):
     require(result.returncode == 0, "GitHub release inputs could not be verified")
     value = json.loads(result.stdout)
     return [item for page in value for item in page] if pages else value
+
+
+def git_blob_sha(raw):
+    return hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+
+
+def file_contents(content):
+    require(content.get("type") == "file" and content.get("encoding") == "base64"
+            and isinstance(content.get("content"), str), "GitHub contents must be a regular file")
+    raw = base64.b64decode("".join(content["content"].splitlines()), validate=True)
+    require(git_blob_sha(raw) == content.get("sha"), "GitHub contents differ from their blob SHA")
+    return raw
+
+
+def source_file(sha, path):
+    content = github(f"repos/{SOURCE}/contents/{path}?ref={sha}")
+    return file_contents(content), content["sha"]
+
 
 def approved(pr, reviews):
     latest = {}
@@ -85,6 +78,15 @@ def changed_version(files, version):
     return files[0]
 
 
+def completion_receipt(raw, request, build):
+    receipt = json.loads(raw)
+    require(isinstance(receipt, dict) and receipt.get("status") == "published"
+            and type(receipt.get("build")) is int and receipt["build"] == build
+            and all(receipt.get(key) == request[key] for key in ("version", "source_sha", "metadataSHA256")),
+            "Existing completion receipt differs")
+    return receipt
+
+
 def request():
     require(os.environ.get("GITHUB_REPOSITORY") == REPOSITORY
             and os.environ.get("GITHUB_EVENT_NAME") == "workflow_dispatch"
@@ -92,7 +94,6 @@ def request():
     event = json.loads(Path(os.environ["GITHUB_EVENT_PATH"]).read_bytes())
     inputs = event["inputs"]
     version, sha = inputs["version"], inputs["source_sha"]
-    require(re.fullmatch(VERSION, version) and not historical(version), "0.0.x is history, not an App release")
     verify_source(sha)
     prs = github(f"repos/{SOURCE}/commits/{sha}/pulls?per_page=100", pages=True)
     matches = [pr for pr in prs if pr.get("merged_at") and pr.get("merge_commit_sha") == sha
@@ -102,10 +103,12 @@ def request():
     pr = github(endpoint)
     approved(pr, github(endpoint + "/reviews?per_page=100", pages=True))
     file = changed_version(github(endpoint + "/files?per_page=100", pages=True), version)
-    content = github(f"repos/{SOURCE}/contents/versions/{version}.json?ref={sha}")
-    require(content.get("type") == "file" and content.get("encoding") == "base64", "Metadata must be a regular file")
-    raw = base64.b64decode(content["content"], validate=False)
-    require(hashlib.sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest() == file["sha"], "Reviewed metadata differs")
+    schema, _ = source_file(sha, "schemas/version.schema.json")
+    version_pattern = re.compile(json.loads(schema)["properties"]["version"]["pattern"])
+    require(isinstance(version, str) and version_pattern.fullmatch(version), "Invalid version")
+    require(not version.startswith("0.0."), "0.0.x is history, not an App release")
+    raw, blob = source_file(sha, file["filename"])
+    require(blob == file["sha"], "Reviewed metadata differs")
     value = {"version": version, "source_sha": sha, "metadataSHA256": hashlib.sha256(raw).hexdigest(),
              "sourcePR": pr["number"], "releaseTarget": os.environ["GITHUB_SHA"]}
     require(re.fullmatch(r"[a-f0-9]{40}", value["releaseTarget"]), "Invalid workflow revision")
@@ -113,24 +116,17 @@ def request():
     for release in github(f"repos/{REPOSITORY}/releases?per_page=100", pages=True):
         if release.get("draft") or release.get("prerelease"):
             continue
-        match = re.fullmatch(r"positionbar-(" + VERSION + r")-([1-9][0-9]*)", release["tag_name"])
-        require(match, "Unknown public release identity")
-        if match[1] != version:
-            others.append(tuple(map(int, match[1].split("."))))
+        public_version, build = release_tag(release["tag_name"], version_pattern)
+        if public_version != version:
+            others.append(tuple(map(int, public_version.split("."))))
             continue
         require(not complete and not partial, "More than one public build exists for this version")
         marker = github(f"repos/{REPOSITORY}/contents/releases/{version}.json?ref=updates", missing=True)
         if marker:
-            require(marker.get("type") == "file" and marker.get("encoding") == "base64", "Invalid completion receipt")
-            complete = json.loads(base64.b64decode(marker["content"]))
-            require(complete.get("status") == "published" and complete.get("version") == version
-                    and complete.get("build") == int(match[2])
-                    and all(complete.get(key) == value[key] for key in ("source_sha", "metadataSHA256")),
-                    "Existing completion receipt differs")
+            complete = completion_receipt(file_contents(marker), value, build)
         else:
             partial = True
     if not complete:
-        validate(json.loads(raw), f"{version}.json")
         require(not others or tuple(map(int, version.split("."))) > max(others), "Version must exceed all public versions")
         require(not partial or inputs.get("resume_run_id"), "Partial publication requires its exact checkpoint")
     return value, complete
