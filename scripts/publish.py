@@ -108,26 +108,18 @@ def public_digest(url, expected_length=None, expected_sha256=None, destination=N
         if temporary:
             temporary.unlink(missing_ok=True)
 
-def verify_release_asset(config, environment, tag, name, sha256, length):
-    state = release_state(config, environment, tag)
+def verify_release_asset(state, name, url, length):
     require(state is not None, "GitHub release was not created")
     require(not state["draft"] and not state["prerelease"], "Cask release must be public stable release")
-    matches = [asset for asset in state["assets"] if asset.get("name") == name]
-    require(len(matches) <= 1, "Cask release contains duplicate assets")
-    if not matches:
-        return None
-    asset = matches[0]
-    url = asset.get("browser_download_url")
-    require(url == release_asset_url(config["github_repository"], tag, name),
-            "GitHub release asset URL differs")
-    require(int(asset.get("size", 0)) == length, "GitHub release asset length differs")
-    public_digest(url, length, sha256)
-    return url
+    assets = state["assets"]
+    require(len(assets) == 1 and assets[0].get("name") == name, "New GitHub Releases must contain only the DMG")
+    require(assets[0].get("browser_download_url") == url, "GitHub release asset URL differs")
+    require(int(assets[0].get("size", 0)) == length, "GitHub release asset length differs")
 
 def release_asset_url(repository, tag, name):
     return f"https://github.com/{repository}/releases/download/{tag}/{name}"
 
-def ensure_release_assets(config, environment, tag, assets, title, body):
+def upload_release_asset(config, environment, tag, artifact, title, body):
     repository = config["github_repository"]
     state = release_state(config, environment, tag)
     if state is None:
@@ -138,7 +130,7 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
                     "release",
                     "create",
                     tag,
-                    *assets,
+                    artifact,
                     "--repo",
                     repository,
                     "--target",
@@ -159,27 +151,16 @@ def ensure_release_assets(config, environment, tag, assets, title, body):
         state = release_state(config, environment, tag)
         require(state is not None, "GitHub release was not created")
         require(not state["draft"] and not state["prerelease"], "Homebrew release must be public and stable")
-        existing = {asset.get("name") for asset in state["assets"]}
-        missing = [path for path in assets if Path(path).name not in existing]
-        if not missing:
+        if any(asset.get("name") == artifact.name for asset in state["assets"]):
             break
+        require(not state["assets"], "New GitHub Releases must contain only the DMG")
         try:
-            command(
-                ["gh", "release", "upload", tag, *missing, "--repo", repository],
-                environment=environment,
-            )
+            command(["gh", "release", "upload", tag, artifact, "--repo", repository], environment=environment)
         except ValueError as error:
             state = release_state(config, environment, tag)
-            names = {asset.get("name") for asset in state["assets"]} if state else set()
-            if any(Path(path).name not in names for path in missing):
+            if state is None or not any(asset.get("name") == artifact.name for asset in state["assets"]):
                 raise ValueError("GitHub release asset upload outcome is uncertain; check the public Release") from error
-    urls = {}
-    for path in assets:
-        path = Path(path)
-        url = verify_release_asset(config, environment, tag, path.name, digest(path), path.stat().st_size)
-        require(url, f"GitHub release asset is missing: {path.name}")
-        urls[path.name] = url
-    return urls
+
 
 def ensure_latest_release(config, environment, tag, build, version_pattern):
     endpoint = f"repos/{config['github_repository']}/releases/latest"
@@ -300,29 +281,31 @@ def publish(state, source, tap):
             "Registered identity differs")
     artifact = output / f"PositionBar-{version}-{build}.dmg"
     expected_url = release_asset_url(config["github_repository"], tag, artifact.name)
-    require(receipt["artifact"].get("url") == expected_url and digest(artifact) == receipt["artifact"]["sha256"]
-            and artifact.stat().st_size == receipt["artifact"]["length"], "Checkpoint DMG bytes differ")
-    feed, notes = output / "appcast.xml", output / f"PositionBar-{version}-{build}.txt"
+    sha256 = receipt["artifact"]["sha256"]
+    length = receipt["artifact"]["length"]
+    require(receipt["artifact"].get("url") == expected_url and artifact.stat().st_size == length
+            and digest(artifact) == sha256, "Checkpoint DMG bytes differ")
+    feed, notes = output / "appcast.xml", artifact.with_suffix(".txt")
     paths = [notes, *(notes.with_suffix(f".{locale}.txt") for locale in native.versions.LOCALES[1:]), feed]
     native.verify_appcast_file(feed, notes, artifact, version, build, native.MINIMUM, native.UPDATES,
                               expected_url.rsplit('/', 1)[0] + '/', plan)
     title, body = f"PositionBar {version} ({build})", native.versions.notes(plan)
-    ensure_release_assets(config, environment, tag, [artifact], title, body)
-    require({asset.get("name") for asset in release_state(config, environment, tag)["assets"]} == {artifact.name},
-            "New GitHub Releases must contain only the DMG")
+    upload_release_asset(config, environment, tag, artifact, title, body)
     target = github_json(environment, f"repos/PositionBar/releases/git/ref/tags/{tag}")
     require(target and target.get("object", {}).get("type") == "commit"
             and target["object"].get("sha") == context["releaseTarget"], "Release tag target differs from the original executor")
-    # Reverify the public bytes before either distribution entry point changes.
+    verify_release_asset(release_state(config, environment, tag), artifact.name, expected_url, length)
+    # Verify the signed app from the same public bytes checked against the checkpoint.
     with tempfile.TemporaryDirectory(prefix="positionbar-public-") as temporary:
         downloaded = Path(temporary) / artifact.name
-        public_digest(expected_url, artifact.stat().st_size, digest(artifact), downloaded)
+        public_digest(expected_url, length, sha256, downloaded)
         facts = native.verify_notarized_dmg(downloaded, version, identity, native.UPDATES)
         require(all(receipt["artifact"].get(key) == value for key, value in facts.items()), "Public DMG facts differ")
     tap_environment = github_environment(os.environ.get("TAP_WRITE_TOKEN"))
     tap_commit = cask.publish(tap, receipt, tap_environment, native.versions.VERSION)
     ensure_latest_release(config, environment, tag, build, native.versions.VERSION)
     release = release_state(config, environment, tag)
+    verify_release_asset(release, artifact.name, expected_url, length)
     published_on = dt.datetime.fromisoformat(release["published_at"].replace('Z', '+00:00')).date().isoformat()
     record = {"status": "published", "version": version, "build": build,
               "source_sha": context["source_sha"], "metadataSHA256": context["metadataSHA256"],
