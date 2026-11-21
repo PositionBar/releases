@@ -1,0 +1,10 @@
+PositionBar 0.6.3
+
+İyileştirildi
+- Pozisyonlar, hesaplar ve portföy için günlük ve elde tutulan pozisyonların kâr veya zararı tutarlı kurallarla hesaplanır. Varsa kalan pozisyon maliyetleri ilgili tarihlerdeki döviz kurlarıyla çevrilir.
+- Hesap satırlarında tutarın yanında seçilen kâr veya zarar parantez içinde gösterilir. Varlık ayrıntılarında kâr veya zarar tutarları ve getiri oranları ayrı satırlarda gösterilir.
+- Pozisyon sıralamasını değiştirmek için hesap başlığına sağ tıklayın.
+
+Düzeltildi
+- Uygulama açıldığında önbellekteki pozisyonlar gösterilir. Günlük kâr veya zarar ve pozisyon maliyetleri arka planda güncellenir.
+- Bir pozisyona tıkladığınızda ayrıntıları hemen açılır. Yenileme sırasında pozisyon satırı kısa süreliğine kaybolsa bile ayrıntılar açık kalır.

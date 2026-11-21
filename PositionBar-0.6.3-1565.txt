@@ -1,0 +1,10 @@
+PositionBar 0.6.3
+
+Improved
+- Positions, accounts and the portfolio use consistent rules for daily and holding P&L. Remaining position costs use exchange rates from the relevant dates when available.
+- Account rows show the amount with the selected P&L in parentheses. Asset details show P&L amounts and returns on separate rows.
+- Right-click an account heading to change how its positions are sorted.
+
+Fixed
+- At launch, cached positions appear while daily P&L and holding costs update in the background.
+- Clicking a position opens its details immediately. The details stay open if its row briefly disappears during a refresh.

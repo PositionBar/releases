@@ -1,0 +1,10 @@
+PositionBar 0.6.3
+
+Melhorado
+- Posições, contas e carteira usam critérios consistentes para calcular o resultado do dia e o resultado das posições em aberto. Quando disponíveis, as taxas de câmbio das datas correspondentes são usadas para converter o custo das posições restantes.
+- As linhas das contas mostram o valor com o resultado selecionado entre parênteses. Os detalhes do ativo exibem os valores de resultado e a rentabilidade em linhas separadas.
+- Clique com o botão direito no título de uma conta para mudar a ordem das posições.
+
+Corrigido
+- Na inicialização, as posições em cache aparecem enquanto o resultado do dia e o custo das posições são atualizados em segundo plano.
+- Os detalhes da posição abrem assim que você clica nela e permanecem abertos se a linha desaparecer brevemente durante a atualização.

@@ -1,0 +1,10 @@
+PositionBar 0.6.3
+
+Verbessert
+- Für Positionen, Konten und das Portfolio gelten einheitliche Regeln für das Tagesergebnis und das Ergebnis offener Positionen. Die Anschaffungskosten der verbleibenden Positionen werden mit den Wechselkursen zum jeweiligen Stichtag umgerechnet, sofern diese verfügbar sind.
+- Kontenzeilen zeigen den Betrag und das ausgewählte Ergebnis in Klammern. Die Wertdetails zeigen Gewinn oder Verlust und Rendite in separaten Zeilen.
+- Klicke mit der rechten Maustaste auf eine Kontoüberschrift, um die Sortierung der Positionen zu ändern.
+
+Behoben
+- Beim Start erscheinen die zwischengespeicherten Positionen, während Tagesergebnis und Positionskosten im Hintergrund aktualisiert werden.
+- Ein Klick auf eine Position öffnet sofort ihre Details. Sie bleiben geöffnet, wenn die Zeile beim Aktualisieren kurz aus der Liste verschwindet.

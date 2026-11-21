@@ -1,0 +1,10 @@
+PositionBar 0.6.3
+
+Améliorations
+- Les positions, les comptes et le portefeuille suivent des règles de calcul cohérentes pour le résultat du jour et le résultat des positions détenues. Lorsque les taux de change historiques sont disponibles, le coût des positions restantes est converti aux taux des dates concernées.
+- Chaque ligne de compte affiche le montant suivi du résultat sélectionné entre parenthèses. Les détails de l’actif affichent le montant du résultat et le rendement sur des lignes distinctes.
+- Faites un clic droit sur le titre d’un compte pour modifier le tri de ses positions.
+
+Corrections
+- Au démarrage, les positions mises en cache s’affichent pendant que le résultat du jour et le coût des positions sont actualisés en arrière-plan.
+- Un clic sur une position ouvre immédiatement ses détails. Ils restent ouverts si la ligne disparaît brièvement pendant l’actualisation.
