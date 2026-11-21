@@ -16,7 +16,7 @@ After approval, the executor reads the version pattern from `schemas/version.sch
 
 The approved source builds/signs/notarizes the arm64/x86_64 DMG, signs ten notes and appcast, verifies public DMG bytes and Gatekeeper facts, updates [the tap](https://github.com/PositionBar/homebrew-tap), and selects latest. The tag `positionbar-V-B` points to the original executor commit. Signed feed/notes are committed atomically to this repository's **updates data branch**; notes and receipts are immutable, the feed cannot roll back, and branch updates never force. After public website readback verifies feed and notes bytes, `releases/V.json` is written to that branch as the final completion marker. These files are not Release attachments.
 
-The Homebrew cask `version` contains only the App version (`V`). The DMG URL retains its Build ID (`B`); a version's URL and SHA-256 remain immutable.
+The Homebrew cask `version` contains only the App version (`V`). Its DMG URL includes the Build ID (`B`). Each version's URL and SHA-256 are immutable. The publisher updates the cask through GitHub's Contents API using its current blob SHA, so unrelated tap edits can proceed. The receipt records the last commit that changed `Casks/positionbar.rb`. A retry after a lost response verifies the cask at that commit before reusing it.
 
 Canonical feed: `https://positionbar.com/updates/macos/appcast.xml`. The website backend proxies only the feed and supported notes filenames from the public updates branch. No website build or additional Cloudflare credential is needed on App publication. The website changelog reads only private-main version files and may appear before the DMG. `/download` resolves the latest stable DMG at request time.
 

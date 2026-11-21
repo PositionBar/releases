@@ -4,6 +4,7 @@ import argparse
 import base64
 from contextlib import nullcontext
 import datetime as dt
+from functools import partial
 import hashlib
 import json
 import os
@@ -37,9 +38,7 @@ def github_environment(token):
     environment = {key: value for key, value in os.environ.items()
                    if key not in ("GH_TOKEN", "GITHUB_TOKEN", "GH_PAT", "TAP_WRITE_TOKEN")
                    and not key.startswith("ACTIONS_")}
-    environment.update(GH_TOKEN=token, GH_PROMPT_DISABLED="1", GIT_TERMINAL_PROMPT="0",
-                       GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="credential.helper",
-                       GIT_CONFIG_VALUE_0="!gh auth git-credential")
+    environment.update(GH_TOKEN=token, GH_PROMPT_DISABLED="1", GIT_TERMINAL_PROMPT="0")
     return environment
 
 
@@ -261,7 +260,7 @@ def approved_plan(state, source):
     return native, context, plan
 
 
-def publish(state, source, tap):
+def publish(state, source):
     native, context, plan = approved_plan(state, source)
     version = context["version"]
     require(digest(state / "version.json") == context["metadataSHA256"], "Frozen version metadata differs")
@@ -302,7 +301,7 @@ def publish(state, source, tap):
         facts = native.verify_notarized_dmg(downloaded, version, identity, native.UPDATES)
         require(all(receipt["artifact"].get(key) == value for key, value in facts.items()), "Public DMG facts differ")
     tap_environment = github_environment(os.environ.get("TAP_WRITE_TOKEN"))
-    tap_commit = cask.publish(tap, receipt, tap_environment, native.versions.VERSION)
+    tap_commit = cask.publish(receipt, native.versions.VERSION, partial(github_json, tap_environment))
     ensure_latest_release(config, environment, tag, build, native.versions.VERSION)
     release = release_state(config, environment, tag)
     verify_release_asset(release, artifact.name, expected_url, length)
@@ -333,12 +332,12 @@ def main():
     parser.add_argument("--source", type=Path, required=True)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--check-plan", action="store_true")
-    mode.add_argument("--tap", type=Path)
+    mode.add_argument("--publish", action="store_true")
     args = parser.parse_args()
     if args.check_plan:
         approved_plan(args.state.resolve(), args.source.resolve())
     else:
-        publish(args.state.resolve(), args.source.resolve(), args.tap.resolve())
+        publish(args.state.resolve(), args.source.resolve())
 
 
 if __name__ == "__main__":
