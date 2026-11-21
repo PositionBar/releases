@@ -1,0 +1,155 @@
+{
+  "status": "published",
+  "version": "0.6.3",
+  "build": 1565,
+  "source_sha": "acbe548aa4d59ef4ef8855635ba5c7888a740140",
+  "metadataSHA256": "fd0b5c80ab1de41c06bf5d7e9395d23993449a1820825ff4fa8c8250f114dd9b",
+  "publishedOn": "2026-11-21",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Positions, accounts and the portfolio use consistent rules for daily and holding P&L. Remaining position costs use exchange rates from the relevant dates when available.",
+          "Account rows show the amount with the selected P&L in parentheses. Asset details show P&L amounts and returns on separate rows.",
+          "Right-click an account heading to change how its positions are sorted."
+        ],
+        "zh-Hans": [
+          "统一仓位、账户和总览的今日盈亏与持仓盈亏计算口径。历史汇率可用时，按对应日期折算剩余持仓成本。",
+          "账户行显示金额，并以括号附上所选盈亏。资产详情分行显示盈亏金额和收益率。",
+          "右键点击账户标题，即可调整该账户的持仓排序。"
+        ],
+        "zh-Hant": [
+          "統一倉位、帳戶與總覽的今日損益及持倉損益計算方式。有歷史匯率時，依對應日期換算剩餘持倉成本。",
+          "帳戶列顯示金額，並以括號附上所選損益。資產詳情分列顯示損益金額與報酬率。",
+          "在帳戶標題上按一下滑鼠右鍵，即可調整該帳戶的持倉排序。"
+        ],
+        "ko": [
+          "포지션, 계좌, 포트폴리오에 일관된 당일 손익 및 보유 손익 계산 기준을 적용합니다. 과거 환율이 있으면 해당 날짜의 환율로 남은 보유분의 원가를 환산합니다.",
+          "계좌 행은 금액 뒤에 선택한 손익 금액을 괄호로 표시합니다. 자산 상세 화면은 손익 금액과 수익률을 별도 행에 표시합니다.",
+          "계좌 제목을 마우스 오른쪽 버튼으로 클릭해 해당 계좌의 포지션 정렬을 변경할 수 있습니다."
+        ],
+        "ru": [
+          "Дневной результат и результат по открытым позициям рассчитываются по согласованным правилам для позиций, счетов и портфеля. Себестоимость остатка позиции пересчитывается по курсам на соответствующие даты, если они доступны.",
+          "В строке счёта рядом с суммой в скобках показан результат выбранного типа. В деталях актива сумма результата и доходность показаны в отдельных строках.",
+          "Нажмите правой кнопкой мыши на заголовок счёта, чтобы изменить сортировку его позиций."
+        ],
+        "pt-BR": [
+          "Posições, contas e carteira usam critérios consistentes para calcular o resultado do dia e o resultado das posições em aberto. Quando disponíveis, as taxas de câmbio das datas correspondentes são usadas para converter o custo das posições restantes.",
+          "As linhas das contas mostram o valor com o resultado selecionado entre parênteses. Os detalhes do ativo exibem os valores de resultado e a rentabilidade em linhas separadas.",
+          "Clique com o botão direito no título de uma conta para mudar a ordem das posições."
+        ],
+        "tr": [
+          "Pozisyonlar, hesaplar ve portföy için günlük ve elde tutulan pozisyonların kâr veya zararı tutarlı kurallarla hesaplanır. Varsa kalan pozisyon maliyetleri ilgili tarihlerdeki döviz kurlarıyla çevrilir.",
+          "Hesap satırlarında tutarın yanında seçilen kâr veya zarar parantez içinde gösterilir. Varlık ayrıntılarında kâr veya zarar tutarları ve getiri oranları ayrı satırlarda gösterilir.",
+          "Pozisyon sıralamasını değiştirmek için hesap başlığına sağ tıklayın."
+        ],
+        "ja": [
+          "ポジション、口座、ポートフォリオで当日損益と保有損益の計算基準を統一しました。過去の為替レートが取得できる場合は、該当日のレートで残存ポジションの取得原価を換算します。",
+          "口座の行では金額の後に選択中の損益額を括弧付きで表示します。資産の詳細では損益額と収益率を別々の行に表示します。",
+          "口座の見出しを右クリックすると、その口座のポジションの並び順を変更できます。"
+        ],
+        "de": [
+          "Für Positionen, Konten und das Portfolio gelten einheitliche Regeln für das Tagesergebnis und das Ergebnis offener Positionen. Die Anschaffungskosten der verbleibenden Positionen werden mit den Wechselkursen zum jeweiligen Stichtag umgerechnet, sofern diese verfügbar sind.",
+          "Kontenzeilen zeigen den Betrag und das ausgewählte Ergebnis in Klammern. Die Wertdetails zeigen Gewinn oder Verlust und Rendite in separaten Zeilen.",
+          "Klicke mit der rechten Maustaste auf eine Kontoüberschrift, um die Sortierung der Positionen zu ändern."
+        ],
+        "fr": [
+          "Les positions, les comptes et le portefeuille suivent des règles de calcul cohérentes pour le résultat du jour et le résultat des positions détenues. Lorsque les taux de change historiques sont disponibles, le coût des positions restantes est converti aux taux des dates concernées.",
+          "Chaque ligne de compte affiche le montant suivi du résultat sélectionné entre parenthèses. Les détails de l’actif affichent le montant du résultat et le rendement sur des lignes distinctes.",
+          "Faites un clic droit sur le titre d’un compte pour modifier le tri de ses positions."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "At launch, cached positions appear while daily P&L and holding costs update in the background.",
+          "Clicking a position opens its details immediately. The details stay open if its row briefly disappears during a refresh."
+        ],
+        "zh-Hans": [
+          "启动后先显示已缓存的仓位，今日盈亏和持仓成本在后台更新。",
+          "点击资产后立即打开详情。刷新期间资产行短暂消失时，详情会保持打开。"
+        ],
+        "zh-Hant": [
+          "啟動後先顯示已快取的倉位，今日損益與持倉成本會在背景更新。",
+          "點擊資產後立即開啟詳情。重新整理期間資產列短暫消失時，詳情會保持開啟。"
+        ],
+        "ko": [
+          "시작할 때 캐시된 포지션을 먼저 표시하고 당일 손익과 보유 원가는 백그라운드에서 갱신합니다.",
+          "포지션을 클릭하면 상세 정보가 즉시 열립니다. 새로 고침 중 목록에서 해당 행이 잠시 사라져도 상세 화면은 열린 상태로 유지됩니다."
+        ],
+        "ru": [
+          "При запуске сначала отображаются сохранённые позиции, а дневной результат и стоимость позиций обновляются в фоновом режиме.",
+          "Детали позиции открываются сразу после нажатия и остаются открытыми, если строка позиции ненадолго исчезает при обновлении."
+        ],
+        "pt-BR": [
+          "Na inicialização, as posições em cache aparecem enquanto o resultado do dia e o custo das posições são atualizados em segundo plano.",
+          "Os detalhes da posição abrem assim que você clica nela e permanecem abertos se a linha desaparecer brevemente durante a atualização."
+        ],
+        "tr": [
+          "Uygulama açıldığında önbellekteki pozisyonlar gösterilir. Günlük kâr veya zarar ve pozisyon maliyetleri arka planda güncellenir.",
+          "Bir pozisyona tıkladığınızda ayrıntıları hemen açılır. Yenileme sırasında pozisyon satırı kısa süreliğine kaybolsa bile ayrıntılar açık kalır."
+        ],
+        "ja": [
+          "起動時はキャッシュ済みのポジションを先に表示し、当日損益と保有コストをバックグラウンドで更新します。",
+          "ポジションをクリックすると詳細がすぐに開きます。更新中に該当の行が一時的に消えても、詳細は開いたままです。"
+        ],
+        "de": [
+          "Beim Start erscheinen die zwischengespeicherten Positionen, während Tagesergebnis und Positionskosten im Hintergrund aktualisiert werden.",
+          "Ein Klick auf eine Position öffnet sofort ihre Details. Sie bleiben geöffnet, wenn die Zeile beim Aktualisieren kurz aus der Liste verschwindet."
+        ],
+        "fr": [
+          "Au démarrage, les positions mises en cache s’affichent pendant que le résultat du jour et le coût des positions sont actualisés en arrière-plan.",
+          "Un clic sur une position ouvre immédiatement ses détails. Ils restent ouverts si la ligne disparaît brièvement pendant l’actualisation."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.6.3",
+    "build": "1565",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.6.3-1565.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.6.3-1565/PositionBar-0.6.3-1565.dmg",
+    "sha256": "fac34cd617722f86b888d1d26c7dff625db7c5a64def985f96666d7535b493c4",
+    "length": 21119310
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "f2b8ab2a2c71084b6b76a6a4394b57486558f4dbc36e3cd62ffb6ac90ea057b9",
+  "appcastLength": 3800,
+  "tapCommit": "0563e05e0b4e07175ff05cf7f7242e45b373afb1",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
