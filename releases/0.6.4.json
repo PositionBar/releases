@@ -1,0 +1,155 @@
+{
+  "status": "published",
+  "version": "0.6.4",
+  "build": 1574,
+  "source_sha": "823666678ab4a20d175ac586af1335bf01508ee2",
+  "metadataSHA256": "adf2ae1938fcd64766dfc3403bc811614e4a1492153b605bfdcf48a5e50e041c",
+  "publishedOn": "2026-11-22",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Portfolio, positions and equity history now share one rule: use the latest known price and exchange rate at or before each valuation time. If a quote or rate has not refreshed, keep its last known value and timestamp.",
+          "Equity chart amount ticks now line up with the value column on the right, bands for smaller accounts remain visible, and hover shows only the date, equity and account amounts.",
+          "Price charts keep only the vertical guide; trades remain marked with their own symbols."
+        ],
+        "zh-Hans": [
+          "组合、持仓和权益历史统一使用每个估值时点以前最近的价格和汇率；报价或汇率尚未更新时，保留上一次已知值及其时间。",
+          "权益图的金额刻度与右侧数值列对齐，较小账户的色带仍会显示；悬停只显示日期、权益和账户金额。",
+          "价格图只保留竖向指引线，成交仍以独立标记显示。"
+        ],
+        "zh-Hant": [
+          "組合、持倉與權益歷史統一使用每個估值時點以前最近的價格與匯率；報價或匯率尚未更新時，保留上一次已知值及其時間。",
+          "權益圖的金額刻度與右側數值欄對齊，較小帳戶的色帶仍會顯示；懸停只顯示日期、權益與帳戶金額。",
+          "價格圖只保留垂直指引線，成交仍以獨立標記顯示。"
+        ],
+        "ko": [
+          "포트폴리오, 포지션 및 자산 추이가 각 평가 시점 이전의 가장 최근 가격과 환율을 사용하도록 통일했습니다. 시세나 환율이 아직 갱신되지 않으면 마지막으로 확인된 값과 시각을 유지합니다.",
+          "자산 차트의 금액 눈금이 오른쪽 값 열과 정렬되고, 작은 계좌의 띠도 계속 표시됩니다. 마우스를 올리면 날짜, 자산, 계좌 금액만 표시됩니다.",
+          "가격 차트에는 세로 안내선만 남기고, 체결은 별도 기호로 계속 표시합니다."
+        ],
+        "ru": [
+          "Портфель, позиции и история капитала теперь используют последнюю известную цену и курс на момент оценки или раньше. Если котировка или курс ещё не обновились, сохраняются последнее известное значение и его время.",
+          "Шкала сумм на графике капитала выровнена со столбцом значений справа, полосы небольших счетов остаются видимыми, а при наведении показываются только дата, капитал и суммы по счетам.",
+          "На графиках цен остаётся только вертикальная направляющая; сделки по-прежнему отмечены отдельными символами."
+        ],
+        "pt-BR": [
+          "A carteira, as posições e o histórico do patrimônio agora seguem a mesma regra: usam o preço e a taxa de câmbio mais recentes conhecidos até cada momento de avaliação. Se uma cotação ou taxa ainda não foi atualizada, o último valor conhecido e seu horário são mantidos.",
+          "A escala de valores do gráfico de patrimônio fica alinhada à coluna de valores à direita, as faixas de contas menores continuam visíveis e o cursor mostra apenas a data, o patrimônio e os valores das contas.",
+          "Os gráficos de preço mantêm apenas a guia vertical; as negociações continuam marcadas com símbolos próprios."
+        ],
+        "tr": [
+          "Portföy, pozisyonlar ve varlık geçmişi artık her değerleme anında veya öncesindeki en son bilinen fiyatı ve döviz kurunu kullanıyor. Bir kotasyon veya kur henüz güncellenmediyse son bilinen değer ve zamanı korunuyor.",
+          "Varlık grafiğinin tutar ölçeği sağdaki değer sütunuyla hizalanıyor, küçük hesapların şeritleri görünür kalıyor ve üzerine gelindiğinde yalnızca tarih, varlık ve hesap tutarları gösteriliyor.",
+          "Fiyat grafiklerinde yalnızca dikey kılavuz kalıyor; işlemler kendi simgeleriyle işaretlenmeye devam ediyor."
+        ],
+        "ja": [
+          "ポートフォリオ、ポジション、資産推移が、各評価時点以前の最新の価格と為替レートを使うよう統一しました。気配値や為替レートがまだ更新されていない場合は、最後に確認できた値と時刻を保持します。",
+          "資産チャートの金額目盛りを右側の数値列と揃え、小さい口座の帯も表示します。ポインタを合わせると日付、資産、口座金額だけを表示します。",
+          "価格チャートは縦方向のガイド線だけを残し、約定は引き続き専用のマークで表示します。"
+        ],
+        "de": [
+          "Portfolio, Positionen und Vermögensverlauf verwenden jetzt dieselbe Regel: den letzten bekannten Preis und Wechselkurs zum jeweiligen Bewertungszeitpunkt oder davor. Wurde eine Notierung oder ein Kurs noch nicht aktualisiert, bleiben der letzte bekannte Wert und sein Zeitpunkt erhalten.",
+          "Die Betragsskala des Vermögensdiagramms ist an der Wertespalte rechts ausgerichtet, Bänder kleinerer Konten bleiben sichtbar und beim Daraufzeigen werden nur Datum, Vermögen und Kontobeträge angezeigt.",
+          "Kursdiagramme behalten nur die vertikale Führungslinie; Trades bleiben mit eigenen Symbolen markiert."
+        ],
+        "fr": [
+          "Le portefeuille, les positions et l’historique de la valeur suivent désormais la même règle : utiliser le dernier prix et taux de change connus au moment de l’évaluation ou avant. Si une cotation ou un taux n’a pas encore été actualisé, la dernière valeur connue et son horodatage sont conservés.",
+          "L’échelle des montants du graphique de valeur est alignée sur la colonne de valeurs à droite, les bandes des petits comptes restent visibles et le survol n’affiche que la date, la valeur et les montants des comptes.",
+          "Les graphiques de prix ne conservent que la ligne de repère verticale ; les transactions restent signalées par leurs propres symboles."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed equity curves breaking and shifting during refresh.",
+          "Fixed the offset inner dot on trade markers so markers and the hover guide line up."
+        ],
+        "zh-Hans": [
+          "修复权益曲线断线和刷新抖动。",
+          "修正成交标记内点偏移，标记与悬停指引重新对齐。"
+        ],
+        "zh-Hant": [
+          "修正權益曲線斷線與重新整理時的抖動。",
+          "修正成交標記內點偏移，標記與懸停指引重新對齊。"
+        ],
+        "ko": [
+          "새로 고칠 때 자산 곡선이 끊기거나 흔들리던 문제를 수정했습니다.",
+          "체결 표시의 안쪽 점이 어긋나던 문제를 수정해 표시와 마우스 안내선을 다시 맞췄습니다."
+        ],
+        "ru": [
+          "Исправлены разрывы и смещение кривой капитала при обновлении.",
+          "Исправлено смещение внутренней точки на маркерах сделок: маркеры и направляющая при наведении снова совпадают."
+        ],
+        "pt-BR": [
+          "Corrigimos curvas de patrimônio que quebravam ou se deslocavam durante a atualização.",
+          "Corrigimos o deslocamento do ponto interno dos marcadores de negociação, realinhando os marcadores e a guia de foco."
+        ],
+        "tr": [
+          "Yenileme sırasında varlık eğrisinin kopması ve kayması düzeltildi.",
+          "İşlem işaretlerindeki iç noktanın kayması düzeltildi; işaretler ve üzerine gelme kılavuzu yeniden hizalandı."
+        ],
+        "ja": [
+          "更新時に資産曲線が途切れたり揺れたりする問題を修正しました。",
+          "約定マーカーの内側の点のずれを修正し、マーカーとホバーガイドを再び揃えました。"
+        ],
+        "de": [
+          "Vermögenskurven, die beim Aktualisieren abbrachen oder sprangen, wurden korrigiert.",
+          "Der versetzte Innenpunkt der Handelsmarkierungen wurde korrigiert, sodass Markierungen und Hover-Führungslinie wieder ausgerichtet sind."
+        ],
+        "fr": [
+          "Correction des courbes de valeur qui se coupaient ou se décalaient pendant l’actualisation.",
+          "Correction du décalage du point intérieur des repères de transaction, pour réaligner les repères et la ligne de repère au survol."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.6.4",
+    "build": "1574",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.6.4-1574.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.6.4-1574/PositionBar-0.6.4-1574.dmg",
+    "sha256": "4649be3425c5c989ead725c50217b326a236c59b10029b3303d3382e40f744d8",
+    "length": 21109582
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "27e70620d7c5dbb94c96230e256a421bdd5de591e64bcac0ca3e4f979fe3f3d7",
+  "appcastLength": 3800,
+  "tapCommit": "9bba5e15d6221a140e38fb07300a7856e75ac804",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
