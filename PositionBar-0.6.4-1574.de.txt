@@ -1,0 +1,10 @@
+PositionBar 0.6.4
+
+Verbessert
+- Portfolio, Positionen und Vermögensverlauf verwenden jetzt dieselbe Regel: den letzten bekannten Preis und Wechselkurs zum jeweiligen Bewertungszeitpunkt oder davor. Wurde eine Notierung oder ein Kurs noch nicht aktualisiert, bleiben der letzte bekannte Wert und sein Zeitpunkt erhalten.
+- Die Betragsskala des Vermögensdiagramms ist an der Wertespalte rechts ausgerichtet, Bänder kleinerer Konten bleiben sichtbar und beim Daraufzeigen werden nur Datum, Vermögen und Kontobeträge angezeigt.
+- Kursdiagramme behalten nur die vertikale Führungslinie; Trades bleiben mit eigenen Symbolen markiert.
+
+Behoben
+- Vermögenskurven, die beim Aktualisieren abbrachen oder sprangen, wurden korrigiert.
+- Der versetzte Innenpunkt der Handelsmarkierungen wurde korrigiert, sodass Markierungen und Hover-Führungslinie wieder ausgerichtet sind.

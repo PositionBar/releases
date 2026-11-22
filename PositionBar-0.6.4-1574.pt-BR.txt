@@ -1,0 +1,10 @@
+PositionBar 0.6.4
+
+Melhorado
+- A carteira, as posições e o histórico do patrimônio agora seguem a mesma regra: usam o preço e a taxa de câmbio mais recentes conhecidos até cada momento de avaliação. Se uma cotação ou taxa ainda não foi atualizada, o último valor conhecido e seu horário são mantidos.
+- A escala de valores do gráfico de patrimônio fica alinhada à coluna de valores à direita, as faixas de contas menores continuam visíveis e o cursor mostra apenas a data, o patrimônio e os valores das contas.
+- Os gráficos de preço mantêm apenas a guia vertical; as negociações continuam marcadas com símbolos próprios.
+
+Corrigido
+- Corrigimos curvas de patrimônio que quebravam ou se deslocavam durante a atualização.
+- Corrigimos o deslocamento do ponto interno dos marcadores de negociação, realinhando os marcadores e a guia de foco.

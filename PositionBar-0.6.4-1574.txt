@@ -1,0 +1,10 @@
+PositionBar 0.6.4
+
+Improved
+- Portfolio, positions and equity history now share one rule: use the latest known price and exchange rate at or before each valuation time. If a quote or rate has not refreshed, keep its last known value and timestamp.
+- Equity chart amount ticks now line up with the value column on the right, bands for smaller accounts remain visible, and hover shows only the date, equity and account amounts.
+- Price charts keep only the vertical guide; trades remain marked with their own symbols.
+
+Fixed
+- Fixed equity curves breaking and shifting during refresh.
+- Fixed the offset inner dot on trade markers so markers and the hover guide line up.

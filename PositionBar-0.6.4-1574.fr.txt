@@ -1,0 +1,10 @@
+PositionBar 0.6.4
+
+Améliorations
+- Le portefeuille, les positions et l’historique de la valeur suivent désormais la même règle : utiliser le dernier prix et taux de change connus au moment de l’évaluation ou avant. Si une cotation ou un taux n’a pas encore été actualisé, la dernière valeur connue et son horodatage sont conservés.
+- L’échelle des montants du graphique de valeur est alignée sur la colonne de valeurs à droite, les bandes des petits comptes restent visibles et le survol n’affiche que la date, la valeur et les montants des comptes.
+- Les graphiques de prix ne conservent que la ligne de repère verticale ; les transactions restent signalées par leurs propres symboles.
+
+Corrections
+- Correction des courbes de valeur qui se coupaient ou se décalaient pendant l’actualisation.
+- Correction du décalage du point intérieur des repères de transaction, pour réaligner les repères et la ligne de repère au survol.

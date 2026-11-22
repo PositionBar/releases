@@ -1,0 +1,10 @@
+PositionBar 0.6.4
+
+İyileştirildi
+- Portföy, pozisyonlar ve varlık geçmişi artık her değerleme anında veya öncesindeki en son bilinen fiyatı ve döviz kurunu kullanıyor. Bir kotasyon veya kur henüz güncellenmediyse son bilinen değer ve zamanı korunuyor.
+- Varlık grafiğinin tutar ölçeği sağdaki değer sütunuyla hizalanıyor, küçük hesapların şeritleri görünür kalıyor ve üzerine gelindiğinde yalnızca tarih, varlık ve hesap tutarları gösteriliyor.
+- Fiyat grafiklerinde yalnızca dikey kılavuz kalıyor; işlemler kendi simgeleriyle işaretlenmeye devam ediyor.
+
+Düzeltildi
+- Yenileme sırasında varlık eğrisinin kopması ve kayması düzeltildi.
+- İşlem işaretlerindeki iç noktanın kayması düzeltildi; işaretler ve üzerine gelme kılavuzu yeniden hizalandı.
