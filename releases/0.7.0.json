@@ -1,0 +1,220 @@
+{
+  "status": "published",
+  "version": "0.7.0",
+  "build": 1606,
+  "source_sha": "3d965e59d394de412d21e3763ea09ca50b6440ef",
+  "metadataSHA256": "fac559109114ae56ec77157b53fbf33242e967588f0d9434183ebb217cb9368d",
+  "publishedOn": "2026-11-23",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added Tonghuashun Investment Ledger support with in-app web sign-in for ordinary CNY Shanghai and Shenzhen A-share ledgers without margin liability, including CNY cash, total equity, stock and ETF holdings, and holding P&L."
+        ],
+        "zh-Hans": [
+          "新增同花顺投资账本支持，可通过应用内网页登录接入无融资负债的普通人民币沪深账本，同步人民币现金、总权益、股票与 ETF 持仓及持仓盈亏。"
+        ],
+        "zh-Hant": [
+          "新增同花順投資帳本支援，可透過應用程式內網頁登入接入無融資負債的普通人民幣滬深帳本，同步人民幣現金、總權益、股票與 ETF 持倉及持倉損益。"
+        ],
+        "ko": [
+          "퉁화순 투자 장부를 지원합니다. 앱 내 웹 로그인으로 신용 부채가 없는 일반 위안화 상하이·선전 A주 장부를 연결해 위안화 현금, 총자산, 주식 및 ETF 보유 내역과 보유 손익을 동기화할 수 있습니다."
+        ],
+        "ru": [
+          "Добавлена поддержка Tonghuashun Investment Ledger со входом через встроенный веб-просмотр для обычных портфелей акций A Шанхая и Шэньчжэня в CNY без маржинальных обязательств, включая денежный остаток в CNY, общий капитал, позиции по акциям и ETF и результат по позициям."
+        ],
+        "pt-BR": [
+          "Adicionado suporte ao Tonghuashun Investment Ledger com login na web no aplicativo para carteiras comuns de ações A de Xangai e Shenzhen em CNY sem passivo de margem, incluindo saldo em CNY, patrimônio total, posições em ações e ETFs e resultado das posições."
+        ],
+        "tr": [
+          "Uygulama içi web girişiyle Tonghuashun Yatırım Defteri desteği eklendi. Kredili borcu olmayan sıradan CNY Şanghay ve Shenzhen A-hisse defterlerinde CNY nakit, toplam varlık, hisse ve ETF pozisyonları ile pozisyon kâr/zararı eşitlenir."
+        ],
+        "ja": [
+          "同花順投資帳簿に対応しました。アプリ内のウェブサインインで信用負債のない通常の人民元建て上海・深セン A 株帳簿を接続し、人民元現金、総資産、株式・ETF 保有銘柄および保有損益を同期できます。"
+        ],
+        "de": [
+          "Unterstützung für Tonghuashun Investment Ledger mit Web-Anmeldung in der App hinzugefügt. Synchronisiert werden normale CNY-Depotbücher für Shanghai- und Shenzhen-A-Aktien ohne Margin-Verbindlichkeiten, einschließlich CNY-Barbestand, Gesamtvermögen, Aktien- und ETF-Positionen sowie Positions-GuV."
+        ],
+        "fr": [
+          "Ajout de la prise en charge de Tonghuashun Investment Ledger avec connexion web intégrée pour les carnets ordinaires d’actions A de Shanghai et Shenzhen en CNY sans dette sur marge, incluant le solde en CNY, la valeur totale, les positions actions et ETF ainsi que le résultat des positions."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Unified daily P&L and return calculations: the portfolio and accounts use net equity change, while individual positions and cash rows segment intraday trades and margin adjustments to measure daily P&L and return on cumulative effective capital.",
+          "Contract rows in the position list now calculate position value from invested margin plus unrealized P&L across isolated, cross and portfolio margin modes, while detail popovers continue to show signed notional exposure.",
+          "Redesigned chart hover readouts with a translucent panel-tinted surface that automatically docks to the upper-left or upper-right corner, delayed background chart loading indicators, and softened equity chart account colors.",
+          "Polished macOS panel interactions: account headers use flexible widths with a hover menu, selected holdings stay highlighted while details are open, scrolling the list closes open details, and the top P&L switcher, toolbar icons and Settings account sidebar have cleaner proportions.",
+          "Updated the macOS app icon with a tighter edge-fused tray and refined chip proportions, and updated the About window with crisp Light and Dark app icons."
+        ],
+        "zh-Hans": [
+          "统一总览、账户与仓位的今日盈亏及收益率口径：总权益和账户按两端净权益差计算，单个仓位和现金行按日内仓位变动与保证金调整分段计算今日盈亏及累计有效资本收益率。",
+          "仓位列表中的合约统一按「投入保证金 + 未实现盈亏」显示仓位价值，覆盖逐仓、全仓和组合保证金模式；资产详情继续显示带符号名义敞口。",
+          "图表悬停读数改为与面板同色的轻透底色并自动在左上或右上角避让停靠，后台刷新图表时短暂延迟加载提示，并柔和化权益图账户配色。",
+          "优化 macOS 面板交互与排版：账户标题改为自适应宽度并新增悬停菜单，打开资产详情时高亮选中行并在滚动列表时自动收起，同时统一顶部盈亏切换、工具栏图标与加宽后的设置账户侧栏。",
+          "更新 macOS 应用图标，采用更紧凑的边缘融合托盘与筹码比例，并在「关于」窗口提供清晰适配浅色与深色模式的应用图标。"
+        ],
+        "zh-Hant": [
+          "統一總覽、帳戶與倉位的今日損益及報酬率計算方式：總權益與帳戶依兩端淨權益差計算，單一倉位與現金列依日內倉位變動與保證金調整分段計算今日損益及累計有效資本報酬率。",
+          "倉位清單中的合約統一依「投入保證金 + 未實現損益」顯示倉位價值，涵蓋逐倉、全倉與組合保證金模式；資產詳情繼續顯示帶符號名目曝險。",
+          "圖表懸停讀數改為與面板同色的輕透底色並自動於左上或右上角避讓停靠，背景重新整理圖表時短暫延遲載入提示，並柔和化權益圖帳戶配色。",
+          "改善 macOS 面板互動與排版：帳戶標題改為自適應寬度並新增游標停留選單，開啟資產詳情時醒目顯示選取列並在捲動清單時自動收合，同時統一頂部損益切換、工具列圖示與加寬後的設定帳戶側邊欄。",
+          "更新 macOS 應用程式圖示，採用更緊湊的邊緣融合托盤與籌碼比例，並在「關於」視窗提供清晰適配淺色與深色模式的應用程式圖示。"
+        ],
+        "ko": [
+          "포트폴리오, 계좌, 포지션의 당일 손익과 수익률 계산 기준을 통일했습니다. 총자산과 계좌는 구간 순자산 변동으로, 개별 포지션과 현금 행은 장중 거래와 증거금 조정을 구간별로 나누어 당일 손익과 누적 유효 자본 수익률을 계산합니다.",
+          "포지션 목록의 계약 행은 격리, 교차, 포트폴리오 증거금 모드 모두에서 투입 증거금과 미실현 손익을 합산해 포지션 가치를 표시합니다. 상세 팝오버에서는 기존처럼 부호가 포함된 명목 익스포저를 표시합니다.",
+          "차트 마우스 오버 표시를 패널 색조의 반투명 배경으로 다듬고 좌상단 또는 우상단에 자동으로 배치되도록 했으며, 백그라운드 차트 새로 고침 시 로딩 표시를 잠시 지연하고 자산 차트의 계좌 색상을 한결 부드럽게 조정했습니다.",
+          "macOS 패널의 인터랙션과 레이아웃을 다듬었습니다. 계좌 제목은 유연한 너비와 마우스 오버 메뉴를 지원하고, 상세 보기가 열린 보유 자산 행은 강조 표시되며 목록을 스크롤하면 상세 팝오버가 자동으로 닫힙니다. 상단 손익 전환 메뉴, 도구 막대 아이콘과 설정의 계좌 사이드바 비율도 정리했습니다.",
+          "더 콤팩트한 가장자리 일체형 트레이와 정돈된 칩 비율로 macOS 앱 아이콘을 업데이트하고, 정보 창에 라이트 및 다크 모드용 선명한 앱 아이콘을 적용했습니다."
+        ],
+        "ru": [
+          "Унифицирован расчёт дневного результата и доходности: для портфеля и счетов используется изменение чистого капитала, а для отдельных позиций и денежных строк дневной результат и доходность к совокупному эффективному капиталу рассчитываются по сегментам с учётом внутридневных сделок и корректировок маржи.",
+          "В списке позиций стоимость контрактов теперь рассчитывается как вложенная маржа плюс нереализованный P&L для изолированной, кросс- и портфельной маржи; в деталях актива по-прежнему отображается номинальная позиция со знаком.",
+          "Подсказка при наведении на график получила полупрозрачный фон в тон панели с автоматическим размещением в левом или правом верхнем углу; индикатор фонового обновления графика появляется с небольшой задержкой, а цвета счетов на графике капитала стали мягче.",
+          "Улучшены интерфейс и взаимодействие панели macOS: заголовки счетов получили гибкую ширину и меню при наведении, выбранная позиция подсвечивается при открытых деталях, прокрутка списка закрывает детали, а переключатель P&L, значки панели инструментов и боковая панель счетов в настройках стали аккуратнее.",
+          "Обновлён значок приложения macOS с более компактным лотком, слитым с краями, и уточнёнными пропорциями фишек; в окне «О программе» теперь отображаются чёткие светлый и тёмный значки."
+        ],
+        "pt-BR": [
+          "Unificamos o cálculo do resultado e da rentabilidade do dia: a carteira e as contas usam a variação do patrimônio líquido, enquanto posições individuais e linhas de caixa segmentam operações intradiárias e ajustes de margem para calcular o resultado do dia e o retorno sobre o capital efetivo acumulado.",
+          "As linhas de contratos na lista de posições agora calculam o valor da posição somando a margem investida ao lucro ou prejuízo não realizado nos modos isolado, cruzado e de margem de portfólio; os detalhes continuam exibindo a exposição nocional com sinal.",
+          "O leitor ao passar o cursor nos gráficos ganhou um fundo translúcido no tom do painel com encaixe automático no canto superior esquerdo ou direito, o indicador de atualização em segundo plano agora aguarda um instante antes de aparecer e as cores das contas no gráfico de patrimônio ficaram mais suaves.",
+          "Aprimoramos as interações e o layout do painel no macOS: os cabeçalhos das contas usam largura flexível com menu ao passar o cursor, a posição selecionada fica destacada com os detalhes abertos, rolar a lista fecha os detalhes e o seletor de P&L, os ícones da barra superior e a barra lateral de contas nos Ajustes foram ajustados.",
+          "Atualizamos o ícone do aplicativo no macOS com bandeja mais compacta integrada às bordas e proporções refinadas das fichas, além de ícones nítidos nos modos Claro e Escuro na janela Sobre."
+        ],
+        "tr": [
+          "Portföy, hesaplar ve pozisyonlar için günlük kâr/zarar ve getiri hesaplaması birleştirildi: portföy ve hesaplar net varlık değişimini kullanırken tekil pozisyonlar ve nakit satırları gün içi işlemleri ve teminat değişikliklerini parçalara ayırarak günlük kâr/zararı ve birikimli etkin sermaye getirisini hesaplar.",
+          "Pozisyon listesindeki sözleşme satırları artık izole, çapraz ve portföy teminatı modlarında pozisyon değerini yatırılan teminat artı gerçekleşmemiş kâr/zarar olarak hesaplar; ayrıntı penceresi işaretli nominal pozisyon tutarını göstermeye devam eder.",
+          "Grafik üzerine gelme göstergesi panel tonunda yarı saydam bir yüzeyle yenilendi ve sol ya da sağ üst köşeye otomatik yerleşiyor; arka planda grafik yenilerken yükleme göstergesi kısa süre geciktirildi ve varlık grafiğindeki hesap renkleri yumuşatıldı.",
+          "macOS panel etkileşimleri ve düzeni iyileştirildi: hesap başlıkları esnek genişliğe ve üzerine gelince açılan menüye kavuştu, ayrıntılar açıkken seçili satır vurgulanıyor, listeyi kaydırınca açık ayrıntılar kapanıyor; üst kâr/zarar seçicisi, araç çubuğu simgeleri ve Ayarlar hesap kenar çubuğu dengelendi.",
+          "macOS uygulama simgesi kenarlarla bütünleşen daha derli toplu tepsi ve yenilenmiş fiş oranlarıyla güncellendi; Hakkında penceresine Açık ve Koyu modlara uygun keskin uygulama simgeleri eklendi."
+        ],
+        "ja": [
+          "ポートフォリオ、口座、ポジションの当日損益と収益率の計算基準を統一しました。総資産と口座は純資産の増減を用い、個別ポジションと現金行は日中の取引や証拠金調整ごとに区間を分けて当日損益と累積有効資本に対する収益率を計算します。",
+          "ポジション一覧の契約行では、分離・クロス・ポートフォリオマージンの各モードで「投入証拠金＋含み損益」からポジション評価額を算出します。詳細ポップオーバーでは引き続き符号付きの名目エクスポージャーを表示します。",
+          "チャートのホバー表示をパネルと同系色の半透明サーフェスに改め、左上または右上に自動配置されるようにしました。バックグラウンド更新時の読み込み表示をわずかに遅らせ、資産チャートの口座カラーも落ち着いた色調に調整しました。",
+          "macOS パネルの操作性とレイアウトを磨きました。口座見出しを可変幅にしてホバーメニューを追加し、詳細表示中は選択中の銘柄をハイライト表示してリストのスクロール時に自動で閉じます。上部の損益切り替え、ツールバーアイコン、設定の口座サイドバーのバランスも整えました。",
+          "macOS アプリアイコンを縁に馴染むコンパクトなトレイと整えたチップ比率へ刷新し、「このアプリについて」ウィンドウにライト・ダーク両対応の鮮明なアイコンを表示するようにしました。"
+        ],
+        "de": [
+          "Die Berechnung von Tagesergebnis und Rendite wurde vereinheitlicht: Portfolio und Konten nutzen die Nettovermögensänderung, während einzelne Positionen und Barbestände untertägige Trades und Margin-Anpassungen in Abschnitte teilen, um Tagesergebnis und Rendite auf das kumulierte effektive Kapital zu berechnen.",
+          "Kontraktzeilen in der Positionsliste berechnen den Positionswert nun im Isolated-, Cross- und Portfolio-Margin-Modus aus eingesetzter Margin plus nicht realisiertem Gewinn/Verlust; die Detailansicht zeigt weiterhin das nominale Exposure mit Vorzeichen.",
+          "Die Hover-Anzeige in Diagrammen nutzt nun eine halbtransparente, an das Panel angepasste Fläche und dockt automatisch oben links oder oben rechts an; der Ladeindikator bei Hintergrundaktualisierungen erscheint leicht verzögert und die Kontofarben im Vermögensdiagramm wurden abgemildert.",
+          "Interaktionen und Layout des macOS-Panels wurden verfeinert: Kontoüberschriften nutzen flexible Breiten mit Hover-Menü, ausgewählte Positionen bleiben bei geöffneten Details hervorgehoben, beim Scrollen der Liste schließen sich geöffnete Details, und der GuV-Umschalter, die Symbolleisten-Icons sowie die Kontoseitenleiste in den Einstellungen wurden ausgewogener gestaltet.",
+          "Das macOS-App-Symbol wurde mit einer kompakteren, nahtlos an die Ränder anschließenden Ablage und feineren Chip-Proportionen aktualisiert; das Info-Fenster zeigt nun gestochen scharfe App-Symbole im Hell- und Dunkelmodus."
+        ],
+        "fr": [
+          "Unification du calcul du résultat du jour et du rendement : le portefeuille et les comptes utilisent la variation nette de la valeur, tandis que les positions individuelles et les lignes de trésorerie découpent les opérations intrajournalières et les ajustements de marge pour calculer le résultat du jour et le rendement sur le capital effectif cumulé.",
+          "Les lignes de contrats de la liste des positions calculent désormais la valeur à partir de la marge engagée plus les gains/pertes latents en modes isolé, croisé et marge de portefeuille ; la vue détaillée continue d’afficher l’exposition notionnelle signée.",
+          "L’affichage au survol des graphiques adopte un fond translucide assorti au panneau avec ancrage automatique en haut à gauche ou à droite, l’indicateur d’actualisation en arrière-plan est légèrement différé et les couleurs des comptes sur le graphique de valeur sont adoucies.",
+          "Amélioration des interactions et de la mise en page du panneau macOS : les en-têtes de comptes adoptent une largeur flexible avec un menu au survol, la position sélectionnée reste mise en évidence tant que ses détails sont ouverts, le défilement de la liste ferme les détails et le sélecteur de résultat, les icônes de la barre d’outils ainsi que la barre latérale des comptes dans les réglages gagnent en équilibre.",
+          "Mise à jour de l’icône de l’app macOS avec un plateau plus compact fondu aux bords et des proportions de jetons affinées, ainsi que des icônes nettes en mode clair et sombre dans la fenêtre À propos."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Daily P&L now loads from local cache on the first frame at launch, and background refreshes or live quotes no longer clear displayed daily P&L or flash a syncing status.",
+          "Fixed missing list values for Binance Portfolio Margin and OKX cross-margin contracts, and allowed negative values when cross-margin losses exceed invested margin.",
+          "Fixed expand and collapse lag when toggling long account groups."
+        ],
+        "zh-Hans": [
+          "启动首帧即从本地缓存显示今日盈亏，后台刷新或实时报价推送不再清空已有今日盈亏或闪烁同步状态。",
+          "修复币安组合保证金和欧易全仓合约在仓位列表缺少价值的问题，全仓亏损超过投入保证金时正常显示负数。",
+          "修复展开或收起较长账户分组时的响应延迟。"
+        ],
+        "zh-Hant": [
+          "啟動首幀即從本機快取顯示今日損益，背景重新整理或即時報價推送不再清空既有今日損益或閃爍同步狀態。",
+          "修正幣安組合保證金與歐易全倉合約在倉位清單缺少價值的問題，全倉虧損超過投入保證金時正常顯示負數。",
+          "修正展開或收合較長帳戶群組時的回應延遲。"
+        ],
+        "ko": [
+          "실행 직후 첫 프레임부터 로컬 캐시의 당일 손익을 바로 표시하며, 백그라운드 새로 고침이나 실시간 시세 수신 시 표시된 당일 손익이 지워지거나 동기화 상태가 깜박이지 않습니다.",
+          "바이낸스 포트폴리오 마진과 OKX 교차 마진 계약이 목록에서 가치가 비어 보이던 문제를 수정했으며, 교차 마진 손실이 투입 증거금을 초과할 때 음수로 정상 표시합니다.",
+          "항목이 많은 계좌 그룹을 펼치거나 접을 때 발생하던 지연 문제를 수정했습니다."
+        ],
+        "ru": [
+          "Дневной результат теперь сразу загружается из локального кэша на первом кадре при запуске, а фоновые обновления и потоковые котировки больше не очищают показанный результат и не вызывают мигания статуса синхронизации.",
+          "Исправлено отсутствие стоимости в списке для контрактов Binance Portfolio Margin и кросс-маржи OKX; если убыток по кросс-марже превышает вложенную маржу, корректно отображается отрицательное значение.",
+          "Исправлена задержка при раскрытии и сворачивании длинных групп счетов."
+        ],
+        "pt-BR": [
+          "O resultado do dia agora é carregado do cache local logo no primeiro quadro ao abrir o app, e atualizações em segundo plano ou cotações em tempo real não limpam mais os valores exibidos nem fazem o status de sincronização piscar.",
+          "Corrigimos valores ausentes na lista para contratos de margem de portfólio da Binance e margem cruzada da OKX, exibindo valores negativos quando a perda na margem cruzada excede a margem investida.",
+          "Corrigimos o atraso ao expandir ou recolher grupos de contas longos."
+        ],
+        "tr": [
+          "Günlük kâr veya zarar artık açılıştaki ilk karede yerel önbellekten yüklenir; arka plan yenilemeleri veya anlık fiyat akışı görüntülenen değerleri silmez ve eşitleme durumunun yanıp sönmesine yol açmaz.",
+          "Binance Portföy Teminatı ve OKX çapraz teminat sözleşmelerinde listedeki eksik değerler düzeltildi; çapraz teminat zararı yatırılan teminatı aştığında negatif değerler doğru şekilde gösteriliyor.",
+          "Uzun hesap gruplarını genişletirken veya daraltırken yaşanan gecikme düzeltildi."
+        ],
+        "ja": [
+          "起動時の最初のフレームからローカルキャッシュの当日損益を表示するようになり、バックグラウンド更新やリアルタイム気配値で表示中の当日損益が消えたり同期中表示が点滅したりしなくなりました。",
+          "Binance ポートフォリオマージンおよび OKX クロスマージン契約で一覧の評価額が欠けていた問題を修正し、クロスマージンの損失が投入証拠金を上回る場合に負の値を正しく表示するようにしました。",
+          "項目の多い口座グループを展開・折りたたみする際の遅延を修正しました。"
+        ],
+        "de": [
+          "Das Tagesergebnis wird beim Start nun im ersten Bild direkt aus dem lokalen Cache geladen; Hintergrundaktualisierungen oder Live-Kurse löschen die angezeigten Werte nicht mehr und lassen keinen Synchronisierungsstatus aufblitzen.",
+          "Fehlende Listenwerte für Binance Portfolio Margin- und OKX-Cross-Margin-Kontrakte wurden behoben; übersteigen Cross-Margin-Verluste die eingesetzte Margin, werden negative Werte korrekt angezeigt.",
+          "Die Verzögerung beim Auf- und Zuklappen langer Kontogruppen wurde behoben."
+        ],
+        "fr": [
+          "Le résultat du jour est désormais chargé depuis le cache local dès la première image au lancement, et les actualisations en arrière-plan ou cotations en direct n’effacent plus les valeurs affichées ni ne font clignoter l’état de synchronisation.",
+          "Correction des valeurs manquantes dans la liste pour les contrats Binance Portfolio Margin et OKX en marge croisée, avec affichage des valeurs négatives lorsque les pertes en marge croisée dépassent la marge engagée.",
+          "Correction du délai ressenti lors du déploiement ou du repli de longs groupes de comptes."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.7.0",
+    "build": "1606",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.7.0-1606.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.7.0-1606/PositionBar-0.7.0-1606.dmg",
+    "sha256": "b012457e5f90df6fe78224cce48733477e5d8c529dae2117b36be384950d5feb",
+    "length": 21694798
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "c64200ea135d299fb6a05938951f6fdf7d34b39f906f3bdb704fbb25027698d1",
+  "appcastLength": 3809,
+  "tapCommit": "a56c73262af6bffa97ac24a5775aff96c995ccbd",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
