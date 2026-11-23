@@ -1,0 +1,16 @@
+PositionBar 0.7.0
+
+Neu
+- Unterstützung für Tonghuashun Investment Ledger mit Web-Anmeldung in der App hinzugefügt. Synchronisiert werden normale CNY-Depotbücher für Shanghai- und Shenzhen-A-Aktien ohne Margin-Verbindlichkeiten, einschließlich CNY-Barbestand, Gesamtvermögen, Aktien- und ETF-Positionen sowie Positions-GuV.
+
+Verbessert
+- Die Berechnung von Tagesergebnis und Rendite wurde vereinheitlicht: Portfolio und Konten nutzen die Nettovermögensänderung, während einzelne Positionen und Barbestände untertägige Trades und Margin-Anpassungen in Abschnitte teilen, um Tagesergebnis und Rendite auf das kumulierte effektive Kapital zu berechnen.
+- Kontraktzeilen in der Positionsliste berechnen den Positionswert nun im Isolated-, Cross- und Portfolio-Margin-Modus aus eingesetzter Margin plus nicht realisiertem Gewinn/Verlust; die Detailansicht zeigt weiterhin das nominale Exposure mit Vorzeichen.
+- Die Hover-Anzeige in Diagrammen nutzt nun eine halbtransparente, an das Panel angepasste Fläche und dockt automatisch oben links oder oben rechts an; der Ladeindikator bei Hintergrundaktualisierungen erscheint leicht verzögert und die Kontofarben im Vermögensdiagramm wurden abgemildert.
+- Interaktionen und Layout des macOS-Panels wurden verfeinert: Kontoüberschriften nutzen flexible Breiten mit Hover-Menü, ausgewählte Positionen bleiben bei geöffneten Details hervorgehoben, beim Scrollen der Liste schließen sich geöffnete Details, und der GuV-Umschalter, die Symbolleisten-Icons sowie die Kontoseitenleiste in den Einstellungen wurden ausgewogener gestaltet.
+- Das macOS-App-Symbol wurde mit einer kompakteren, nahtlos an die Ränder anschließenden Ablage und feineren Chip-Proportionen aktualisiert; das Info-Fenster zeigt nun gestochen scharfe App-Symbole im Hell- und Dunkelmodus.
+
+Behoben
+- Das Tagesergebnis wird beim Start nun im ersten Bild direkt aus dem lokalen Cache geladen; Hintergrundaktualisierungen oder Live-Kurse löschen die angezeigten Werte nicht mehr und lassen keinen Synchronisierungsstatus aufblitzen.
+- Fehlende Listenwerte für Binance Portfolio Margin- und OKX-Cross-Margin-Kontrakte wurden behoben; übersteigen Cross-Margin-Verluste die eingesetzte Margin, werden negative Werte korrekt angezeigt.
+- Die Verzögerung beim Auf- und Zuklappen langer Kontogruppen wurde behoben.

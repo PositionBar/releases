@@ -1,0 +1,16 @@
+PositionBar 0.7.0
+
+Yeni
+- Uygulama içi web girişiyle Tonghuashun Yatırım Defteri desteği eklendi. Kredili borcu olmayan sıradan CNY Şanghay ve Shenzhen A-hisse defterlerinde CNY nakit, toplam varlık, hisse ve ETF pozisyonları ile pozisyon kâr/zararı eşitlenir.
+
+İyileştirildi
+- Portföy, hesaplar ve pozisyonlar için günlük kâr/zarar ve getiri hesaplaması birleştirildi: portföy ve hesaplar net varlık değişimini kullanırken tekil pozisyonlar ve nakit satırları gün içi işlemleri ve teminat değişikliklerini parçalara ayırarak günlük kâr/zararı ve birikimli etkin sermaye getirisini hesaplar.
+- Pozisyon listesindeki sözleşme satırları artık izole, çapraz ve portföy teminatı modlarında pozisyon değerini yatırılan teminat artı gerçekleşmemiş kâr/zarar olarak hesaplar; ayrıntı penceresi işaretli nominal pozisyon tutarını göstermeye devam eder.
+- Grafik üzerine gelme göstergesi panel tonunda yarı saydam bir yüzeyle yenilendi ve sol ya da sağ üst köşeye otomatik yerleşiyor; arka planda grafik yenilerken yükleme göstergesi kısa süre geciktirildi ve varlık grafiğindeki hesap renkleri yumuşatıldı.
+- macOS panel etkileşimleri ve düzeni iyileştirildi: hesap başlıkları esnek genişliğe ve üzerine gelince açılan menüye kavuştu, ayrıntılar açıkken seçili satır vurgulanıyor, listeyi kaydırınca açık ayrıntılar kapanıyor; üst kâr/zarar seçicisi, araç çubuğu simgeleri ve Ayarlar hesap kenar çubuğu dengelendi.
+- macOS uygulama simgesi kenarlarla bütünleşen daha derli toplu tepsi ve yenilenmiş fiş oranlarıyla güncellendi; Hakkında penceresine Açık ve Koyu modlara uygun keskin uygulama simgeleri eklendi.
+
+Düzeltildi
+- Günlük kâr veya zarar artık açılıştaki ilk karede yerel önbellekten yüklenir; arka plan yenilemeleri veya anlık fiyat akışı görüntülenen değerleri silmez ve eşitleme durumunun yanıp sönmesine yol açmaz.
+- Binance Portföy Teminatı ve OKX çapraz teminat sözleşmelerinde listedeki eksik değerler düzeltildi; çapraz teminat zararı yatırılan teminatı aştığında negatif değerler doğru şekilde gösteriliyor.
+- Uzun hesap gruplarını genişletirken veya daraltırken yaşanan gecikme düzeltildi.

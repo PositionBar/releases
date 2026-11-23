@@ -1,0 +1,16 @@
+PositionBar 0.7.0
+
+Nouveautés
+- Ajout de la prise en charge de Tonghuashun Investment Ledger avec connexion web intégrée pour les carnets ordinaires d’actions A de Shanghai et Shenzhen en CNY sans dette sur marge, incluant le solde en CNY, la valeur totale, les positions actions et ETF ainsi que le résultat des positions.
+
+Améliorations
+- Unification du calcul du résultat du jour et du rendement : le portefeuille et les comptes utilisent la variation nette de la valeur, tandis que les positions individuelles et les lignes de trésorerie découpent les opérations intrajournalières et les ajustements de marge pour calculer le résultat du jour et le rendement sur le capital effectif cumulé.
+- Les lignes de contrats de la liste des positions calculent désormais la valeur à partir de la marge engagée plus les gains/pertes latents en modes isolé, croisé et marge de portefeuille ; la vue détaillée continue d’afficher l’exposition notionnelle signée.
+- L’affichage au survol des graphiques adopte un fond translucide assorti au panneau avec ancrage automatique en haut à gauche ou à droite, l’indicateur d’actualisation en arrière-plan est légèrement différé et les couleurs des comptes sur le graphique de valeur sont adoucies.
+- Amélioration des interactions et de la mise en page du panneau macOS : les en-têtes de comptes adoptent une largeur flexible avec un menu au survol, la position sélectionnée reste mise en évidence tant que ses détails sont ouverts, le défilement de la liste ferme les détails et le sélecteur de résultat, les icônes de la barre d’outils ainsi que la barre latérale des comptes dans les réglages gagnent en équilibre.
+- Mise à jour de l’icône de l’app macOS avec un plateau plus compact fondu aux bords et des proportions de jetons affinées, ainsi que des icônes nettes en mode clair et sombre dans la fenêtre À propos.
+
+Corrections
+- Le résultat du jour est désormais chargé depuis le cache local dès la première image au lancement, et les actualisations en arrière-plan ou cotations en direct n’effacent plus les valeurs affichées ni ne font clignoter l’état de synchronisation.
+- Correction des valeurs manquantes dans la liste pour les contrats Binance Portfolio Margin et OKX en marge croisée, avec affichage des valeurs négatives lorsque les pertes en marge croisée dépassent la marge engagée.
+- Correction du délai ressenti lors du déploiement ou du repli de longs groupes de comptes.

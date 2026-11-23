@@ -1,0 +1,16 @@
+PositionBar 0.7.0
+
+New
+- Added Tonghuashun Investment Ledger support with in-app web sign-in for ordinary CNY Shanghai and Shenzhen A-share ledgers without margin liability, including CNY cash, total equity, stock and ETF holdings, and holding P&L.
+
+Improved
+- Unified daily P&L and return calculations: the portfolio and accounts use net equity change, while individual positions and cash rows segment intraday trades and margin adjustments to measure daily P&L and return on cumulative effective capital.
+- Contract rows in the position list now calculate position value from invested margin plus unrealized P&L across isolated, cross and portfolio margin modes, while detail popovers continue to show signed notional exposure.
+- Redesigned chart hover readouts with a translucent panel-tinted surface that automatically docks to the upper-left or upper-right corner, delayed background chart loading indicators, and softened equity chart account colors.
+- Polished macOS panel interactions: account headers use flexible widths with a hover menu, selected holdings stay highlighted while details are open, scrolling the list closes open details, and the top P&L switcher, toolbar icons and Settings account sidebar have cleaner proportions.
+- Updated the macOS app icon with a tighter edge-fused tray and refined chip proportions, and updated the About window with crisp Light and Dark app icons.
+
+Fixed
+- Daily P&L now loads from local cache on the first frame at launch, and background refreshes or live quotes no longer clear displayed daily P&L or flash a syncing status.
+- Fixed missing list values for Binance Portfolio Margin and OKX cross-margin contracts, and allowed negative values when cross-margin losses exceed invested margin.
+- Fixed expand and collapse lag when toggling long account groups.

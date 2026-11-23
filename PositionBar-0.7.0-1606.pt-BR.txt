@@ -1,0 +1,16 @@
+PositionBar 0.7.0
+
+Novo
+- Adicionado suporte ao Tonghuashun Investment Ledger com login na web no aplicativo para carteiras comuns de ações A de Xangai e Shenzhen em CNY sem passivo de margem, incluindo saldo em CNY, patrimônio total, posições em ações e ETFs e resultado das posições.
+
+Melhorado
+- Unificamos o cálculo do resultado e da rentabilidade do dia: a carteira e as contas usam a variação do patrimônio líquido, enquanto posições individuais e linhas de caixa segmentam operações intradiárias e ajustes de margem para calcular o resultado do dia e o retorno sobre o capital efetivo acumulado.
+- As linhas de contratos na lista de posições agora calculam o valor da posição somando a margem investida ao lucro ou prejuízo não realizado nos modos isolado, cruzado e de margem de portfólio; os detalhes continuam exibindo a exposição nocional com sinal.
+- O leitor ao passar o cursor nos gráficos ganhou um fundo translúcido no tom do painel com encaixe automático no canto superior esquerdo ou direito, o indicador de atualização em segundo plano agora aguarda um instante antes de aparecer e as cores das contas no gráfico de patrimônio ficaram mais suaves.
+- Aprimoramos as interações e o layout do painel no macOS: os cabeçalhos das contas usam largura flexível com menu ao passar o cursor, a posição selecionada fica destacada com os detalhes abertos, rolar a lista fecha os detalhes e o seletor de P&L, os ícones da barra superior e a barra lateral de contas nos Ajustes foram ajustados.
+- Atualizamos o ícone do aplicativo no macOS com bandeja mais compacta integrada às bordas e proporções refinadas das fichas, além de ícones nítidos nos modos Claro e Escuro na janela Sobre.
+
+Corrigido
+- O resultado do dia agora é carregado do cache local logo no primeiro quadro ao abrir o app, e atualizações em segundo plano ou cotações em tempo real não limpam mais os valores exibidos nem fazem o status de sincronização piscar.
+- Corrigimos valores ausentes na lista para contratos de margem de portfólio da Binance e margem cruzada da OKX, exibindo valores negativos quando a perda na margem cruzada excede a margem investida.
+- Corrigimos o atraso ao expandir ou recolher grupos de contas longos.
