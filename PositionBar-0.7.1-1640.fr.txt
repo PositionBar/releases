@@ -1,0 +1,7 @@
+PositionBar 0.7.1
+
+Améliorations
+- Ajout de la connexion OAuth à Longbridge et de la possibilité de renommer les comptes connectés.
+
+Corrections
+- Correction du chargement des repères de transactions sur les graphiques et de la base de calcul du résultat journalier des positions.

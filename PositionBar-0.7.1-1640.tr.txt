@@ -1,0 +1,7 @@
+PositionBar 0.7.1
+
+İyileştirildi
+- Longbridge için OAuth ile giriş ve bağlı hesapları yeniden adlandırma desteği eklendi.
+
+Düzeltildi
+- Pozisyon grafiklerinde işlem işaretlerinin yüklenmesi ve günlük pozisyon kâr/zararı için kullanılan başlangıç değeri düzeltildi.

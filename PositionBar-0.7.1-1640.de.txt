@@ -1,0 +1,7 @@
+PositionBar 0.7.1
+
+Verbessert
+- OAuth-Anmeldung für Longbridge und Umbenennen verbundener Konten hinzugefügt.
+
+Behoben
+- Das Laden der Ausführungsmarkierungen in Positionscharts und die Berechnungsbasis für die Tages-GuV von Positionen wurden korrigiert.

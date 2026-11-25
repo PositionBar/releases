@@ -1,0 +1,7 @@
+PositionBar 0.7.1
+
+Improved
+- Added OAuth sign-in for Longbridge and the ability to rename connected accounts.
+
+Fixed
+- Fixed trade marker loading in position charts and corrected the baseline for daily position P&L.

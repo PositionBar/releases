@@ -1,0 +1,7 @@
+PositionBar 0.7.1
+
+Melhorado
+- Adicionamos login via OAuth na Longbridge e a opção de renomear contas conectadas.
+
+Corrigido
+- Corrigimos o carregamento dos marcadores de operações nos gráficos e a base de cálculo do resultado diário das posições.
