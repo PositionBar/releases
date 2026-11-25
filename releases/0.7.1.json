@@ -1,0 +1,125 @@
+{
+  "status": "published",
+  "version": "0.7.1",
+  "build": 1640,
+  "source_sha": "a8e541f16d581ecbfbfb6c20eed13497adb9407f",
+  "metadataSHA256": "92b36ee72c7f522bf35f0c1251ce83ff33889e3b876ab9eabab25646068e843c",
+  "publishedOn": "2026-11-25",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Added OAuth sign-in for Longbridge and the ability to rename connected accounts."
+        ],
+        "zh-Hans": [
+          "长桥支持 OAuth 登录，已连接的账户可以重命名。"
+        ],
+        "zh-Hant": [
+          "長橋支援 OAuth 登入，已連線的帳戶可以重新命名。"
+        ],
+        "ko": [
+          "롱브리지 OAuth 로그인과 연결된 계좌 이름 변경을 지원합니다."
+        ],
+        "ru": [
+          "Добавлен вход в Longbridge через OAuth и возможность переименовывать подключённые счета."
+        ],
+        "pt-BR": [
+          "Adicionamos login via OAuth na Longbridge e a opção de renomear contas conectadas."
+        ],
+        "tr": [
+          "Longbridge için OAuth ile giriş ve bağlı hesapları yeniden adlandırma desteği eklendi."
+        ],
+        "ja": [
+          "Longbridge の OAuth ログインと、接続済み口座の名前変更に対応しました。"
+        ],
+        "de": [
+          "OAuth-Anmeldung für Longbridge und Umbenennen verbundener Konten hinzugefügt."
+        ],
+        "fr": [
+          "Ajout de la connexion OAuth à Longbridge et de la possibilité de renommer les comptes connectés."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed trade marker loading in position charts and corrected the baseline for daily position P&L."
+        ],
+        "zh-Hans": [
+          "修复仓位图表的成交标记加载问题，以及仓位今日盈亏的计算基准。"
+        ],
+        "zh-Hant": [
+          "修正倉位圖表的成交標記載入問題，以及倉位今日損益的計算基準。"
+        ],
+        "ko": [
+          "포지션 차트의 체결 표시 로딩 문제와 포지션 당일 손익 기준값을 수정했습니다."
+        ],
+        "ru": [
+          "Исправлены загрузка отметок сделок на графиках позиций и база расчёта дневного результата по позициям."
+        ],
+        "pt-BR": [
+          "Corrigimos o carregamento dos marcadores de operações nos gráficos e a base de cálculo do resultado diário das posições."
+        ],
+        "tr": [
+          "Pozisyon grafiklerinde işlem işaretlerinin yüklenmesi ve günlük pozisyon kâr/zararı için kullanılan başlangıç değeri düzeltildi."
+        ],
+        "ja": [
+          "ポジションチャートの約定マーカーの読み込みと、ポジションの当日損益の計算基準を修正しました。"
+        ],
+        "de": [
+          "Das Laden der Ausführungsmarkierungen in Positionscharts und die Berechnungsbasis für die Tages-GuV von Positionen wurden korrigiert."
+        ],
+        "fr": [
+          "Correction du chargement des repères de transactions sur les graphiques et de la base de calcul du résultat journalier des positions."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.7.1",
+    "build": "1640",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.7.1-1640.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.7.1-1640/PositionBar-0.7.1-1640.dmg",
+    "sha256": "36cbc111214b686705c7560fe7d7dcd9a3a0ed13bd4e5530c56e2ee6693c7e88",
+    "length": 23013197
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "bad565d886067c67ccf4c3007740b22300b3f41177dfb4ed804e518f306c8f76",
+  "appcastLength": 3799,
+  "tapCommit": "f691acfa2afca05096f390ad795a22797597ba08",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
