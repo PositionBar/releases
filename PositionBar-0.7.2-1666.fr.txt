@@ -1,0 +1,13 @@
+PositionBar 0.7.2
+
+Nouveautés
+- Ajout de la prise en charge de Futu et moomoo : connectez-vous en lecture seule dans votre navigateur pour relier vos comptes titres au comptant et sur marge, synchroniser vos liquidités multidevises, actions, ETF, options, warrants de Hong Kong, historiques de cours et transactions, avec synchronisation en lecture seule sur iOS via le trousseau iCloud.
+
+Améliorations
+- OKX et Longbridge passent à la connexion en lecture seule dans le navigateur, mettant fin aux anciens modes par clé API et code QR ; OKX prend en charge la connexion par site régional et isole les erreurs d’autorisation des bots et du copy-trading de la synchronisation des soldes et positions principaux.
+- Refonte des Réglages sur macOS avec des formulaires groupés natifs, une barre de titre de préférences unifiée et des mises en page actualisées pour Général, Comptes et Intégrations ; le filtre des petits actifs est fusionné en un seul champ « Valeur minimale de l’actif » (0 affiche tous les actifs) à largeur automatique, avec un focus initial et un défilement plus nets.
+
+Corrections
+- Correction de la synchronisation du compte unifié Bitget : prise en charge des nombres en notation scientifique et des listes vides ou omises, filtrage des entrées de marché hors crypto ou invalides pour fiabiliser les cours et graphiques au comptant et sur contrats, et affichage de codes d’erreur explicites en cas d’échec.
+- Correction du résultat journalier manquant pour les positions dont l’instantané d’ouverture du matin avait été enregistré avant l’association des métadonnées de marché, une fois l’historique de marché du jour disponible.
+- Correction d’un problème où la suppression d’un compte pouvait effacer la série d’évaluation historique d’un autre compte ou mélanger les prix entre comptes, résolution des conflits lors d’un basculement rapide de l’interrupteur MCP local et ajout de messages localisés pour les erreurs d’opérations sur les comptes.

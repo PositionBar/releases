@@ -1,0 +1,13 @@
+PositionBar 0.7.2
+
+New
+- Added Futu and moomoo support: sign in with read-only access in your browser to connect cash and margin securities accounts, syncing multi-currency cash, stocks, ETFs, options, Hong Kong warrants, price history, and trade history, with read-only sync to iOS via iCloud Keychain.
+
+Improved
+- Switched OKX and Longbridge to browser-based read-only sign-in, retiring legacy API key and QR code setup; OKX supports regional site sign-in and isolates optional bot and copy-trading permission errors from core balances and positions.
+- Redesigned macOS Settings with native grouped forms, a unified preference titlebar, and updated General, Accounts, and Integrations layouts; combined the small-asset filter into a single Minimum asset value field (0 shows all assets) with auto-sizing width and cleaner focus and scrolling.
+
+Fixed
+- Fixed Bitget Unified Trading Account syncing: handled scientific-notation numbers and empty or omitted list fields, filtered non-crypto and malformed market entries so spot and contract quotes and charts load reliably, and surfaced explicit error codes on request failures.
+- Fixed missing daily P&L for holdings whose morning opening snapshot was recorded before market metadata was linked, once same-day market history becomes available.
+- Fixed an issue where deleting an account could remove another account's historical valuation series or mismatch cross-account valuation prices, resolved rapid toggle races on the local MCP switch, and added localized messages for account request errors.

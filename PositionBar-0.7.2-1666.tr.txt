@@ -1,0 +1,13 @@
+PositionBar 0.7.2
+
+Yeni
+- Futu ve moomoo desteği eklendi: nakit ve kredili menkul kıymet hesaplarını bağlamak için tarayıcınızdan salt okunur giriş yapın; çoklu para birimi nakit, hisse, ETF, opsiyon, Hong Kong varantları, fiyat geçmişi ve işlem geçmişi senkronize edilir ve iCloud Anahtar Zinciri üzerinden iOS’a salt okunur olarak aktarılır.
+
+İyileştirildi
+- OKX ve Longbridge tarayıcı üzerinden salt okunur girişe geçirildi, eski API anahtarı ve QR kod kurulumu kaldırıldı; OKX bölgesel site girişini destekler ve isteğe bağlı bot ile copy trading izin hatalarını ana bakiye ve pozisyon senkronizasyonundan ayırır.
+- macOS Ayarlar penceresi yerel gruplanmış formlar, birleşik tercih başlık çubuğu ve yenilenen Genel, Hesaplar ve Entegrasyonlar düzenleriyle yeniden tasarlandı; küçük varlık filtresi tek bir «Minimum varlık değeri» alanına (0 tüm varlıkları gösterir) birleştirilerek otomatik genişlik, daha temiz odak ve kaydırma deneyimi sunuldu.
+
+Düzeltildi
+- Bitget Birleşik Alım Satım Hesabı (UTA) senkronizasyonu düzeltildi: bilimsel gösterimdeki sayılar ile boş veya eksik liste alanları işlendi, spot ve sözleşme fiyatları ile grafiklerin güvenilir yüklenmesi için kripto dışı ve hatalı piyasa kayıtları filtrelendi, istek hatalarında açık hata kodları gösterilmeye başlandı.
+- Günün açılış kaydı piyasa meta verileri bağlanmadan önce alındığında, aynı gün piyasa geçmişi tamamlandıktan sonra bazı pozisyonlarda eksik kalan günlük kâr/zarar hesaplaması düzeltildi.
+- Bir hesabı silerken başka bir hesabın geçmiş değerleme serisinin silinmesine veya hesaplar arası fiyat eşleşmesinin bozulmasına yol açabilen hata giderildi, yerel MCP anahtarını hızlı değiştirirken oluşan durum yarışı çözüldü ve hesap işlem hataları için yerelleştirilmiş iletiler eklendi.

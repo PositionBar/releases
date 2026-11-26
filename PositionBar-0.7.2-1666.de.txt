@@ -1,0 +1,13 @@
+PositionBar 0.7.2
+
+Neu
+- Unterstützung für Futu und moomoo hinzugefügt: Melden Sie sich im Browser mit Lesezugriff an, um Bar- und Margin-Wertpapierkonten zu verbinden und Mehrwährungs-Barbestände, Aktien, ETFs, Optionen, Hongkong-Optionsscheine, Kursverläufe und Handelsverläufe zu synchronisieren – inklusive schreibgeschützter Synchronisierung auf iOS über den iCloud-Schlüsselbund.
+
+Verbessert
+- OKX und Longbridge wurden auf die schreibgeschützte Anmeldung im Browser umgestellt und die bisherigen Methoden per API-Schlüssel und QR-Code entfernt; OKX unterstützt die Anmeldung nach regionaler Website und trennt optionale Berechtigungsfehler bei Bots und Copy-Trading von der Synchronisierung der Hauptguthaben und Positionen.
+- Die macOS-Einstellungen wurden mit nativen gruppierten Formularen, einheitlicher Einstellungs-Titelleiste und überarbeiteten Ansichten für Allgemein, Konten und Integrationen neu gestaltet; der Kleinpositionsfilter wurde in ein einzelnes Feld „Mindestwert eines Vermögenswerts“ (0 zeigt alle Vermögenswerte) mit automatischer Breite sowie saubererem Fokus- und Scrollverhalten zusammengeführt.
+
+Behoben
+- Synchronisierung für das Bitget Unified Trading Account korrigiert: Zahlen in wissenschaftlicher Schreibweise sowie leere oder ausgelassene Listenfelder werden verarbeitet, Nicht-Krypto- und fehlerhafte Markteinträge werden gefiltert, damit Spot- und Kontraktkurse sowie Diagramme zuverlässig laden, und bei fehlgeschlagenen Anfragen werden eindeutige Fehlercodes angezeigt.
+- Fehlendes Tagesergebnis für Positionen behoben, deren morgendlicher Eröffnungsschnappschuss vor der Verknüpfung von Marktmetadaten gespeichert wurde, sobald die Markthistorie desselben Tages verfügbar ist.
+- Problem behoben, bei dem das Löschen eines Kontos die historische Bewertungsreihe eines anderen Kontos entfernen oder Bewertungspreise zwischen Konten vermischen konnte; Race Conditions beim schnellen Umschalten des lokalen MCP-Schalters wurden behoben und lokalisierte Fehlermeldungen für Kontoaktionen ergänzt.
