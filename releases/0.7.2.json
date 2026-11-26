@@ -1,0 +1,190 @@
+{
+  "status": "published",
+  "version": "0.7.2",
+  "build": 1666,
+  "source_sha": "06801b8fc408bbb2311eb07c140f88fba3703d7e",
+  "metadataSHA256": "5ceeb54c4a2c1e60e83782c1095c4b1b3053e6bf16419b0bdb09a372668f2ab1",
+  "publishedOn": "2026-11-26",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added Futu and moomoo support: sign in with read-only access in your browser to connect cash and margin securities accounts, syncing multi-currency cash, stocks, ETFs, options, Hong Kong warrants, price history, and trade history, with read-only sync to iOS via iCloud Keychain."
+        ],
+        "zh-Hans": [
+          "新增富途与 moomoo 支持：在浏览器中完成只读登录即可连接证券现金与融资账户，同步多币种现金、股票、ETF、期权、港股轮证及历史行情与成交记录，并通过 iCloud 钥匙串同步至 iOS 只读查看。"
+        ],
+        "zh-Hant": [
+          "新增富途與 moomoo 支援：在瀏覽器中完成唯讀登入即可連線證券現金與融資帳戶，同步多幣別現金、股票、ETF、選擇權、港股輪證及歷史行情與成交紀錄，並透過 iCloud 鑰匙圈同步至 iOS 唯讀檢視。"
+        ],
+        "ko": [
+          "Futu 및 moomoo를 지원합니다. 브라우저에서 읽기 전용으로 로그인해 현금·신용 증권 계좌를 연결하고 다중 통화 현금, 주식, ETF, 옵션, 홍콩 워런트, 가격 이력 및 체결 내역을 동기화하며, iCloud 키체인을 통해 iOS에서도 읽기 전용으로 확인할 수 있습니다."
+        ],
+        "ru": [
+          "Добавлена поддержка Futu и moomoo: войдите через браузер с доступом только для чтения, чтобы подключить наличные и маржинальные брокерские счета и синхронизировать мультивалютные денежные остатки, акции, ETF, опционы, гонконгские варранты, историю цен и сделок с синхронизацией на iOS через Связку ключей iCloud."
+        ],
+        "pt-BR": [
+          "Adicionado suporte a Futu e moomoo: entre pelo navegador com acesso somente leitura para conectar contas de títulos à vista e de margem, sincronizando caixa em várias moedas, ações, ETFs, opções, warrants de Hong Kong, histórico de preços e negociações, com sincronização somente leitura para o iOS via Chaves do iCloud."
+        ],
+        "tr": [
+          "Futu ve moomoo desteği eklendi: nakit ve kredili menkul kıymet hesaplarını bağlamak için tarayıcınızdan salt okunur giriş yapın; çoklu para birimi nakit, hisse, ETF, opsiyon, Hong Kong varantları, fiyat geçmişi ve işlem geçmişi senkronize edilir ve iCloud Anahtar Zinciri üzerinden iOS’a salt okunur olarak aktarılır."
+        ],
+        "ja": [
+          "Futu と moomoo に対応しました。ブラウザから読み取り専用でサインインして現金・信用証券口座を接続し、複数通貨の現金、株式、ETF、オプション、香港ワラント、価格履歴および約定履歴を同期でき、iCloud キーチェーン経由で iOS でも読み取り専用で閲覧できます。"
+        ],
+        "de": [
+          "Unterstützung für Futu und moomoo hinzugefügt: Melden Sie sich im Browser mit Lesezugriff an, um Bar- und Margin-Wertpapierkonten zu verbinden und Mehrwährungs-Barbestände, Aktien, ETFs, Optionen, Hongkong-Optionsscheine, Kursverläufe und Handelsverläufe zu synchronisieren – inklusive schreibgeschützter Synchronisierung auf iOS über den iCloud-Schlüsselbund."
+        ],
+        "fr": [
+          "Ajout de la prise en charge de Futu et moomoo : connectez-vous en lecture seule dans votre navigateur pour relier vos comptes titres au comptant et sur marge, synchroniser vos liquidités multidevises, actions, ETF, options, warrants de Hong Kong, historiques de cours et transactions, avec synchronisation en lecture seule sur iOS via le trousseau iCloud."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Switched OKX and Longbridge to browser-based read-only sign-in, retiring legacy API key and QR code setup; OKX supports regional site sign-in and isolates optional bot and copy-trading permission errors from core balances and positions.",
+          "Redesigned macOS Settings with native grouped forms, a unified preference titlebar, and updated General, Accounts, and Integrations layouts; combined the small-asset filter into a single Minimum asset value field (0 shows all assets) with auto-sizing width and cleaner focus and scrolling."
+        ],
+        "zh-Hans": [
+          "OKX 与长桥全面切换为浏览器只读登录，停用旧版 API Key 与扫码登录；OKX 支持按区域站点登录，并隔离可选机器人与跟单模块的权限报错，不再影响核心余额与持仓同步。",
+          "重新设计 macOS 设置窗口，采用原生分组表单样式与统一偏好标题栏，重排通用、账号与集成页面布局；将隐藏小额资产合并为单一「最低展示价值」输入框（设为 0 时显示全部资产），支持宽度随输入自适应并优化初始焦点与滚动体验。"
+        ],
+        "zh-Hant": [
+          "OKX 與長橋全面切換為瀏覽器唯讀登入，停用舊版 API Key 與掃碼登入；OKX 支援依區域站點登入，並隔離選用機器人與跟單模組的權限錯誤，不再影響核心餘額與持倉同步。",
+          "重新設計 macOS 設定視窗，採用原生分組表單樣式與統一偏好設定標題列，重排一般、帳號與整合頁面版面；將隱藏小額資產合併為單一「最低顯示價值」輸入框（設為 0 時顯示全部資產），支援寬度隨輸入自適應並改善初始焦點與捲動體驗。"
+        ],
+        "ko": [
+          "OKX와 Longbridge가 브라우저 읽기 전용 로그인으로 전환되어 기존 API 키 및 QR 코드 연결 방식을 종료했습니다. OKX는 지역별 사이트 로그인을 지원하며 선택적 봇·카피 트레이딩 권한 오류를 핵심 잔고 및 포지션 동기화와 분리합니다.",
+          "macOS 설정 창을 기본 그룹형 폼과 통합 환경설정 제목 막대로 새롭게 디자인하고 일반, 계정, 통합 레이아웃을 정리했습니다. 소액 자산 숨김 옵션을 단일 「최소 표시 자산 가치」 입력란(0이면 모든 자산 표시)으로 통합하고 입력 길이에 맞춘 자동 너비 조절과 초기 포커스·스크롤 동작을 다듬었습니다."
+        ],
+        "ru": [
+          "OKX и Longbridge переведены на вход в браузере с доступом только для чтения, прежние способы подключения по API-ключу и QR-коду отключены; OKX поддерживает вход по региональным сайтам и изолирует ошибки прав для ботов и копитрейдинга от синхронизации основных балансов и позиций.",
+          "Переработано окно «Настройки» на macOS с нативными сгруппированными формами, единой строкой заголовка настроек и обновлённой компоновкой вкладок «Основные», «Учётные записи» и «Интеграции»; фильтр мелких активов объединён в одно поле «Минимальная стоимость актива» (0 показывает все активы) с автоподбором ширины и более аккуратными фокусом и прокруткой."
+        ],
+        "pt-BR": [
+          "OKX e Longbridge passaram a usar login somente leitura pelo navegador, encerrando a configuração antiga por chave de API e código QR; a OKX suporta login por site regional e isola erros de permissão de bots e copy trading dos saldos e posições principais.",
+          "Redesenhamos os Ajustes no macOS com formulários agrupados nativos, barra de título unificada e layouts atualizados para Geral, Contas e Integrações; o filtro de ativos pequenos foi unificado em um único campo «Valor mínimo do ativo» (0 exibe todos os ativos) com largura automática e foco e rolagem mais limpos."
+        ],
+        "tr": [
+          "OKX ve Longbridge tarayıcı üzerinden salt okunur girişe geçirildi, eski API anahtarı ve QR kod kurulumu kaldırıldı; OKX bölgesel site girişini destekler ve isteğe bağlı bot ile copy trading izin hatalarını ana bakiye ve pozisyon senkronizasyonundan ayırır.",
+          "macOS Ayarlar penceresi yerel gruplanmış formlar, birleşik tercih başlık çubuğu ve yenilenen Genel, Hesaplar ve Entegrasyonlar düzenleriyle yeniden tasarlandı; küçük varlık filtresi tek bir «Minimum varlık değeri» alanına (0 tüm varlıkları gösterir) birleştirilerek otomatik genişlik, daha temiz odak ve kaydırma deneyimi sunuldu."
+        ],
+        "ja": [
+          "OKX と Longbridge をブラウザからの読み取り専用サインインに統一し、従来の API キーおよび QR コード接続を廃止しました。OKX は地域別サイトでのサインインに対応し、任意のボット・コピートレードの権限エラーを主要な残高・ポジション同期から分離します。",
+          "macOS の「設定」ウィンドウをネイティブのグループフォームと統一タイトルバーで刷新し、「一般」「アカウント」「連携」のレイアウトを整理しました。少額資産フィルタを単一の「表示する資産の最低価値」入力欄（0 で全資産を表示）に統合し、入力幅の自動調整と初期フォーカス・スクロール挙動を改善しました。"
+        ],
+        "de": [
+          "OKX und Longbridge wurden auf die schreibgeschützte Anmeldung im Browser umgestellt und die bisherigen Methoden per API-Schlüssel und QR-Code entfernt; OKX unterstützt die Anmeldung nach regionaler Website und trennt optionale Berechtigungsfehler bei Bots und Copy-Trading von der Synchronisierung der Hauptguthaben und Positionen.",
+          "Die macOS-Einstellungen wurden mit nativen gruppierten Formularen, einheitlicher Einstellungs-Titelleiste und überarbeiteten Ansichten für Allgemein, Konten und Integrationen neu gestaltet; der Kleinpositionsfilter wurde in ein einzelnes Feld „Mindestwert eines Vermögenswerts“ (0 zeigt alle Vermögenswerte) mit automatischer Breite sowie saubererem Fokus- und Scrollverhalten zusammengeführt."
+        ],
+        "fr": [
+          "OKX et Longbridge passent à la connexion en lecture seule dans le navigateur, mettant fin aux anciens modes par clé API et code QR ; OKX prend en charge la connexion par site régional et isole les erreurs d’autorisation des bots et du copy-trading de la synchronisation des soldes et positions principaux.",
+          "Refonte des Réglages sur macOS avec des formulaires groupés natifs, une barre de titre de préférences unifiée et des mises en page actualisées pour Général, Comptes et Intégrations ; le filtre des petits actifs est fusionné en un seul champ « Valeur minimale de l’actif » (0 affiche tous les actifs) à largeur automatique, avec un focus initial et un défilement plus nets."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed Bitget Unified Trading Account syncing: handled scientific-notation numbers and empty or omitted list fields, filtered non-crypto and malformed market entries so spot and contract quotes and charts load reliably, and surfaced explicit error codes on request failures.",
+          "Fixed missing daily P&L for holdings whose morning opening snapshot was recorded before market metadata was linked, once same-day market history becomes available.",
+          "Fixed an issue where deleting an account could remove another account's historical valuation series or mismatch cross-account valuation prices, resolved rapid toggle races on the local MCP switch, and added localized messages for account request errors."
+        ],
+        "zh-Hans": [
+          "修复 Bitget 统一账户同步问题：兼容科学计数法数值与空列表响应，过滤非加密资产及异常行情条目以确保现货与合约报价及图表稳定加载，并在请求失败时显示明确错误码。",
+          "修复当天早快照尚未关联市场目录时，同日补齐行情后部分持仓仍缺少今日盈亏的问题。",
+          "修复删除账户时可能误删其他留存账户历史估值序列及跨账户串价的问题，同时修复快速切换本地 MCP 开关时的状态竞态，并补齐账户操作错误的十语本地化提示。"
+        ],
+        "zh-Hant": [
+          "修正 Bitget 統一帳戶同步問題：相容科學記號數值與空清單回應，過濾非加密資產與異常行情項目以確保現貨與合約報價及圖表穩定載入，並在請求失敗時顯示明確錯誤碼。",
+          "修正當日早快照尚未關聯市場目錄時，同日補齊行情後部分持倉仍缺少今日損益的問題。",
+          "修正刪除帳戶時可能誤刪其他留存帳戶歷史估值序列及跨帳戶錯價的問題，同時修正快速切換本機 MCP 開關時的狀態競態，並補齊帳戶操作錯誤的十語在地化提示。"
+        ],
+        "ko": [
+          "Bitget 통합 거래 계좌(UTA) 동기화 문제를 수정했습니다. 과학적 표기법 숫자와 비어 있거나 생략된 목록 필드를 처리하고, 비암호화폐 및 비정상 시세 항목을 걸러 현물·계약 시세와 차트가 안정적으로 로드되도록 했으며, 요청 실패 시 명확한 오류 코드를 표시합니다.",
+          "장 시작 스냅샷 시점에 시장 메타데이터가 아직 연결되지 않았던 보유 자산도 같은 날 시세 이력이 확보되면 당일 손익이 정상 계산되도록 수정했습니다.",
+          "계좌 삭제 시 다른 계좌의 과거 평가 이력이 함께 삭제되거나 계좌 간 평가 가격이 어긋날 수 있던 문제를 수정하고, 로컬 MCP 스위치를 빠르게 전환할 때의 상태 경합을 해결했으며, 계좌 요청 오류의 다국어 안내 문구를 보강했습니다."
+        ],
+        "ru": [
+          "Исправлена синхронизация единого торгового счёта Bitget: добавлена поддержка чисел в экспоненциальной записи и пустых или опущенных списков, фильтрация некриптовалютных и некорректных записей рынка для стабильной загрузки котировок и графиков спота и контрактов, а также вывод явных кодов ошибок при сбоях запросов.",
+          "Исправлено отсутствие дневного результата для позиций, утренний снимок которых был записан до привязки рыночных метаданных, после загрузки рыночной истории за тот же день.",
+          "Исправлена ошибка, при которой удаление счёта могло удалять историческую серию оценок другого счёта или вызывать несоответствие цен между счетами, устранены гонки при быстром переключении локального MCP и добавлена локализация сообщений об ошибках операций со счетами."
+        ],
+        "pt-BR": [
+          "Corrigimos a sincronização da Conta de Negociação Unificada da Bitget: tratamos números em notação científica e listas vazias ou omitidas, filtramos itens de mercado não cripto ou inválidos para carregar cotações e gráficos de spot e contratos com estabilidade e exibimos códigos de erro claros quando uma solicitação falha.",
+          "Corrigimos a ausência de resultado diário em posições cujo registro inicial do dia ocorreu antes de os metadados de mercado serem vinculados, assim que o histórico de mercado do mesmo dia fica disponível.",
+          "Corrigimos um problema em que excluir uma conta podia remover o histórico de avaliação de outra conta ou trocar preços entre contas, resolvemos conflitos ao alternar rapidamente o interruptor do MCP local e adicionamos mensagens localizadas para erros de operações de conta."
+        ],
+        "tr": [
+          "Bitget Birleşik Alım Satım Hesabı (UTA) senkronizasyonu düzeltildi: bilimsel gösterimdeki sayılar ile boş veya eksik liste alanları işlendi, spot ve sözleşme fiyatları ile grafiklerin güvenilir yüklenmesi için kripto dışı ve hatalı piyasa kayıtları filtrelendi, istek hatalarında açık hata kodları gösterilmeye başlandı.",
+          "Günün açılış kaydı piyasa meta verileri bağlanmadan önce alındığında, aynı gün piyasa geçmişi tamamlandıktan sonra bazı pozisyonlarda eksik kalan günlük kâr/zarar hesaplaması düzeltildi.",
+          "Bir hesabı silerken başka bir hesabın geçmiş değerleme serisinin silinmesine veya hesaplar arası fiyat eşleşmesinin bozulmasına yol açabilen hata giderildi, yerel MCP anahtarını hızlı değiştirirken oluşan durum yarışı çözüldü ve hesap işlem hataları için yerelleştirilmiş iletiler eklendi."
+        ],
+        "ja": [
+          "Bitget 統合取引口座（UTA）の同期を修正しました。指数表記の数値や空・省略されたリスト項目に対応し、非暗号資産や不正な市場データを除外して現物・契約の価格とチャートを安定表示させ、リクエスト失敗時に明確なエラーコードを表示します。",
+          "当日の開始スナップショット時点で市場メタデータが未紐付けだった保有銘柄について、同日の価格履歴が取得されたあとも当日損益が欠落していた問題を修正しました。",
+          "口座削除時に他口座の評価履歴が誤って削除されたり口座間で評価価格が取り違えられたりする不具合を修正し、ローカル MCP スイッチの高速切り替え時の競合を解消して、口座操作エラーの多言語メッセージを追加しました。"
+        ],
+        "de": [
+          "Synchronisierung für das Bitget Unified Trading Account korrigiert: Zahlen in wissenschaftlicher Schreibweise sowie leere oder ausgelassene Listenfelder werden verarbeitet, Nicht-Krypto- und fehlerhafte Markteinträge werden gefiltert, damit Spot- und Kontraktkurse sowie Diagramme zuverlässig laden, und bei fehlgeschlagenen Anfragen werden eindeutige Fehlercodes angezeigt.",
+          "Fehlendes Tagesergebnis für Positionen behoben, deren morgendlicher Eröffnungsschnappschuss vor der Verknüpfung von Marktmetadaten gespeichert wurde, sobald die Markthistorie desselben Tages verfügbar ist.",
+          "Problem behoben, bei dem das Löschen eines Kontos die historische Bewertungsreihe eines anderen Kontos entfernen oder Bewertungspreise zwischen Konten vermischen konnte; Race Conditions beim schnellen Umschalten des lokalen MCP-Schalters wurden behoben und lokalisierte Fehlermeldungen für Kontoaktionen ergänzt."
+        ],
+        "fr": [
+          "Correction de la synchronisation du compte unifié Bitget : prise en charge des nombres en notation scientifique et des listes vides ou omises, filtrage des entrées de marché hors crypto ou invalides pour fiabiliser les cours et graphiques au comptant et sur contrats, et affichage de codes d’erreur explicites en cas d’échec.",
+          "Correction du résultat journalier manquant pour les positions dont l’instantané d’ouverture du matin avait été enregistré avant l’association des métadonnées de marché, une fois l’historique de marché du jour disponible.",
+          "Correction d’un problème où la suppression d’un compte pouvait effacer la série d’évaluation historique d’un autre compte ou mélanger les prix entre comptes, résolution des conflits lors d’un basculement rapide de l’interrupteur MCP local et ajout de messages localisés pour les erreurs d’opérations sur les comptes."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.7.2",
+    "build": "1666",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.7.2-1666.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.7.2-1666/PositionBar-0.7.2-1666.dmg",
+    "sha256": "53b2031bd8ca6a8b79a118f25a3690253b45c2abad0c7f42524e913b9d80000e",
+    "length": 23452494
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "9abc6768cc2efcd6332a9da09d3b435e92728b45bd4e243e63d239be17b1d8d2",
+  "appcastLength": 3809,
+  "tapCommit": "63ee602521ef9dc9c7a4bff166851aeff0b32af4",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
