@@ -20,7 +20,7 @@ The Homebrew cask `version` contains only the App version (`V`). Its DMG URL inc
 
 Canonical feed: `https://positionbar.com/updates/macos/appcast.xml`. The website backend proxies only the feed and supported notes filenames from the public updates branch. No website build or additional Cloudflare credential is needed on App publication. The website changelog reads only private-main version files and may appear before the DMG. `/download` resolves the latest stable DMG at request time.
 
-Secrets: `GH_PAT`, `TAP_WRITE_TOKEN`, `DEVELOPER_ID_CERTIFICATE_P12_BASE64`, `DEVELOPER_ID_CERTIFICATE_PASSWORD`, `APP_STORE_API_PRIVATE_KEY`, `SPARKLE_PRIVATE_KEY`. Variables: `APP_STORE_API_KEY_ID`, `APP_STORE_API_ISSUER_ID`. The Apple API key is for notarization. There is no `WEBSITE_DEPLOY_HOOK` or TestFlight upload.
+Secrets: `GH_PAT`, `TAP_WRITE_TOKEN`, `DEVELOPER_ID_CERTIFICATE_P12_BASE64`, `DEVELOPER_ID_CERTIFICATE_PASSWORD`, `DEVELOPER_ID_PROVISIONING_PROFILE_BASE64`, `APP_STORE_API_PRIVATE_KEY`, `SPARKLE_PRIVATE_KEY`, and optional `SENTRY_AUTH_TOKEN` (for uploading macOS `.dSYM` bundles and publishing Sentry releases/deploys). Variables: `APP_STORE_API_KEY_ID`, `APP_STORE_API_ISSUER_ID`. The Apple API key is for notarization. There is no `WEBSITE_DEPLOY_HOOK` or TestFlight upload.
 
 Start [release.yml](https://github.com/PositionBar/releases/actions/workflows/release.yml) on main, providing `version` and `source_sha`, or use an authorized GitHub CLI session:
 
