@@ -70,6 +70,7 @@ jobs:
           ref: ${{ inputs.source_sha }}
           token: ${{ secrets.GH_PAT }}
           path: source
+          fetch-depth: 100
           persist-credentials: false
       - name: Validate reviewed metadata with the approved source rules
         if: steps.request.outputs.complete == 'false'
@@ -119,6 +120,16 @@ jobs:
           if [[ -n "$RESUME_RUN_ID" ]]; then args+=(--resume); fi
           python3 -B source/scripts/macos_release.py prepare --state "$RELEASE_STATE" \
             --source "$SOURCE_SHA" --version "$VERSION" "${args[@]}"
+      - name: Install Sentry CLI for dSYM upload and release tracking
+        if: steps.request.outputs.complete == 'false'
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          if [[ -n "$SENTRY_AUTH_TOKEN" ]]; then
+            unset SENTRY_AUTH_TOKEN
+            curl -fsSL https://cli.sentry.dev/install | bash > "$RUNNER_TEMP/sentry-install.log" 2>&1
+            echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          fi
       - name: Build, sign and notarize Universal DMG and all ten Sparkle notes
         if: steps.request.outputs.complete == 'false'
         env:
@@ -130,6 +141,7 @@ jobs:
           DEVELOPER_ID_PROVISIONING_PROFILE_BASE64: ${{ secrets.DEVELOPER_ID_PROVISIONING_PROFILE_BASE64 }}
           APP_STORE_API_PRIVATE_KEY: ${{ secrets.APP_STORE_API_PRIVATE_KEY }}
           SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
         run: |
           python3 -B - "$RELEASE_STATE" "$SOURCE_SHA" "$VERSION" 3>&1 > "$RUNNER_TEMP/package.log" 2>&1 <<'PY'
           import os
@@ -144,7 +156,7 @@ jobs:
               package = runpy.run_path(str(script))["package"]
               package(Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3])
           except Exception as error:
-              stages = {"package", "ci_signing", "build_artifact", "verify_app", "notarize",
+              stages = {"package", "ci_signing", "build_artifact", "verify_app", "upload_dsyms", "notarize",
                         "create_dmg", "verify_notarized_dmg", "prepare_appcast", "verify_appcast_file"}
               location = " -> ".join(
                   f"{frame.f_code.co_name}:{line}" for frame, line in walk_tb(error.__traceback__)
@@ -161,6 +173,41 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
           TAP_WRITE_TOKEN: ${{ secrets.TAP_WRITE_TOKEN }}
         run: python3 -B release/scripts/publish.py --publish --state "$RELEASE_STATE" --source "$GITHUB_WORKSPACE/source"
+      - name: Publish Sentry release and commit associations
+        if: steps.request.outputs.complete == 'false'
+        env:
+          VERSION: ${{ inputs.version }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          POSITIONBAR_TIMING_FD: '3'
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+        run: |
+          if [[ -n "$SENTRY_AUTH_TOKEN" ]]; then
+            python3 -B - "$RELEASE_STATE" "$SOURCE_SHA" "$VERSION" 3>&1 > "$RUNNER_TEMP/sentry-release.log" 2>&1 <<'PY'
+            import os
+            from pathlib import Path
+            import runpy
+            import sys
+            from traceback import walk_tb
+
+            script = Path("source/scripts/macos_release.py").resolve()
+            sys.path.insert(0, str(script.parent))
+            try:
+                module = runpy.run_path(str(script))
+                publish_release = module.get("publish_sentry_release")
+                if publish_release is not None:
+                    publish_release(Path(sys.argv[1]).resolve(), sys.argv[2], sys.argv[3])
+            except Exception as error:
+                stages = {"publish_sentry_release", "run_sentry_cli"}
+                location = " -> ".join(
+                    f"{frame.f_code.co_name}:{line}" for frame, line in walk_tb(error.__traceback__)
+                    if frame.f_code.co_filename == str(script) and frame.f_code.co_name in stages
+                )
+                # Only known stage names and line numbers reach the public Actions log.
+                with os.fdopen(3, "w") as diagnostic:
+                    print(f"Sentry release failed at {location or 'startup'}", file=diagnostic)
+                raise
+            PY
+          fi
       - name: Preserve exact bytes and non-secret recovery identity
         if: always() && steps.request.outputs.complete == 'false'
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
