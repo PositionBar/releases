@@ -74,6 +74,12 @@ jobs:
       - name: Validate reviewed metadata with the approved source rules
         if: steps.request.outputs.complete == 'false'
         run: python3 -B release/scripts/publish.py --check-plan --state "$RELEASE_STATE" --source source
+      - name: Cache pinned open-source Swift packages
+        if: steps.request.outputs.complete == 'false'
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/SourcePackages
+          key: ${{ runner.os }}-${{ runner.arch }}-xcode27-spm-v1-${{ hashFiles('source/apps/macos/Package.resolved', 'source/apps/macos/PositionBar.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
       - name: Check credentials and resolve the pinned native dependencies
         if: steps.request.outputs.complete == 'false'
         env:
@@ -118,6 +124,7 @@ jobs:
         env:
           VERSION: ${{ inputs.version }}
           SOURCE_SHA: ${{ inputs.source_sha }}
+          POSITIONBAR_TIMING_FD: '3'
           DEVELOPER_ID_CERTIFICATE_P12_BASE64: ${{ secrets.DEVELOPER_ID_CERTIFICATE_P12_BASE64 }}
           DEVELOPER_ID_CERTIFICATE_PASSWORD: ${{ secrets.DEVELOPER_ID_CERTIFICATE_PASSWORD }}
           DEVELOPER_ID_PROVISIONING_PROFILE_BASE64: ${{ secrets.DEVELOPER_ID_PROVISIONING_PROFILE_BASE64 }}

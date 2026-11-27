@@ -2,6 +2,7 @@
 """Publish the verified DMG, cask and signed update data outside Release assets."""
 import argparse
 import base64
+import concurrent.futures
 from contextlib import nullcontext
 import datetime as dt
 from functools import partial
@@ -106,6 +107,19 @@ def public_digest(url, expected_length=None, expected_sha256=None, destination=N
     finally:
         if temporary:
             temporary.unlink(missing_ok=True)
+
+def verify_public_updates(feed_url, paths):
+    require(bool(paths), "No public update files to verify")
+    base = feed_url.rsplit("/", 1)[0] + "/"
+    checks = [
+        (feed_url if path.name == "appcast.xml" else base + path.name, path.stat().st_size, digest(path))
+        for path in paths
+    ]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=min(len(checks), 11)) as executor:
+        futures = [executor.submit(public_digest, url, length, sha) for url, length, sha in checks]
+        for future in futures:
+            future.result()
+
 
 def verify_release_asset(state, name, url, length):
     require(state is not None, "GitHub release was not created")
@@ -319,9 +333,7 @@ def publish(state, source):
         native.write_json(marker, record)
     files = {path.name: path.read_bytes() for path in paths}
     publish_updates(environment, files, build)
-    public_digest(native.UPDATES["feedURL"], feed.stat().st_size, digest(feed))
-    for path in paths[:-1]:
-        public_digest(native.UPDATES["feedURL"].rsplit('/', 1)[0] + '/' + path.name, path.stat().st_size, digest(path))
+    verify_public_updates(native.UPDATES["feedURL"], paths)
     publish_updates(environment, {f"releases/{version}.json": marker.read_bytes()}, build)
     print(f"Published {version} ({build}) from {context['source_sha']}")
 
