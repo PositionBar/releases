@@ -60,3 +60,41 @@ class ReleaseAssetTests(unittest.TestCase):
                         with self.assertRaises(ValueError):
                             publish.public_digest(url, length, sha, destination)
                         self.assertEqual(list(destination.parent.iterdir()), [])
+
+    def test_verify_public_updates_checks_feed_and_notes_and_propagates_failure(self):
+        feed_url = "https://positionbar.com/updates/macos/appcast.xml"
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            note_en = root / "PositionBar-1.2.3-1085.txt"
+            note_zh = root / "PositionBar-1.2.3-1085.zh-Hans.txt"
+            feed = root / "appcast.xml"
+            note_en.write_bytes(b"en notes")
+            note_zh.write_bytes(b"zh notes")
+            feed.write_bytes(b"<rss/>")
+            seen = []
+
+            def fake_digest(url, length, sha):
+                seen.append((url, length, sha))
+                return sha, length
+
+            with patch.object(publish, "public_digest", side_effect=fake_digest):
+                publish.verify_public_updates(feed_url, [note_en, note_zh, feed])
+
+            expected = {
+                ("https://positionbar.com/updates/macos/PositionBar-1.2.3-1085.txt", 8, publish.digest(note_en)),
+                ("https://positionbar.com/updates/macos/PositionBar-1.2.3-1085.zh-Hans.txt", 8, publish.digest(note_zh)),
+                (feed_url, 6, publish.digest(feed)),
+            }
+            self.assertEqual(set(seen), expected)
+
+            def failing_digest(url, length, sha):
+                if url.endswith(".zh-Hans.txt"):
+                    raise ValueError("Published cask artifact bytes differ")
+                return sha, length
+
+            with patch.object(publish, "public_digest", side_effect=failing_digest):
+                with self.assertRaisesRegex(ValueError, "bytes differ"):
+                    publish.verify_public_updates(feed_url, [note_en, note_zh, feed])
+
+            with self.assertRaisesRegex(ValueError, "No public update files"):
+                publish.verify_public_updates(feed_url, [])
