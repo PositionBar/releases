@@ -1,0 +1,9 @@
+PositionBar 0.7.3
+
+Improved
+- Bybit now reads Funding Account balances alongside the Unified Trading Account, merging shared coins across both accounts and refreshing spot quotes even when assets are held only in Funding; missing Funding permissions or read failures degrade independently without affecting verified Unified data.
+- Added a “Move to top” action in the account header menu so you can move an account directly to the top of your portfolio list.
+
+Fixed
+- Fixed Bybit syncing failures caused by scientific-notation numbers, omitted pagination cursors, and account-info responses without a top-level timestamp, and included the specific field name in unexpected-data errors.
+- Fixed expanded account cards with no holdings displaying generic connection status labels instead of showing only the empty state or account errors.

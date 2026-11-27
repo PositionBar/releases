@@ -1,0 +1,9 @@
+PositionBar 0.7.3
+
+İyileştirildi
+- Bybit artık Birleşik Alım Satım Hesabının yanı sıra Fonlama Hesabı (FUND) bakiyelerini de okur, iki hesaptaki ortak varlıkları birleştirir ve varlıklar yalnızca Fonlama Hesabında bulunsa bile spot fiyatlar ile fiyat geçmişini günceller; Fonlama izni eksikliği veya okuma hataları bağımsız olarak ayrıştırılır ve doğrulanmış Birleşik Hesap verilerini etkilemez.
+- Hesap başlığı menüsüne bir hesabı tek adımda listenin en üstüne taşıyan «En üste taşı» eylemi eklendi.
+
+Düzeltildi
+- Bybit senkronizasyonunda bilimsel gösterimdeki sayılar, eksik sayfalama imleçleri ve üst düzey zaman damgası içermeyen hesap bilgisi yanıtlarından kaynaklanan hatalar düzeltildi; beklenmeyen veri hatalarında ilgili alan adı açıkça gösterilmeye başlandı.
+- Pozisyonu bulunmayan genişletilmiş hesap kartlarında yalnızca boş durum veya hesap hataları yerine genel bağlantı durumu etiketlerinin görünmesine yol açan sorun düzeltildi.

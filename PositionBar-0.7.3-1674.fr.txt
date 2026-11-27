@@ -1,0 +1,9 @@
+PositionBar 0.7.3
+
+Améliorations
+- Bybit lit désormais les soldes du compte de financement (FUND) en plus du compte de trading unifié, fusionne les actifs communs aux deux comptes et actualise les cours spot et l’historique des prix même lorsque les actifs ne sont détenus que dans FUND ; l’absence d’autorisation ou une erreur de lecture FUND est isolée sans affecter les données vérifiées du compte unifié.
+- Ajout de l’action « Déplacer tout en haut » dans le menu d’en-tête de compte pour placer rapidement un compte en tête de la liste.
+
+Corrections
+- Correction des échecs de synchronisation Bybit dus aux nombres en notation scientifique, aux curseurs de pagination omis et aux réponses d’informations de compte sans horodatage de premier niveau, avec affichage du nom exact du champ en cas d’erreur de données inattendues.
+- Correction des cartes de compte développées sans positions qui affichaient des libellés génériques d’état de connexion au lieu d’afficher uniquement l’état vide ou les erreurs du compte.

@@ -1,0 +1,9 @@
+PositionBar 0.7.3
+
+Verbessert
+- Bybit liest jetzt neben dem Unified Trading Account auch Guthaben des Funding-Kontos (FUND), führt gemeinsame Coins beider Konten zusammen und aktualisiert Spot-Kurse sowie Kursverläufe selbst dann, wenn Bestände nur im Funding-Konto liegen; fehlende Funding-Berechtigungen oder Lesefehler werden unabhängig behandelt und beeinträchtigen verifizierte Unified-Daten nicht.
+- Im Menü der Kontokopfzeile wurde die Aktion „Ganz nach oben“ hinzugefügt, mit der sich ein Konto direkt an den Anfang der Liste verschieben lässt.
+
+Behoben
+- Synchronisierungsfehler bei Bybit durch Zahlen in wissenschaftlicher Schreibweise, fehlende Paginierungs-Cursor sowie Kontoinfo-Antworten ohne Zeitstempel auf oberster Ebene wurden behoben; Fehler wegen unerwarteter Daten nennen nun den konkreten Feldnamen.
+- Behoben, dass aufgeklappte Kontokarten ohne Bestände allgemeine Verbindungsstatus-Hinweise statt ausschließlich den Leerzustand oder Kontofehler anzeigten.

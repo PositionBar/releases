@@ -1,0 +1,9 @@
+PositionBar 0.7.3
+
+Melhorado
+- A Bybit agora lê os saldos da Conta de Fundos (FUND) junto com a Conta de Negociação Unificada, combinando moedas compartilhadas entre as duas contas e atualizando cotações e histórico spot mesmo quando os ativos estão apenas na Conta de Fundos; falta de permissão ou falhas de leitura em FUND são isoladas sem afetar os dados verificados da conta Unificada.
+- Adicionamos a ação «Mover para o topo» no menu do cabeçalho da conta para mover rapidamente uma conta para o início da lista.
+
+Corrigido
+- Corrigimos falhas de sincronização na Bybit causadas por números em notação científica, cursores de paginação omitidos e respostas de informações da conta sem carimbo de data/hora de nível superior, além de indicar o nome específico do campo nos erros de dados inesperados.
+- Corrigimos cartões de conta expandidos sem posições que exibiam rótulos genéricos de status de conexão em vez de mostrar apenas o estado vazio ou erros da conta.
