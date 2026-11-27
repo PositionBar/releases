@@ -1,0 +1,145 @@
+{
+  "status": "published",
+  "version": "0.7.3",
+  "build": 1674,
+  "source_sha": "0aab2421f305546a426a5081fd3fba2caed82e39",
+  "metadataSHA256": "51c06c0aadf7860aa1cca73b8dd50cf108ee80d1d60ec6e7fb813be065495235",
+  "publishedOn": "2026-11-27",
+  "changes": [
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Bybit now reads Funding Account balances alongside the Unified Trading Account, merging shared coins across both accounts and refreshing spot quotes even when assets are held only in Funding; missing Funding permissions or read failures degrade independently without affecting verified Unified data.",
+          "Added a “Move to top” action in the account header menu so you can move an account directly to the top of your portfolio list."
+        ],
+        "zh-Hans": [
+          "Bybit 现已同步读取资金账户（FUND）余额并与统一交易账户同币种净额合并，即使资产仅存于资金账户也能正常刷新现货报价与历史行情；资金账户无权限或读取失败时独立降级，不影响已核验的统一交易账户数据。",
+          "在账户标题栏菜单中新增「移到顶部」操作，多账户时可一键将账户置顶。"
+        ],
+        "zh-Hant": [
+          "Bybit 現已同步讀取資金帳戶（FUND）餘額並與統一交易帳戶同幣別淨額合併，即使資產僅存於資金帳戶也能正常更新現貨報價與歷史行情；資金帳戶無權限或讀取失敗時獨立降級，不影響已核驗的統一交易帳戶資料。",
+          "在帳戶標題列選單中新增「移至頂部」操作，多帳戶時可一鍵將帳戶置頂。"
+        ],
+        "ko": [
+          "Bybit에서 통합 거래 계좌(UNIFIED)와 함께 펀딩 계좌(FUND) 잔고도 읽어 동일 코인을 합산하며, 자산이 펀딩 계좌에만 있어도 현물 시세와 가격 이력을 정상 갱신합니다. 펀딩 계좌 권한이 없거나 읽기에 실패하더라도 독립적으로 처리되어 검증된 통합 거래 계좌 데이터에는 영향을 주지 않습니다.",
+          "계좌 헤더 메뉴에 「맨 위로 이동」 동작을 추가해 여러 계좌가 연결된 경우 원하는 계좌를 한 번에 맨 위로 옮길 수 있습니다."
+        ],
+        "ru": [
+          "Для Bybit добавлено чтение балансов счёта финансирования (FUND) вместе с Единым торговым счётом с объединением общих активов и обновлением спотовых котировок и истории цен, даже если активы находятся только на счёте финансирования; отсутствие прав или сбой чтения FUND обрабатываются независимо и не затрагивают проверенные данные Единого торгового счёта.",
+          "В меню заголовка счёта добавлено действие «Переместить в самый верх», позволяющее одним нажатием поднять счёт в начало списка."
+        ],
+        "pt-BR": [
+          "A Bybit agora lê os saldos da Conta de Fundos (FUND) junto com a Conta de Negociação Unificada, combinando moedas compartilhadas entre as duas contas e atualizando cotações e histórico spot mesmo quando os ativos estão apenas na Conta de Fundos; falta de permissão ou falhas de leitura em FUND são isoladas sem afetar os dados verificados da conta Unificada.",
+          "Adicionamos a ação «Mover para o topo» no menu do cabeçalho da conta para mover rapidamente uma conta para o início da lista."
+        ],
+        "tr": [
+          "Bybit artık Birleşik Alım Satım Hesabının yanı sıra Fonlama Hesabı (FUND) bakiyelerini de okur, iki hesaptaki ortak varlıkları birleştirir ve varlıklar yalnızca Fonlama Hesabında bulunsa bile spot fiyatlar ile fiyat geçmişini günceller; Fonlama izni eksikliği veya okuma hataları bağımsız olarak ayrıştırılır ve doğrulanmış Birleşik Hesap verilerini etkilemez.",
+          "Hesap başlığı menüsüne bir hesabı tek adımda listenin en üstüne taşıyan «En üste taşı» eylemi eklendi."
+        ],
+        "ja": [
+          "Bybit で統合取引アカウントに加え資金調達アカウント（FUND）の残高も読み取り、両アカウントの同一通貨を合算できるようになりました。資産が資金調達アカウントのみにある場合でも現物価格と価格履歴を更新し、FUND の権限不足や取得エラーは独立して処理されるため、確認済みの統合取引アカウントのデータには影響しません。",
+          "口座ヘッダーメニューに「一番上に移動」を追加し、複数口座があるときに任意の口座を一覧の先頭へワンクリックで移動できるようになりました。"
+        ],
+        "de": [
+          "Bybit liest jetzt neben dem Unified Trading Account auch Guthaben des Funding-Kontos (FUND), führt gemeinsame Coins beider Konten zusammen und aktualisiert Spot-Kurse sowie Kursverläufe selbst dann, wenn Bestände nur im Funding-Konto liegen; fehlende Funding-Berechtigungen oder Lesefehler werden unabhängig behandelt und beeinträchtigen verifizierte Unified-Daten nicht.",
+          "Im Menü der Kontokopfzeile wurde die Aktion „Ganz nach oben“ hinzugefügt, mit der sich ein Konto direkt an den Anfang der Liste verschieben lässt."
+        ],
+        "fr": [
+          "Bybit lit désormais les soldes du compte de financement (FUND) en plus du compte de trading unifié, fusionne les actifs communs aux deux comptes et actualise les cours spot et l’historique des prix même lorsque les actifs ne sont détenus que dans FUND ; l’absence d’autorisation ou une erreur de lecture FUND est isolée sans affecter les données vérifiées du compte unifié.",
+          "Ajout de l’action « Déplacer tout en haut » dans le menu d’en-tête de compte pour placer rapidement un compte en tête de la liste."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed Bybit syncing failures caused by scientific-notation numbers, omitted pagination cursors, and account-info responses without a top-level timestamp, and included the specific field name in unexpected-data errors.",
+          "Fixed expanded account cards with no holdings displaying generic connection status labels instead of showing only the empty state or account errors."
+        ],
+        "zh-Hans": [
+          "修复 Bybit 同步中因科学计数法数值、省略分页游标以及账户信息响应不含顶层时间戳导致的数据异常，并在异常数据报错中明确指出具体字段名。",
+          "修复无持仓账户展开后将「已连接」等连接状态标签显示为正文的问题，现在无持仓时仅显示「暂无持仓」空态或账户级错误。"
+        ],
+        "zh-Hant": [
+          "修正 Bybit 同步中因科學記號數值、省略分頁游標以及帳戶資訊回應不含頂層時間戳記導致的資料異常，並在異常資料錯誤訊息中明確指出具體欄位名稱。",
+          "修正無持倉帳戶展開後將「已連線」等連線狀態標籤顯示為內文的問題，現在無持倉時僅顯示「暫無持倉」空狀態或帳戶層級錯誤。"
+        ],
+        "ko": [
+          "Bybit 동기화 시 과학적 표기법 숫자, 생략된 페이지네이션 커서, 최상위 타임스탬프가 없는 계정 정보 응답으로 인해 발생하던 오류를 수정하고, 예기치 않은 데이터 오류에 구체적인 필드 이름을 표시하도록 했습니다.",
+          "보유 자산이 없는 계좌를 펼쳤을 때 일반 연결 상태 문구가 본문에 표시되던 문제를 수정해, 이제는 빈 상태 또는 계좌 오류만 표시합니다."
+        ],
+        "ru": [
+          "Исправлены сбои синхронизации Bybit, вызванные числами в экспоненциальной записи, отсутствующим курсором пагинации и ответами информации об аккаунте без верхнеуровневой метки времени, а также добавлено указание конкретного имени поля в ошибках некорректных данных.",
+          "Исправлена ошибка, из-за которой в раскрытых карточках счетов без позиций отображались общие статусы подключения вместо пустого состояния или ошибки счёта."
+        ],
+        "pt-BR": [
+          "Corrigimos falhas de sincronização na Bybit causadas por números em notação científica, cursores de paginação omitidos e respostas de informações da conta sem carimbo de data/hora de nível superior, além de indicar o nome específico do campo nos erros de dados inesperados.",
+          "Corrigimos cartões de conta expandidos sem posições que exibiam rótulos genéricos de status de conexão em vez de mostrar apenas o estado vazio ou erros da conta."
+        ],
+        "tr": [
+          "Bybit senkronizasyonunda bilimsel gösterimdeki sayılar, eksik sayfalama imleçleri ve üst düzey zaman damgası içermeyen hesap bilgisi yanıtlarından kaynaklanan hatalar düzeltildi; beklenmeyen veri hatalarında ilgili alan adı açıkça gösterilmeye başlandı.",
+          "Pozisyonu bulunmayan genişletilmiş hesap kartlarında yalnızca boş durum veya hesap hataları yerine genel bağlantı durumu etiketlerinin görünmesine yol açan sorun düzeltildi."
+        ],
+        "ja": [
+          "Bybit 同期で指数表記の数値、省略されたページネーションカーソル、トップレベルのタイムスタンプを含まないアカウント情報レスポンスによって発生していたエラーを修正し、予期しないデータエラーに具体的なフィールド名を表示するようにしました。",
+          "保有銘柄がない口座カードを展開した際に汎用的な接続ステータス文言が本文に表示される問題を修正し、空状態または口座エラーのみを表示するようにしました。"
+        ],
+        "de": [
+          "Synchronisierungsfehler bei Bybit durch Zahlen in wissenschaftlicher Schreibweise, fehlende Paginierungs-Cursor sowie Kontoinfo-Antworten ohne Zeitstempel auf oberster Ebene wurden behoben; Fehler wegen unerwarteter Daten nennen nun den konkreten Feldnamen.",
+          "Behoben, dass aufgeklappte Kontokarten ohne Bestände allgemeine Verbindungsstatus-Hinweise statt ausschließlich den Leerzustand oder Kontofehler anzeigten."
+        ],
+        "fr": [
+          "Correction des échecs de synchronisation Bybit dus aux nombres en notation scientifique, aux curseurs de pagination omis et aux réponses d’informations de compte sans horodatage de premier niveau, avec affichage du nom exact du champ en cas d’erreur de données inattendues.",
+          "Correction des cartes de compte développées sans positions qui affichaient des libellés génériques d’état de connexion au lieu d’afficher uniquement l’état vide ou les erreurs du compte."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.7.3",
+    "build": "1674",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.7.3-1674.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.7.3-1674/PositionBar-0.7.3-1674.dmg",
+    "sha256": "bdf8cf77a0b23c3f1acca84f21ebe566668ff9a0d2d5e2d48fbe316cdeee9fb8",
+    "length": 23506765
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "b46780ead4c9da3cce468ad3dadca6a6026f987286231da61fe7ee2cec4a154c",
+  "appcastLength": 3805,
+  "tapCommit": "af0c69423f158f5de6bff2ecca9a7ae34070af3f",
+  "releaseTarget": "a813d98dda9cb44e5da3970b11161205f353dbe4"
+}
