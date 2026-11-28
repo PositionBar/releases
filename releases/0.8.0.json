@@ -1,0 +1,210 @@
+{
+  "status": "published",
+  "version": "0.8.0",
+  "build": 1711,
+  "source_sha": "b7994dac9e060084c6cc470a87600a33db4ff525",
+  "metadataSHA256": "3523dafea807281ba0a64f0889f68d0e46511be1a6eba7c47a8b680180a83d35",
+  "publishedOn": "2026-11-28",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added read-only browser wallet onboarding on macOS for Hyperliquid and Polymarket: connect detected browser wallets (such as MetaMask, OKX Wallet, and Coinbase Wallet) locally without signing or chain switching, or open the platform portal and paste a public address for email-login accounts; Hyperliquid supports agent-to-main account confirmation and subaccount batch import, while Polymarket resolves and confirms the linked account wallet.",
+          "Added gentle scheduled update reminders on macOS: background update checks no longer steal focus or appear behind other windows—instead, an accent dot appears on the panel gear button and the update menu switches to “Update Available” without requesting notification permissions."
+        ],
+        "zh-Hans": [
+          "新增 macOS 端 Hyperliquid 与 Polymarket 浏览器只读连钱包接入：可在本地发现并连接浏览器钱包插件（如 MetaMask、OKX Wallet、Coinbase Wallet 等），无需签名或切链，也支持邮箱登录用户打开官网后直接粘贴公开地址；Hyperliquid 支持 Agent 转主账户确认与子账户批量导入，Polymarket 支持自动解析并确认对应的账户钱包。",
+          "新增 macOS 温和定时更新提醒：后台自动检查发现新版本时不再弹出抢焦或藏在其他窗口底层，而是在主面板右上角齿轮按钮显示强调色提示点，并将更新菜单切换为「有可用更新」，全程不申请系统通知权限。"
+        ],
+        "zh-Hant": [
+          "新增 macOS 端 Hyperliquid 與 Polymarket 瀏覽器唯讀連接錢包流程：可在本機偵測並連接瀏覽器錢包擴充功能（如 MetaMask、OKX Wallet、Coinbase Wallet 等），無需簽名或切換網路，也支援電子郵件登入使用者開啟官網後直接貼上公開位址；Hyperliquid 支援 Agent 轉主帳戶確認與子帳戶批次匯入，Polymarket 支援自動解析並確認對應的帳戶錢包。",
+          "新增 macOS 溫和排程更新提醒：背景自動檢查發現新版本時不再搶佔焦點或藏在其他視窗底層，而是在主面板右上角齒輪按鈕顯示強調色提示點，並將更新選單切換為「有可用的更新」，全程不要求系統通知權限。"
+        ],
+        "ko": [
+          "macOS에서 Hyperliquid와 Polymarket의 읽기 전용 브라우저 지갑 연결을 추가했습니다. MetaMask, OKX Wallet, Coinbase Wallet 등 감지된 브라우저 지갑을 서명이나 체인 전환 없이 로컬에서 연결하거나, 이메일 로그인 계정은 플랫폼 포털을 열어 공개 주소를 직접 붙여넣을 수 있습니다. Hyperliquid는 에이전트 지갑의 메인 계좌 확인과 서브 계좌 일괄 가져오기를 지원하며, Polymarket은 연결된 계좌 지갑을 조회해 확인합니다.",
+          "macOS에 부드러운 정기 업데이트 알림을 추가했습니다. 백그라운드 업데이트 확인 시 포커스를 빼앗거나 다른 창 뒤에 가려지지 않으며, 시스템 알림 권한을 요청하지 않고 패널 톱니바퀴 버튼에 강조 색 점을 표시하고 업데이트 메뉴를 「사용 가능한 업데이트」로 전환합니다."
+        ],
+        "ru": [
+          "Добавлено подключение браузерных кошельков только для чтения на macOS для Hyperliquid и Polymarket: подключайте обнаруженные расширения (например, MetaMask, OKX Wallet и Coinbase Wallet) локально без подписи и переключения сети, либо откройте портал платформы и вставьте публичный адрес при входе по электронной почте; для Hyperliquid поддерживаются подтверждение перехода с агентского кошелька на основной счёт и пакетный импорт субсчетов, а для Polymarket — определение и подтверждение связанного кошелька аккаунта.",
+          "Добавлены ненавязчивые плановые напоминания об обновлениях на macOS: фоновая проверка больше не перехватывает фокус и не скрывается за другими окнами — вместо этого на кнопке шестерёнки панели появляется акцентная точка, а пункт меню обновляется на «Доступно обновление» без запроса разрешений на уведомления."
+        ],
+        "pt-BR": [
+          "Adicionamos a conexão somente leitura por carteira de navegador no macOS para Hyperliquid e Polymarket: conecte extensões detectadas (como MetaMask, OKX Wallet e Coinbase Wallet) localmente sem assinatura ou troca de rede, ou abra o portal da plataforma e cole o endereço público em contas com login por e-mail; a Hyperliquid suporta confirmação de carteira de agente para conta principal e importação em lote de subcontas, enquanto a Polymarket resolve e confirma a carteira vinculada à conta.",
+          "Adicionamos lembretes discretos de atualização agendada no macOS: a verificação em segundo plano não rouba mais o foco nem fica escondida atrás de outras janelas — em vez disso, um ponto de destaque aparece no botão de engrenagem do painel e o menu de atualização muda para «Atualização Disponível» sem solicitar permissão de notificações."
+        ],
+        "tr": [
+          "macOS’ta Hyperliquid ve Polymarket için salt okunur tarayıcı cüzdanı bağlantısı eklendi: MetaMask, OKX Wallet ve Coinbase Wallet gibi algılanan tarayıcı cüzdanlarını imza veya ağ değişikliği olmadan yerel olarak bağlayabilir ya da e-posta ile giriş yapan hesaplarda platform portalını açıp genel adresi doğrudan yapıştırabilirsiniz; Hyperliquid aracı cüzdandan ana hesaba geçiş onayını ve alt hesapların toplu içe aktarımını desteklerken Polymarket bağlı hesap cüzdanını çözümleyip onaylatır.",
+          "macOS’a nazik zamanlanmış güncelleme hatırlatmaları eklendi: arka planda güncelleme denetimleri artık odak çalmaz veya diğer pencerelerin arkasında kalmaz; bunun yerine bildirim izni istemeden paneldeki dişli düğmesinde vurgu noktası görünür ve güncelleme menüsü «Güncelleme Mevcut» olarak değişir."
+        ],
+        "ja": [
+          "macOS で Hyperliquid と Polymarket のブラウザウォレット読み取り専用接続を追加しました。MetaMask、OKX Wallet、Coinbase Wallet など検出されたブラウザ拡張機能を署名やチェーン切り替えなしでローカル接続でき、メールログイン口座はポータルを開いて公開アドレスを貼り付けるだけでも接続できます。Hyperliquid はエージェントからメイン口座への確認とサブアカウント一括インポートに対応し、Polymarket は紐づくアカウントウォレットを解決して確認します。",
+          "macOS に控えめな定期アップデート通知を追加しました。バックグラウンド確認でフォーカスを奪ったり他ウィンドウの背後に隠れたりする代わりに、システム通知の許可を求めずパネルの歯車ボタンにアクセントカラーの点を表示し、メニューを「アップデートが利用可能」に切り替えます。"
+        ],
+        "de": [
+          "Schreibgeschützte Browser-Wallet-Anbindung unter macOS für Hyperliquid und Polymarket hinzugefügt: Erkannte Browser-Wallets (wie MetaMask, OKX Wallet und Coinbase Wallet) lassen sich lokal ohne Signatur oder Netzwerkwechsel verbinden, und Konten mit E-Mail-Anmeldung können das Portal öffnen und ihre öffentliche Adresse direkt einfügen; Hyperliquid unterstützt die Bestätigung von Agent- zu Hauptkonto sowie den Sammelimport von Unterkonten, während Polymarket die verknüpfte Konto-Wallet ermittelt und bestätigt.",
+          "Zurückhaltende geplante Update-Hinweise unter macOS hinzugefügt: Hintergrundprüfungen stehlen keinen Fokus mehr und verschwinden nicht hinter anderen Fenstern – stattdessen erscheint ohne Benachrichtigungsberechtigung ein Akzentpunkt am Zahnrad-Symbol des Panels und das Update-Menü wechselt auf „Update verfügbar“."
+        ],
+        "fr": [
+          "Ajout de la connexion en lecture seule par portefeuille navigateur sur macOS pour Hyperliquid et Polymarket : connectez localement les extensions détectées (telles que MetaMask, OKX Wallet et Coinbase Wallet) sans signature ni changement de réseau, ou ouvrez le portail de la plateforme pour coller une adresse publique avec un compte e-mail ; Hyperliquid prend en charge la confirmation du passage d’un portefeuille agent au compte principal et l’import groupé de sous-comptes, tandis que Polymarket résout et confirme le portefeuille de compte associé.",
+          "Ajout des rappels discrets de mise à jour planifiée sur macOS : les vérifications en arrière-plan ne prennent plus le focus et ne se cachent plus derrière d’autres fenêtres ; un point d’accentuation apparaît sur le bouton d’engrenage du panneau et le menu de mise à jour passe à « Mise à jour disponible » sans demander d’autorisation de notification."
+        ]
+      }
+    },
+    {
+      "type": "improved",
+      "items": {
+        "en": [
+          "Aligned contract list values and isolated collateral attribution with account equity: cross-margin and portfolio-margin contracts now display signed unrealized P&L so rows sum directly to account equity, while verified isolated-margin contracts (OKX, Binance USD-M & COIN-M, Gate, Bitget) display isolated collateral plus unrealized P&L and deduct that collateral from the backing wallet row without double-counting.",
+          "Account connection dialogs now come to the front immediately when returning from browser OAuth sign-in (OKX, Longbridge, Futu, moomoo) or browser wallet connect (Hyperliquid, Polymarket), paired with a unified, ten-language local WebUI for browser callback, wallet connect, and MCP authorization pages.",
+          "Added privacy-scrubbed crash, launch performance, and lifecycle diagnostics on macOS to improve reliability—IP addresses and personal identifiers are stripped, and exchange or broker network traffic, credentials, account details, and holdings are excluded."
+        ],
+        "zh-Hans": [
+          "对齐合约列表价值与逐仓保证金归属口径：全仓与组合保证金合约现按带符号未实现盈亏展示，使列表各行可直接汇总为账户净权益且不随杠杆波动；已核验的逐仓合约（OKX、币安 U 本位与币本位、Gate、Bitget）按「逐仓保证金 + 未实现盈亏」展示，并从对应钱包行扣减已占用保证金，避免重复计入。",
+          "从浏览器完成 OAuth 登录（OKX、长桥、富途、moomoo）或钱包连接（Hyperliquid、Polymarket）回调后，macOS 会立即将对应的账户弹窗与设置窗口拉至前台；同时统一升级了浏览器回调、钱包连接与本地 MCP 授权页的十语嵌入式界面。",
+          "在 macOS 端接入严格脱敏的崩溃、启动性能与生命周期诊断以提升稳定性：默认不收集个人身份信息与 IP 地址，并完全屏蔽交易所/券商网络请求、凭据、账户信息与仓位数据。"
+        ],
+        "zh-Hant": [
+          "對齊合約清單價值與逐倉保證金歸屬口徑：全倉與組合保證金合約現依帶符號未實現損益顯示，使清單各列可直接彙總為帳戶淨權益且不隨槓桿波動；已核驗的逐倉合約（OKX、幣安 U 本位與幣本位、Gate、Bitget）依「逐倉保證金 + 未實現損益」顯示，並自對應錢包列扣減已佔用保證金，避免重複計入。",
+          "自瀏覽器完成 OAuth 登入（OKX、長橋、富途、moomoo）或錢包連接（Hyperliquid、Polymarket）回呼後，macOS 會立即將對應的帳戶對話框與設定視窗帶到前景；同時統一升級瀏覽器回呼、錢包連接與本機 MCP 授權頁的十語內嵌介面。",
+          "於 macOS 端接入嚴格去識別化的當機、啟動效能與生命週期診斷以提升穩定性：預設不收集個人識別資訊與 IP 位址，並完全排除交易所／券商網路請求、憑證、帳戶資訊與持倉資料。"
+        ],
+        "ko": [
+          "계약 목록 가치와 격리 증거금 귀속 기준을 계좌 순자산에 맞췄습니다. 교차·포트폴리오 증거금 계약은 이제 부호가 포함된 미실현 손익만 표시해 목록 행의 합계가 계좌 순자산과 직접 일치하며, 검증된 격리 증거금 계약(OKX, Binance USD-M 및 COIN-M, Gate, Bitget)은 격리 증거금과 미실현 손익을 합산해 표시하고 해당 증거금을 기반 지갑 행에서 차감해 중복 계산을 방지합니다.",
+          "브라우저에서 OAuth 로그인(OKX, Longbridge, Futu, moomoo)이나 지갑 연결(Hyperliquid, Polymarket) 콜백이 완료되면 macOS가 해당 계좌 연결 창과 설정 창을 즉시 전면으로 가져오며, 브라우저 콜백·지갑 연결·로컬 MCP 승인 페이지를 10개 언어의 통합 로컬 WebUI로 일신했습니다.",
+          "안정성 향상을 위해 macOS에 개인정보를 철저히 제거한 충돌·실행 성능·수명 주기 진단을 추가했습니다. IP 주소와 개인 식별 정보는 제거되며 거래소·증권사 네트워크 트래픽, 자격 증명, 계좌 정보 및 보유 자산은 수집에서 완전히 제외됩니다."
+        ],
+        "ru": [
+          "Оценка контрактов в списке и учёт изолированного обеспечения приведены в точное соответствие с капиталом счёта: контракты с кросс- и портфельной маржой теперь отображают нереализованный P&L со знаком, поэтому строки напрямую суммируются в капитал счёта, а подтверждённые изолированные контракты (OKX, Binance USD-M и COIN-M, Gate, Bitget) показывают изолированное обеспечение плюс нереализованный P&L и вычитают это обеспечение из строки соответствующего кошелька без двойного учёта.",
+          "Диалоги подключения счёта и окно настроек на macOS теперь сразу выводятся на передний план после возврата из браузерного OAuth-входа (OKX, Longbridge, Futu, moomoo) или подключения кошелька (Hyperliquid, Polymarket), а страницы обратного вызова, подключения кошелька и авторизации локального MCP объединены в единый локальный веб-интерфейс на десяти языках.",
+          "На macOS добавлена обезличенная диагностика сбоев, производительности запуска и жизненного цикла для повышения надёжности: IP-адреса и личные идентификаторы удаляются, а сетевой трафик бирж и брокеров, учётные данные, сведения о счетах и позиции полностью исключены."
+        ],
+        "pt-BR": [
+          "Alinhamos o valor das linhas de contratos e a atribuição de margem isolada ao patrimônio da conta: contratos de margem cruzada e de portfólio agora exibem o P&L não realizado com sinal para que as linhas somem diretamente ao patrimônio, enquanto contratos isolados verificados (OKX, Binance USD-M e COIN-M, Gate, Bitget) exibem a margem isolada somada ao P&L não realizado e deduzem essa margem da carteira correspondente sem dupla contagem.",
+          "Os diálogos de conexão de conta e a janela de Ajustes agora vêm imediatamente para o primeiro plano ao retornar do login OAuth no navegador (OKX, Longbridge, Futu, moomoo) ou da conexão de carteira (Hyperliquid, Polymarket), acompanhados por uma interface web local unificada em dez idiomas para retorno do navegador, conexão de carteira e autorização MCP.",
+          "Adicionamos diagnósticos anonimizados de falhas, desempenho de inicialização e ciclo de vida no macOS para melhorar a confiabilidade: endereços IP e identificadores pessoais são removidos, e tráfego de corretoras ou exchanges, credenciais, dados da conta e posições ficam excluídos."
+        ],
+        "tr": [
+          "Sözleşme listesi değerleri ve izole teminat dağılımı hesap öz varlığıyla hizalandı: çapraz ve portföy teminatlı sözleşmeler artık satırların doğrudan hesap öz varlığına toplanması için işaretli gerçekleşmemiş kâr/zararı gösterir; doğrulanmış izole teminatlı sözleşmeler (OKX, Binance USD-M ve COIN-M, Gate, Bitget) ise izole teminat artı gerçekleşmemiş kâr/zararı gösterip aynı teminatı ilgili cüzdan satırından düşerek çift sayımı önler.",
+          "Tarayıcıda OAuth girişi (OKX, Longbridge, Futu, moomoo) veya cüzdan bağlantısı (Hyperliquid, Polymarket) geri çağrısı tamamlandığında macOS ilgili hesap penceresini ve Ayarlar’ı anında öne getirir; tarayıcı geri çağrısı, cüzdan bağlantısı ve yerel MCP yetkilendirme sayfaları da on dilde birleşik bir yerel web arayüzüne taşındı.",
+          "Güvenilirliği artırmak için macOS’a gizlilik açısından arındırılmış çökme, açılış performansı ve yaşam döngüsü tanılama eklendi; IP adresleri ve kişisel tanımlayıcılar temizlenir, borsa veya aracı kurum ağ trafiği, kimlik bilgileri, hesap ayrıntıları ve pozisyonlar kapsam dışı bırakılır."
+        ],
+        "ja": [
+          "契約行の評価額と分離証拠金の帰属を口座純資産に一致させました。クロスおよびポートフォリオマージン契約は符号付き含み損益を表示して各行の合計が口座純資産と直接一致するようになり、確認済みの分離マージン契約（OKX、Binance USD-M・COIN-M、Gate、Bitget）は分離証拠金＋含み損益を表示しつつ対応するウォレット行から証拠金を差し引いて二重計上を防ぎます。",
+          "ブラウザでの OAuth サインイン（OKX、Longbridge、Futu、moomoo）やウォレット接続（Hyperliquid、Polymarket）のコールバック完了時に、macOS が該当のアカウント接続ダイアログと設定ウィンドウを即座に前面へ表示するようになり、コールバック・ウォレット接続・ローカル MCP 認可ページも 10 言語対応の統一ローカル WebUI に刷新しました。",
+          "信頼性向上のため、macOS に厳格に匿名化されたクラッシュ・起動パフォーマンス・ライフサイクル診断を導入しました。IP アドレスや個人識別子は除去され、取引所・証券会社との通信、認証情報、口座情報、保有資産は一切収集されません。"
+        ],
+        "de": [
+          "Kontraktwerte in der Liste und die Zuordnung isolierter Sicherheiten wurden exakt am Kontovermögen ausgerichtet: Cross- und Portfolio-Margin-Kontrakte zeigen nun den nicht realisierten GuV mit Vorzeichen, sodass sich die Zeilen direkt zum Kontovermögen summieren, während verifizierte Isolated-Margin-Kontrakte (OKX, Binance USD-M & COIN-M, Gate, Bitget) isolierte Sicherheit plus nicht realisierten GuV anzeigen und diese Sicherheit ohne Doppelzählung von der zugehörigen Wallet-Zeile abziehen.",
+          "Kontoverbindungsdialoge und das Einstellungsfenster werden unter macOS nun sofort in den Vordergrund geholt, sobald eine Browser-OAuth-Anmeldung (OKX, Longbridge, Futu, moomoo) oder Browser-Wallet-Verbindung (Hyperliquid, Polymarket) zurückkehrt – begleitet von einer einheitlichen lokalen Web-Oberfläche in zehn Sprachen für Rückruf-, Wallet-Verbindungs- und MCP-Autorisierungsseiten.",
+          "Datenschutzbereinigte Absturz-, Startleistungs- und Lebenszyklus-Diagnosen wurden unter macOS zur Verbesserung der Zuverlässigkeit eingeführt: IP-Adressen und personenbezogene Kennungen werden entfernt, und Börsen- oder Broker-Netzwerkverkehr, Zugangsdaten, Kontodaten sowie Bestände bleiben ausgeschlossen."
+        ],
+        "fr": [
+          "Alignement de la valeur des contrats dans la liste et de l’attribution de la marge isolée sur la valeur nette du compte : les contrats en marge croisée et en marge de portefeuille affichent désormais le résultat latent signé afin que les lignes s’additionnent directement au capital du compte, tandis que les contrats en marge isolée vérifiés (OKX, Binance USD-M et COIN-M, Gate, Bitget) affichent la marge isolée plus le résultat latent en la déduisant de la ligne de portefeuille associée sans double comptage.",
+          "Les boîtes de dialogue de connexion de compte et la fenêtre Réglages reviennent désormais immédiatement au premier plan dès le retour d’une connexion OAuth navigateur (OKX, Longbridge, Futu, moomoo) ou d’une connexion de portefeuille (Hyperliquid, Polymarket), avec une interface web locale unifiée en dix langues pour les pages de rappel, de connexion de portefeuille et d’autorisation MCP.",
+          "Ajout de diagnostics de plantage, de performance au démarrage et de cycle de vie strictement anonymisés sur macOS pour renforcer la fiabilité : les adresses IP et identifiants personnels sont supprimés, et le trafic réseau des plateformes d’échange ou courtiers, les identifiants, les détails de compte et les positions sont exclus."
+        ]
+      }
+    },
+    {
+      "type": "fixed",
+      "items": {
+        "en": [
+          "Fixed multi-display positioning for the menu bar panel and auxiliary windows on macOS: clicking the menu bar icon on another display moves the panel directly there, pinned panels stay visible across Spaces and full-screen apps, panel edges align flush beneath the menu bar without shifting as live text changes, and Settings and About windows reliably come to the front across Spaces.",
+          "Fixed inconsistent valuation for native-currency crypto balances across Binance Spot, Margin, Earn, Funding, Bitget, and Gate accounts by routing them through the same top-level FX valuation path as cash balances while keeping on-chain wallet tokens isolated.",
+          "Fixed equity history charts failing to load when locally cached cross-currency FX rates contain lossless 39-digit 128-bit Decimal values."
+        ],
+        "zh-Hans": [
+          "修复 macOS 多屏场景下的主面板与辅助窗口定位问题：跨屏点击菜单栏图标时面板直接迁至目标屏打开，固定态面板在目标屏跨桌面 Space 与全屏应用上方保持可见，面板紧贴系统菜单栏底边且不随实时文案宽度抖动，设置与关于窗口可跨 Space 可靠前置聚焦。",
+          "修复币安现货、杠杆、理财、资金账户及 Bitget、Gate 中原生币种加密货币余额估值口径不一致的问题，统一经顶层汇率路径估值，同时保持链上钱包代币隔离不串价。",
+          "修复本地缓存的交叉汇率包含无损 39 位 128-bit Decimal 数值时，统计页权益历史图表加载失败的问题。"
+        ],
+        "zh-Hant": [
+          "修正 macOS 多螢幕場景下的主面板與輔助視窗定位問題：跨螢幕點擊選單列圖示時面板直接移至目標螢幕開啟，釘選狀態的面板在目標螢幕跨桌面 Space 與全螢幕應用程式上方保持可見，面板緊貼系統選單列底邊且不隨即時文案寬度抖動，設定與關於視窗可跨 Space 可靠前置聚焦。",
+          "修正幣安現貨、槓桿、理財、資金帳戶及 Bitget、Gate 中原生幣別加密貨幣餘額估值口徑不一致的問題，統一經頂層匯率路徑估值，同時保持鏈上錢包代幣隔離不錯價。",
+          "修正本機快取的交叉匯率包含無損 39 位 128-bit Decimal 數值時，統計頁權益歷史圖表載入失敗的問題。"
+        ],
+        "ko": [
+          "macOS 다중 디스플레이 환경에서 메뉴 막대 패널과 보조 창의 위치 동작을 수정했습니다. 다른 화면의 메뉴 막대 아이콘을 클릭하면 패널이 해당 화면으로 바로 이동하고, 고정된 패널은 해당 화면의 모든 Space와 전체 화면 앱 위에서 유지되며, 패널 상단이 메뉴 막대 아래에 맞춰지고 실시간 문구 길이에 따라 흔들리지 않습니다. 설정 및 정보 창도 Space를 넘어 안정적으로 전면에 표시됩니다.",
+          "Binance 현물·마진·적립·펀딩 계좌와 Bitget, Gate 계좌의 기본 통화 암호화폐 잔고가 현금 잔고와 동일한 최상위 환율 경로로 일관되게 평가되도록 수정했으며, 온체인 지갑 토큰은 계속 별도로 격리합니다.",
+          "로컬에 캐시된 교차 환율에 무손실 39자리 128비트 Decimal 값이 포함될 때 자산 이력 차트를 불러오지 못하던 문제를 수정했습니다."
+        ],
+        "ru": [
+          "Исправлено позиционирование панели строки меню и вспомогательных окон на нескольких мониторах в macOS: нажатие значка на другом экране сразу переносит панель туда, закреплённая панель остаётся видимой поверх Spaces и полноэкранных приложений, верхний край панели примыкает к строке меню и не смещается при изменении текста, а окна «Настройки» и «О программе» надёжно выводятся на передний план между Spaces.",
+          "Исправлена несогласованная оценка криптобалансов в собственной валюте на счетах Binance (спот, маржа, Earn, пополнение), Bitget и Gate: теперь они оцениваются через тот же верхнеуровневый путь валютных курсов, что и денежные остатки, с сохранением изоляции ончейн-токенов кошельков.",
+          "Исправлена ошибка загрузки графиков истории капитала, когда локально кешированные кросс-курсы содержат точные 39-значные 128-битные значения Decimal."
+        ],
+        "pt-BR": [
+          "Corrigimos o posicionamento do painel da barra de menus e das janelas auxiliares em múltiplos monitores no macOS: clicar no ícone em outro monitor move o painel diretamente para lá, painéis fixados permanecem visíveis entre Spaces e apps em tela cheia, o painel alinha rente à barra de menus sem oscilar conforme o texto muda e as janelas Ajustes e Sobre sobem com confiabilidade entre Spaces.",
+          "Corrigimos inconsistências na avaliação de saldos cripto na própria moeda em contas Binance Spot, Margem, Earn, Fundos, Bitget e Gate, encaminhando-os pelo mesmo fluxo de câmbio de nível superior dos saldos em caixa enquanto mantemos tokens de carteira on-chain isolados.",
+          "Corrigimos falhas ao carregar gráficos de histórico de patrimônio quando taxas de câmbio cruzadas em cache local contêm valores Decimal de 128 bits sem perda com 39 dígitos."
+        ],
+        "tr": [
+          "macOS’ta çoklu ekranlarda menü çubuğu paneli ve yardımcı pencerelerin konumlandırılması düzeltildi: başka bir ekrandaki menü çubuğu simgesine tıklandığında panel doğrudan o ekrana taşınır, sabitlenmiş paneller Space’ler ve tam ekran uygulamalar üzerinde görünür kalır, panel menü çubuğunun hemen altına hizalanıp canlı metin değişiminde kaymaz ve Ayarlar ile Hakkında pencereleri Space’ler arasında güvenilir şekilde öne gelir.",
+          "Binance Spot, Marjin, Earn, Fonlama, Bitget ve Gate hesaplarındaki yerel para birimli kripto bakiyelerinin değerleme tutarsızlığı giderildi; bu bakiyeler artık zincir üstü cüzdan token’ları ayrı tutulmaya devam ederek nakit bakiyelerle aynı üst düzey kur yolundan değerlenir.",
+          "Yerel önbellekteki çapraz döviz kurları kayıpsız 39 basamaklı 128 bit Decimal değerler içerdiğinde varlık geçmişi grafiklerinin yüklenememesine yol açan sorun düzeltildi."
+        ],
+        "ja": [
+          "macOS のマルチディスプレイ環境におけるメニューバーパネルと補助ウィンドウの配置を修正しました。別ディスプレイのメニューバーアイコンをクリックするとパネルがその画面へ直接移動し、固定表示中は Spaces やフルスクリーンアプリの上でも表示を維持し、パネル上端はメニューバー直下に揃ってリアルタイム表示幅の変化で揺れなくなり、「設定」や「このアプリについて」も Spaces を跨いで確実に前面表示されます。",
+          "Binance の現物・証拠金・Earn・資金調達アカウントおよび Bitget・Gate のネイティブ通貨暗号資産残高の評価額のばらつきを修正し、オンチェーンウォレットトークンの分離を保ったまま現金残高と同一のトップレベル為替評価経路へ統一しました。",
+          "ローカルキャッシュ内のクロス為替レートにロスレスな 39 桁 128-bit Decimal 値が含まれる場合、資産推移チャートが読み込めなくなる問題を修正しました。"
+        ],
+        "de": [
+          "Positionierung von Menüleisten-Panel und Hilfsfenstern auf mehreren Bildschirmen unter macOS behoben: Ein Klick auf das Menüleisten-Symbol eines anderen Displays verschiebt das Panel direkt dorthin, angepinnte Panels bleiben über Spaces und Vollbild-Apps hinweg sichtbar, die Oberkante schließt bündig unter der Menüleiste ab ohne bei wechselnder Textbreite zu springen, und Einstellungen sowie Info-Fenster kommen zuverlässig über Spaces hinweg in den Vordergrund.",
+          "Inkonsistente Bewertungen von Krypto-Guthaben in eigener Währung in Binance Spot-, Margin-, Earn- und Funding-Konten sowie bei Bitget und Gate wurden behoben, indem sie über denselben obersten Wechselkurspfad wie Barbestände bewertet werden, während On-Chain-Wallet-Token isoliert bleiben.",
+          "Behoben, dass Vermögensverlaufsdiagramme nicht geladen werden konnten, wenn lokal zwischengespeicherte Kreuzwechselkurse verlustfreie 39-stellige 128-Bit-Decimal-Werte enthielten."
+        ],
+        "fr": [
+          "Correction du positionnement multi-écran du panneau de barre des menus et des fenêtres auxiliaires sur macOS : cliquer sur l’icône d’un autre écran y déplace directement le panneau, les panneaux épinglés restent visibles sur tous les Spaces et au-dessus des apps plein écran, le bord supérieur s’aligne au ras de la barre des menus sans bouger lorsque le texte change et les fenêtres Réglages et À propos passent de façon fiable au premier plan d’un Space à l’autre.",
+          "Correction des écarts de valorisation des soldes crypto libellés dans leur propre devise sur les comptes Binance Spot, Marge, Earn, Financement, Bitget et Gate en les faisant passer par le même chemin de change de premier niveau que les liquidités, tout en gardant les jetons de portefeuille on-chain isolés.",
+          "Correction d’un échec de chargement des graphiques d’historique de valeur lorsque les taux de change croisés mis en cache localement contiennent des valeurs Decimal 128 bits sans perte de 39 chiffres."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.8.0",
+    "build": "1711",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.8.0-1711.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.8.0-1711/PositionBar-0.8.0-1711.dmg",
+    "sha256": "e0df1d3a68d95f6587c2440d52e98d1c8d6778005d55a9874c72853c158993f4",
+    "length": 31918456
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "60f1d8bc46e57b2546d75ecc1610a6c69592841f26905f8b0bd1e3fd2044019c",
+  "appcastLength": 3809,
+  "tapCommit": "6676a7b8daace1aefad0d2d3a37b25f226e9d6a5",
+  "releaseTarget": "fec2297c94fd251d4255f92303efc84544691f8c"
+}
