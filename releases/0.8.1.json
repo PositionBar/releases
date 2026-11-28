@@ -1,0 +1,93 @@
+{
+  "status": "published",
+  "version": "0.8.1",
+  "build": 1714,
+  "source_sha": "e176ca5d3c09f9cac73c21de8bcdad3c4e865d62",
+  "metadataSHA256": "b8f4769941c194f2c0b592028282f4503eac808cd06febf9ed8ddf129f62010c",
+  "publishedOn": "2026-11-28",
+  "changes": [
+    {
+      "type": "new",
+      "items": {
+        "en": [
+          "Added Spanish (Español) language support across the macOS and iOS apps, widgets, Settings language picker, embedded local browser pages (OAuth callbacks, wallet connect, and local MCP authorization), and Sparkle release notes."
+        ],
+        "zh-Hans": [
+          "新增西班牙语（Español）支持，覆盖 macOS 与 iOS 应用、桌面小组件、设置中的语言选择、本地嵌入式浏览器页面（OAuth 回调、钱包连接与本地 MCP 授权）以及 Sparkle 更新说明。"
+        ],
+        "zh-Hant": [
+          "新增西班牙語（Español）支援，涵蓋 macOS 與 iOS 應用程式、桌面小工具、設定中的語言選擇、本機內嵌瀏覽器頁面（OAuth 回呼、錢包連接與本機 MCP 授權）以及 Sparkle 更新說明。"
+        ],
+        "ko": [
+          "macOS 및 iOS 앱, 위젯, 설정의 언어 선택, 내장 로컬 브라우저 페이지(OAuth 콜백, 지갑 연결 및 로컬 MCP 승인)와 Sparkle 릴리스 노트에 스페인어(Español) 지원을 추가했습니다."
+        ],
+        "ru": [
+          "Добавлена поддержка испанского языка (Español) в приложениях для macOS и iOS, виджетах, выборе языка в настройках, встроенных локальных веб-страницах (обратные вызовы OAuth, подключение кошелька и авторизация локального MCP) и описаниях обновлений Sparkle."
+        ],
+        "pt-BR": [
+          "Adicionamos suporte ao idioma espanhol (Español) nos aplicativos para macOS e iOS, nos widgets, no seletor de idioma dos Ajustes, nas páginas locais incorporadas do navegador (retornos OAuth, conexão de carteira e autorização MCP local) e nas notas de versão do Sparkle."
+        ],
+        "tr": [
+          "macOS ve iOS uygulamaları, araç takımları, Ayarlar dil seçicisi, gömülü yerel tarayıcı sayfaları (OAuth geri çağrıları, cüzdan bağlantısı ve yerel MCP yetkilendirmesi) ile Sparkle sürüm notlarına İspanyolca (Español) dil desteği eklendi."
+        ],
+        "ja": [
+          "macOS および iOS アプリ、ウィジェット、設定の言語選択、組み込みローカルブラウザページ（OAuth コールバック、ウォレット接続、ローカル MCP 認可）、および Sparkle リリースノートにスペイン語（Español）を追加しました。"
+        ],
+        "de": [
+          "Spanisch (Español) als weitere Sprache für die macOS- und iOS-Apps, Widgets, die Sprachauswahl in den Einstellungen, eingebettete lokale Browserseiten (OAuth-Rückrufe, Wallet-Verbindung und lokale MCP-Autorisierung) sowie Sparkle-Versionshinweise hinzugefügt."
+        ],
+        "fr": [
+          "Ajout de la prise en charge de l’espagnol (Español) dans les apps macOS et iOS, les widgets, le sélecteur de langue des Réglages, les pages locales intégrées du navigateur (rappels OAuth, connexion de portefeuille et autorisation MCP locale) ainsi que les notes de version Sparkle."
+        ],
+        "es": [
+          "Se añadió compatibilidad con el idioma español (Español) en las apps de macOS e iOS, los widgets, el selector de idioma en Ajustes, las páginas locales integradas del navegador (devoluciones OAuth, conexión de cartera y autorización MCP local) y las notas de versión de Sparkle."
+        ]
+      }
+    }
+  ],
+  "artifact": {
+    "appName": "PositionBar.app",
+    "bundleIdentifier": "com.positionbar.app",
+    "version": "0.8.1",
+    "build": "1714",
+    "architectures": [
+      "arm64",
+      "x86_64"
+    ],
+    "minimumSystemVersion": "26.0.0",
+    "teamID": "TX6HZR5RB7",
+    "entitlements": {
+      "com.apple.application-identifier": "TX6HZR5RB7.com.positionbar.app",
+      "com.apple.developer.team-identifier": "TX6HZR5RB7",
+      "com.apple.security.app-sandbox": true,
+      "com.apple.security.application-groups": [
+        "TX6HZR5RB7.com.positionbar.app.widgets"
+      ],
+      "com.apple.security.network.client": true,
+      "com.apple.security.network.server": true,
+      "com.apple.security.temporary-exception.mach-lookup.global-name": [
+        "com.positionbar.app-spks",
+        "com.positionbar.app-spki"
+      ],
+      "keychain-access-groups": [
+        "TX6HZR5RB7.com.positionbar.app"
+      ]
+    },
+    "developerIDVerified": true,
+    "sparkleEmbedded": true,
+    "sparkleFeedURL": "https://positionbar.com/updates/macos/appcast.xml",
+    "sparklePublicEDKey": "VoAIW8gggrVrGAWdI0Zsvln6tOD9GHXQoHubQ+oG9KM=",
+    "notarizationStatus": "Accepted",
+    "stapled": true,
+    "gatekeeperVerified": true,
+    "name": "PositionBar-0.8.1-1714.dmg",
+    "url": "https://github.com/PositionBar/releases/releases/download/positionbar-0.8.1-1714/PositionBar-0.8.1-1714.dmg",
+    "sha256": "4417fc37d6a2a55afae10d4fdfa79c69b2ee62311782a3f5b195e748ecfa3080",
+    "length": 32023415
+  },
+  "appcast": "https://positionbar.com/updates/macos/appcast.xml",
+  "appcastSHA256": "4828e091fd14b114f8cff2072eed46cc7d017963ee23b4cdf57697fbc35f55de",
+  "appcastLength": 4065,
+  "tapCommit": "7a4c19fb664b211a05b9c0a8f397d2b2181918fe",
+  "releaseTarget": "a3d964940f29c685196c48f5a1d976b2232b8dbf"
+}
