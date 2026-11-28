@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+Yeni
+- macOS ve iOS uygulamaları, araç takımları, Ayarlar dil seçicisi, gömülü yerel tarayıcı sayfaları (OAuth geri çağrıları, cüzdan bağlantısı ve yerel MCP yetkilendirmesi) ile Sparkle sürüm notlarına İspanyolca (Español) dil desteği eklendi.

@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+Neu
+- Spanisch (Español) als weitere Sprache für die macOS- und iOS-Apps, Widgets, die Sprachauswahl in den Einstellungen, eingebettete lokale Browserseiten (OAuth-Rückrufe, Wallet-Verbindung und lokale MCP-Autorisierung) sowie Sparkle-Versionshinweise hinzugefügt.

@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+새로운 기능
+- macOS 및 iOS 앱, 위젯, 설정의 언어 선택, 내장 로컬 브라우저 페이지(OAuth 콜백, 지갑 연결 및 로컬 MCP 승인)와 Sparkle 릴리스 노트에 스페인어(Español) 지원을 추가했습니다.

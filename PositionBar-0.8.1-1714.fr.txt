@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+Nouveautés
+- Ajout de la prise en charge de l’espagnol (Español) dans les apps macOS et iOS, les widgets, le sélecteur de langue des Réglages, les pages locales intégrées du navigateur (rappels OAuth, connexion de portefeuille et autorisation MCP locale) ainsi que les notes de version Sparkle.

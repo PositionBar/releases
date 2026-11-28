@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+新增
+- 新增西班牙语（Español）支持，覆盖 macOS 与 iOS 应用、桌面小组件、设置中的语言选择、本地嵌入式浏览器页面（OAuth 回调、钱包连接与本地 MCP 授权）以及 Sparkle 更新说明。

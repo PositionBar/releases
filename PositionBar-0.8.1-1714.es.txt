@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+Novedades
+- Se añadió compatibilidad con el idioma español (Español) en las apps de macOS e iOS, los widgets, el selector de idioma en Ajustes, las páginas locales integradas del navegador (devoluciones OAuth, conexión de cartera y autorización MCP local) y las notas de versión de Sparkle.

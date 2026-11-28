@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+New
+- Added Spanish (Español) language support across the macOS and iOS apps, widgets, Settings language picker, embedded local browser pages (OAuth callbacks, wallet connect, and local MCP authorization), and Sparkle release notes.

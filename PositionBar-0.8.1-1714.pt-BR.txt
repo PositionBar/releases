@@ -1,0 +1,4 @@
+PositionBar 0.8.1
+
+Novo
+- Adicionamos suporte ao idioma espanhol (Español) nos aplicativos para macOS e iOS, nos widgets, no seletor de idioma dos Ajustes, nas páginas locais incorporadas do navegador (retornos OAuth, conexão de carteira e autorização MCP local) e nas notas de versão do Sparkle.
