@@ -1,0 +1,15 @@
+PositionBar 0.8.0
+
+Neu
+- Schreibgeschützte Browser-Wallet-Anbindung unter macOS für Hyperliquid und Polymarket hinzugefügt: Erkannte Browser-Wallets (wie MetaMask, OKX Wallet und Coinbase Wallet) lassen sich lokal ohne Signatur oder Netzwerkwechsel verbinden, und Konten mit E-Mail-Anmeldung können das Portal öffnen und ihre öffentliche Adresse direkt einfügen; Hyperliquid unterstützt die Bestätigung von Agent- zu Hauptkonto sowie den Sammelimport von Unterkonten, während Polymarket die verknüpfte Konto-Wallet ermittelt und bestätigt.
+- Zurückhaltende geplante Update-Hinweise unter macOS hinzugefügt: Hintergrundprüfungen stehlen keinen Fokus mehr und verschwinden nicht hinter anderen Fenstern – stattdessen erscheint ohne Benachrichtigungsberechtigung ein Akzentpunkt am Zahnrad-Symbol des Panels und das Update-Menü wechselt auf „Update verfügbar“.
+
+Verbessert
+- Kontraktwerte in der Liste und die Zuordnung isolierter Sicherheiten wurden exakt am Kontovermögen ausgerichtet: Cross- und Portfolio-Margin-Kontrakte zeigen nun den nicht realisierten GuV mit Vorzeichen, sodass sich die Zeilen direkt zum Kontovermögen summieren, während verifizierte Isolated-Margin-Kontrakte (OKX, Binance USD-M & COIN-M, Gate, Bitget) isolierte Sicherheit plus nicht realisierten GuV anzeigen und diese Sicherheit ohne Doppelzählung von der zugehörigen Wallet-Zeile abziehen.
+- Kontoverbindungsdialoge und das Einstellungsfenster werden unter macOS nun sofort in den Vordergrund geholt, sobald eine Browser-OAuth-Anmeldung (OKX, Longbridge, Futu, moomoo) oder Browser-Wallet-Verbindung (Hyperliquid, Polymarket) zurückkehrt – begleitet von einer einheitlichen lokalen Web-Oberfläche in zehn Sprachen für Rückruf-, Wallet-Verbindungs- und MCP-Autorisierungsseiten.
+- Datenschutzbereinigte Absturz-, Startleistungs- und Lebenszyklus-Diagnosen wurden unter macOS zur Verbesserung der Zuverlässigkeit eingeführt: IP-Adressen und personenbezogene Kennungen werden entfernt, und Börsen- oder Broker-Netzwerkverkehr, Zugangsdaten, Kontodaten sowie Bestände bleiben ausgeschlossen.
+
+Behoben
+- Positionierung von Menüleisten-Panel und Hilfsfenstern auf mehreren Bildschirmen unter macOS behoben: Ein Klick auf das Menüleisten-Symbol eines anderen Displays verschiebt das Panel direkt dorthin, angepinnte Panels bleiben über Spaces und Vollbild-Apps hinweg sichtbar, die Oberkante schließt bündig unter der Menüleiste ab ohne bei wechselnder Textbreite zu springen, und Einstellungen sowie Info-Fenster kommen zuverlässig über Spaces hinweg in den Vordergrund.
+- Inkonsistente Bewertungen von Krypto-Guthaben in eigener Währung in Binance Spot-, Margin-, Earn- und Funding-Konten sowie bei Bitget und Gate wurden behoben, indem sie über denselben obersten Wechselkurspfad wie Barbestände bewertet werden, während On-Chain-Wallet-Token isoliert bleiben.
+- Behoben, dass Vermögensverlaufsdiagramme nicht geladen werden konnten, wenn lokal zwischengespeicherte Kreuzwechselkurse verlustfreie 39-stellige 128-Bit-Decimal-Werte enthielten.

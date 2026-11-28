@@ -1,0 +1,15 @@
+PositionBar 0.8.0
+
+Novo
+- Adicionamos a conexão somente leitura por carteira de navegador no macOS para Hyperliquid e Polymarket: conecte extensões detectadas (como MetaMask, OKX Wallet e Coinbase Wallet) localmente sem assinatura ou troca de rede, ou abra o portal da plataforma e cole o endereço público em contas com login por e-mail; a Hyperliquid suporta confirmação de carteira de agente para conta principal e importação em lote de subcontas, enquanto a Polymarket resolve e confirma a carteira vinculada à conta.
+- Adicionamos lembretes discretos de atualização agendada no macOS: a verificação em segundo plano não rouba mais o foco nem fica escondida atrás de outras janelas — em vez disso, um ponto de destaque aparece no botão de engrenagem do painel e o menu de atualização muda para «Atualização Disponível» sem solicitar permissão de notificações.
+
+Melhorado
+- Alinhamos o valor das linhas de contratos e a atribuição de margem isolada ao patrimônio da conta: contratos de margem cruzada e de portfólio agora exibem o P&L não realizado com sinal para que as linhas somem diretamente ao patrimônio, enquanto contratos isolados verificados (OKX, Binance USD-M e COIN-M, Gate, Bitget) exibem a margem isolada somada ao P&L não realizado e deduzem essa margem da carteira correspondente sem dupla contagem.
+- Os diálogos de conexão de conta e a janela de Ajustes agora vêm imediatamente para o primeiro plano ao retornar do login OAuth no navegador (OKX, Longbridge, Futu, moomoo) ou da conexão de carteira (Hyperliquid, Polymarket), acompanhados por uma interface web local unificada em dez idiomas para retorno do navegador, conexão de carteira e autorização MCP.
+- Adicionamos diagnósticos anonimizados de falhas, desempenho de inicialização e ciclo de vida no macOS para melhorar a confiabilidade: endereços IP e identificadores pessoais são removidos, e tráfego de corretoras ou exchanges, credenciais, dados da conta e posições ficam excluídos.
+
+Corrigido
+- Corrigimos o posicionamento do painel da barra de menus e das janelas auxiliares em múltiplos monitores no macOS: clicar no ícone em outro monitor move o painel diretamente para lá, painéis fixados permanecem visíveis entre Spaces e apps em tela cheia, o painel alinha rente à barra de menus sem oscilar conforme o texto muda e as janelas Ajustes e Sobre sobem com confiabilidade entre Spaces.
+- Corrigimos inconsistências na avaliação de saldos cripto na própria moeda em contas Binance Spot, Margem, Earn, Fundos, Bitget e Gate, encaminhando-os pelo mesmo fluxo de câmbio de nível superior dos saldos em caixa enquanto mantemos tokens de carteira on-chain isolados.
+- Corrigimos falhas ao carregar gráficos de histórico de patrimônio quando taxas de câmbio cruzadas em cache local contêm valores Decimal de 128 bits sem perda com 39 dígitos.

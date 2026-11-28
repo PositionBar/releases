@@ -1,0 +1,15 @@
+PositionBar 0.8.0
+
+New
+- Added read-only browser wallet onboarding on macOS for Hyperliquid and Polymarket: connect detected browser wallets (such as MetaMask, OKX Wallet, and Coinbase Wallet) locally without signing or chain switching, or open the platform portal and paste a public address for email-login accounts; Hyperliquid supports agent-to-main account confirmation and subaccount batch import, while Polymarket resolves and confirms the linked account wallet.
+- Added gentle scheduled update reminders on macOS: background update checks no longer steal focus or appear behind other windows—instead, an accent dot appears on the panel gear button and the update menu switches to “Update Available” without requesting notification permissions.
+
+Improved
+- Aligned contract list values and isolated collateral attribution with account equity: cross-margin and portfolio-margin contracts now display signed unrealized P&L so rows sum directly to account equity, while verified isolated-margin contracts (OKX, Binance USD-M & COIN-M, Gate, Bitget) display isolated collateral plus unrealized P&L and deduct that collateral from the backing wallet row without double-counting.
+- Account connection dialogs now come to the front immediately when returning from browser OAuth sign-in (OKX, Longbridge, Futu, moomoo) or browser wallet connect (Hyperliquid, Polymarket), paired with a unified, ten-language local WebUI for browser callback, wallet connect, and MCP authorization pages.
+- Added privacy-scrubbed crash, launch performance, and lifecycle diagnostics on macOS to improve reliability—IP addresses and personal identifiers are stripped, and exchange or broker network traffic, credentials, account details, and holdings are excluded.
+
+Fixed
+- Fixed multi-display positioning for the menu bar panel and auxiliary windows on macOS: clicking the menu bar icon on another display moves the panel directly there, pinned panels stay visible across Spaces and full-screen apps, panel edges align flush beneath the menu bar without shifting as live text changes, and Settings and About windows reliably come to the front across Spaces.
+- Fixed inconsistent valuation for native-currency crypto balances across Binance Spot, Margin, Earn, Funding, Bitget, and Gate accounts by routing them through the same top-level FX valuation path as cash balances while keeping on-chain wallet tokens isolated.
+- Fixed equity history charts failing to load when locally cached cross-currency FX rates contain lossless 39-digit 128-bit Decimal values.

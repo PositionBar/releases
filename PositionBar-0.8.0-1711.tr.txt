@@ -1,0 +1,15 @@
+PositionBar 0.8.0
+
+Yeni
+- macOS’ta Hyperliquid ve Polymarket için salt okunur tarayıcı cüzdanı bağlantısı eklendi: MetaMask, OKX Wallet ve Coinbase Wallet gibi algılanan tarayıcı cüzdanlarını imza veya ağ değişikliği olmadan yerel olarak bağlayabilir ya da e-posta ile giriş yapan hesaplarda platform portalını açıp genel adresi doğrudan yapıştırabilirsiniz; Hyperliquid aracı cüzdandan ana hesaba geçiş onayını ve alt hesapların toplu içe aktarımını desteklerken Polymarket bağlı hesap cüzdanını çözümleyip onaylatır.
+- macOS’a nazik zamanlanmış güncelleme hatırlatmaları eklendi: arka planda güncelleme denetimleri artık odak çalmaz veya diğer pencerelerin arkasında kalmaz; bunun yerine bildirim izni istemeden paneldeki dişli düğmesinde vurgu noktası görünür ve güncelleme menüsü «Güncelleme Mevcut» olarak değişir.
+
+İyileştirildi
+- Sözleşme listesi değerleri ve izole teminat dağılımı hesap öz varlığıyla hizalandı: çapraz ve portföy teminatlı sözleşmeler artık satırların doğrudan hesap öz varlığına toplanması için işaretli gerçekleşmemiş kâr/zararı gösterir; doğrulanmış izole teminatlı sözleşmeler (OKX, Binance USD-M ve COIN-M, Gate, Bitget) ise izole teminat artı gerçekleşmemiş kâr/zararı gösterip aynı teminatı ilgili cüzdan satırından düşerek çift sayımı önler.
+- Tarayıcıda OAuth girişi (OKX, Longbridge, Futu, moomoo) veya cüzdan bağlantısı (Hyperliquid, Polymarket) geri çağrısı tamamlandığında macOS ilgili hesap penceresini ve Ayarlar’ı anında öne getirir; tarayıcı geri çağrısı, cüzdan bağlantısı ve yerel MCP yetkilendirme sayfaları da on dilde birleşik bir yerel web arayüzüne taşındı.
+- Güvenilirliği artırmak için macOS’a gizlilik açısından arındırılmış çökme, açılış performansı ve yaşam döngüsü tanılama eklendi; IP adresleri ve kişisel tanımlayıcılar temizlenir, borsa veya aracı kurum ağ trafiği, kimlik bilgileri, hesap ayrıntıları ve pozisyonlar kapsam dışı bırakılır.
+
+Düzeltildi
+- macOS’ta çoklu ekranlarda menü çubuğu paneli ve yardımcı pencerelerin konumlandırılması düzeltildi: başka bir ekrandaki menü çubuğu simgesine tıklandığında panel doğrudan o ekrana taşınır, sabitlenmiş paneller Space’ler ve tam ekran uygulamalar üzerinde görünür kalır, panel menü çubuğunun hemen altına hizalanıp canlı metin değişiminde kaymaz ve Ayarlar ile Hakkında pencereleri Space’ler arasında güvenilir şekilde öne gelir.
+- Binance Spot, Marjin, Earn, Fonlama, Bitget ve Gate hesaplarındaki yerel para birimli kripto bakiyelerinin değerleme tutarsızlığı giderildi; bu bakiyeler artık zincir üstü cüzdan token’ları ayrı tutulmaya devam ederek nakit bakiyelerle aynı üst düzey kur yolundan değerlenir.
+- Yerel önbellekteki çapraz döviz kurları kayıpsız 39 basamaklı 128 bit Decimal değerler içerdiğinde varlık geçmişi grafiklerinin yüklenememesine yol açan sorun düzeltildi.
